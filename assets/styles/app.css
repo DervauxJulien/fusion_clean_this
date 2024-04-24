@@ -92,3 +92,9 @@ body {
     margin-top: 8%;
 }
 /* ------------------------------------------ */
+
+.margeGauche {
+    display: flex;
+    background-color: #43CAA9;
+    height: 100%;
+}
