@@ -6,6 +6,10 @@ use App\Repository\OperationsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+// Garder pour la page prendre opération.
+// Une fois positionné dans la base de donnée et fais les migrations.
+// Création de la table operations et de sa structure avec la commande "symfony console make:entity".
+
 #[ORM\Entity(repositoryClass: OperationsRepository::class)]
 class Operations
 {
