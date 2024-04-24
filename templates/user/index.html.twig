@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion Utilisateur{% endblock %}
+
+{% block body %}
+<div class="container pt-5">
+    <br><br>
+    <h1 class="text-center">Gestion Utilisateur</h1>
+    <br><br>
+<a href={{path('app_gestion_utilisateur_create')}} class="btn btn-outline-success">Ajouter un utilisateur</a>
+<br><br>
+    <table class="table table-bordered table-striped text-center">
+        <tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Username</th>
+        <th>Rôle</th>
+        <th>Action</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{user.nom}}</td>
+        <td>{{user.prenom}}</td>
+        <td>{{user.username}}</td>
+        <td>
+            {% if ('ROLE_EXPERT' in user.roles) %}
+            <span>Expert</span>
+        {% elseif ('ROLE_SENIOR' in user.roles) %}
+            <span>Senior</span>
+        {% else %}
+            <span>Apprenti</span>
+            
+        {% endif %}
+    </td>
+        <td></td>
+            
+        {% endfor %}
+    </tr>
+    </table>
+
+</div>
+{% endblock %}

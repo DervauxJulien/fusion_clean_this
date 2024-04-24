@@ -1,3 +1,7 @@
-body {
-    background-color: skyblue;
+.btn-block{
+    width: 100%;
+}
+
+.UAdd-form{
+    width: 25%;
 }
