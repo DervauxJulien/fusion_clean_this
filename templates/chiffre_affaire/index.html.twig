@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chiffre d'affaire{% endblock %}
+
+{% block body %}
+    <h1>CHIFFRE D'AFFAIRE</h1>
+
+    {{ render(controller('App\\Controller\\SalesController::salesStats')) }}
+    {{ render(controller('App\\Controller\\TableController::tableIndex')) }}
+
+{% endblock %}
