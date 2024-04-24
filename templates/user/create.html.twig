@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+{% block title %}Creation utilisateur{% endblock %}
+
+{% block body %}
+<div class="container d-flex flex-column justify-content-center align-items-center pt-5">
+    <br><br>
+    <div class="UAdd_form">
+    <h1 class="text-center">Creation Utilisateur</h1>
+    <br><br>
+    {{form_start(createForm)}}
+    <br><br>
+
+    {{form_widget(createForm.nom,{'attr':{'class': 'form form-control','placeholder': 'Nom'}})}}
+    <br>
+    {{form_widget(createForm.prenom,{'attr':{'class': 'form form-control','placeholder': 'Prenom'}})}}
+    <br>
+    {{form_widget(createForm.username,{'attr':{'class': 'form form-control','placeholder': 'Username'}})}}
+    <br>
+    {{form_widget(createForm.plainPassword,{'attr':{'class': 'form form-control','placeholder': 'Mot de passe'}})}}
+    <br><br>
+    <input type="submit" value="Ajouter" class="btn btn-outline-success btn-block ">
+
+    {{form_end(createForm)}}
+</div>
+</div>
+
+    
+{% endblock %}
+    
