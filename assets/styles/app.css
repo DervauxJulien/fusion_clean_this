@@ -476,3 +476,15 @@ body {
     background-color: #43CAA9;
     height: 100%;
 }
+
+/* Page Gestion utilisateur------------------------------------- */
+
+#colAp{
+    color: #43CAA9;
+}
+#colSe{
+    color: #0C4B3B;
+}
+#colEx{
+    color: #3B3355;
+}
