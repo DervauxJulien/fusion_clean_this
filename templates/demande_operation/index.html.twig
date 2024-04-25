@@ -1,16 +1,56 @@
 {% extends "base.html.twig" %}
 
+{% block head %}
+
 {% block title %}Demande d'opération
 {% endblock %}
-
+{% endblock %}
 {% block body %}
-	<div class='margeGauche d-flex w-25 h-100'>
-		<img src="images/icons/logo.svg" alt="logo"/>
-		<img src='images/icons/customer.svg' alt='customer icon' name='home_customer_logo' id='home_customer_logo'/>
-		<h1 class='text-white'>Merci d'avoir choisi Clean This</h1>
+
+	<div class='margeGauche w-25 h-100'>
+		<img src="\images\icons\logo.svg" alt="logo" width=20% height=20%/>
+		
+		<h1 class='text-white'><b>Merci d'avoir choisi Clean This</b></h1>
 	</div>
-    <div>
+	<div>
+		<h2>
+			<b>Formulaire de demande d'opération :</b><br><br><br>
+		</h2>
 		<form action="">
+			<label for="Nom">Nom :
+				<br>
+				<input type="text" name="nom" id="" required></label>
+			<label for="Prenom">Prenom :
+				<br>
+				<input type="text" name="prenom" id="" required></label>
+			<label for="Mail">Mail :
+				<br>
+				<input type="email" name="mail" required></label><br><br>
+
+			<p>
+				<b>Adresse du site à nettoyer :</b>
+			</p>
+
+			<label for="Adresse">Numéro et nom de la rue :
+				<br>
+				<input type="text" name="adresse" id="" required></label>
+			<label for="CP">Code postal :
+				<br>
+				<input type="number" name="cp" id="" required></label>
+			<label for="Ville">Ville :
+				<br>
+				<input type="text" name="ville" id="" required></label>
+			<br><br>
+			<label for="Desc">Description de l'intervention :<br>
+				<input type="text" name="description" id=""></label><br><br>
+				
+				{# <label for="Photo">Photos du site à nettoyer : <br> #}
+				<div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+			
+			<p>Faites glisser un fichier dans cette <b>drop zone</b></p>
+			</div>
 		</form>
 	</div>
+	<script src="{{ asset('asset/js/script.js') }}"></script>
 {% endblock %}
+
