@@ -3,6 +3,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+
+    {# <table>
+        <tbody>
+        {%for user in users %}
+        <tr>
+        <td>{{user.nom}}</td>
+        <td>{{user.prenom}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.roles}}</td>
+        </tr>
+        {% endfor %}
+       </tbody>
+</table>
+ #}
+
     <table class="table">
         <thead>
             <tr>
@@ -14,7 +30,8 @@
                 <th><img src="\images\icons\Combo Chart.svg" alt="iconOp" width='39px'></th>
             </tr>
         </thead>
-        <tbody>
+
+       <tbody>
             {% for product in products %}
                 <tr>
                     <td class='name'>{{ product.name }}</td>
@@ -31,4 +48,6 @@
             {% endfor %}
         </tbody>
     </table>
+
+
 {% endblock %}

@@ -5,11 +5,13 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\UserRepository;
+
 
 class TableController extends AbstractController
 {
     #[Route('/table', name: 'table')]
-    public function tableIndex(): Response
+    public function tableIndex(UserRepository $userRepository): Response
     {
 
 
@@ -23,20 +25,11 @@ class TableController extends AbstractController
         ];
 
 
-        // $entityManager = $this->getDoctrine()->getManager();
-        // $connection = $entityManager->getConnection();
-
-        // $sql = "SELECT nom, prenom, roles FROM user;";
-        // $statement = $connection->prepare($sql);
-        // $statement->execute();
-
-        // $data = $statement->fetchAllAssociative();
-
-
 
 
         return $this->render('table/index.html.twig', [
             'products' => $data,
+            'users' => $userRepository->findAll(),
         ]);
 
     }
@@ -52,22 +45,3 @@ class TableController extends AbstractController
 
     
 
-// class MyTableController extends AbstractController
-// {
-//     #[Route('/table', name: 'table')]
-//     public function tableIndex(): Response
-//     {
-//         $entityManager = $this->getDoctrine()->getManager();
-//         $connection = $entityManager->getConnection();
-
-//         $sql = "SELECT nom, prenom, roles FROM user;";
-//         $statement = $connection->prepare($sql);
-//         $statement->execute();
-
-//         $data = $statement->fetchAllAssociative();
-
-//         return $this->render('table/index.html.twig', [
-//             'products' => $data,
-//         ]);
-//     }
-// }
