@@ -109,7 +109,10 @@ body {
 .titreChiffreAffaire{
     text-align: center;
     font-size: 50px;
+    margin-top: 2%;
+    /* border: solid red; */
 }
+
 
 /* Modules du haut chiffres */
 
