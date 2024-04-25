@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Client;
 use App\Entity\Operation;
 use App\Form\AddOperationFormType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,17 +13,17 @@ use Symfony\Component\Routing\Attribute\Route;
 class AddOperationController extends AbstractController
 {
     #[Route('/add/operation', name: 'app_add_operation')]
-    public function index(Operation $operation, Client $client, Request $request, EntityManagerInterface $entityManager) : Response
+    public function index(Operation $operation, Request $request, EntityManagerInterface $entityManager) : Response
     {
-        // Créez une instance de l'entité Operation
+        // Création d'une instance de l'entité Operation
 
         $operation = new Operation();
 
-         // Créez un formulaire en utilisant l'entité Operation
+         // Création d'un formulaire en utilisant l'entité Operation
 
         $form = $this->createForm(AddOperationFormType::class, $operation);
 
-        // Gérez la soumission du formulaire
+        // Je gère la soumission du formulaire
 
         $form -> handleRequest($request);
 
