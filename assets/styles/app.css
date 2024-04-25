@@ -4,6 +4,23 @@ body {
 }
 
 
+#navbar {
+    background-color: #0C4B3B;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1%;
+    color: white;
+}
+#navbar img{
+    width: 3%;
+}
+#navbar button{
+    padding: 0.4% 1%;
+    border-radius: 20px;
+    background-color: #43CAA9;
+    border: 2px solid white;
+}
 
 /* PAGE HOME -------------------------------- */
 #home_main {
@@ -24,7 +41,7 @@ body {
     border-radius: 10%;
 }
 .choice_section:hover{
-    background-color: #0C4B3B;
+    background-color: #007557;
 }
 
 .choice_section h2 {
@@ -268,3 +285,191 @@ body {
     transition: width 0.3s ease;
 }
 
+
+/* page chiffre d'affaire */
+
+.titreChiffreAffaire{
+    text-align: center;
+    font-size: 50px;
+}
+
+/* Modules du haut chiffres */
+
+.lotContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.salesContainer1{
+    width: 20%;
+    border: 5px solid #FAEBDA;
+    border-radius: 0 0 50px 0;
+    background-color: #FAEBDA;
+        
+}
+.salesContainer2{
+    width: 20%;
+    border: 5px solid #ADD8CD;
+    border-radius: 0 0 50px 0;
+    background-color: #ADD8CD;
+        
+}
+.salesContainer3{
+    width: 20%;
+    border: 5px solid #0A9672;
+    border-radius: 0 0 50px 0;
+    background-color: #0A9672;
+        
+}
+
+.titreContainer{
+    font-size: 19px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.titreContainer3{
+    font-size: 19px;
+    text-align: center;
+    font-weight: bold;
+    color: #FBF3F3;
+}
+
+.chiffreContainer{
+    font-size: 50px;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 10%;
+}
+
+.chiffreContainer3{
+    font-size: 50px;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 10%;
+    color: #FBF3F3;
+}
+
+.euroSymbol, .euroSymbol3{
+    margin-right: 40%;
+}
+
+.salesBottom{
+    display: flex;
+    font-size: 50px;
+    border-radius:0 0 50px 0;
+    background-color: #FDFDFD;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-right: 15%;
+    padding-left: 15%;
+}
+
+.percentage{
+    margin-top: 8%;
+}
+
+
+
+/* body chiffre affaire */
+
+.chiffre-affaire-body{
+    background-image: url('/images/photofond.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* Styles généraux pour la table */
+.table {
+    width: 87%;
+    border-collapse: collapse;
+    margin-left: 6.5%;
+    border-left: 4px solid #FAEBDA;
+    border-right: 4px solid #FAEBDA;
+}
+
+.name{
+    font-size: 19px;
+}
+
+.table th, .table td {
+    border-top: 4px solid #FAEBDA;
+    border-bottom: 4px solid #FAEBDA;
+    padding: 8px;
+    text-align: left;
+    padding-left: 2%;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    font-size: 19px;
+
+}
+
+/* public/css/styles.css */
+
+/* ... (autres styles) ... */
+
+.objectiveColumn {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.operation{
+    font-weight: bold;
+    font-size: 19px;
+}
+
+/* Style pour la colonne "Statut" en fonction du statut */
+.status-column {
+    font-weight: bold;
+}
+
+.status-column.expert {
+    color: #3B3355;
+    font-size: 19px;
+}
+
+.status-column.senior {
+    color: #007557;
+    font-size: 19px;
+}
+
+.status-column.apprenti {
+    color: #43CAA9;
+    font-size: 19px;
+}
+
+/* Styles pour les colonnes "Objectif" et "Réalisation" */
+.objectiveColumn {
+    text-align: right;
+}
+
+/* Styles pour la barre de progression */
+.progress-container {
+    width: 100%;
+    background-color: #FAEBDA;
+    height: 30px;
+    border-radius: 50px;
+    margin-top: 20px;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #0C4B3B;
+    border-radius: 50px 0 0 50px;
+    transition: width 0.3s ease;
+}
+
+
+.margeGauche {
+    display: flex;
+    background-color: #43CAA9;
+    height: 100%;
+}
