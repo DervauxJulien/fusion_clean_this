@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Adresse;
 use App\Entity\Operation;
+use App\Entity\Type;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -28,11 +29,17 @@ class AddOperationFormType extends AbstractType
             ])
             ->add('adresse', EntityType::class, [
                 'class' => Adresse::class,
-                'choice_label' => 'id',
+                'choice_label' => function ($adresse) { 
+                    return $adresse->__toString();
+                }
             ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'id',
+            ])
+            ->add('type', EntityType::class, [
+                'class' => Type::class,
+                'choice_label' => 'nom',
             ])
         ;
     }
