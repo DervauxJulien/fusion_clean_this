@@ -11,12 +11,12 @@
 <br><br>
     <table class="table table-bordered table-striped text-center">
         <tr>
-        <th>Nom</th>
-        <th>Prenom</th>
-        <th>Username</th>
-        <th>Rôle</th>
-        <th>Action</th>
-    </tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Username</th>
+            <th>Rôle</th>
+            <th>Action</th>
+        </tr>
     {% for user in users %}
     <tr>
         <td>{{user.nom}}</td>
@@ -32,11 +32,31 @@
             
         {% endif %}
     </td>
-        <td></td>
+        <td class="w-25">
+            <div class="d-flex align-items-center justify-content-around">
+                <div>
+                    {% if ("ROLE_EXPERT" in user.roles) == false %}
+
+                        {% if ("ROLE_SENIOR" in user.roles) == false %}
+                            <a onclick="return confirmer('Voulez-vous vraiment promoter cet utilisateur ?')" href="{{path('app_gestion_utilisateur_modifS' , {'id':user.id}) }}" class="btn btn-outline-warning">Définir comme SENIOR</a>
+                        {% else %}
+                            <a onclick="return confirmer('Voulez-vous vraiment demoter cet utilisateur ?')" href="{{path('app_gestion_utilisateur_modifA' , {'id':user.id}) }}" class="btn btn-outline-warning">Définir comme APPRENTI</a>
+                        {% endif %}
+                
+                    {% endif %}
+                </div>
+                    <div>
+                    {% if ("ROLE_EXPERT" in user.roles) == false %}
+                    <a onclick="return confirmer('Voulez-vous vraiment supprimer cet utilisateur ?')" href="{{path('app_gestion_utilisateur_remove' , {'id':user.id}) }}" class="btn"><img src="/images/icons/suppr.svg" alt="icone suppr" width="95%"></a>
+                    {% endif %}
+                    </div>
+        </div>
+        </td>
             
         {% endfor %}
     </tr>
     </table>
 
 </div>
+
 {% endblock %}

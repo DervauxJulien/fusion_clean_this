@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\CreateUserFormType;
+use App\Form\ModifUserFormType;
 use App\Repository\RolesRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -53,5 +54,48 @@ class UserController extends AbstractController
             "createForm" => $form
         ]);
     }
+
+    #[Route('/{id}/modifS', name: 'app_gestion_utilisateur_modifS')]
+    public function modifS(User $user, EntityManagerInterface $entityManager): Response
+    {
+        $user->setRoles(["ROLE_SENIOR"]);
+        $entityManager->flush();
+
+
+        return $this->redirectToRoute('app_gestion_utilisateur');
+        
+    }
+
+    #[Route('/{id}/modifE', name: 'app_gestion_utilisateur_modifE')]
+    public function modifE(User $user, EntityManagerInterface $entityManager): Response
+    {
+        $user->setRoles(["ROLE_EXPERT"]);
+        $entityManager->flush();
+
+
+        return $this->redirectToRoute('app_gestion_utilisateur');
+        
+    }
+
+    #[Route('/{id}/modifA', name: 'app_gestion_utilisateur_modifA')]
+    public function modifA(User $user, EntityManagerInterface $entityManager): Response
+    {
+        $user->setRoles([]);
+        $entityManager->flush();
+
+
+        return $this->redirectToRoute('app_gestion_utilisateur');
+        
+    }
+
+    #[Route('/{id}/remove', name: 'app_gestion_utilisateur_remove')]
+    public function remove(User $user, EntityManagerInterface $entityManager): Response
+    {
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_gestion_utilisateur');
+    }
+
 }
 
