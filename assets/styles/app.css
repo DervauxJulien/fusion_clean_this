@@ -87,3 +87,87 @@ body {
     margin-top: 8%;
 }
 /* ------------------------------------------ */
+/* page chiffre d'affaire */
+
+/* Styles généraux pour la table */
+.table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-left: 5%;
+    border-left: 4px solid #FAEBDA;
+    border-right: 4px solid #FAEBDA;
+}
+
+.name{
+    font-size: 19px;
+}
+
+.table th, .table td {
+    border-top: 4px solid #FAEBDA;
+    padding: 8px;
+    text-align: left;
+    padding-left: 2%;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    font-size: 19px;
+
+}
+
+/* public/css/styles.css */
+
+/* ... (autres styles) ... */
+
+.objectiveColumn {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.operation{
+    font-weight: bold;
+    font-size: 19px;
+}
+
+/* Style pour la colonne "Statut" en fonction du statut */
+.status-column {
+    font-weight: bold;
+}
+
+.status-column.expert {
+    color: #3B3355;
+    font-size: 19px;
+}
+
+.status-column.senior {
+    color: #007557;
+    font-size: 19px;
+}
+
+.status-column.apprenti {
+    color: #43CAA9;
+    font-size: 19px;
+}
+
+/* Styles pour les colonnes "Objectif" et "Réalisation" */
+.objectiveColumn {
+    text-align: right;
+}
+
+/* Styles pour la barre de progression */
+.progress-container {
+    width: 100%;
+    background-color: #FAEBDA;
+    height: 30px;
+    border-radius: 50px;
+    margin-top: 20px;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #0C4B3B;
+    border-radius: 50px 0 0 50px;
+    transition: width 0.3s ease;
+}
+

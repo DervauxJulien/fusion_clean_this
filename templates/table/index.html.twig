@@ -18,7 +18,7 @@
         <tbody>
             {% for product in products %}
                 <tr>
-                    <td>{{ product.name }}</td>
+                    <td class='name'>{{ product.name }}</td>
                     <td class='status-column {{ product.status|lower }}'>{{ product.status }}</td>
                     <td class='objectiveColumn'>{{ product.objective }} €</td>
                     <td class='objectiveColumn'>{{ product.realization }} €</td>
