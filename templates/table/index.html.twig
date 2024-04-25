@@ -12,12 +12,24 @@
         <td>{{user.nom}}</td>
         <td>{{user.prenom}}</td>
         <td>{{user.username}}</td>
-        <td>{{user.roles}}</td>
+                <td>
+            {% if ('ROLE_EXPERT' in user.roles) %}
+            <span id="colEx">Expert</span>
+        {% elseif ('ROLE_SENIOR' in user.roles) %}
+            <span id="colSe">Senior</span>
+        {% else %}
+            <span id="colAp">Apprenti</span>
+            
+        {% endif %}
+    </td>
+
         </tr>
         {% endfor %}
        </tbody>
-</table>
- #}
+</table> #}
+
+
+
 
     <table class="table">
         <thead>
