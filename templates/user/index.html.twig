@@ -2,7 +2,11 @@
 
 {% block title %}Gestion Utilisateur{% endblock %}
 
+    
+
+
 {% block body %}
+<header>{% include "home/navbar.html.twig" %}</header>
 <div class="container pt-5">
     <br><br>
     <h1 class="text-center">Gestion Utilisateur</h1>
@@ -45,11 +49,11 @@
 
                         {% if ("ROLE_SENIOR" in user.roles) == false %}
 
-                            <a onclick="return confirmer('Voulez-vous vraiment promoter cet utilisateur ?')" href="{{path('app_gestion_utilisateur_modifS' , {'id':user.id}) }}" class="btn btn-outline-warning">Définir comme SENIOR</a>
+                            <a onclick="return confirm('Voulez-vous vraiment promoter cet utilisateur ?')" href="{{path('app_gestion_utilisateur_modifS' , {'id':user.id}) }}" class="btn btn-outline-warning">Définir comme SENIOR</a>
 
                         {% else %}
 
-                            <a onclick="return confirmer('Voulez-vous vraiment demoter cet utilisateur ?')" href="{{path('app_gestion_utilisateur_modifA' , {'id':user.id}) }}" class="btn btn-outline-warning">Définir comme APPRENTI</a>
+                            <a onclick="return confirm('Voulez-vous vraiment demoter cet utilisateur ?')" href="{{path('app_gestion_utilisateur_modifA' , {'id':user.id}) }}" class="btn btn-outline-warning">Définir comme APPRENTI</a>
 
                         {% endif %}
                 
@@ -60,7 +64,7 @@
 
                     {% if ("ROLE_EXPERT" in user.roles) == false %}
 
-                    <a onclick="return confirmer('Voulez-vous vraiment supprimer cet utilisateur ?')" href="{{path('app_gestion_utilisateur_remove' , {'id':user.id}) }}" class="btn"><img src="/images/icons/suppr.svg" alt="icone suppr" width="95%"></a>
+                    <a onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')" href="{{path('app_gestion_utilisateur_remove' , {'id':user.id}) }}" class="btn"><img src="/images/icons/suppr.svg" alt="icone suppr" width="85%"></a>
 
                     {% endif %}
 
