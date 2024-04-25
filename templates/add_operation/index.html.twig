@@ -1,7 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AddOperationController!{% endblock %}
+{% block title %}Hello AddOperationController!
+{% endblock %}
 
 {% block body %}
-{{form_start(form)}}
+	<div class="container pt-5">
+		{{form_start(form)}}
+
+		<div class="card d-flex">
+			<div><img src="" alt="c'est l'image">
+			</div>
+			<div><input type="submit" name="submit" id="submit"></div>
+			{{form_end(form)}}
+		</div>
 {% endblock %}
