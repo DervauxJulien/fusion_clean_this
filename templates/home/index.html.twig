@@ -1,27 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block head %}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    
-    {% block title %}Hello HomeController!{% endblock %}
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+	{% block title %}Hello HomeController!
+	{% endblock %}
 {% endblock %}
 
 {% block body %}
-    <main id="home_main">
-        {# PARTIE GAUCHE CHOIX CLIENT #}
-        <section class='choice_section'>
-            <img src='images/icons/customer.svg' alt='customer icon' name='home_customer_logo' id='home_customer_logo' />
-            <h2>Vous êtes un client</h2>
-        </section>
 
-        <div id='home_middle_bar'></div>
+	<main
+		id="home_main">
+		{# PARTIE GAUCHE CHOIX CLIENT #}
+		<section class='choice_section'>
+			<img src='images/icons/customer.svg' alt='customer icon' name='home_customer_logo' id='home_customer_logo'/>
+			<h2>Vous êtes un client</h2>
+		</section>
 
-        {# PARTIE DROITE CHOIX UTILISATEUR #}
-        <section class='choice_section'>
-            <img src="images/icons/user.svg" alt='user_logo' name='home_user_logo' id='home_user_logo' />
-                <h2>Vous êtes un employé</h2>
-        </section>
-    </main>
+		<div id='home_middle_bar'></div>
+
+		{# PARTIE DROITE CHOIX UTILISATEUR #}
+		<section class='choice_section'>
+			<img src='images/icons/user.svg' alt='user_logo' name='home_user_logo' id='home_user_logo'/>
+			<h2>Vous êtes un employé</h2>
+		</section>
+	</main>
 {% endblock %}

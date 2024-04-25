@@ -110,9 +110,21 @@ body {
     background-color: #43CAA9;
     height: 100%;
 }
+/* Page formulaire de demande d'opération */
 
 #drop_zone {
 	border: 2px solid black;
 	width: 200px;
 	height: 100px;
+}
+/* Page Gestion utilisateur------------------------------------- */
+
+#colAp{
+    color: #43CAA9;
+}
+#colSe{
+    color: #0C4B3B;
+}
+#colEx{
+    color: #3B3355;
 }
