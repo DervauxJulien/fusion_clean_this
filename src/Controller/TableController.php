@@ -11,6 +11,9 @@ class TableController extends AbstractController
     #[Route('/table', name: 'table')]
     public function tableIndex(): Response
     {
+
+
+
         $data = [
             ['name' => 'Martin Ali', 'status' => 'Expert', 'objective' => 24100, 'realization' => 19300, 'operations'=>19],
             ['name' => 'Glisse Alice', 'status' => 'Apprenti', 'objective' => 24100, 'realization' => 17200, 'operations'=>16],
@@ -19,8 +22,52 @@ class TableController extends AbstractController
             ['name' => 'Etrange Caroline ', 'status' => 'Apprenti', 'objective' => 24100, 'realization' => 8850,'operations'=>8],
         ];
 
+
+        // $entityManager = $this->getDoctrine()->getManager();
+        // $connection = $entityManager->getConnection();
+
+        // $sql = "SELECT nom, prenom, roles FROM user;";
+        // $statement = $connection->prepare($sql);
+        // $statement->execute();
+
+        // $data = $statement->fetchAllAssociative();
+
+
+
+
         return $this->render('table/index.html.twig', [
             'products' => $data,
         ]);
+
     }
 }
+    
+
+
+
+
+
+
+
+
+    
+
+// class MyTableController extends AbstractController
+// {
+//     #[Route('/table', name: 'table')]
+//     public function tableIndex(): Response
+//     {
+//         $entityManager = $this->getDoctrine()->getManager();
+//         $connection = $entityManager->getConnection();
+
+//         $sql = "SELECT nom, prenom, roles FROM user;";
+//         $statement = $connection->prepare($sql);
+//         $statement->execute();
+
+//         $data = $statement->fetchAllAssociative();
+
+//         return $this->render('table/index.html.twig', [
+//             'products' => $data,
+//         ]);
+//     }
+// }
