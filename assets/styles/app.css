@@ -110,3 +110,9 @@ body {
     background-color: #43CAA9;
     height: 100%;
 }
+
+#drop_zone {
+	border: 2px solid black;
+	width: 200px;
+	height: 100px;
+}
