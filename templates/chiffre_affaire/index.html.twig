@@ -3,9 +3,11 @@
 {% block title %}Chiffre d'affaire{% endblock %}
 
 {% block body %}
-    <h1>CHIFFRE D'AFFAIRE</h1>
+<body class="chiffre-affaire-body">
+    <h1 class='titreChiffreAffaire'>CHIFFRE D'AFFAIRE</h1>
 
     {{ render(controller('App\\Controller\\SalesController::salesStats')) }}
     {{ render(controller('App\\Controller\\TableController::tableIndex')) }}
 
+    </body>
 {% endblock %}

@@ -89,6 +89,25 @@ body {
 /* ------------------------------------------ */
 /* page chiffre d'affaire */
 
+.titreChiffreAffaire{
+    text-align: center;
+    font-size: 50px;
+}
+
+/* Modules du haut chiffres */
+
+
+
+
+/* body chiffre affaire */
+
+.chiffre-affaire-body{
+    background-image: url('/images/photofond.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
 /* Styles généraux pour la table */
 .table {
     width: 90%;
