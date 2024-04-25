@@ -187,9 +187,9 @@ body {
 
 /* Styles généraux pour la table */
 .table {
-    width: 90%;
+    width: 87%;
     border-collapse: collapse;
-    margin-left: 5%;
+    margin-left: 6.5%;
     border-left: 4px solid #FAEBDA;
     border-right: 4px solid #FAEBDA;
 }
