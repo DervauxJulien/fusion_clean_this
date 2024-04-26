@@ -4,6 +4,21 @@
 
 {% block body %}
 
+
+    {# <table>
+        <tbody>
+        {%for user in users %}
+        <tr>
+        <td>{{user.nom}}</td>
+        <td>{{user.prenom}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.roles}}</td>
+        </tr>
+        {% endfor %}
+       </tbody>
+</table>
+ #}
+
     <table class="table">
         <thead>
             <tr>
@@ -12,13 +27,14 @@
                 <th>Objectif</th>
                 <th>Réalisation</th>
                 <th>Progression</th>
-                <th>Opérations</th>
+                <th><img src="\images\icons\Combo Chart.svg" alt="iconOp" width='39px'></th>
             </tr>
         </thead>
-        <tbody>
+
+       <tbody>
             {% for product in products %}
                 <tr>
-                    <td>{{ product.name }}</td>
+                    <td class='name'>{{ product.name }}</td>
                     <td class='status-column {{ product.status|lower }}'>{{ product.status }}</td>
                     <td class='objectiveColumn'>{{ product.objective }} €</td>
                     <td class='objectiveColumn'>{{ product.realization }} €</td>
@@ -32,4 +48,6 @@
             {% endfor %}
         </tbody>
     </table>
+
+
 {% endblock %}

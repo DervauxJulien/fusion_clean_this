@@ -31,11 +31,15 @@ class Operation
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?adresse $adresse = null;
+    private ?Adresse $adresse = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?User $user = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Type $type = null;
 
     public function getId(): ?int
     {
@@ -102,27 +106,47 @@ class Operation
         return $this;
     }
 
-    public function getAdresse(): ?adresse
+    public function getAdresse(): ?Adresse
     {
         return $this->adresse;
     }
 
-    public function setAdresse(?adresse $adresse): static
+    public function setAdresse(?Adresse $adresse): static
     {
         $this->adresse = $adresse;
 
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): static
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 
         return $this;
     }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): static
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+
+    // methode toString ajoutée par Kevin pour la page opération à prendre
+    // public function __toString()
+    // {
+    //     return $this->type  . " " . $this->Nom_Rue;  
+    // }
 }
+
