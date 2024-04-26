@@ -240,10 +240,6 @@ body {
 
 }
 
-/* public/css/styles.css */
-
-/* ... (autres styles) ... */
-
 .objectiveColumn {
     font-size: 32px;
     font-weight: bold;
@@ -252,6 +248,7 @@ body {
 .operation{
     font-weight: bold;
     font-size: 19px;
+    text-align: center;
 }
 
 /* Style pour la colonne "Statut" en fonction du statut */

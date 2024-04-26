@@ -6,24 +6,27 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
-
+use App\Repository\OperationRepository;
 
 class TableController extends AbstractController
 {
     #[Route('/table', name: 'table')]
-    public function tableIndex(UserRepository $userRepository): Response
+    public function tableIndex(UserRepository $userRepository, OperationRepository $operationRepository): Response
     {
 
         $objectiveUser = 24100;
 
-        $data = [
-            ['name' => 'Martin Ali', 'status' => 'Expert', 'objective' => 24100, 'realization' => 19300, 'operations'=>19],
-            ['name' => 'Glisse Alice', 'status' => 'Apprenti', 'objective' => 24100, 'realization' => 17200, 'operations'=>16],
-            ['name' => 'Terrieur Alex', 'status' => 'Senior', 'objective' => 24100, 'realization' => 14100,'operations'=>12],
-            ['name' => 'Darme Jean', 'status' => 'Senior', 'objective' => 24100, 'realization' => 11400,'operations'=>10],
-            ['name' => 'Etrange Caroline ', 'status' => 'Apprenti', 'objective' => 24100, 'realization' => 8850,'operations'=>8],
-        ];
+        // Récupération des opérations depuis le repository
+        $operations = $operationRepository->findAll();
 
+        // Initialisation d'un tableau pour stocker les statuts des opérations
+        $statuts = [];
+
+        // Boucle sur chaque opération pour obtenir son statut
+        foreach ($operations as $operation) {
+            $statut = $operation->getStatut();
+        }
+    
         $row = "SELECT
         u.nom AS nom_user,
         u.prenom AS prenom_user,
@@ -37,28 +40,17 @@ class TableController extends AbstractController
     WHERE
         o.statut = 'Terminée'
     GROUP BY
-        u.id, u.nom, u.prenom;
-    ";
-// var_dump($row);
-
+        u.id, u.nom, u.prenom;"
+        ;
 
         return $this->render('table/index.html.twig', [
-            'products' => $data,
+            // 'products' => $data,
             'row' => $row,
             'objectiveUser' => $objectiveUser,
             'users' => $userRepository->findAll(),
+            'operations' => $operations,
+            'statuts' => $statuts,
         ]);
 
     }
 }
-    
-
-
-
-
-
-
-
-
-    
-
