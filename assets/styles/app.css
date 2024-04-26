@@ -10,11 +10,17 @@ body {
     align-items: center;
 
     background-color: #0C4B3B;
-    padding: 0.6%;
+    padding: 1% 0% 0.8% 0%;
     color: white;
 }
-#navbar img{
+#navbar img {
     width: 3%;
+    position: relative;
+    bottom: 0.2rem;
+}
+#navbar h3 {
+    font-size: 120%;
+    font-weight: 600;
 }
 #navbar button{
     padding: 0.4% 1%;
@@ -23,6 +29,8 @@ body {
     border: 2px solid white;
     color: white;
     font-weight: 600;
+    position: relative;
+    bottom: 0.1rem;
 }
 
 /* PAGE HOME -------------------------------- */
@@ -516,7 +524,7 @@ body {
     gap: 6%;
 
     background-color: #43CAA9;
-    padding: 0.6% 0%;
+    padding: 0.8% 0% 0.6% 0%;
 }
 #operations_nav h3{
     color: white;
@@ -544,6 +552,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 4%;
+    width: 80%;
 }
 
 /* conteneur d'une opération */
