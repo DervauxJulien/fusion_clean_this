@@ -214,19 +214,19 @@ body {
 }
 
 /* Styles généraux pour la table */
-.table {
+/* .table {
     width: 87%;
     border-collapse: collapse;
     margin-left: 6.5%;
     border-left: 4px solid #FAEBDA;
     border-right: 4px solid #FAEBDA;
-}
+} */
 
 .name{
     font-size: 19px;
 }
 
-.table th, .table td {
+/* .table th, .table td {
     border-top: 4px solid #FAEBDA;
     border-bottom: 4px solid #FAEBDA;
     padding: 8px;
@@ -238,7 +238,7 @@ body {
     background-color: #f2f2f2;
     font-size: 19px;
 
-}
+} */
 
 /* public/css/styles.css */
 
@@ -396,7 +396,7 @@ body {
 }
 
 /* Styles généraux pour la table */
-.table {
+/* .table {
     width: 87%;
     border-collapse: collapse;
     margin-left: 6.5%;
@@ -420,7 +420,7 @@ body {
     background-color: #f2f2f2;
     font-size: 19px;
 
-}
+} */
 
 /* public/css/styles.css */
 
@@ -511,16 +511,16 @@ body {
 /* barre de navigation secondaire */
 #operations_nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    gap: 6%;
+    gap: 5%;
 
     background-color: #43CAA9;
-    padding: 0.6% 0%;
+    /* padding: 0.6% 0%; */
 }
 #operations_nav h3{
     color: white;
-    font-size: 118%;
+    font-size: 100%;
     font-weight: 600;
 }
 

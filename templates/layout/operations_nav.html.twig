@@ -1,0 +1,30 @@
+
+{% extends 'base.html.twig' %}
+
+
+{% block head %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    
+    {% block title %}{% endblock %}
+{% endblock %}
+
+
+{% block body %}
+    <nav id="operations_nav">
+        <a href="{{path('app_add_operation')}}" class="text-decoration-none"><h3>Ajouter des opérations</h3></a>
+        <a href="{{path('app_operations_prendre')}}"class="text-decoration-none"><h3>Liste des opérations en cours</h3></a>
+        <a href=""class="text-decoration-none"><h3>Opérations terminées</h3></a>
+        {% if is_granted("ROLE_EXPERT") %}
+        
+            <a class="nav-link dropdown-toggle text-light"  role="button" data-bs-toggle="dropdown" >
+              <h3>Administration</h3>
+            </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{path('app_gestion_utilisateur')}}">Utilisateur</a></li>
+            <li><a class="dropdown-item" href="{{path('app_chiffre_affaire')}}">Chiffre d'affaire</a></li>
+        {% endif %}
+
+    </nav>
+{% endblock %}
