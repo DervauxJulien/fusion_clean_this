@@ -30,7 +30,18 @@
                 {% endif %}
             </td>
             <td class='objectiveColumn'>{{ objectiveUser }} €</td>
-            <td> <!-- Insérez la colonne "Réalisation" ici --> </td>
+            <td> 
+            {# {% for prixFacture in prixFactures %}
+                <tr>
+                <td>{{prixFacture.prix_ht}}</td>
+                </tr>
+            
+
+                
+            {% endfor %} #}
+            </td>
+
+
             <td> <!-- Insérez la colonne "Progression" ici --> </td>
             <td class='operation'>
                 {% set operationCount = 0 %}
