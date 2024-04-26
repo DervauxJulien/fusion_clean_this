@@ -113,6 +113,14 @@ body {
     /* border: solid red; */
 }
 
+/*defillement de la page */
+
+.scrollable-content {
+    overflow-y: auto; /* Activer le défilement vertical si nécessaire */
+    max-height: calc(100vh - 100px); /* Hauteur maximale de la zone de défilement */
+    /* 100px est une estimation de la hauteur de votre en-tête, ajustez-la si nécessaire */
+}
+
 
 /* Modules du haut chiffres */
 

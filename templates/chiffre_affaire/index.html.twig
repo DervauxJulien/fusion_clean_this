@@ -4,6 +4,8 @@
 
 {% block body %}
 
+<div class="scrollable-content">
+
 {% block header %}
     <nav id="navbar">
         <img src='/images/icons/Vector.svg' alt='customer icon' name='home_customer_logo' id='home_customer_logo' />
@@ -22,4 +24,6 @@
     {{ render(controller('App\\Controller\\TableController::tableIndex')) }}
 
     </body>
+
+    </div>
 {% endblock %}

@@ -5,9 +5,9 @@
 {% block body %}
 
 
-    {# <table>
+    <table>
         <tbody>
-        {%for user in users %}
+        {# {%for user in users %}
         <tr>
         <td>{{user.nom}}</td>
         <td>{{user.prenom}}</td>
@@ -24,10 +24,9 @@
     </td>
 
         </tr>
-        {% endfor %}
+        {% endfor %} #}
        </tbody>
-</table> #}
-
+</table>
 
 
 
@@ -44,7 +43,44 @@
         </thead>
 
        <tbody>
-            {% for product in products %}
+        {%for user in users %}
+        <tr>
+        <td>{{user.nom}} {{user.prenom}}</td>
+        <td>
+            {% if ('ROLE_EXPERT' in user.roles) %}
+            <span id="colEx">Expert</span>
+        {% elseif ('ROLE_SENIOR' in user.roles) %}
+            <span id="colSe">Senior</span>
+        {% else %}
+            <span id="colAp">Apprenti</span>
+        {% endif %}
+        </td>
+
+        <td class='objectiveColumn'>{{objectiveUser}} €</td>
+
+        {% for row in row %}
+        <tr>
+            <td>{{ row.nom_user }} {{ row.prenom_user }}</td>
+            <td>{{ row.chiffre_realise }}</td>
+            <td>{{ row.nombre_operations }}</td>
+        </tr>
+        {% endfor %}
+
+        {# <td>
+             <div class="progress-container">
+             <div class="progress-bar" style="width: {{ (product.realization / product.objective) * 100 }}%; height: 30px;"></div>
+             </div>
+        </td>
+        <td class='operation'>{{ product.operations }} OP</td>
+ #}
+        </tr>
+        {% endfor %}
+
+
+
+
+
+            {# {% for product in products %}
                 <tr>
                     <td class='name'>{{ product.name }}</td>
                     <td class='status-column {{ product.status|lower }}'>{{ product.status }}</td>
@@ -57,7 +93,7 @@
                     </td>
                     <td class='operation'>{{ product.operations }} OP</td>
                 </tr>
-            {% endfor %}
+            {% endfor %} #}
         </tbody>
     </table>
 
