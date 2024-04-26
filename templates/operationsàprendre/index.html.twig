@@ -8,19 +8,21 @@
     {% include "/operationsàprendre/operations_nav.html.twig" %}
 </header>
 
-<h1>{{dump(stockOp)}}<h1>
-<h1>{{dump(stockCli)}}<h1>
 
-{% for client in stockCli %}
-{{client.nom}}
-{% endfor %}
+{# <h1>{{dump(stockOp)}}<h1>
+<h1>{{dump(stockCli)}}<h1> #}
+
 
 <main id="to_take_main">
     <h1>Prendre des opérations</h1>
 
     <section id='operations_list'>
         <div class='operation_to_take'>
-            {# <h2>{{client.nom[0]}}</h2> #}
+            <h2>
+                {% for type in stockType %}
+                    {{type.nom}}
+                {% endfor %}
+            </h2>
 
             <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture' />
 

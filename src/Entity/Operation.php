@@ -39,7 +39,7 @@ class Operation
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?Type $type = null;
 
     public function getId(): ?int
     {
@@ -141,4 +141,12 @@ class Operation
 
         return $this;
     }
+
+
+    // methode toString ajoutée par Kevin pour la page opération à prendre
+    // public function __toString()
+    // {
+    //     return $this->type  . " " . $this->Nom_Rue;  
+    // }
 }
+
