@@ -141,4 +141,12 @@ class Operation
 
         return $this;
     }
+
+
+    // methode toString ajoutée par Kevin pour la page opération à prendre
+    // public function __toString()
+    // {
+    //     return $this->type  . " " . $this->Nom_Rue;  
+    // }
 }
+
