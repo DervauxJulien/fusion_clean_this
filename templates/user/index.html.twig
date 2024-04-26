@@ -5,11 +5,11 @@
 {% block body %}
 <header>{% include "/layout/navbar.html.twig" %}</header>
 <nav>{% include "/layout/operations_nav.html.twig" %}</nav>
-<div class="container pt-5">
-    <br>
+<div class="container pt-3">
     <h1 class="text-center">Gestion Utilisateur</h1>
     <br><br>
-
+    {% include "layout/_flash_message.html.twig" %}
+    <br>
     {# Lien d'ajout d'un nouvel utilisateur #}
 
 <a href={{path('app_gestion_utilisateur_create')}} class="btn btn-outline-success">Ajouter un utilisateur</a>
