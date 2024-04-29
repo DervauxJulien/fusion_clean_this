@@ -47,6 +47,8 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            $this->addFlash('success', "L'utilisateur {$user->getUsername()} a bien été ajouter.");
+
             return $this->redirectToRoute('app_gestion_utilisateur');
         }
 
@@ -64,6 +66,8 @@ class UserController extends AbstractController
         $user->setRoles(["ROLE_SENIOR"]);
         $entityManager->flush();
 
+        $this->addFlash('info', "Le role de l'utilisateur {$user->getUsername()} est maintenant SENIOR.");
+
 
         return $this->redirectToRoute('app_gestion_utilisateur');
         
@@ -77,6 +81,8 @@ class UserController extends AbstractController
     //     $user->setRoles(["ROLE_EXPERT"]);
     //     $entityManager->flush();
 
+    // $this->addFlash('info', "Le role de l'utilisateur {$user->getUsername()} est maintenant EXPERT.");
+
 
     //     return $this->redirectToRoute('app_gestion_utilisateur');
         
@@ -89,6 +95,7 @@ class UserController extends AbstractController
         $user->setRoles([]);
         $entityManager->flush();
 
+        $this->addFlash('info', "Le role de l'utilisateur {$user->getUsername()} est maintenant APPRENTI.");
 
         return $this->redirectToRoute('app_gestion_utilisateur');
         
@@ -98,9 +105,12 @@ class UserController extends AbstractController
     #[Route('/{id}/remove', name: 'app_gestion_utilisateur_remove')]
     public function remove(User $user, EntityManagerInterface $entityManager): Response
     {
+        $this->addFlash('danger', "L'utilisateur {$user->getUsername()} a bien été supprimer.");
+
         $entityManager->remove($user);
         $entityManager->flush();
 
+        
         return $this->redirectToRoute('app_gestion_utilisateur');
     }
 
