@@ -3,7 +3,10 @@
 
 {% block body %}
 
-<div class="container d-flex flex-column justify-content-center align-items-center pt-5">
+{% include "layout/navbar.html.twig" %}
+<a href="{{path('app_gestion_utilisateur')}}" ><button id="return">←</button></a>
+
+<div id="createUser">
     <br><br>
     <div class="UAdd_form">
     <h1 class="text-center">Creation Utilisateur</h1>
@@ -19,7 +22,7 @@
     <br>
     {{form_widget(createForm.plainPassword,{'attr':{'class': 'form form-control','placeholder': 'Mot de passe'}})}}
     <br><br>
-    <input type="submit" value="Ajouter" class="btn btn-outline-success btn-block ">
+    <input type="submit" value="Ajouter" id="btn_val">
 
     {{form_end(createForm)}}
 </div>
