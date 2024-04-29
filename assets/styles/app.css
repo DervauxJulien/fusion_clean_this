@@ -126,7 +126,7 @@ body {
 
 .titreChiffreAffaire{
     text-align: center;
-    font-size: 50px;
+    font-size: 4rem;
     margin-top: 2%;
     /* border: solid red; */
 }
@@ -232,19 +232,19 @@ body {
 }
 
 /* Styles généraux pour la table */
-/* .table {
+.table {
     width: 87%;
     border-collapse: collapse;
     margin-left: 6.5%;
     border-left: 4px solid #FAEBDA;
     border-right: 4px solid #FAEBDA;
-} */
+}
 
 .name{
     font-size: 19px;
 }
 
-/* .table th, .table td {
+.table th, .table td {
     border-top: 4px solid #FAEBDA;
     border-bottom: 4px solid #FAEBDA;
     padding: 8px;
@@ -256,7 +256,7 @@ body {
     background-color: #f2f2f2;
     font-size: 19px;
 
-} */
+}
 
 .objectiveColumn {
     font-size: 32px;
@@ -268,6 +268,8 @@ body {
     font-size: 19px;
     text-align: center;
 }
+
+
 
 /* Style pour la colonne "Statut" en fonction du statut */
 .status-column {
@@ -339,32 +341,6 @@ body {
     overflow: hidden;
 }
 
-/* Styles généraux pour la table */
-/* .table {
-    width: 87%;
-    border-collapse: collapse;
-    margin-left: 6.5%;
-    border-left: 4px solid #FAEBDA;
-    border-right: 4px solid #FAEBDA;
-}
-
-.name{
-    font-size: 19px;
-}
-
-.table th, .table td {
-    border-top: 4px solid #FAEBDA;
-    border-bottom: 4px solid #FAEBDA;
-    padding: 8px;
-    text-align: left;
-    padding-left: 2%;
-}
-
-.table th {
-    background-color: #f2f2f2;
-    font-size: 19px;
-
-} */
 
 .objectiveColumn {
     font-size: 32px;

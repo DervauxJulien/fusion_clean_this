@@ -13,7 +13,7 @@
             <th>Objectif</th>
             <th>Réalisation</th>
             <th>Progression</th>
-            <th>Operations</th>
+            <th class="iconeOP"><img src="\images\icons\Positive Dynamic.svg" alt=""></th>
         </tr>
     </thead>
     <tbody>
@@ -35,14 +35,13 @@
                 <tr>
                 <td>{{prixFacture.prix_ht}}</td>
                 </tr>
-            
-
-                
+               
             {% endfor %} #}
             </td>
 
 
             <td> <!-- Insérez la colonne "Progression" ici --> </td>
+
             <td class='operation'>
                 {% set operationCount = 0 %}
                 {% for operation in operations %}
