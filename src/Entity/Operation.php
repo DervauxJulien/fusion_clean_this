@@ -35,7 +35,7 @@ class Operation
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
+    private ?Client $client = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
@@ -118,14 +118,14 @@ class Operation
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getClient(): ?Client
     {
-        return $this->user;
+        return $this->client;
     }
 
-    public function setUser(?User $user): static
+    public function setClient(?Client $client): static
     {
-        $this->user = $user;
+        $this->client = $client;
 
         return $this;
     }
