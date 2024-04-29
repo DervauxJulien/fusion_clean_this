@@ -21,14 +21,14 @@ class OperationsàPrendreController extends AbstractController
         $stockCli = $clientRepository->findAll();
         $stockType = $typeRepository->findAll();
 
+
         return $this->render('operationsàprendre/index.html.twig', [
             'controller_name' => 'OperationsàPrendreController',
+            
             'stockOp' => $stockOp,
             'stockCli' => $stockCli,
             'stockType' => $stockType,
+            'stringType' => $operationRepository->find(''),
         ]);
     }
-
-    
-   
 }

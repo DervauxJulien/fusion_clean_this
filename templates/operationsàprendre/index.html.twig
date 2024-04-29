@@ -9,112 +9,27 @@
 </header>
 
 
-{# <h1>{{dump(stockOp)}}<h1>
-<h1>{{dump(stockCli)}}<h1> #}
-
-
 <main id="to_take_main">
     <h1>Prendre des opérations</h1>
 
-    <section id='operations_list'>
-        <div class='operation_to_take'>
-            <h2>
-                {% for type in stockType %}
-                    {{type.nom}}
-                {% endfor %}
-            </h2>
-
-            <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture' />
-
-            <div class='operation_bottom_part'>
-                <div class='operation_localisation'>
-                    <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
-                    <h3>Localisation</h3>
+    <section id="operations_list">
+        {% for operation in stockOp %}
+            <div class='operation_to_take'>
+                <h2>{{operation.type.nom}}</h2>
+                <div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
+                    <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture' />
+                    <br><br>
+                    <h4 style='text-align: center; width: 100%; background-color: white;'>{{operation.id}}</h4>
                 </div>
-
-                <button class='operation_add_button'>Ajouter</button>
-            </div>
-        </div>
-
-
-        <div class='operation_to_take'>
-            <h2>Type d'opération</h2>
-
-            <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture' />
-
-            <div class='operation_bottom_part'>
-                <div class='operation_localisation'>
-                    <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
-                    <h3>Localisation</h3>
+                <div class='operation_bottom_part'>
+                    <div class='operation_localisation'>
+                        <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
+                        <h3>Localisation</h3>
+                    </div>
+                    <button class='operation_add_button'>Ajouter</button>
                 </div>
-
-                <button class='operation_add_button'>Ajouter</button>
             </div>
-        </div>
-
-
-        <div class='operation_to_take'>
-            <h2>Type d'opération</h2>
-
-            <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture' />
-
-            <div class='operation_bottom_part'>
-                <div class='operation_localisation'>
-                    <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
-                    <h3>Localisation</h3>
-                </div>
-
-                <button class='operation_add_button'>Ajouter</button>
-            </div>
-        </div>
-
-
-        <div class='operation_to_take'>
-            <h2>Type d'opération</h2>
-
-            <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture' />
-
-            <div class='operation_bottom_part'>
-                <div class='operation_localisation'>
-                    <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
-                    <h3>Localisation</h3>
-                </div>
-
-                <button class='operation_add_button'>Ajouter</button>
-            </div>
-        </div>
-
-
-        <div class='operation_to_take'>
-            <h2>Type d'opération</h2>
-
-            <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture' />
-
-            <div class='operation_bottom_part'>
-                <div class='operation_localisation'>
-                    <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
-                    <h3>Localisation</h3>
-                </div>
-
-                <button class='operation_add_button'>Ajouter</button>
-            </div>
-        </div>
-
-
-        <div class='operation_to_take'>
-            <h2>Type d'opération</h2>
-
-            <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture' />
-
-            <div class='operation_bottom_part'>
-                <div class='operation_localisation'>
-                    <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
-                    <h3>Localisation</h3>
-                </div>
-
-                <button class='operation_add_button'>Ajouter</button>
-            </div>
-        </div>
+        {% endfor %}
     </section>
 </main>
 {% endblock %}
