@@ -5,49 +5,57 @@
 {% block body %}
 
 
-    {# <table>
-        <tbody>
-        {%for user in users %}
+<table class="table">
+    <thead>
         <tr>
-        <td>{{user.nom}}</td>
-        <td>{{user.prenom}}</td>
-        <td>{{user.username}}</td>
-        <td>{{user.roles}}</td>
+            <th>Nom Prénom</th>
+            <th>Statut</th>
+            <th>Objectif</th>
+            <th>Réalisation</th>
+            <th>Progression</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.nom }} {{ user.prenom }}</td>
+            <td>
+                {% if 'ROLE_EXPERT' in user.roles %}
+                    <span id="colEx">Expert</span>
+                {% elseif 'ROLE_SENIOR' in user.roles %}
+                    <span id="colSe">Senior</span>
+                {% else %}
+                    <span id="colAp">Apprenti</span>
+                {% endif %}
+            </td>
+            <td class='objectiveColumn'>{{ objectiveUser }} €</td>
+            <td> 
+            {# {% for prixFacture in prixFactures %}
+                <tr>
+                <td>{{prixFacture.prix_ht}}</td>
+                </tr>
+            
+
+                
+            {% endfor %} #}
+            </td>
+
+
+            <td> <!-- Insérez la colonne "Progression" ici --> </td>
+            <td class='operation'>
+                {% set operationCount = 0 %}
+                {% for operation in operations %}
+                    {% if operation.user.id == user.id %}
+                        {% set operationCount = operationCount + 1 %}
+                    {% endif %}
+                {% endfor %}
+                {{ operationCount }}           
+            </td>
         </tr>
         {% endfor %}
-       </tbody>
+    </tbody>
 </table>
- #}
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nom Prénom</th>
-                <th>Statut</th>
-                <th>Objectif</th>
-                <th>Réalisation</th>
-                <th>Progression</th>
-                <th><img src="\images\icons\Combo Chart.svg" alt="iconOp" width='39px'></th>
-            </tr>
-        </thead>
-
-       <tbody>
-            {% for product in products %}
-                <tr>
-                    <td class='name'>{{ product.name }}</td>
-                    <td class='status-column {{ product.status|lower }}'>{{ product.status }}</td>
-                    <td class='objectiveColumn'>{{ product.objective }} €</td>
-                    <td class='objectiveColumn'>{{ product.realization }} €</td>
-                    <td>
-                        <div class="progress-container">
-                            <div class="progress-bar" style="width: {{ (product.realization / product.objective) * 100 }}%; height: 30px;"></div>
-                        </div>
-                    </td>
-                    <td class='operation'>{{ product.operations }} OP</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 
 
 {% endblock %}

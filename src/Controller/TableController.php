@@ -6,42 +6,43 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
-
+use App\Repository\OperationRepository;
+use App\Repository\FactureRepository;
 
 class TableController extends AbstractController
 {
     #[Route('/table', name: 'table')]
-    public function tableIndex(UserRepository $userRepository): Response
+    public function tableIndex(UserRepository $userRepository, OperationRepository $operationRepository, FactureRepository $factureRepository): Response
     {
 
+        $objectiveUser = 24100;
 
+        // Récupération des opérations depuis le repository
+        $operations = $operationRepository->findAll();
+        // Initialisation d'un tableau pour stocker les statuts des opérations
+        $statuts = [];
+        // Boucle sur chaque opération pour obtenir son statut
+        foreach ($operations as $operation) {
+            $statuts[] = $operation->getStatut(); // Stocker chaque statut dans le tableau $statuts
+        }
 
-        $data = [
-            ['name' => 'Martin Ali', 'status' => 'Expert', 'objective' => 24100, 'realization' => 19300, 'operations'=>19],
-            ['name' => 'Glisse Alice', 'status' => 'Apprenti', 'objective' => 24100, 'realization' => 17200, 'operations'=>16],
-            ['name' => 'Terrieur Alex', 'status' => 'Senior', 'objective' => 24100, 'realization' => 14100,'operations'=>12],
-            ['name' => 'Darme Jean', 'status' => 'Senior', 'objective' => 24100, 'realization' => 11400,'operations'=>10],
-            ['name' => 'Etrange Caroline ', 'status' => 'Apprenti', 'objective' => 24100, 'realization' => 8850,'operations'=>8],
-        ];
+        $factures = $factureRepository->findAll();
+        $prixFactures = [];
 
+        foreach ($factures as $facture) {
+            $prixFactures[] = $facture->getPrixHt(); // Stocker chaque prix dans le tableau $prixFactures
+        }
 
 
 
         return $this->render('table/index.html.twig', [
-            'products' => $data,
+            // 'products' => $data,
+            'objectiveUser' => $objectiveUser,
             'users' => $userRepository->findAll(),
+            'operations' => $operations,
+            'statuts' => $statuts,
+            'prixFactures' => $prixFactures,
         ]);
 
     }
 }
-    
-
-
-
-
-
-
-
-
-    
-

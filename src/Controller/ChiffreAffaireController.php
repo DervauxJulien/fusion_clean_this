@@ -6,9 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+#[Route('/admin/chiffre/affaire')]
 class ChiffreAffaireController extends AbstractController
 {
-    #[Route('/chiffre/affaire', name: 'app_chiffre_affaire')]
+    #[Route('/', name: 'app_chiffre_affaire')]
     public function index(): Response
     {
         $progress = 30; // Exemple de progression (30%)
