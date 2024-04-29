@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\FactureRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: FactureRepository::class)]
@@ -22,9 +21,6 @@ class Facture
 
     #[ORM\Column(length: 500)]
     private ?string $description = null;
-
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_creation = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]

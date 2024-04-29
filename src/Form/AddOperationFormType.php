@@ -5,8 +5,6 @@ namespace App\Form;
 use App\Entity\Adresse;
 use App\Entity\Client;
 use App\Entity\Operation;
-use App\Entity\Type;
-use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -39,10 +37,6 @@ class AddOperationFormType extends AbstractType
                 'class' => Client::class,
                 'choice_label' => 'nom',
                 'disabled' => true
-            ])
-            ->add('type', EntityType::class, [
-                'class' => Type::class,
-                'choice_label' => 'nom',
             ])
             ->add('submit', SubmitType::class,[
                 'label' => 'Envoyer'
