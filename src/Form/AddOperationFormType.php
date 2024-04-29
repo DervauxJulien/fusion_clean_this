@@ -16,28 +16,8 @@ class AddOperationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('description_Op')
-            ->add('Statut')
-            ->add('date_creation', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('date_debut', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('date_fin', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('adresse', EntityType::class, [
-                'class' => Adresse::class,
-                'choice_label' => function ($adresse) { 
-                    return $adresse->__toString();
-                }
-            ])
-            ->add('client', EntityType::class, [
-                'class' => Client::class,
-                'choice_label' => 'nom',
-                'disabled' => true
-            ])
+            ->add('description_op')
+            ->add('statut')
             ->add('submit', SubmitType::class,[
                 'label' => 'Envoyer'
             ])

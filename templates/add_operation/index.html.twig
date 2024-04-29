@@ -4,14 +4,40 @@
 {% endblock %}
 
 {% block body %}
+
+	<header>
+		{% include "/layout/navbar.html.twig" %}
+		{% include "/layout/operations_nav.html.twig" %}
+	</header>
+
 	<h1 class='d-flex justify-content-center'>Ajouter des opérations</h1>
-	<div class="container pt-5 col-2 ">
-		{{form_start(form)}}
-		<div class="card d-flex">
-			<div>
-				<img src="" alt="c'est l'image">
-			</div>
-		</div>
-		{{form_end(form)}}
+	<div class="container col-6 ">
+		<section class="container d-flex flex-wrap">
+			{% for operation in stockOp %}
+				<div class='card d-flex flex-wrap'>
+					<h2 class="d-flex justify-content-center ">{{operation.type}}</h2>
+					<div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
+						<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
+						<br><br>
+					</div>
+					<div class='card-body bg-black text-white '>
+						<img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
+						<h3>Localisation</h3>
+						{{operation.getAdresse()}}
+					</div>
+					<div>
+						<h4>Descriptif</h4>
+					</div>
+					<div>
+						{{operation.getDescriptionOp()}}
+					</div>
+					{{form_start(form)}}
+					{# {{ form_row(form.statut) }} #}
+					{{form_end(form)}}
+				</div>
+
+			{% endfor %}
+		</section>
+
 
 	{% endblock %}

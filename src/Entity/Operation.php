@@ -39,14 +39,13 @@ class Operation
     #[ORM\JoinColumn(nullable: false)]
     private ?Client $client = null;
 
-
-
-    /**
+        /**
      * @var Collection<int, Facture>
      */
-    #[ORM\OneToOne(targetEntity: Facture::class, mappedBy: 'operation')]
-    private Collection $Facture;
 
+    #[ORM\OneToOne(targetEntity: Facture::class, mappedBy: "operation")]
+    private Facture $Facture;
+    
     /**
      * @var Collection<int, User>
      */
@@ -67,7 +66,7 @@ class Operation
 
     public function __construct()
     {
-        $this->Facture = new ArrayCollection();
+        // $this->Facture = new ArrayCollection();
         $this->User = new ArrayCollection();
     }
 
