@@ -16,10 +16,10 @@
         {% for operation in stockOp %}
             <div class='operation_to_take'>
                 <h2>{{operation.type.nom}}</h2>
-                <div>
+                <div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
                     <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture' />
-                    <br>
-                    {{operation.id}}
+                    <br><br>
+                    <h4 style='text-align: center; width: 100%; background-color: white;'>{{operation.id}}</h4>
                 </div>
                 <div class='operation_bottom_part'>
                     <div class='operation_localisation'>
