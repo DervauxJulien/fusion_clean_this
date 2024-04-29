@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OperationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -37,9 +39,38 @@ class Operation
     #[ORM\JoinColumn(nullable: false)]
     private ?Client $client = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Type $type = null;
+
+
+    /**
+     * @var Collection<int, Facture>
+     */
+    #[ORM\OneToOne(targetEntity: Facture::class, mappedBy: 'operation')]
+    private Collection $Facture;
+
+    /**
+     * @var Collection<int, User>
+     */
+    #[ORM\OneToMany(targetEntity: User::class, mappedBy: 'operation')]
+    private Collection $User;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $Description_client = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $Img = null;
+
+    #[ORM\Column]
+    private ?bool $Validation_demande = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $type = null;
+
+    public function __construct()
+    {
+        $this->Facture = new ArrayCollection();
+        $this->User = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -130,17 +161,115 @@ class Operation
         return $this;
     }
 
-    public function getType(): ?Type
+
+    /**
+     * @return Collection<int, Facture>
+     */
+    public function getFacture(): Collection
+    {
+        return $this->Facture;
+    }
+
+    public function addFacture(Facture $facture): static
+    {
+        if (!$this->Facture->contains($facture)) {
+            $this->Facture->add($facture);
+            $facture->setOperation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFacture(Facture $facture): static
+    {
+        if ($this->Facture->removeElement($facture)) {
+            // set the owning side to null (unless already changed)
+            if ($facture->getOperation() === $this) {
+                $facture->setOperation(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUser(): Collection
+    {
+        return $this->User;
+    }
+
+    public function addUser(User $user): static
+    {
+        if (!$this->User->contains($user)) {
+            $this->User->add($user);
+            $user->setOperation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): static
+    {
+        if ($this->User->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getOperation() === $this) {
+                $user->setOperation(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getDescriptionClient(): ?string
+    {
+        return $this->Description_client;
+    }
+
+    public function setDescriptionClient(string $Description_client): static
+    {
+        $this->Description_client = $Description_client;
+
+        return $this;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->Img;
+    }
+
+    public function setImg(string $Img): static
+    {
+        $this->Img = $Img;
+
+        return $this;
+    }
+
+    public function isValidationDemande(): ?bool
+    {
+        return $this->Validation_demande;
+    }
+
+    public function setValidationDemande(bool $Validation_demande): static
+    {
+        $this->Validation_demande = $Validation_demande;
+
+        return $this;
+    }
+
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function setType(?Type $type): static
+    public function setType(string $type): static
     {
         $this->type = $type;
 
         return $this;
     }
+
 }
 
 

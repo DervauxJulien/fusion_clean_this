@@ -16,6 +16,7 @@
         {% for operation in stockOp %}
             <div class='operation_to_take'>
                 <h2>{{operation.type.nom}}</h2>
+                <h2>{{operation.facture.id}}</h2>
                 <div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
                     <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture' />
                     <br><br>
@@ -31,5 +32,11 @@
             </div>
         {% endfor %}
     </section>
+            {# <section>
+             {% for operation in stockFac %}
+                <h2>{{facture.type.id}}</h2>
+        {% endfor %}
+
+        </section> #}
 </main>
 {% endblock %}
