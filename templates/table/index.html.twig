@@ -29,7 +29,7 @@
                     <span id="colAp">Apprenti</span>
                 {% endif %}
             </td>
-            <td class='objectiveColumn'>{{ objectiveUser }} €</td>
+            {# <td class='objectiveColumn'>{{ objectiveUser }} €</td> #}
             <td> 
             {# {% for prixFacture in prixFactures %}
                 <tr>
@@ -43,13 +43,13 @@
             <td> <!-- Insérez la colonne "Progression" ici --> </td>
 
             <td class='operation'>
-                {% set operationCount = 0 %}
+                {# {% set operationCount = 0 %}
                 {% for operation in operations %}
                     {% if operation.user.id == user.id %}
                         {% set operationCount = operationCount + 1 %}
                     {% endif %}
                 {% endfor %}
-                {{ operationCount }}           
+                {{ operationCount }}            #}
             </td>
         </tr>
         {% endfor %}
