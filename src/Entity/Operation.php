@@ -23,13 +23,16 @@ class Operation
     private ?string $Statut = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_creation = null;
+    private ?\DateTimeInterface $date_creation; 
+    // = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_debut = null;
+    private ?\DateTimeInterface $date_debut ;
+    // = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_fin = null;
+    private ?\DateTimeInterface $date_fin ;
+    // = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
