@@ -18,10 +18,10 @@ class AddOperationFormType extends AbstractType
             ->add('description_op')
             ->add('type', ChoiceType::class, [
                 'choices' => [
-                    '1' => 'petit',
-                    '2' => 'moyenne',
-                    '3' => 'grosse',
-                    '4' => 'custom',
+                    'Petite' => 'petit',
+                    'Moyenne' => 'moyenne',
+                    'Grosse' => 'grosse',
+                    'Custom' => 'custom',
                 ],
             ])
             ->add('submit', SubmitType::class,[
