@@ -10,9 +10,6 @@
 
     <div class="salesTop">
         <h2 class='titreContainer'>ANNEE EN COURS</h2>
-        {% for operation in operations %}
-       {% set currentYearSales = currentYearSales + operation.tarif %}
-        {% endfor %}
         <p class='chiffreContainer'><span class="euroSymbol">€</span> {{ currentYearSales }}</p>
     </div>
 
