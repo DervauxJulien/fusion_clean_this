@@ -36,13 +36,13 @@ class OperationRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Operation
-    //    {
-    //        return $this->createQueryBuilder('o')
-    //            ->andWhere('o.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+       public function findOneBySomeField($value): ?Operation
+       {
+           return $this->createQueryBuilder('o')
+               ->andWhere('o.exampleField = :val')
+               ->setParameter('val', $value)
+               ->getQuery()
+               ->getOneOrNullResult()
+           ;
+       }
 }

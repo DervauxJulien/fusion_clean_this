@@ -77,4 +77,8 @@ class Adresse
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->N_rue  . " " . $this->Nom_Rue;  
+    }
 }

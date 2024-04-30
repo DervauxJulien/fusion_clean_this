@@ -28,7 +28,12 @@ class Facture
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?client $client = null;
+    private ?Client $client = null;
+
+    #[ORM\OneToOne(inversedBy: 'Facture')]
+    private ?Operation $operation = null;
+
+    // Utilisez le même cas pour la classe Client
 
     public function getId(): ?int
     {
@@ -83,14 +88,26 @@ class Facture
         return $this;
     }
 
-    public function getClient(): ?client
+    public function getClient(): ?Client
     {
         return $this->client;
     }
 
-    public function setClient(?client $client): static
+    public function setClient(?Client $client): static
     {
         $this->client = $client;
+
+        return $this;
+    }
+
+    public function getOperation(): ?Operation
+    {
+        return $this->operation;
+    }
+
+    public function setOperation(?Operation $operation): static
+    {
+        $this->operation = $operation;
 
         return $this;
     }

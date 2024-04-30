@@ -3,11 +3,13 @@
 {% block title %}Gestion Utilisateur{% endblock %}
 
 {% block body %}
-<div class="container pt-5">
-    <br><br>
+<header>{% include "/layout/navbar.html.twig" %}</header>
+<nav>{% include "/layout/operations_nav.html.twig" %}</nav>
+<div class="container pt-3">
     <h1 class="text-center">Gestion Utilisateur</h1>
     <br><br>
-
+    {% include "layout/_flash_message.html.twig" %}
+    <br>
     {# Lien d'ajout d'un nouvel utilisateur #}
 
 <a href={{path('app_gestion_utilisateur_create')}} class="btn btn-outline-success">Ajouter un utilisateur</a>
@@ -45,11 +47,11 @@
 
                         {% if ("ROLE_SENIOR" in user.roles) == false %}
 
-                            <a onclick="return confirmer('Voulez-vous vraiment promoter cet utilisateur ?')" href="{{path('app_gestion_utilisateur_modifS' , {'id':user.id}) }}" class="btn btn-outline-warning">Définir comme SENIOR</a>
+                            <a onclick="return confirm('Voulez-vous vraiment promoter cet utilisateur ?')" href="{{path('app_gestion_utilisateur_modifS' , {'id':user.id}) }}" class="btn btn-outline-warning">Définir comme SENIOR</a>
 
                         {% else %}
 
-                            <a onclick="return confirmer('Voulez-vous vraiment demoter cet utilisateur ?')" href="{{path('app_gestion_utilisateur_modifA' , {'id':user.id}) }}" class="btn btn-outline-warning">Définir comme APPRENTI</a>
+                            <a onclick="return confirm('Voulez-vous vraiment demoter cet utilisateur ?')" href="{{path('app_gestion_utilisateur_modifA' , {'id':user.id}) }}" class="btn btn-outline-warning">Définir comme APPRENTI</a>
 
                         {% endif %}
                 
@@ -60,7 +62,7 @@
 
                     {% if ("ROLE_EXPERT" in user.roles) == false %}
 
-                    <a onclick="return confirmer('Voulez-vous vraiment supprimer cet utilisateur ?')" href="{{path('app_gestion_utilisateur_remove' , {'id':user.id}) }}" class="btn"><img src="/images/icons/suppr.svg" alt="icone suppr" width="95%"></a>
+                    <a onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')" href="{{path('app_gestion_utilisateur_remove' , {'id':user.id}) }}" class="btn"><img src="/images/icons/suppr.svg" alt="icone suppr" width="85%"></a>
 
                     {% endif %}
 

@@ -3,9 +3,27 @@
 {% block title %}Chiffre d'affaire{% endblock %}
 
 {% block body %}
-    <h1>CHIFFRE D'AFFAIRE</h1>
+
+<div class="scrollable-content">
+
+{% block header %}
+    <nav id="navbar">
+        <img src='/images/icons/Vector.svg' alt='customer icon' name='home_customer_logo' id='home_customer_logo' />
+
+        <h3>Take your time and rest for a bit, Clean This will take care of this shit !</h3>
+
+        <button id='nav_logout_button'>Déconnexion</button>
+    </nav>
+{% endblock %}
+
+
+<body class="chiffre-affaire-body">
+    <h1 class='titreChiffreAffaire'>CHIFFRE D'AFFAIRE</h1>
 
     {{ render(controller('App\\Controller\\SalesController::salesStats')) }}
     {{ render(controller('App\\Controller\\TableController::tableIndex')) }}
 
+    </body>
+
+    </div>
 {% endblock %}
