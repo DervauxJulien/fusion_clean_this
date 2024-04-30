@@ -6,26 +6,22 @@
 {% endblock %}
 {% endblock %}
 {% block body %}
-
+<div class="d-flex globale">
 	<div class='margeGauche w-25 h-100'>
-		<img src="\images\icons\logo.svg" alt="logo" width=20% height=20%/>
+		<img src="\images\icons\logo.svg" alt="logo" width=20% height=20% class"logoDOP"/>
 		
-		<h1 class='text-white'><b>Merci d'avoir choisi Clean This</b></h1>
+		<h1 class='text-white titreDOP'><b>Merci d'avoir choisi Clean This</b></h1>
 	</div>
-	<div>
+	<div  class"formDOP">
 		<h2>
 			<b>Formulaire de demande d'opération :</b><br><br><br>
 		</h2>
-		<form action="">
-			<label for="Nom">Nom :
-				<br>
-				<input type="text" name="nom" id="" required></label>
-			<label for="Prenom">Prenom :
-				<br>
-				<input type="text" name="prenom" id="" required></label>
-			<label for="Mail">Mail :
-				<br>
-				<input type="email" name="mail" required></label><br><br>
+		{{form_start(createForm)}}
+			{{form_widget(createForm.client,{'attr':{'class': 'form form-control','placeholder': 'Nom'}})}} 
+			<br>
+			{{form_widget(createForm.adresse,{'attr':{'class': 'form form-control','placeholder': 'Prenom'}})}}
+			<br>
+			{{form_widget(createForm.operation,{'attr':{'class': 'form form-control','placeholder': 'Email'}})}}
 
 			<p>
 				<b>Adresse du site à nettoyer :</b>
@@ -47,9 +43,11 @@
 				{# <label for="Photo">Photos du site à nettoyer : <br> #}
 				<div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
 			
-			<p>Faites glisser un fichier dans cette <b>drop zone</b></p>
-			</div>
-		</form>
+					<p>Faites glisser un fichier dans cette <b>drop zone</b></p>
+				</div>			
+		{{form_end(createForm)}}
+		</div>
+	
 	</div>
 	<script src="{{ asset('asset/js/script.js') }}"></script>
 {% endblock %}

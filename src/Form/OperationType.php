@@ -16,7 +16,7 @@ class OperationType extends AbstractType
     {
         $builder
             ->add('description_Op')
-            ->add('Statut')
+            ->add('Status')
             ->add('date_creation', null, [
                 'widget' => 'single_text',
             ])
