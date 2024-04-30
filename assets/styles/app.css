@@ -4,6 +4,8 @@ body {
 }
 
 
+/* Navbar */
+
 #navbar {
     display: flex;
     justify-content: space-around;
@@ -34,6 +36,44 @@ body {
     position: relative;
     bottom: 0.1rem;
 }
+
+
+/* Footer ------------ */
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2%;
+
+
+    background-color: #0C4B3B;
+    color: white;
+    
+
+    position: static;
+    width: 100%;
+    bottom: 0;
+    
+}
+footer img {
+    width: 5%;
+    position: relative;
+    
+}
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer p{
+    width: 100%;
+    font-size: 75%;
+    padding-top: 5%;
+
+}
+
+
 
 /* PAGE HOME -------------------------------- */
 #home_main {
@@ -133,7 +173,7 @@ body {
 
 .titreChiffreAffaire{
     text-align: center;
-    font-size: 50px;
+    font-size: 4rem;
     margin-top: 2%;
     /* border: solid red; */
 }
@@ -239,35 +279,38 @@ body {
 }
 
 /* Styles généraux pour la table */
-/* .table {
+.tableChiffre {
     width: 87%;
     border-collapse: collapse;
     margin-left: 6.5%;
     border-left: 4px solid #FAEBDA;
     border-right: 4px solid #FAEBDA;
-} */
+}
 
 .name{
     font-size: 19px;
 }
 
-/* .table th, .table td {
+.tableChiffre th, .tableChiffre td {
     border-top: 4px solid #FAEBDA;
     border-bottom: 4px solid #FAEBDA;
+    background-color: #fffdfd;
     padding: 8px;
     text-align: left;
     padding-left: 2%;
 }
 
-.table th {
+.tableChiffre th {
     background-color: #f2f2f2;
     font-size: 19px;
 
-} */
+}
 
-.objectiveColumn {
+.objectiveColumn, .realisation {
     font-size: 32px;
     font-weight: bold;
+    text-align: end;
+
 }
 
 .operation{
@@ -275,6 +318,8 @@ body {
     font-size: 19px;
     text-align: center;
 }
+
+
 
 /* Style pour la colonne "Statut" en fonction du statut */
 .status-column {
@@ -346,32 +391,6 @@ body {
     overflow: hidden;
 }
 
-/* Styles généraux pour la table */
-/* .table {
-    width: 87%;
-    border-collapse: collapse;
-    margin-left: 6.5%;
-    border-left: 4px solid #FAEBDA;
-    border-right: 4px solid #FAEBDA;
-}
-
-.name{
-    font-size: 19px;
-}
-
-.table th, .table td {
-    border-top: 4px solid #FAEBDA;
-    border-bottom: 4px solid #FAEBDA;
-    padding: 8px;
-    text-align: left;
-    padding-left: 2%;
-}
-
-.table th {
-    background-color: #f2f2f2;
-    font-size: 19px;
-
-} */
 
 .objectiveColumn {
     font-size: 32px;
@@ -521,11 +540,6 @@ body {
     font-weight: 600;
 
 }
-#operations_nav h3:hover{
-    background-color: #007557;
-    padding: 0.7% 2%;
-    border-radius: 0px 0px 20px 20px;
-}
 
 .btn_nav{
     background-color: #43CAA9;
@@ -633,4 +647,11 @@ body {
 #localisation_icon{
     color: white;
 }
-/* ------------------------------------------ */
+/* ----Page Tarif---------------------------- */
+
+.card-img{
+    background-image: url('/images/broken_image.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 20rem;
+}

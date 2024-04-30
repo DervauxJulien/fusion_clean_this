@@ -5,7 +5,7 @@
 {% block body %}
 
 
-<table class="table">
+<table class="tableChiffre">
     <thead>
         <tr>
             <th>Nom Prénom</th>
@@ -13,7 +13,7 @@
             <th>Objectif</th>
             <th>Réalisation</th>
             <th>Progression</th>
-            <th>Operations</th>
+            <th class="iconeOP"><img src="\images\icons\Positive Dynamic.svg" alt=""></th>
         </tr>
     </thead>
     <tbody>
@@ -30,19 +30,26 @@
                 {% endif %}
             </td>
             <td class='objectiveColumn'>{{ objectiveUser }} €</td>
-            <td> 
-            {# {% for prixFacture in prixFactures %}
-                <tr>
-                <td>{{prixFacture.prix_ht}}</td>
-                </tr>
-            
 
-                
-            {% endfor %} #}
+            <td class='realisation'> 
+
+             {% set operationTarif = 0 %}
+                {% for operation in operations %}
+                    {% if operation.user.id == user.id %}
+                        {% set operationTarif = operationTarif + operation.tarif %}
+                    {% endif %}
+                {% endfor %}
+                {{ operationTarif }} €          
+
             </td>
 
 
-            <td> <!-- Insérez la colonne "Progression" ici --> </td>
+            <td>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: {{ (operationTarif / objectiveUser) * 100 }}%;"></div>
+                </div>
+             </td>
+
             <td class='operation'>
                 {% set operationCount = 0 %}
                 {% for operation in operations %}
