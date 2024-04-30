@@ -10,27 +10,30 @@
 		{% include "/layout/operations_nav.html.twig" %}
 	</header>
 
-<div class='card d-flex flex-wrap '>
+	<div class='card d-flex flex-wrap '>
 
 		{{form_start(form)}}
-					{# <h2 class="d-flex justify-content-center ">{{stockOp.type}}</h2> #}
-					<div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
-						<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
-						<br><br>
-					</div>
-					<div class='card-body bg-black text-white '>
-						<img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
-						<h3>Localisation</h3>
-						{# {{stockOp.getAdresse()}} #}
-					</div>
-					<div>
-						<h4>Descriptif</h4>
-					</div>
-					<div>
-						{# {{stockOp.getDescriptionOp()}} #}
-					</div>
-					{{form_end(form)}}
-				</div>
+		<div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
+			<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
+			<br><br>
+		</div>
+		{{form_row(form.type)}}
+		{{form_row(form.description_op)}}
+		{# {{stockOp.getAdresse()}} #}
 
-	
-	{% endblock %}
+		<div class='card-body bg-black text-white '>
+			<img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
+			<h3>Localisation</h3>
+			{# {{stockOp.getAdresse()}} #}
+		</div>
+		<div>
+			<h4>Descriptif</h4>
+		</div>
+		<div>
+			{# {{stockOp.getDescriptionOp()}} #}
+		</div>
+		{{form_end(form)}}
+	</div>
+
+
+{% endblock %}

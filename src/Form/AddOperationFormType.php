@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Adresse;
 use App\Entity\Operation;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -16,6 +18,9 @@ class AddOperationFormType extends AbstractType
         $builder
 
             ->add('description_op')
+            // ->add('adresse_id', EntityType::class,[
+            //     'class'=>Adresse::class,
+            // ])
             ->add('type', ChoiceType::class, [
                 'choices' => [
                     'Petite' => 'petit',

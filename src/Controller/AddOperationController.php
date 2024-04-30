@@ -73,7 +73,7 @@ class AddOperationController extends AbstractController
     
             // Redirigez l'utilisateur vers une autre page après la modification
 
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_add_operation');
         }
     
         // Affichez le formulaire de modification dans votre vue Twig
