@@ -426,19 +426,36 @@ body {
 }
 
 
-.margeGauche {
-    display: flex;
-
-    background-color: #43CAA9;
-    height: 100%;
-}
 /* Page formulaire de demande d'opération */
 
+.globale{
+    height: 1080px;
+    gap: 2%;
+}
+
+.margeGauche {
+    flex-direction: column;
+    background-color: #43CAA9;
+    padding-left: 1%;
+}
+
+.formDOP{
+    padding-top: 2%;
+
+}
+
+.titreDOP{
+    justify-content: center;
+
+}
 #drop_zone {
 	border: 2px solid black;
-	width: 200px;
-	height: 100px;
+	width: 100%;
+	height: 200px;
+    
 }
+
+
 /* Page Gestion utilisateur------------------------------------- */
 
 #colAp{
