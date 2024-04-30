@@ -14,6 +14,7 @@
 	<div class="container col-6 ">
 		<section class="container d-flex flex-wrap">
 			{% for operation in stockOp %}
+			<form action="" method="">
 				<div class='card d-flex flex-wrap '>
 					<h2 class="d-flex justify-content-center ">{{operation.type}}</h2>
 					<div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
@@ -34,8 +35,10 @@
 						<div>
 						<a href="{{ path('app_edit_operation', {'id': operation.id}) }}" class="btn btn-primary">Modifier</a>
 						</div>
+                    <a onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')" href="{{path('app_remove_operation' , {'id':operation.id}) }}" class="btn">Supprimer</a>
+
 				</div>
-				
+				</form>
 			{% endfor %}
 		</section>
 	{% endblock %}
