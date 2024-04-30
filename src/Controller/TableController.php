@@ -19,10 +19,10 @@ class TableController extends AbstractController
         // Récupération des opérations depuis le repository
         $operations = $operationRepository->findAll();
         // Initialisation d'un tableau pour stocker les statuts des opérations
-        $statuts = [];
+        $status = [];
         // Boucle sur chaque opération pour obtenir son statut
         foreach ($operations as $operation) {
-            $statuts[] = $operation->getStatut(); // Stocker chaque statut dans le tableau $statuts
+            $status[] = $operation->getStatus(); // Stocker chaque statut dans le tableau $statuts
         }
 
        
@@ -32,7 +32,7 @@ class TableController extends AbstractController
             'objectiveUser' => $objectiveUser,
             'users' => $userRepository->findAll(),
             'operations' => $operations,
-            'statuts' => $statuts,
+            'status' => $status,
         ]);
 
     }
