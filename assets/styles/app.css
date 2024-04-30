@@ -265,9 +265,11 @@ body {
 
 }
 
-.objectiveColumn {
+.objectiveColumn, .realisation {
     font-size: 32px;
     font-weight: bold;
+    text-align: end;
+
 }
 
 .operation{
