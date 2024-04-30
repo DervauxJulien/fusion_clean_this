@@ -279,7 +279,7 @@ footer p{
 }
 
 /* Styles généraux pour la table */
-.table {
+.tableChiffre {
     width: 87%;
     border-collapse: collapse;
     margin-left: 6.5%;
@@ -291,15 +291,16 @@ footer p{
     font-size: 19px;
 }
 
-.table th, .table td {
+.tableChiffre th, .tableChiffre td {
     border-top: 4px solid #FAEBDA;
     border-bottom: 4px solid #FAEBDA;
+    background-color: #fffdfd;
     padding: 8px;
     text-align: left;
     padding-left: 2%;
 }
 
-.table th {
+.tableChiffre th {
     background-color: #f2f2f2;
     font-size: 19px;
 
