@@ -32,7 +32,7 @@ class AddOperationController extends AbstractController
 
         // Je check si le formulaire est soumis et valide
         if ($form->isSubmitted() && $form->isValid()) {
-            $stock->setStatut('A faire');
+            $stock->setStatus('A faire');
             // $stock->setAdresse();
             $entityManager->persist($stock);
             $entityManager->flush();
@@ -65,7 +65,7 @@ class AddOperationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             // Mettez à jour l'opération avec les nouvelles données
-            $operation->setStatut('a faire'); 
+            $operation->setStatus('a faire'); 
     
             $entityManager->flush();
     

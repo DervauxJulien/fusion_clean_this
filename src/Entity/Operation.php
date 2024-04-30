@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\OperationRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -16,127 +14,50 @@ class Operation
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $description_Op = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $Statut = null;
-
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_creation; 
-    // = null;
-
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_debut ;
-    // = null;
-
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_fin ;
-    // = null;
-
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'operations')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Adresse $adresse = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'operations')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Client $client = null;
 
-        /**
-     * @var Collection<int, Facture>
-     */
+    #[ORM\ManyToOne(inversedBy: 'operations')]
+    private ?User $user = null;
 
-    #[ORM\OneToOne(targetEntity: Facture::class, mappedBy: "operation")]
-    private Facture $Facture;
-    
-    /**
-     * @var Collection<int, User>
-     */
-    #[ORM\OneToMany(targetEntity: User::class, mappedBy: 'operation')]
-    private Collection $User;
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description_op = null;
 
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $Description_client = null;
+    #[ORM\Column(length: 30)]
+    private ?string $status = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $Img = null;
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date_creation = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date_debut = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date_fin = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description_client = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $img = null;
 
     #[ORM\Column]
-    private ?bool $Validation_demande = null;
+    private ?bool $validation_demande = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column]
+    private ?float $tarif = null;
+
+    #[ORM\Column(length: 30)]
     private ?string $type = null;
-
-    public function __construct()
-    {
-        // $this->Facture = new ArrayCollection();
-        $this->User = new ArrayCollection();
-    }
-
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getDescriptionOp(): ?string
-    {
-        return $this->description_Op;
-    }
-
-    public function setDescriptionOp(string $description_Op): static
-    {
-        $this->description_Op = $description_Op;
-
-        return $this;
-    }
-
-    public function getStatut(): ?string
-    {
-        return $this->Statut;
-    }
-
-    public function setStatut(string $Statut): static
-    {
-        $this->Statut = $Statut;
-
-        return $this;
-    }
-
-    public function getDateCreation(): ?\DateTimeInterface
-    {
-        return $this->date_creation;
-    }
-
-    public function setDateCreation(\DateTimeInterface $date_creation): static
-    {
-        $this->date_creation = $date_creation;
-
-        return $this;
-    }
-
-    public function getDateDebut(): ?\DateTimeInterface
-    {
-        return $this->date_debut;
-    }
-
-    public function setDateDebut(\DateTimeInterface $date_debut): static
-    {
-        $this->date_debut = $date_debut;
-
-        return $this;
-    }
-
-    public function getDateFin(): ?\DateTimeInterface
-    {
-        return $this->date_fin;
-    }
-
-    public function setDateFin(\DateTimeInterface $date_fin): static
-    {
-        $this->date_fin = $date_fin;
-
-        return $this;
     }
 
     public function getAdresse(): ?Adresse
@@ -163,99 +84,122 @@ class Operation
         return $this;
     }
 
-
-    /**
-     * @return Collection<int, Facture>
-     */
-    public function getFacture(): Collection
+    public function getUser(): ?User
     {
-        return $this->Facture;
+        return $this->user;
     }
 
-    public function addFacture(Facture $facture): static
+    public function setUser(?User $user): static
     {
-        if (!$this->Facture->contains($facture)) {
-            $this->Facture->add($facture);
-            $facture->setOperation($this);
-        }
+        $this->user = $user;
 
         return $this;
     }
 
-    public function removeFacture(Facture $facture): static
+    public function getDescriptionOp(): ?string
     {
-        if ($this->Facture->removeElement($facture)) {
-            // set the owning side to null (unless already changed)
-            if ($facture->getOperation() === $this) {
-                $facture->setOperation(null);
-            }
-        }
+        return $this->description_op;
+    }
+
+    public function setDescriptionOp(?string $description_op): static
+    {
+        $this->description_op = $description_op;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, User>
-     */
-    public function getUser(): Collection
+    public function getStatus(): ?string
     {
-        return $this->User;
+        return $this->status;
     }
 
-    public function addUser(User $user): static
+    public function setStatus(string $status): static
     {
-        if (!$this->User->contains($user)) {
-            $this->User->add($user);
-            $user->setOperation($this);
-        }
+        $this->status = $status;
 
         return $this;
     }
 
-    public function removeUser(User $user): static
+    public function getDateCreation(): ?\DateTimeInterface
     {
-        if ($this->User->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getOperation() === $this) {
-                $user->setOperation(null);
-            }
-        }
+        return $this->date_creation;
+    }
+
+    public function setDateCreation(\DateTimeInterface $date_creation): static
+    {
+        $this->date_creation = $date_creation;
+
+        return $this;
+    }
+
+    public function getDateDebut(): ?\DateTimeInterface
+    {
+        return $this->date_debut;
+    }
+
+    public function setDateDebut(?\DateTimeInterface $date_debut): static
+    {
+        $this->date_debut = $date_debut;
+
+        return $this;
+    }
+
+    public function getDateFin(): ?\DateTimeInterface
+    {
+        return $this->date_fin;
+    }
+
+    public function setDateFin(?\DateTimeInterface $date_fin): static
+    {
+        $this->date_fin = $date_fin;
 
         return $this;
     }
 
     public function getDescriptionClient(): ?string
     {
-        return $this->Description_client;
+        return $this->description_client;
     }
 
-    public function setDescriptionClient(string $Description_client): static
+    public function setDescriptionClient(?string $description_client): static
     {
-        $this->Description_client = $Description_client;
+        $this->description_client = $description_client;
 
         return $this;
     }
 
     public function getImg(): ?string
     {
-        return $this->Img;
+        return $this->img;
     }
 
-    public function setImg(string $Img): static
+    public function setImg(?string $img): static
     {
-        $this->Img = $Img;
+        $this->img = $img;
 
         return $this;
     }
 
     public function isValidationDemande(): ?bool
     {
-        return $this->Validation_demande;
+        return $this->validation_demande;
     }
 
-    public function setValidationDemande(bool $Validation_demande): static
+    public function setValidationDemande(bool $validation_demande): static
     {
-        $this->Validation_demande = $Validation_demande;
+        $this->validation_demande = $validation_demande;
+
+        return $this;
+    }
+
+    public function getTarif(): ?float
+    {
+        return $this->tarif;
+    }
+
+    public function setTarif(float $tarif): static
+    {
+        $this->tarif = $tarif;
 
         return $this;
     }
@@ -271,7 +215,4 @@ class Operation
 
         return $this;
     }
-
 }
-
-
