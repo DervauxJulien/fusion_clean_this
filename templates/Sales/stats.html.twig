@@ -1,11 +1,23 @@
+{# templates/Sales/stats.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
 <div class='lotContainer'>
 <div class="salesContainer1">
+
     <div class="salesTop">
         <h2 class='titreContainer'>ANNEE EN COURS</h2>
+        {% for operation in operations %}
+       {% set currentYearSales = currentYearSales + operation.tarif %}
+        {% endfor %}
         <p class='chiffreContainer'><span class="euroSymbol">€</span> {{ currentYearSales }}</p>
     </div>
+
     <div class="salesBottom" >
-<img src="/images/icons/Positive Dynamic.svg" alt="iconeSales">
+        <img src="/images/icons/Positive Dynamic.svg" alt="iconeSales">
         <p class='percentage'>+ {{ percentageCurrentSales }} %</p>
     </div>
 
@@ -32,3 +44,4 @@
     </div>
 </div>
 </div>
+{% endblock %}
