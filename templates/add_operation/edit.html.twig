@@ -10,12 +10,8 @@
 		{% include "/layout/operations_nav.html.twig" %}
 	</header>
 
-	<h1 class='d-flex justify-content-center'>Ajouter des opérations</h1>
-	<div class="container col-6 ">
-		<section class="container d-flex flex-wrap">
-			{% for operation in stockOp %}
-				<div class='card d-flex flex-wrap '>
-					<h2 class="d-flex justify-content-center ">{{operation.type}}</h2>
+<div class='card d-flex flex-wrap '>
+					<h2 class="d-flex justify-content-center ">{{stockOp.type}}</h2>
 					<div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
 						<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
 						<br><br>
@@ -23,19 +19,18 @@
 					<div class='card-body bg-black text-white '>
 						<img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
 						<h3>Localisation</h3>
-						{{operation.getAdresse()}}
+						{{stockOp.getAdresse()}}
 					</div>
 					<div>
 						<h4>Descriptif</h4>
 					</div>
 					<div>
-						{{operation.getDescriptionOp()}}
+						{{stockOp.getDescriptionOp()}}
 					</div>
 						<div>
 						<a href="{{ path('app_edit_operation', {'id': operation.id}) }}" class="btn btn-primary">Modifier</a>
 						</div>
 				</div>
-				
-			{% endfor %}
-		</section>
+
+	
 	{% endblock %}
