@@ -16,15 +16,15 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DemandeOperationController extends AbstractController
 {
-    #[Route('/demande/operation', name: 'app_demande_operation')]
-    public function index(): Response
-    {
-        return $this->render('demande_operation/index.html.twig', [
-            'controller_name' => 'DemandeOperationController',
-        ]);
-    }
+    // #[Route('/demande/operation', name: 'app_demande_operation')]
+    // public function index(): Response
+    // {
+    //     return $this->render('demande_operation/index.html.twig', [
+    //         'controller_name' => 'DemandeOperationController',
+    //     ]);
+    // }
 
-    #[Route('/demande_operation', name: 'app_validation_demande_operation')]
+    #[Route('/demande/operation', name: 'app_demande_operation')]
     public function validate(Request $request, EntityManagerInterface $em): Response
     {
         $client = new Client();
@@ -41,7 +41,7 @@ class DemandeOperationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $data = $form->getData();
+            // $data = $form->getData();
 
             $em->persist($client);
             $em->flush();
@@ -58,7 +58,7 @@ class DemandeOperationController extends AbstractController
             return $this->redirectToRoute('validation');
         }
         return $this->render('demande_operation/index.html.twig', [
-            "Form" => $form->createView()
+            "createForm" => $form->createView()
         ]);
     }
 }

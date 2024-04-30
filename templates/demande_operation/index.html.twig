@@ -16,12 +16,12 @@
 		<h2>
 			<b>Formulaire de demande d'opération :</b><br><br><br>
 		</h2>
-		{{form_start(Form)}}
-			{{form_widget(Form.nom,{'attr':{'class': 'form form-control','placeholder': 'Nom'}})}} 
+		{{form_start(createForm)}}
+			{{form_widget(createForm.client,{'attr':{'class': 'form form-control','placeholder': 'Nom'}})}} 
 			<br>
-			{{form_widget(Form.prenom,{'attr':{'class': 'form form-control','placeholder': 'Prenom'}})}}
+			{{form_widget(createForm.adresse,{'attr':{'class': 'form form-control','placeholder': 'Prenom'}})}}
 			<br>
-			{{form_widget(Form.email,{'attr':{'class': 'form form-control','placeholder': 'Email'}})}}
+			{{form_widget(createForm.operation,{'attr':{'class': 'form form-control','placeholder': 'Email'}})}}
 
 			<p>
 				<b>Adresse du site à nettoyer :</b>
@@ -45,7 +45,7 @@
 			
 					<p>Faites glisser un fichier dans cette <b>drop zone</b></p>
 				</div>			
-		{{form_end(Form)}}
+		{{form_end(createForm)}}
 		</div>
 	
 	</div>
