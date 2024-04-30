@@ -11,20 +11,20 @@
     <div class="UAdd_form">
     <h1 class="text-center">Creation Utilisateur</h1>
     <br><br>
-    {{form_start(createForm)}}
+    {{form_start(creatForm)}}
     <br><br>
 
-    {{form_widget(createForm.nom,{'attr':{'class': 'form form-control','placeholder': 'Nom'}})}}
+    {{form_widget(creatForm.nom,{'attr':{'class': 'form form-control','placeholder': 'Nom'}})}}
     <br>
-    {{form_widget(createForm.prenom,{'attr':{'class': 'form form-control','placeholder': 'Prenom'}})}}
+    {{form_widget(creatForm.prenom,{'attr':{'class': 'form form-control','placeholder': 'Prenom'}})}}
     <br>
-    {{form_widget(createForm.username,{'attr':{'class': 'form form-control','placeholder': 'Username'}})}}
+    {{form_widget(creatForm.username,{'attr':{'class': 'form form-control','placeholder': 'Username'}})}}
     <br>
-    {{form_widget(createForm.plainPassword,{'attr':{'class': 'form form-control','placeholder': 'Mot de passe'}})}}
+    {{form_widget(creatForm.plainPassword,{'attr':{'class': 'form form-control','placeholder': 'Mot de passe'}})}}
     <br><br>
     <input type="submit" value="Ajouter" id="btn_val">
 
-    {{form_end(createForm)}}
+    {{form_end(creatForm)}}
 </div>
 </div>
 

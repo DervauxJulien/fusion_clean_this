@@ -522,11 +522,6 @@ footer p{
     font-weight: 600;
 
 }
-#operations_nav h3:hover{
-    background-color: #007557;
-    padding: 0.7% 2%;
-    border-radius: 0px 0px 20px 20px;
-}
 
 .btn_nav{
     background-color: #43CAA9;
