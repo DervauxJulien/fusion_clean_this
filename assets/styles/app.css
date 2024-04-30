@@ -4,6 +4,8 @@ body {
 }
 
 
+/* Navbar */
+
 #navbar {
     display: flex;
     justify-content: space-around;
@@ -34,6 +36,44 @@ body {
     position: relative;
     bottom: 0.1rem;
 }
+
+
+/* Footer ------------ */
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2%;
+
+
+    background-color: #0C4B3B;
+    color: white;
+    
+
+    position: static;
+    width: 100%;
+    bottom: 0;
+    
+}
+footer img {
+    width: 5%;
+    position: relative;
+    
+}
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer p{
+    width: 100%;
+    font-size: 75%;
+    padding-top: 5%;
+
+}
+
+
 
 /* PAGE HOME -------------------------------- */
 #home_main {
@@ -405,19 +445,36 @@ body {
 }
 
 
-.margeGauche {
-    display: flex;
-
-    background-color: #43CAA9;
-    height: 100%;
-}
 /* Page formulaire de demande d'opération */
 
+.globale{
+    height: 1080px;
+    gap: 2%;
+}
+
+.margeGauche {
+    flex-direction: column;
+    background-color: #43CAA9;
+    padding-left: 1%;
+}
+
+.formDOP{
+    padding-top: 2%;
+
+}
+
+.titreDOP{
+    justify-content: center;
+
+}
 #drop_zone {
 	border: 2px solid black;
-	width: 200px;
-	height: 100px;
+	width: 100%;
+	height: 200px;
+    
 }
+
+
 /* Page Gestion utilisateur------------------------------------- */
 
 #colAp{
@@ -482,11 +539,6 @@ body {
     font-size: 100%;
     font-weight: 600;
 
-}
-#operations_nav h3:hover{
-    background-color: #007557;
-    padding: 0.7% 2%;
-    border-radius: 0px 0px 20px 20px;
 }
 
 .btn_nav{
@@ -595,4 +647,11 @@ body {
 #localisation_icon{
     color: white;
 }
-/* ------------------------------------------ */
+/* ----Page Tarif---------------------------- */
+
+.card-img{
+    background-image: url('/images/broken_image.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 20rem;
+}
