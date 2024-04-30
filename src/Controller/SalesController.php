@@ -27,9 +27,13 @@ class SalesController extends AbstractController
             $currentYearSales += $operation->getTarif();
         }
 
+        // Calcul du pourcentage des ventes de l'année en cours par rapport à l'objectif
+        $percentageCurrentSales = number_format((($currentYearSales * 100) / 120500), 1);
+
+
         //Definition de la date du mois en cours
         $currentMonth = (new DateTime())-> format('m');
-
+    
         //Calcul des ventes du mois en cours
         foreach ($operations as $operation) {
             if ($operation->getDateCreation()->format('m') === $currentMonth) {
@@ -40,13 +44,10 @@ class SalesController extends AbstractController
         //Calcul du pourcentage des ventes du mois en cours
         $percentageMonthSales = number_format((($monthSales * 100) / 24100), 1);
         
-        // Calcul du pourcentage de ventes par rapport à l'objectif
-        $percentageCurrentSales = number_format((($currentYearSales * 100) / 120500), 1);
 
         // Définition des autres variables
         $percentageObjectif = 5.4;
         $objectif = 120500;
-        $monthSales = 6250;
 
         // Rendu de la vue avec les données
         return $this->render('sales/stats.html.twig', [
@@ -57,6 +58,7 @@ class SalesController extends AbstractController
             'percentageObjectif' => $percentageObjectif,
             'percentageMonthSales' => $percentageMonthSales,
             'operations' => $operations,
+            'currentMonth' =>$currentMonth
         ]);
     }
 }
