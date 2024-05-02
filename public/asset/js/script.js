@@ -31,3 +31,13 @@ function dropHandler(event) {
   
     event.preventDefault();
   }
+
+  function descriptionClient(cardId) {
+    let descriptionElement = document.getElementById(cardId);
+    console.log(descriptionElement);
+    descriptionElement.classList.toggle("d-none");
+}
+
+
+
+

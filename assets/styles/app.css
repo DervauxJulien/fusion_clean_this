@@ -3,6 +3,17 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+/* Couleur de l'application */
+
+.bg-l-green{
+background-color: #43CAA9;
+}
+.bg-m-green{
+background-color: #007557;
+}
+.bg-d-green{
+background-color: #0C4B3B;
+}
 
 /* Navbar */
 
@@ -76,6 +87,7 @@ footer p{
 
 
 /* PAGE HOME -------------------------------- */
+
 #home_main {
     display: flex;
     justify-content: center;
@@ -123,6 +135,7 @@ footer p{
 
 
 /* PAGE LOGIN ------------------------------- */
+
 #login_main {
     display: flex;
     justify-content: center;
@@ -322,6 +335,7 @@ footer p{
 
 
 /* Style pour la colonne "Statut" en fonction du statut */
+
 .status-column {
     font-weight: bold;
 }
