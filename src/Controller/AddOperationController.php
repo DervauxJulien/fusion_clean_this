@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Adresse;
 use App\Entity\Operation;
 use App\Form\AddOperationFormType;
+use App\Repository\AdresseRepository;
 use App\Repository\ClientRepository;
 use App\Repository\OperationRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -33,14 +35,14 @@ class AddOperationController extends AbstractController
         $form->handleRequest($request);
 
         // Je check si le formulaire est soumis et valide
+
         if ($form->isSubmitted() && $form->isValid()) {
             $stock->setStatus('A faire');
-            // $stock->setAdresse();
             $entityManager->persist($stock);
             $entityManager->flush();
 
             // Redirection vers une route valide
-            return $this->redirectToRoute('app_add_operation'); // Remplacez 'app_home' par le nom de votre route valide
+            return $this->redirectToRoute('app_add_operation'); 
         }
         
         // J'affiche le form dans ma vue

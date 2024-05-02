@@ -9,16 +9,14 @@
 		{% include "/layout/operations_nav.html.twig" %}
 	</header>
 
-	<h1 class='d-flex justify-content-center'>Ajouter des opérations</h1>
-
 	<div class="container col-6 col-sm-6 col-md-10 col-xl-12 min-vh-100">
+		<h1 class='d-flex justify-content-center'>Ajouter des opérations</h1>
 		<section class="d-flex flex-wrap justify-content-center">
 			{% for operation in stockOp %}
 				<form action="" method="">
-					<div class='card  bg-d-green border-0 m-3'>
-						<div class='card d-flex flex-wrap' style="width: 18rem">
-							<h2 class="card-title d-flex justify-content-center bg-white">{{operation.type}}</h2>
-
+					<div class='card m-3 bg-danger'>
+						<h2 class="d-flex justify-content-center bg-white">{{operation.type}}</h2>
+						<div class='card d-flex flex-wrap' style="width: 18rem ">
 							<div class="d-flex justify-content-center m-2">
 								<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
 							</div>
@@ -26,16 +24,25 @@
 								<div class="d-flex justify-content-center">
 									<img style="width: 1rem" src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
 								</div>
-								<h3>Localisation</h3>
-								{{operation.getAdresse()}}
-								<h4>Descriptif</h4>
-								<a onclick="descriptionClient('descriptionClient_{{ loop.index }}')">Voir description</a>
-								<div class="text-white bg-d-green d-none description" id="descriptionClient_{{ loop.index }}">
-									{{ operation.getDescriptionOp() }}
-								</div>
-								<div class=" d-flex justify-content-center text-white bg-d-green">
-									<a href="{{ path('app_edit_operation', {'id': operation.id}) }}" class="btn btn-primary">Modifier</a>
-									<a onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')" href="{{path('app_remove_operation' , {'id':operation.id}) }}" class="btn btn-danger ">Supprimer</a>
+								<h4>Localisation</h4>
+								<h4>{{operation.getAdresse()}}</h4>
+								<div class="bg-dark">
+									<div class="accordion accordion-flush w-100 " id="accordionExample">
+										<div class="accordion-item">
+											<h2 class="accordion-header">
+												<button class="accordion-button" type="button" onclick="descriptionClient('descriptionClient_{{ loop.index }}')">
+													<h4>Descriptif</h4>
+												</button>
+											</h2>
+											<div class="text-white bg-d-green d-none accordion-body" id="descriptionClient_{{ loop.index }}">
+												{{ operation.getDescriptionOp() }}
+											</div>
+										</div>
+									</div>
+									<div class=" d-flex justify-content-center text-white bg-d-green">
+										<a href="{{ path('app_edit_operation', {'id': operation.id}) }}" class="btn btn-primary">Modifier</a>
+										<a onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')" href="{{path('app_remove_operation' , {'id':operation.id}) }}" class="btn btn-danger ">Supprimer</a>
+									</div>
 								</div>
 							</div>
 						</div>
