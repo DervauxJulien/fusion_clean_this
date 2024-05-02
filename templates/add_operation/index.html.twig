@@ -13,21 +13,23 @@
 		<h1 class='d-flex justify-content-center'>Ajouter des opérations</h1>
 		<section class="d-flex flex-wrap justify-content-center">
 			{% for operation in stockOp %}
+
 				<form action="" method="">
-					<div class='card m-3 bg-danger'>
-						<h2 class="d-flex justify-content-center bg-white">{{operation.type}}</h2>
-						<div class='card d-flex flex-wrap' style="width: 18rem ">
+					<div class='card m-3 border-0'>
+
+							<h2 class="card-title d-flex justify-content-center bg-white border-3  ">{{operation.type}}</h2>
+						<div class='card d-flex flex-wrap border-0 ' style="width: 18rem ">
 							<div class="d-flex justify-content-center m-2">
 								<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
 							</div>
-							<div class="card-body d-flex flex-column text-center text-white bg-d-green">
+							<div class="card-body d-flex flex-column text-center text-white bg-d-green rounded-bottom-3 ">
 								<div class="d-flex justify-content-center">
 									<img style="width: 1rem" src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
 								</div>
 								<h4>Localisation</h4>
-								<h4>{{operation.getAdresse()}}</h4>
+								<h4>{{operation.adresse}}</h4>
 								<div class="bg-dark">
-									<div class="accordion accordion-flush w-100 " id="accordionExample">
+									<div class="accordion">
 										<div class="accordion-item">
 											<h2 class="accordion-header">
 												<button class="accordion-button" type="button" onclick="descriptionClient('descriptionClient_{{ loop.index }}')">
