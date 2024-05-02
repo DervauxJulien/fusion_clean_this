@@ -16,7 +16,7 @@ body {
     color: white;
 }
 #navbar img {
-    width: 3%;
+    width: 15%;
     position: relative;
     bottom: 0.2rem;
     border: 3px solid white;
@@ -654,4 +654,19 @@ footer p{
     background-size: contain;
     background-repeat: no-repeat;
     height: 20rem;
+}
+
+/* Page mentionLegal */
+
+#pLegal{
+    text-align: center;
+    background-image: url('/images/photofond.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+#pLegal hr{
+    border:solid 2px black;
+
 }
