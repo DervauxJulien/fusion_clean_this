@@ -41,23 +41,11 @@
     </td>
         <td class="w-25">
             <div class="d-flex align-items-center justify-content-around">
-                {# D'apres le role de l'utilisateur, il y aura des bouton different #}
                 <div>
-                    {% if ("ROLE_EXPERT" in user.roles) == false %}
+                    {# <a href="{{path('app_gestion_utilisateur_modifF' , {'id':user.id}) }}" class="btn btn-outline-warning">Modifier Utilisateur</a> #}
+                    <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#modalModif{{ user.id }}">Modifier</button>
 
-                        {% if ("ROLE_SENIOR" in user.roles) == false %}
-
-                            <a onclick="return confirm('Voulez-vous vraiment promoter cet utilisateur ?')" href="{{path('app_gestion_utilisateur_modifS' , {'id':user.id}) }}" class="btn btn-outline-warning">Définir comme SENIOR</a>
-
-                        {% else %}
-
-                            <a onclick="return confirm('Voulez-vous vraiment demoter cet utilisateur ?')" href="{{path('app_gestion_utilisateur_modifA' , {'id':user.id}) }}" class="btn btn-outline-warning">Définir comme APPRENTI</a>
-
-                        {% endif %}
-                
-                    {% endif %}
                 </div>
-                {# Bouton suppression utilisateur(l'Expert n'est pas inclu) #}
                     <div>
 
                     {% if ("ROLE_EXPERT" in user.roles) == false %}
@@ -69,7 +57,7 @@
                     </div>
         </div>
         </td>
-            
+        {% include 'user/modifUser.html.twig' with {'user': user, 'modifF': modifF} %}
         {% endfor %}
     </tr>
     </table>

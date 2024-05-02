@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\CreateUserFormType;
+use App\Form\ModifUserFormType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -58,20 +59,41 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/modifF', name: 'app_gestion_utilisateur_modifF')]
+    public function modifF(User $user, EntityManagerInterface $entityManager, Request $request): Response
+    {
+        $form = $this->createForm(ModifUserFormType::class, $user);
+        $form->handleRequest($request);
+
+        if($form->isValid() && $form->isSubmitted())
+        {
+
+            $entityManager->flush();
+
+            $this->addFlash('success', "L'utilisateur {$user->getUsername()} a bien été ajouter.");
+            return $this->redirectToRoute('app_gestion_utilisateur');
+
+        }
+        return $this->render('user/modifUser.html.twig', [
+            'users' => $user,
+            'modifF' => $form->createView(),
+        ]);
+    }
+
 
     // Modification du roles utilisateur vers Senior
-    #[Route('/{id}/modifS', name: 'app_gestion_utilisateur_modifS')]
-    public function modifS(User $user, EntityManagerInterface $entityManager): Response
-    {
-        $user->setRoles(["ROLE_SENIOR"]);
-        $entityManager->flush();
+    // #[Route('/{id}/modifS', name: 'app_gestion_utilisateur_modifS')]
+    // public function modifS(User $user, EntityManagerInterface $entityManager): Response
+    // {
+    //     $user->setRoles(["ROLE_SENIOR"]);
+    //     $entityManager->flush();
 
-        $this->addFlash('info', "Le role de l'utilisateur {$user->getUsername()} est maintenant SENIOR.");
+    //     $this->addFlash('info', "Le role de l'utilisateur {$user->getUsername()} est maintenant SENIOR.");
 
 
-        return $this->redirectToRoute('app_gestion_utilisateur');
+    //     return $this->redirectToRoute('app_gestion_utilisateur');
         
-    }
+    // }
 
     // Modification du roles vers Expert
 
@@ -89,17 +111,17 @@ class UserController extends AbstractController
     // }
 
     // Modification du roles utilisateur vers Apprenti
-    #[Route('/{id}/modifA', name: 'app_gestion_utilisateur_modifA')]
-    public function modifA(User $user, EntityManagerInterface $entityManager): Response
-    {
-        $user->setRoles([]);
-        $entityManager->flush();
+    // #[Route('/{id}/modifA', name: 'app_gestion_utilisateur_modifA')]
+    // public function modifA(User $user, EntityManagerInterface $entityManager): Response
+    // {
+    //     $user->setRoles([]);
+    //     $entityManager->flush();
 
-        $this->addFlash('info', "Le role de l'utilisateur {$user->getUsername()} est maintenant APPRENTI.");
+    //     $this->addFlash('info', "Le role de l'utilisateur {$user->getUsername()} est maintenant APPRENTI.");
 
-        return $this->redirectToRoute('app_gestion_utilisateur');
+    //     return $this->redirectToRoute('app_gestion_utilisateur');
         
-    }
+    // }
 
     // Suppression de l'utilisateur
     #[Route('/{id}/remove', name: 'app_gestion_utilisateur_remove')]
