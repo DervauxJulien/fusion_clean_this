@@ -17,6 +17,7 @@ class OperationType extends AbstractType
         $builder
             ->add('description_Op')
             ->add('Status')
+            ->add('img')
             ->add('date_creation', null, [
                 'widget' => 'single_text',
             ])
@@ -34,6 +35,7 @@ class OperationType extends AbstractType
                 'class' => User::class,
                 'choice_label' => 'id',
             ])
+            
         ;
     }
 
