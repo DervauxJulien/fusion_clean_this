@@ -22,19 +22,17 @@
 							<div class="d-flex justify-content-center m-2">
 								<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
 							</div>
-							<div class="card-body d-flex flex-column justify-content-center  text-white bg-d-green">
-								<img class="d-flex justify-content-center " style="width: 1rem" src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
+							<div class="card-body d-flex flex-column text-center text-white bg-d-green">
+								<div class="d-flex justify-content-center">
+									<img style="width: 1rem" src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
+								</div>
 								<h3>Localisation</h3>
 								{{operation.getAdresse()}}
-
 								<h4>Descriptif</h4>
-
 								<a onclick="descriptionClient('descriptionClient_{{ loop.index }}')">Voir description</a>
 								<div class="text-white bg-d-green d-none description" id="descriptionClient_{{ loop.index }}">
 									{{ operation.getDescriptionOp() }}
 								</div>
-
-
 								<div class=" d-flex justify-content-center text-white bg-d-green">
 									<a href="{{ path('app_edit_operation', {'id': operation.id}) }}" class="btn btn-primary">Modifier</a>
 									<a onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')" href="{{path('app_remove_operation' , {'id':operation.id}) }}" class="btn btn-danger ">Supprimer</a>
