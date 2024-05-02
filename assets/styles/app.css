@@ -171,7 +171,7 @@ footer p{
 /* ------------------------------------------ */
 /* page chiffre d'affaire */
 
-.titreChiffreAffaire{
+.titreChiffreAffaire, .titreOperationsTerminees{
     text-align: center;
     font-size: 4rem;
     margin-top: 2%;
@@ -273,7 +273,7 @@ footer p{
 
 /* body chiffre affaire */
 
-.chiffre-affaire-body{
+.chiffre-affaire-body, .operations-terminees-body{
     background-image: url('/images/photofond.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -443,6 +443,44 @@ footer p{
     border-radius: 50px 0 0 50px;
     transition: width 0.3s ease;
 }
+
+/*Opérations terminées*/
+
+.tableOpTerminees-tread{
+    background-color: #3B3355;
+
+}
+
+.tableOpTerminees {
+    width: 87%;
+    border-collapse: collapse;
+    margin-left: 6.5%;
+    border-bottom: 4px solid #000000;
+
+}
+
+.teteOpTerm {
+    border-radius: 0 50px 0 50px;
+}
+
+.tableOpTerminees th,
+.tableOpTerminees td {
+    padding: 0.5rem;
+    text-align: left;
+    padding-left: 2%;
+}
+
+.tableOpTerminees th {
+    background-color: #3B3355;
+    color: white;
+    font-size: 1.9rem;
+}
+
+
+
+
+
+
 
 
 /* Page formulaire de demande d'opération */
