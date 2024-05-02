@@ -14,6 +14,8 @@ class ModifUserFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+        ->add('nom')
+        ->add('prenom')
         ->add('username')
         ->add('roles', ChoiceType::class ,[
             'choices' =>[
@@ -23,8 +25,7 @@ class ModifUserFormType extends AbstractType
             ]
         ])
         
-        ->add('nom')
-        ->add('prenom')
+        
     ;
 
     $builder->get('roles')

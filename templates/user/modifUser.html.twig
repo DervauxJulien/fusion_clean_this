@@ -1,0 +1,12 @@
+{% block body %}
+
+{{form_start(form)}}
+{{form_widget(form.nom)}}
+{{form_widget(form.prenom)}}
+{{form_widget(form.username)}}
+{{form_widget(form.roles)}}
+<input type="submit" value="Modifier">
+{{form_end(form)}}
+
+
+{% endblock  %}           

@@ -18,11 +18,22 @@ class UserController extends AbstractController
 {
     // Affichage des Utilisateur
     #[Route('/', name: 'app_gestion_utilisateur')]
-    public function index(UserRepository $userRepository): Response
+    public function index(EntityManagerInterface $entityManager, Request $request, User $user, UserRepository $userRepository): Response
     {
-        
+        $form = $this->createForm(ModifUserFormType::class, $user);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $entityManager->flush();
+
+            $this->addFlash('success', "L'utilisateur {$user->getUsername()} a bien été modifier.");
+            return $this->redirectToRoute('app_gestion_utilisateur');
+
+        }
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
+            'form' => $form
         ]);
     }
 
@@ -59,26 +70,6 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/modifF', name: 'app_gestion_utilisateur_modifF')]
-    public function modifF(User $user, EntityManagerInterface $entityManager, Request $request): Response
-    {
-        $form = $this->createForm(ModifUserFormType::class, $user);
-        $form->handleRequest($request);
-
-        if($form->isValid() && $form->isSubmitted())
-        {
-
-            $entityManager->flush();
-
-            $this->addFlash('success', "L'utilisateur {$user->getUsername()} a bien été ajouter.");
-            return $this->redirectToRoute('app_gestion_utilisateur');
-
-        }
-        return $this->render('user/modifUser.html.twig', [
-            'users' => $user,
-            'modifF' => $form->createView(),
-        ]);
-    }
 
 
     // Modification du roles utilisateur vers Senior
