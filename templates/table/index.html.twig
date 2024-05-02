@@ -19,8 +19,8 @@
     <tbody>
         {% for user in users %}
         <tr>
-            <td>{{ user.nom }} {{ user.prenom }}</td>
-            <td>
+            <td class='user' >{{ user.nom }} {{ user.prenom }}</td>
+            <td class='role' >
                 {% if 'ROLE_EXPERT' in user.roles %}
                     <span id="colEx">Expert</span>
                 {% elseif 'ROLE_SENIOR' in user.roles %}

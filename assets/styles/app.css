@@ -175,14 +175,13 @@ footer p{
     text-align: center;
     font-size: 4rem;
     margin-top: 2%;
-    /* border: solid red; */
 }
 
 /*defillement de la page */
 
 .scrollable-content {
     overflow-y: auto; /* Activer le défilement vertical si nécessaire */
-    max-height: calc(100vh - 100px); /* Hauteur maximale de la zone de défilement */
+    max-height: calc(100vh - 50px); /* Hauteur maximale de la zone de défilement */
     /* 100px est une estimation de la hauteur de votre en-tête, ajustez-la si nécessaire */
 }
 
@@ -193,12 +192,13 @@ footer p{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-bottom: 5%;
-    margin-top: 5%;
+    margin-bottom: 3%;
+    margin-top: 3%;
 }
 
 .salesContainer1{
     width: 20%;
+    height: 15%;
     border: 5px solid #FAEBDA;
     border-radius: 0 0 50px 0;
     background-color: #FAEBDA;
@@ -206,6 +206,7 @@ footer p{
 }
 .salesContainer2{
     width: 20%;
+    height: 15%;
     border: 5px solid #ADD8CD;
     border-radius: 0 0 50px 0;
     background-color: #ADD8CD;
@@ -213,6 +214,7 @@ footer p{
 }
 .salesContainer3{
     width: 20%;
+    height: 15%;
     border: 5px solid #0A9672;
     border-radius: 0 0 50px 0;
     background-color: #0A9672;
@@ -220,27 +222,27 @@ footer p{
 }
 
 .titreContainer{
-    font-size: 19px;
+    font-size: 1.9rem;
     text-align: center;
     font-weight: bold;
 }
 
 .titreContainer3{
-    font-size: 19px;
+    font-size: 1.9rem;
     text-align: center;
     font-weight: bold;
     color: #FBF3F3;
 }
 
 .chiffreContainer{
-    font-size: 50px;
+    font-size: 3.125rem;
     font-weight: bold;
     text-align: right;
     padding-right: 10%;
 }
 
 .chiffreContainer3{
-    font-size: 50px;
+    font-size: 3.125rem;
     font-weight: bold;
     text-align: right;
     padding-right: 10%;
@@ -253,7 +255,7 @@ footer p{
 
 .salesBottom{
     display: flex;
-    font-size: 50px;
+    font-size: 3.125rem;
     border-radius:0 0 50px 0;
     background-color: #FDFDFD;
     display: flex;
@@ -279,6 +281,7 @@ footer p{
 }
 
 /* Styles généraux pour la table */
+
 .tableChiffre {
     width: 87%;
     border-collapse: collapse;
@@ -287,38 +290,32 @@ footer p{
     border-right: 4px solid #FAEBDA;
 }
 
-.name{
-    font-size: 19px;
-}
 
 .tableChiffre th, .tableChiffre td {
     border-top: 4px solid #FAEBDA;
     border-bottom: 4px solid #FAEBDA;
     background-color: #fffdfd;
-    padding: 8px;
+    padding: 0.5rem;
     text-align: left;
     padding-left: 2%;
+
 }
 
 .tableChiffre th {
     background-color: #f2f2f2;
-    font-size: 19px;
-
+    font-size: 1.9rem;
 }
 
 .objectiveColumn, .realisation {
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: bold;
     text-align: end;
 
 }
 
-.operation{
-    font-weight: bold;
-    font-size: 19px;
-    text-align: center;
+.user{
+    font-size: 1.3rem;
 }
-
 
 
 /* Style pour la colonne "Statut" en fonction du statut */
@@ -326,33 +323,37 @@ footer p{
     font-weight: bold;
 }
 
+.role{
+    font-size: 1.4rem;
+}
+
 .status-column.expert {
     color: #3B3355;
-    font-size: 19px;
 }
 
 .status-column.senior {
     color: #007557;
-    font-size: 19px;
 }
 
 .status-column.apprenti {
     color: #43CAA9;
-    font-size: 19px;
 }
 
+
 /* Styles pour les colonnes "Objectif" et "Réalisation" */
+
 .objectiveColumn {
     text-align: right;
 }
 
 /* Styles pour la barre de progression */
+
 .progress-container {
     width: 100%;
     background-color: #FAEBDA;
     height: 30px;
     border-radius: 50px;
-    margin-top: 20px;
+    margin-top: 1.25rem;
 }
 
 .progress-bar {
@@ -381,7 +382,6 @@ footer p{
 }
 
 
-
 /* body chiffre affaire */
 
 .chiffre-affaire-body{
@@ -393,13 +393,13 @@ footer p{
 
 
 .objectiveColumn {
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: bold;
 }
 
 .operation{
     font-weight: bold;
-    font-size: 19px;
+    font-size: 1.7rem;
 }
 
 /* Style pour la colonne "Statut" en fonction du statut */
@@ -409,17 +409,17 @@ footer p{
 
 .status-column.expert {
     color: #3B3355;
-    font-size: 19px;
+    font-size: 1.19rem;
 }
 
 .status-column.senior {
     color: #007557;
-    font-size: 19px;
+    font-size: 1.19rem;
 }
 
 .status-column.apprenti {
     color: #43CAA9;
-    font-size: 19px;
+    font-size: 1.19rem;
 }
 
 /* Styles pour les colonnes "Objectif" et "Réalisation" */
@@ -431,9 +431,9 @@ footer p{
 .progress-container {
     width: 100%;
     background-color: #FAEBDA;
-    height: 30px;
-    border-radius: 50px;
-    margin-top: 20px;
+    height: 2rem;
+    border-radius: 3.125rem;
+    margin-top: 1.25rem;
 }
 
 .progress-bar {
