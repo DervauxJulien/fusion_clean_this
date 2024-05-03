@@ -10,13 +10,10 @@
 		{% include "/layout/operations_nav.html.twig" %}
 	</header>
 
-	<div class='card d-flex flex-wrap '>
+	<div class="container  min-vh-100">
+
 
 		{{form_start(form)}}
-		<div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
-			<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
-			<br><br>
-		</div>
 		{{form_row(form.type)}}
 		{{form_row(form.description_op)}}
 
