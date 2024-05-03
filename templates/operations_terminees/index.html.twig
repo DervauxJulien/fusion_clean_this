@@ -3,18 +3,17 @@
 {% block title %}Operations terminées{% endblock %}
 
 {% block body %}
-
 <div class="scrollable-content">
     <header>
         {% include "/layout/navbar.html.twig" %}
         {% include "/layout/operations_nav.html.twig" %}
     </header>
-
     <body class="operations-terminees-body">
         <h1 class='titreOperationsTerminees'>Operations terminées</h1>
-        <hr style="height: 0.2rem; color: black; border-style: solid;">
-    
-    {{ render(controller('App\\Controller\\TableOpTermineesController::table_op_termineesIndex')) }}
+        {# <h2 class="text-center mt-5">Operations terminées</h2> #}
+
+        <br><br>
+        {{ render(controller('App\\Controller\\TableOpTermineesController::table_op_termineesIndex')) }}
     </body>
 </div>
 {% endblock %}
