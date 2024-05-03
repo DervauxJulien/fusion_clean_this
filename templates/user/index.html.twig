@@ -23,7 +23,7 @@
             <th>Action</th>
         </tr>
     {% for user in users %}
-    <tr>
+    <tr id="{{user.id}}">
         <td>{{user.nom}}</td>
         <td>{{user.prenom}}</td>
         <td>{{user.username}}</td>
@@ -41,23 +41,9 @@
     </td>
         <td class="w-25">
             <div class="d-flex align-items-center justify-content-around">
-                {# D'apres le role de l'utilisateur, il y aura des bouton different #}
                 <div>
-                    {% if ("ROLE_EXPERT" in user.roles) == false %}
-
-                        {% if ("ROLE_SENIOR" in user.roles) == false %}
-
-                            <a onclick="return confirm('Voulez-vous vraiment promoter cet utilisateur ?')" href="{{path('app_gestion_utilisateur_modifS' , {'id':user.id}) }}" class="btn btn-outline-warning">Définir comme SENIOR</a>
-
-                        {% else %}
-
-                            <a onclick="return confirm('Voulez-vous vraiment demoter cet utilisateur ?')" href="{{path('app_gestion_utilisateur_modifA' , {'id':user.id}) }}" class="btn btn-outline-warning">Définir comme APPRENTI</a>
-
-                        {% endif %}
-                
-                    {% endif %}
+                    <a href="{{path('app_gestion_utilisateur_modifF' , {'id':user.id}) }}" class="btn btn-outline-warning">Modifier Utilisateur</a>
                 </div>
-                {# Bouton suppression utilisateur(l'Expert n'est pas inclu) #}
                     <div>
 
                     {% if ("ROLE_EXPERT" in user.roles) == false %}
@@ -69,11 +55,12 @@
                     </div>
         </div>
         </td>
-            
-        {% endfor %}
+        
     </tr>
+    {% endfor %}
     </table>
 
-</div>
+<!-- Modal -->
+
 
 {% endblock %}

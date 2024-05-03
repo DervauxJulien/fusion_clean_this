@@ -15,22 +15,25 @@ class TableOpTermineesController extends AbstractController
     public function table_op_termineesIndex(ClientRepository $clientRepository, OperationRepository $operationRepository): Response
     {
         $clients = $clientRepository->findAll();
-        $operation = $operationRepository->FindAll();
+        $operations = $operationRepository->findAll();
         $stockOperation = $operationRepository->findAll();
-        // $stockCli = $clientRepository->findAll();
-
     
-
-
+        $operationDetails = [];
+    
+        foreach ($operations as $operation) {
+            $user = $operation->getUser(); 
+            $operationDetails[] = [
+                'nom_utilisateur' => $user ? $user->getNom() : 'Utilisateur inconnu',
+            ];
+        }
+    
         return $this->render('table_op_terminees/index.html.twig', [
             'clients' => $clients,
             'stockOperation' => $stockOperation,
-            // 'stockCli' => $stockCli,
-            'stringType' => $operationRepository->find(''),
-
+            'operationDetails' => $operationDetails,
         ]);
     }
-}
+    }
 
 
 

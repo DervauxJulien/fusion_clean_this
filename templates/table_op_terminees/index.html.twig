@@ -1,42 +1,7 @@
-
 {% block body %}
-{# <table class='tableOpTerminees'>
-    <thead class='teteOpTerm'>
-        <tr>
-            <th>#</th>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Adresse</th>
-            <th>CP</th>
-            <th>Ville</th>
-            <th>Tarif</th>
-            <th>Date prévue</th>
-            <th>Intervenant</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        {%for client in clients %}
-            <td>{{client.id}}</td>
-            <td>{{client.nom}}</td>
-            <td>{{client.prenom}}</td>
-            <td>{{client.Adresse}}</td>
-            <td>CP</td>
-            <td>Ville</td>
-            <td>Tarif</td>
-            <td>Date</td>
-            <td>Intervenant</td>
-            <td></td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table> #}
-
-
 
 <div class="container min-vh-100">
-    <table class="table table-hover table-striped border-2 mt-5 ">
+    <table class="table table-hover table-striped border-2 mt-5">
         <thead class='bg-violet'>
             <tr>
                 <th class="center-table" scope="col">#</th>
@@ -44,7 +9,7 @@
                 <th class="center-table" scope="col">PRENOM CLIENT</th>
                 <th class="center-table" scope="col">ADRESSE</th>
                 <th class="center-table" scope="col">CP</th>
-                <th class="center-table" scope="col">VIlle</th>
+                <th class="center-table" scope="col">VILLE</th>
                 <th class="center-table" scope="col">TARIF</th>
                 <th class="center-table" scope="col">DATE</th>
                 <th class="center-table" scope="col">INTERVENANT</th>
@@ -52,25 +17,22 @@
             </tr>
         </thead>
         <tbody>
-        {# <pre>
-            {{ dump(stockOperation) }}
-        </pre> #}
             {% for operation in stockOperation %}
-             {% if operation.status == "Realisé" %}
-                <tr>
-                    <td class="center-table">{{operation.client.id}}</td>
-                    <td class="center-table">{{ operation.client.nom }}</td>
-                    <td class="center-table">{{ operation.client.prenom }}</td>
-                    <td class="center-table">{{ operation.adresse.getNRue() }} {{ operation.adresse.getNomRue() }}</td>
-                    <td class="center-table">{{ operation.adresse.cp }}</td>
-                    <td class="center-table">{{ operation.adresse.getNomVille }}</td>
-                    <td class="center-table">{{ operation.tarif }}</td>
-                    <td class="center-table">{{ operation.dateCreation ? operation.dateCreation|date('Y-m-d') }}</td>
-                    <td class="center-table">Test</td>
-                    <td class="center-table">
-                        <a onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')" href="{{ path('app_remove_operation', {'id': operation.id}) }}" class="btn btn-danger">Facture Pdf</a>
-                    </td>
-                </tr>
+                {% if operation.status == "Realisé" %}
+                    <tr style="height: 50px;"> {# Définir la hauteur de la ligne #}
+                        <td class="center-table">{{ operation.client.id }}</td>
+                        <td class="center-table">{{ operation.client.nom }}</td>
+                        <td class="center-table">{{ operation.client.prenom }}</td>
+                        <td class="center-table">{{ operation.adresse.getNRue() }} {{ operation.adresse.getNomRue() }}</td>
+                        <td class="center-table">{{ operation.adresse.cp }}</td>
+                        <td class="center-table">{{ operation.adresse.getNomVille }}</td>
+                        <td class="center-table">{{ operation.tarif }}</td>
+                        <td class="center-table">{{ operation.dateCreation ? operation.dateCreation|date('Y-m-d') }}</td>
+                        <td class="center-table">{{ operation.user.nom }} {{operation.user.prenom}}</td>
+                        <td class="center-table">
+                            <a href="{{ path('app_generate_pdf', {'id': operation.id}) }}" class="btn-style">Facture PDF</a>
+                        </td>
+                    </tr>
                 {% endif %}
             {% endfor %}
         </tbody>
