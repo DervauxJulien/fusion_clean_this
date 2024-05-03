@@ -23,7 +23,7 @@
             <th>Action</th>
         </tr>
     {% for user in users %}
-    <tr>
+    <tr id="{{user.id}}">
         <td>{{user.nom}}</td>
         <td>{{user.prenom}}</td>
         <td>{{user.username}}</td>
@@ -42,11 +42,7 @@
         <td class="w-25">
             <div class="d-flex align-items-center justify-content-around">
                 <div>
-                    {# <a href="{{path('app_gestion_utilisateur_modifF' , {'id':user.id}) }}" class="btn btn-outline-warning">Modifier Utilisateur</a> #}
-                    {# <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#modalModif{{ user.id }}">Modifier</button> #}
-                    <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exampleModal{{user.id}}">
-                        Modifier Utilisateur
-                      </button>
+                    <a href="{{path('app_gestion_utilisateur_modifF' , {'id':user.id}) }}" class="btn btn-outline-warning">Modifier Utilisateur</a>
                 </div>
                     <div>
 
@@ -66,28 +62,5 @@
 
 <!-- Modal -->
 
-{% for user in users %}
-<div class="modal fade" id="exampleModal{{user.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier Utilisateur</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            {{form_start(form)}}
-            {{ form_widget(form.nom, { 'value': user.nom }) }}
-            {{ form_widget(form.prenom, { 'value': user.prenom }) }}
-            {{ form_widget(form.username, { 'value': user.username }) }}
-            {{form_widget(form.roles)}}
-            <input type="submit" value="Modifier">
-            {{form_end(form)}}
-            
-        </div>
-      </div>
-    </div>
-    
-  </div>
-{% endblock %}
-  {% endblock %}
 
+{% endblock %}
