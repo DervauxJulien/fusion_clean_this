@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-    
+
 class AddOperationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -18,9 +18,6 @@ class AddOperationFormType extends AbstractType
         $builder
 
             ->add('description_op')
-            // ->add('adresse_id', EntityType::class,[
-            //     'class'=>Adresse::class,
-            // ])
             ->add('type', ChoiceType::class, [
                 'choices' => [
                     'Petite' => 'petit',

@@ -669,3 +669,10 @@ footer p{
     background-repeat: no-repeat;
     height: 20rem;
 }
+
+/* class pour centrer element dans tableau */
+
+.center-table{
+    text-align: center;
+    vertical-align: middle;
+}
