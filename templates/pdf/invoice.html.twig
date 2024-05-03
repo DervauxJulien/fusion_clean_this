@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Facture</title>
+    <style>
+        /* Styles CSS pour la mise en forme de la facture */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .invoice-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .invoice-details {
+            margin-bottom: 20px;
+        }
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .invoice-table th, .invoice-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .invoice-footer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenu de la facture -->
+    <table>
+        <thead>
+            <!-- En-têtes de tableau -->
+        </thead>
+        <tbody>
+            {% for operation in operations %}
+                <tr>
+                    <!-- Affichage des propriétés de chaque opération -->
+                    <td>{{ operation.id }}</td>
+                    <td>{{ operation.getClient().getNom() }}</td>
+                    <!-- Ajoutez d'autres colonnes selon vos besoins -->
+                    
+                    <!-- Affichage des articles associés à l'opération -->
+                    {% for item in operation.getItems() %}
+                        <td>{{ item.nom }}</td>
+                        <td>{{ item.prix }}</td>
+                        <!-- Ajoutez d'autres colonnes selon les propriétés de vos articles -->
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

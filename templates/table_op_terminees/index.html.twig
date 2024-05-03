@@ -19,7 +19,7 @@
         <tbody>
             {% for operation in stockOperation %}
                 {% if operation.status == "Realisé" %}
-                    <tr style="height: 50px;"> {# Définir la hauteur de la ligne #}
+                    <tr style="height: 3.125rem;">
                         <td class="center-table">{{ operation.client.id }}</td>
                         <td class="center-table">{{ operation.client.nom }}</td>
                         <td class="center-table">{{ operation.client.prenom }}</td>
@@ -30,7 +30,7 @@
                         <td class="center-table">{{ operation.dateCreation ? operation.dateCreation|date('Y-m-d') }}</td>
                         <td class="center-table">{{ operation.user.nom }} {{operation.user.prenom}}</td>
                         <td class="center-table">
-                            <a href="{{ path('app_generate_pdf', {'id': operation.id}) }}" class="btn-style">Facture PDF</a>
+                        <a href="{{ path('app_generate_pdf', {'id': operation.id}) }}" class="btn-style">Facture PDF</a>
                         </td>
                     </tr>
                 {% endif %}
