@@ -11,35 +11,35 @@
 	<div class="container  min-vh-100">
 		<h2 class="text-center mt-5">Ajouter des opérations
 		</h2>
-		<table class="table table-hover table-striped border-2 mt-5 ">
+		<table class="table table-bordered table-hover table-striped border-2 mt-5 center-table">
 			<thead>
 				<tr>
-					<th class="center-table" scope="col">DATE DEMANDE</th>
-					<th class="center-table" scope="col">NOM CLIENT</th>
-					<th class="center-table" scope="col">PRENOM CLIENT</th>
-					<th class="center-table" scope="col">E-MAIL CLIENT</th>
-					<th class="center-table" scope="col">N°/NOM RUE</th>
-					<th class="center-table" scope="col">CP</th>
-					<th class="center-table" scope="col">VILLE</th>
-					<th class="center-table" scope="col">IMAGE</th>
-					<th class="center-table" scope="col">DESCRIPTION</th>
-					<th class="center-table" scope="col">VALIDER</th>
-					<th class="center-table" scope="col">SUPPRIMER</th>
+					<th class="" scope="col">DATE DEMANDE</th>
+					<th class="" scope="col">NOM CLIENT</th>
+					<th class="" scope="col">PRENOM CLIENT</th>
+					<th class="" scope="col">E-MAIL CLIENT</th>
+					<th class="" scope="col">N°/NOM RUE</th>
+					<th class="" scope="col">CP</th>
+					<th class="" scope="col">VILLE</th>
+					<th class="" scope="col">IMAGE</th>
+					<th class="" scope="col">DESCRIPTION</th>
+					<th class="" scope="col">VALIDER</th>
+					<th class="" scope="col">SUPPRIMER</th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for operation in stockOp %}
 				{# {{dump(operation)}} #}
 					<tr>
-						<th class="center-table" scope="row">0/0/0</th>
-						<td class="center-table">{{operation.client.nom}}</td>
-						<td class="center-table">{{operation.client.prenom}}</td>
-						<td class="center-table">{{operation.client.email}}</td>
-						<td class="center-table">{{operation.adresse.getNRue()}}
+						<th class="">0/0/0</th>
+						<td class="">{{operation.client.nom}}</td>
+						<td class="">{{operation.client.prenom}}</td>
+						<td class="">{{operation.client.email}}</td>
+						<td class="">{{operation.adresse.getNRue()}}
 							{{operation.adresse.getNomRue()}}</td>
-						<td class="center-table">{{operation.adresse.cp}}</td>
-						<td class="center-table">{{operation.adresse.getNomVille}}</td>
-						<td class="center-table">
+						<td class="">{{operation.adresse.cp}}</td>
+						<td class="">{{operation.adresse.getNomVille}}</td>
+						<td class="">
 							<button type="button">Voir les images</button>
 							{# <div class="modal" tabindex="-1">
 								<div class="modal-dialog">
@@ -59,7 +59,7 @@
 								</div>
 							</div> #}
 						</td>
-						<td class="center-table">
+						<td class="">
 							<div class="accordion">
 								<div class="accordion-item">
 									<h2 class="accordion-header">
@@ -73,8 +73,8 @@
 								</div>
 							</div>
 						</td>
-						<td class="center-table">
-							<a href="{{ path('app_edit_operation', {'id': operation.id}) }}" class="btn btn-primary">Modifier</a>
+						<td class="">
+							<a href="{{ path('app_edit_operation', {'id': operation.id}) }}" class="btn btn-primary">Vérifier</a>
 						</td>
 						<td class="center-table">
 							<a onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')" href="{{path('app_remove_operation' , {'id':operation.id}) }}" class="btn btn-danger ">Supprimer</a>

@@ -10,25 +10,21 @@
 		{% include "/layout/operations_nav.html.twig" %}
 	</header>
 
-	<div class="container  min-vh-100">
-
-
-		{{form_start(form)}}
-		{{form_row(form.type)}}
-		{{form_row(form.description_op)}}
-
-		<div class='card-body bg-black text-white '>
-			<img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
-			<h3>Localisation</h3>
-			{# {{stockOp.getAdresse()}} #}
+	<div class="container min-vh-100 ">
+		<div class="card pt-2" id="createUser">
+			<div class="card-head">
+			<h2>Formulaire de validation</h2>
+				{{form_start(form)}}
+				{{form_label(form.description_op, 'Entrez votre nouvelle description :')}}
+				{{form_widget(form.description_op,{'attr':{'class': 'form form-control', 'label' : 'Description'}})}}
+				{{form_label(form.description_op, "Choisissez le type d'opération :")}}
+				{{form_widget(form.type,{'attr':{'class': 'form form-control'}})}}
+				<div class="d-flex justify-content-center ">
+				<input class="btn-style mt-5  " type="submit" value="Valider">
+				</div>
+			</div>
+			{{form_end(form)}}
 		</div>
-		<div>
-			<h4>Descriptif</h4>
-		</div>
-		<div>
-			{# {{stockOp.getDescriptionOp()}} #}
-		</div>
-		{{form_end(form)}}
 	</div>
 
 

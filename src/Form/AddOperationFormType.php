@@ -25,13 +25,6 @@ class AddOperationFormType extends AbstractType
                     'Custom' => 'custom',
                 ],
             ])
-            // ->add('date_creation',TypeDateTimeType::class,[
-            //     'widget' => 'single_text',
-            //     'data' => new \DateTime()
-            // ])
-            ->add('submit', SubmitType::class,[
-                'label' => 'Envoyer'
-            ])
         ;
     }
 
