@@ -6,14 +6,12 @@
 
 
 <div class='lotContainer'>
-<div class="salesContainer1">
 
+<div class="salesContainer1">
     <div class="salesTop">
         <h2 class='titreContainer'>ANNEE EN COURS</h2>
         <p class='chiffreContainer'><span class="euroSymbol">€</span> {{ currentYearSales }}</p>
     </div>
-    <pre>
-    </pre>
 
     <div class="salesBottom" >
         <img src="/images/icons/Positive Dynamic.svg" alt="iconeSales">
@@ -21,6 +19,7 @@
     </div>
 
 </div>
+
 <div class="salesContainer2">
     <div class="salesTop">
         <h2 class='titreContainer'>MOIS EN COURS</h2>
@@ -33,15 +32,18 @@
     </div>
 
 </div>
+
 <div class="salesContainer3">
     <div class="salesTop">
         <h2 class='titreContainer3'>OBJECTFS</h2>
         <p class='chiffreContainer3'><span class="euroSymbol3">€</span> {{ objectif }}</p>
     </div>
+    
     <div class="salesBottom" >
 <img src="/images/icons/Positive Dynamic.svg" alt="iconeSales">
         <p class='percentage'>+ {{ percentageObjectif }} %</p>
     </div>
 </div>
+
 </div>
 {% endblock %}

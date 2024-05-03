@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Adresse;
 use App\Entity\Operation;
 use App\Form\AddOperationFormType;
+use App\Repository\AdresseRepository;
 use App\Repository\ClientRepository;
 use App\Repository\OperationRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -12,9 +14,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('admin/operation')]
 class AddOperationController extends AbstractController
+
 {
-    #[Route('/add/operation', name: 'app_add_operation')]
+    #[Route('/add', name: 'app_add_operation')]
     public function index(OperationRepository $operationRepository, Request $request, EntityManagerInterface $entityManager, ClientRepository $clientRepository): Response
     {
 
@@ -31,14 +35,14 @@ class AddOperationController extends AbstractController
         $form->handleRequest($request);
 
         // Je check si le formulaire est soumis et valide
+
         if ($form->isSubmitted() && $form->isValid()) {
             $stock->setStatus('A faire');
-            // $stock->setAdresse();
             $entityManager->persist($stock);
             $entityManager->flush();
 
             // Redirection vers une route valide
-            return $this->redirectToRoute('app_home'); // Remplacez 'app_home' par le nom de votre route valide
+            return $this->redirectToRoute('app_add_operation'); 
         }
         
         // J'affiche le form dans ma vue
@@ -50,7 +54,7 @@ class AddOperationController extends AbstractController
         ]);
     }
 
-    #[Route('/edit/operation/{id}', name: 'app_edit_operation')]
+    #[Route('/edit/{id}', name: 'app_edit_operation')]
     public function editOperation(OperationRepository $operationRepository, Operation $operation, Request $request, EntityManagerInterface $entityManager): Response
     {
         // Créez un formulaire de modification pour l'opération spécifique
@@ -71,7 +75,7 @@ class AddOperationController extends AbstractController
     
             // Redirigez l'utilisateur vers une autre page après la modification
 
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_add_operation');
         }
     
         // Affichez le formulaire de modification dans votre vue Twig
@@ -79,5 +83,17 @@ class AddOperationController extends AbstractController
             'form' => $form->createView(),
             'stockOp' => $stockOp,
         ]);
+    }
+
+    #[Route('/{id}/remove', name: 'app_remove_operation')]
+    public function remove(Operation $operation, EntityManagerInterface $entityManager): Response
+    {
+        $this->addFlash('danger', "L'utilisateur {$operation->getId()} a bien été supprimer.");
+
+        $entityManager->remove($operation);
+        $entityManager->flush();
+
+        
+        return $this->redirectToRoute('app_add_operation');
     }
 }

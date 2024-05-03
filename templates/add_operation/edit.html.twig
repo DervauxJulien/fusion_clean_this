@@ -10,27 +10,29 @@
 		{% include "/layout/operations_nav.html.twig" %}
 	</header>
 
-<div class='card d-flex flex-wrap '>
-					<h2 class="d-flex justify-content-center ">{{stockOp.type}}</h2>
-					<div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
-						<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
-						<br><br>
-					</div>
-					<div class='card-body bg-black text-white '>
-						<img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
-						<h3>Localisation</h3>
-						{{stockOp.getAdresse()}}
-					</div>
-					<div>
-						<h4>Descriptif</h4>
-					</div>
-					<div>
-						{{stockOp.getDescriptionOp()}}
-					</div>
-						<div>
-						<a href="{{ path('app_edit_operation', {'id': operation.id}) }}" class="btn btn-primary">Modifier</a>
-						</div>
-				</div>
+	<div class='card d-flex flex-wrap '>
 
-	
-	{% endblock %}
+		{{form_start(form)}}
+		<div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
+			<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
+			<br><br>
+		</div>
+		{{form_row(form.type)}}
+		{{form_row(form.description_op)}}
+
+		<div class='card-body bg-black text-white '>
+			<img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
+			<h3>Localisation</h3>
+			{# {{stockOp.getAdresse()}} #}
+		</div>
+		<div>
+			<h4>Descriptif</h4>
+		</div>
+		<div>
+			{# {{stockOp.getDescriptionOp()}} #}
+		</div>
+		{{form_end(form)}}
+	</div>
+
+
+{% endblock %}
