@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Table des opérations terminées{% endblock %}
+
+{% block body %}
+    <table class='tableOpTerminees'>
+        <thead class='teteOpTerm'>
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Adresse</th>
+                <th>CP</th>
+                <th>Ville</th>
+                <th>Tarif</th>
+                <th>Date prévue</th>
+                <th>Intervenant</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody> <!-- Placer la balise <tbody> ici -->
+            <tr>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>Test</td>
+                <td>{{test}}</td>
+                <td>Bouton</td>
+        
+            </tr>
+        </tbody> <!-- Fin de la balise <tbody> -->
+    </table>
+{% endblock %}
