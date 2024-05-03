@@ -10,16 +10,25 @@
  use Symfony\Component\OptionsResolver\OptionsResolver;
 
  class DemandeOperationFormType extends AbstractType{
-public function buildForm(FormBuilderInterface $builderClient, array $option){
+    
+public function buildForm(FormBuilderInterface $builder, array $option){
         $builder 
-        ->add('nom', Client::class)
-        ->add('prenom', Client::class)
-        ->add('email', Client::class)
-        ->add('N_rue', Adresse::class)
-        ->add('Nom_Rue', Adresse::class)
-        ->add('Nom_Ville', Adresse::class)
-        ->add('CP', Adresse::class)
-        ->add('description_Op', Operation::class)
-        ->add('img', Operation::class);
+        ->add('nom', ClientType::class)
+        // ->add('prenom', ClientType::class)
+        // ->add('email', ClientType::class)
+        ->add('N_rue', AdresseType::class)
+        // ->add('Nom_Rue', AdresseType::class)
+        // ->add('Nom_Ville', AdresseType::class)
+        // ->add('CP', AdresseType::class)
+        ->add('description_Op', OperationType::class);
+        // ->add('img', OperationType::class);
         
-    }}
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => CLientType::class,
+        ]);
+    }
+}

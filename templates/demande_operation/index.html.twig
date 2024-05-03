@@ -17,29 +17,12 @@
 			<b>Formulaire de demande d'opération :</b><br><br><br>
 		</h2>
 		{{form_start(createForm)}}
-			{{form_widget(createForm.client,{'attr':{'class': 'form form-control','placeholder': 'Nom'}})}} 
-			<br>
+			{{form_widget(createForm.nom,{'attr':{'class': 'form form-control','placeholder': 'Formulaire'}})}} 
+			{# <br>
 			{{form_widget(createForm.adresse,{'attr':{'class': 'form form-control','placeholder': 'Prenom'}})}}
 			<br>
-			{{form_widget(createForm.operation,{'attr':{'class': 'form form-control','placeholder': 'Email'}})}}
+			{{form_widget(createForm.operation,{'attr':{'class': 'form form-control','placeholder': 'Email'}})}} #}
 
-			<p>
-				<b>Adresse du site à nettoyer :</b>
-			</p>
-
-			<label for="Adresse">Numéro et nom de la rue :
-				<br>
-				<input type="text" name="adresse" id="" required></label>
-			<label for="CP">Code postal :
-				<br>
-				<input type="number" name="cp" id="" required></label>
-			<label for="Ville">Ville :
-				<br>
-				<input type="text" name="ville" id="" required></label>
-			<br><br>
-			<label for="Desc">Description de l'intervention :<br>
-				<input type="text" name="description" id=""></label><br><br>
-				
 				{# <label for="Photo">Photos du site à nettoyer : <br> #}
 				<div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
 			

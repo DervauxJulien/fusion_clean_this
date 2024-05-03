@@ -8,6 +8,7 @@ use App\Entity\Operation;
 use App\Form\AdresseType;
 use App\Form\ClientType;
 use App\Form\OperationType;
+use App\Form\DemandeOperationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,30 +27,9 @@ class DemandeOperationController extends AbstractController
     //     ]);
     // }
 
-    public function buildForm(FormBuilderInterface $builderClient, array $option){
-        $builder 
-        ->add('nom', Client::class)
-        ->add('prenom', Client::class)
-        ->add('email', Client::class)
-        ->add('N_rue', Adresse::class)
-        ->add('Nom_Rue', Adresse::class)
-        ->add('Nom_Ville', Adresse::class)
-        ->add('CP', Adresse::class)
-        ->add('description_Op', Operation::class)
-        ->add('img', Operation::class);
-        
-    }
-
-    public function configureOptions(OptionsResolver $resolver){
-        $resolver->setDefaults([
-            'data_class' => Client::class,
-            'data_class' => Adresse::class,
-            'data_class' => Operation::class
-        ]);
-    }
 
     #[Route('/demande/operation', name: 'app_demande_operation')]
-    public function validate(Request $request, EntityManagerInterface $em): Response
+    public function validate(EntityManagerInterface $em, Request $request): Response
     {
         $client = new Client();
         $adresse = new Adresse();
@@ -65,7 +45,7 @@ class DemandeOperationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // $data = $form->getData();
+            $data = $form->getData();
 
             // $em->persist($client);
             // $em->flush();
