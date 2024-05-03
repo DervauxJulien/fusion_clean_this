@@ -544,15 +544,15 @@ footer p{
     color: white;
     margin-top: 2%;
     margin-left: 35%;
-    padding-bottom: 2%;
-
-    width: 28%;
+    padding-bottom: 5%;
+    width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 10%;
     border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
     
 }
 #btn_val{
@@ -709,7 +709,41 @@ footer p{
 
 /* class pour centrer element dans tableau */
 
-.center-table{
+.center-table tr,td{
     text-align: center;
     vertical-align: middle;
 }
+
+
+/* Style btn  ------------------------------------------------------- */ 
+
+.btn-style {
+    background-color: #43CAA9;
+    padding: 14px 40px;
+    color:#fff;
+    /* text-transform: uppercase; */
+    /* letter-spacing: 2px;  */
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: .4s;
+   }
+   
+   .btn-style span:last-child {
+    display: none;
+   }
+   
+   .btn-style:hover {
+    transition: .4s;
+    border: 2px solid #43CAA9;
+    background-color: #fff;
+    color: #43CAA9;
+   }
+   
+   .btn-style:active {
+    background-color: #43CAA9;
+   }
+   
+   /* --------------------------------------------------------------------- */
+   

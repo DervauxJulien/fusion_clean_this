@@ -68,17 +68,21 @@ class AddOperationController extends AbstractController
     
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // Mettez à jour l'opération avec les nouvelles données
+            // mise à jour de "opération" avec les nouvelles données
+
+            $operation->setDateCreation(new \DateTime());
+
             $operation->setStatus('a faire'); 
     
             $entityManager->flush();
-    
-            // Redirigez l'utilisateur vers une autre page après la modification
 
             return $this->redirectToRoute('app_add_operation');
         }
     
-        // Affichez le formulaire de modification dans votre vue Twig
+        // Afficher le formulaire de modification dans la vue
+
+        
+
         return $this->render('add_operation/edit.html.twig', [
             'form' => $form->createView(),
             'stockOp' => $stockOp,
