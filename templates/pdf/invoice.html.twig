@@ -2,11 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Facture</title>
+    <title>Facture CleanThis</title>
     <style>
         /* Styles CSS pour la mise en forme de la facture */
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
         .invoice-header {
             text-align: center;
@@ -26,32 +28,43 @@
         }
         .invoice-footer {
             margin-top: 20px;
+            text-align: right;
+        }
+        .invoice-footer p {
+            margin: 0;
         }
     </style>
 </head>
 <body>
+    <!-- En-tête de la facture -->
+    <div class="invoice-header">
+        <h1>Facture CleanThis</h1>
+    </div>
+
     <!-- Contenu de la facture -->
-    <table>
+    <table class="invoice-table">
         <thead>
-            <!-- En-têtes de tableau -->
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Montant</th>
+                <th>Type opération</th>
+            </tr>
         </thead>
         <tbody>
-            {% for operation in operations %}
-                <tr>
-                    <!-- Affichage des propriétés de chaque opération -->
-                    <td>{{ operation.id }}</td>
-                    <td>{{ operation.getClient().getNom() }}</td>
-                    <!-- Ajoutez d'autres colonnes selon vos besoins -->
-                    
-                    <!-- Affichage des articles associés à l'opération -->
-                    {% for item in operation.getItems() %}
-                        <td>{{ item.nom }}</td>
-                        <td>{{ item.prix }}</td>
-                        <!-- Ajoutez d'autres colonnes selon les propriétés de vos articles -->
-                    {% endfor %}
-                </tr>
-            {% endfor %}
+            <tr>
+                <!-- Affichage des propriétés de chaque opération -->
+                <td>{{ operation.client.nom }}</td>
+                <td>{{ operation.client.prenom }}</td>
+                <td>{{ operation.tarif }} €</td>
+                <td>{{ operation.type }}</td>
+            </tr>
         </tbody>
     </table>
+
+    <!-- Pied de page de la facture -->
+    <div class="invoice-footer">
+        <p>Total à payer: {{ operation.tarif }} €</p>
+    </div>
 </body>
 </html>
