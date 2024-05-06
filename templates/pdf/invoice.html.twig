@@ -5,66 +5,122 @@
     <title>Facture CleanThis</title>
     <style>
         /* Styles CSS pour la mise en forme de la facture */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .invoice-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .invoice-details {
-            margin-bottom: 20px;
-        }
-        .invoice-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .invoice-table th, .invoice-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        .invoice-footer {
-            margin-top: 20px;
-            text-align: right;
-        }
-        .invoice-footer p {
-            margin: 0;
-        }
-    </style>
+/* Styles CSS pour la mise en forme de la facture */
+/* Styles CSS pour la mise en forme de la facture */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.header-left {
+    float: left;
+}
+.header-right {
+    float: right;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-right: 3%;
+}
+.invoice-header {
+    text-align: left;
+    margin-bottom: 20px;
+}
+.invoice-header h2 {
+    margin: 5px 0;
+}
+.adresseClient {
+    margin-bottom: 20px;
+    margin-left:60%;
+    padding-left: 10px;
+    border: solid 0.3px #43CAA9;
+    border-radius: 20px
+}
+.invoice-table {
+    margin-top: 20%;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.invoice-table th, .invoice-table td {
+    border: 1px solid #43CAA9;
+    padding: 8px;
+    text-align: left;
+}
+
+
+.invoice-table th {
+    background-color:#43CAA9;
+}
+
+.invoice-footer {
+    text-align: right;
+    font-weight: bold;
+    margin-right: 5%;
+    font-size: 20px;
+}
+.invoice-footer p {
+    margin: 0;
+}
+
+</style>
+
 </head>
 <body>
-    <!-- En-tête de la facture -->
-    <div class="invoice-header">
-        <h1>Facture CleanThis</h1>
-    </div>
+    <div class="container">
+        <!-- En-tête de la facture -->
+        <div class="invoice-header">
+            <div class="header-left">
+                <h2>CleanThis</h2>
+                <h3>15 Rue de l’essuie-tout</h3>
+                <h3>59000 SENT-BON</h3>
+                <h3>FRANCE</h3>
+            </div>
+            <div class="header-right">
+                <h2>Facture N° 2024-0500{{ operation.id }}</h2>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        
+        <!-- Informations sur le client -->
+        <div class="adresseClient">
+            <h2>{{ operation.client.nom }} {{ operation.client.prenom }}</h2>
+            <h3>{{ operation.client.adresse }}</h3>
+        </div>
 
-    <!-- Contenu de la facture -->
-    <table class="invoice-table">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Montant</th>
-                <th>Type opération</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <!-- Affichage des propriétés de chaque opération -->
-                <td>{{ operation.client.nom }}</td>
-                <td>{{ operation.client.prenom }}</td>
-                <td>{{ operation.tarif }} €</td>
-                <td>{{ operation.type }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <!-- Contenu de la facture -->
+        <table class="invoice-table">
 
-    <!-- Pied de page de la facture -->
-    <div class="invoice-footer">
-        <p>Total à payer: {{ operation.tarif }} €</p>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Type opération</th>
+                    <th>Montant</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>{{ operation.client.nom }}</td>
+                    <td>{{ operation.client.prenom }}</td>
+                    <td>{{ operation.type }} opération</td>
+                    <td>{{ operation.tarif }} €</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Pied de page de la facture -->
+        <div class="invoice-footer">
+            <p>Total à payer: {{ operation.tarif }} €</p>
+        </div>
     </div>
 </body>
 </html>
