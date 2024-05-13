@@ -52,8 +52,8 @@ public function generatePdfAction($id): Response
         'operation' => $operation,
     ]);
 
-      // Récupérer le nom du client
-      $clientName = $operation->getClient()->getNom();
+    // Récupérer le nom du client
+    $clientName = $operation->getClient()->getNom();
 
     // Charger le contenu HTML dans Dompdf
     $dompdf->loadHtml($html);
@@ -63,9 +63,6 @@ public function generatePdfAction($id): Response
 
     // Remplacer les caractères spéciaux dans le nom du client
      $clientName = str_replace([' ', '/'], '_', $clientName);
-
-    // Construire le nom du fichier PDF avec le nom du client
-     $fileName = $clientName . '_facture.pdf';
 
     // Envoyer le PDF en réponse
     return new Response($dompdf->output(), Response::HTTP_OK, [

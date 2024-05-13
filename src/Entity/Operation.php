@@ -219,10 +219,10 @@ class Operation
     /**
      * @return Collection|array
      */
-    public function getItems()
-    {
+    // public function getItems()
+    // {
 
-        return $this->items;
-    }
+    //     return $this->items;
+    // }
 
 }
