@@ -6,7 +6,12 @@
 	<header>
 		{% include "/layout/navbar.html.twig" %}
 		{% include "/layout/operations_nav.html.twig" %}
+   		{% include "layout/_flash_message.html.twig" %}
+
 	</header>
+	<div>
+	{{dump(stockWaitOp)}}
+	</div>
 	<div class="container  min-vh-100">
 		<h2 class="text-center mt-5">Ajouter des opérations
 		</h2>

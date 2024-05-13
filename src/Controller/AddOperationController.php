@@ -26,6 +26,8 @@ class AddOperationController extends AbstractController
 
         $stockCli = $clientRepository->findAll();
         $stockOp = $operationRepository->findAll();
+        $stockWaitOp = $operationRepository->findByStatus($operationRepository->getStatus());
+        
 
         // Création d'une nouvelle instance d'Operation en dehors de la boucle
         $stock = new Operation();
@@ -53,6 +55,7 @@ class AddOperationController extends AbstractController
             'stockOp' => $stockOp,
             'form' => $form->createView(),
             'stock' => $stock,
+            'stockWaitOp' =>  $stockWaitOp
         ]);
     }
 
@@ -63,6 +66,7 @@ class AddOperationController extends AbstractController
         $stockOp = $operationRepository->find($id);
         $adresse = $adresseRepository->find($id);
         $client = $clientRepository->find($id);
+
 
         $form = $this->createForm(AddOperationFormType::class, $operation);
     
@@ -77,7 +81,8 @@ class AddOperationController extends AbstractController
             $operation->setDateCreation(new \DateTime());
 
             $operation->setStatus('a faire'); 
-    
+
+
             $entityManager->flush();
 
             return $this->redirectToRoute('app_add_operation');
@@ -85,8 +90,7 @@ class AddOperationController extends AbstractController
     
         // Afficher le formulaire de modification dans la vue
 
-        
-
+    
         return $this->render('add_operation/edit.html.twig', [
             'form' => $form->createView(),
             'stockOp' => $stockOp,
@@ -98,7 +102,7 @@ class AddOperationController extends AbstractController
     #[Route('/{id}/remove', name: 'app_remove_operation')]
     public function remove(Operation $operation, EntityManagerInterface $entityManager): Response
     {
-        $this->addFlash('danger', "L'utilisateur {$operation->getId()} a bien été supprimer.");
+        $this->addFlash('danger', "La demande n° {$operation->getId()} a bien été supprimée.");
 
         $entityManager->remove($operation);
         $entityManager->flush();
