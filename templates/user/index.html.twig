@@ -45,13 +45,7 @@
                     <a href="{{path('app_gestion_utilisateur_modifF' , {'id':user.id}) }}" class="btn btn-outline-warning">Modifier Utilisateur</a>
                 </div>
                     <div>
-
-                    {% if ("ROLE_EXPERT" in user.roles) == false %}
-
                     <a onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')" href="{{path('app_gestion_utilisateur_remove' , {'id':user.id}) }}" class="btn"><img src="/images/icons/suppr.svg" alt="icone suppr" width="85%"></a>
-
-                    {% endif %}
-
                     </div>
         </div>
         </td>
