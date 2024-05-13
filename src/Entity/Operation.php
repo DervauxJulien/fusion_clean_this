@@ -215,4 +215,14 @@ class Operation
 
         return $this;
     }
+
+    /**
+     * @return Collection|array
+     */
+    public function getItems()
+    {
+
+        return $this->items;
+    }
+
 }
