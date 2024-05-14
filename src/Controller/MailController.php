@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
-use Symfony\Component\HttpFoundation\Request;
+// use Symfony\Component\HttpFoundation\Request;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use App\Repository\OperationRepository;
@@ -18,7 +18,7 @@ use App\Repository\OperationRepository;
 class MailController extends AbstractController
 {
     #[Route('/generate-pdf-and-send-email/{id}', name: 'app_generate_pdf_and_send_email')]
-    public function generatePdfAndSendEmail($id, MailerInterface $mailer, OperationRepository $operationRepository, Request $request): Response
+    public function generatePdfAndSendEmail($id, MailerInterface $mailer, OperationRepository $operationRepository): Response
     {
         // Récupérer l'opération depuis la base de données
         $operation = $operationRepository->find($id);
@@ -59,7 +59,7 @@ class MailController extends AbstractController
 
         // Envoyer le PDF par e-mail
         $email = (new Email())
-        ->from('hello@example.com')
+        ->from('mailtrap@example.com')
         ->to('you@example.com')
         ->cc('franck.lamyformationafpa@gmail.com')
         ->subject('Votre facture')
@@ -69,17 +69,13 @@ class MailController extends AbstractController
         // Envoyer l'e-mail
         $mailer->send($email);
 
-        // Rediriger l'utilisateur ou afficher un message de succès
 
         // Retourner une réponse
         return $this->render('mail/index.html.twig', [
             'controller_name' => 'MailController',
         ]);
-            // Envoyer le PDF en réponse
-    return new Response($dompdf->output(), Response::HTTP_OK, [
-        'Content-Type' => 'application/pdf',
-        'Content-Disposition' => 'attachment; filename="Facture_CleanThis_' . $clientName . '.pdf"',
-    ]);
+
+
 
     }
 }

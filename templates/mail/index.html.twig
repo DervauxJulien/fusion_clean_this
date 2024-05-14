@@ -3,18 +3,18 @@
 {% block title %}Hello MailController!{% endblock %}
 
 {% block body %}
+    <header>
+        {% include "/layout/navbar.html.twig" %}
+        {% include "/layout/operations_nav.html.twig" %}
+    </header>
+
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>La facture a été envoyée avec succès ! {{ controller_name }}! ✅</h1>
+<div class="messageMailSend">
+    <h1>La facture a été envoyée avec succès !</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/59013-47-07/Documents/Projet_fil_rouge_Clean_this/AppCleanThis/fusion_clean_this/src/Controller/MailController.php</code></li>
-        <li>Your template at <code>C:/Users/59013-47-07/Documents/Projet_fil_rouge_Clean_this/AppCleanThis/fusion_clean_this/templates/mail/index.html.twig</code></li>
-    </ul>
 </div>
 {% endblock %}

@@ -716,6 +716,13 @@ footer p{
     vertical-align: middle;
 }
 
+/* Page message envoi mail -------------------------------------------*/
+
+.messageMailSend{
+    margin-top: 10%;
+    text-align: center;
+    color: #0A9672;
+}
 
 /* Style btn  ------------------------------------------------------- */ 
 
