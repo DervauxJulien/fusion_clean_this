@@ -709,13 +709,6 @@ footer p{
     height: 20rem;
 }
 
-/* class pour centrer element dans tableau */
-
-.center-table tr,td{
-    text-align: center;
-    vertical-align: middle;
-}
-
 .caroutaf{
     display: flex;
     justify-content: center;
@@ -726,6 +719,25 @@ footer p{
     height: 86vh;
 
 }
+
+/* ----Page Mention legale---------------------------- */
+
+#pLegal{
+    background-image: url("/images/photofond.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+
+/* class pour centrer element dans tableau */
+
+.center-table tr,td{
+    text-align: center;
+    vertical-align: middle;
+}
+
+
 
 /* Style btn  ------------------------------------------------------- */ 
 
