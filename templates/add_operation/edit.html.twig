@@ -10,27 +10,22 @@
 		{% include "/layout/operations_nav.html.twig" %}
 	</header>
 
-<div class='card d-flex flex-wrap '>
-					<h2 class="d-flex justify-content-center ">{{stockOp.type}}</h2>
-					<div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
-						<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
-						<br><br>
-					</div>
-					<div class='card-body bg-black text-white '>
-						<img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
-						<h3>Localisation</h3>
-						{{stockOp.getAdresse()}}
-					</div>
-					<div>
-						<h4>Descriptif</h4>
-					</div>
-					<div>
-						{{stockOp.getDescriptionOp()}}
-					</div>
-						<div>
-						<a href="{{ path('app_edit_operation', {'id': operation.id}) }}" class="btn btn-primary">Modifier</a>
-						</div>
+	<div class="container min-vh-100 ">
+		<div class="card pt-2" id="createUser">
+			<div class="card-head">
+			<h2>Formulaire de validation</h2>
+				{{form_start(form)}}
+				{{form_label(form.description_op, 'Entrez votre nouvelle description :')}}
+				{{form_widget(form.description_op,{'attr':{'class': 'form form-control', 'label' : 'Description'}})}}
+				{{form_label(form.description_op, "Choisissez le type d'opération :")}}
+				{{form_widget(form.type,{'attr':{'class': 'form form-control'}})}}
+				<div class="d-flex justify-content-center ">
+				<input class="btn-style mt-5  " type="submit" value="Valider">
 				</div>
+			</div>
+			{{form_end(form)}}
+		</div>
+	</div>
 
-	
-	{% endblock %}
+
+{% endblock %}

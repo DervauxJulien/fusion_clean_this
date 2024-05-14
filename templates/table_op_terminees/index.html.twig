@@ -1,0 +1,41 @@
+{% block body %}
+
+<div class="container min-vh-100">
+    <table class="table table-hover table-striped border-2 mt-5">
+        <thead class='bg-violet'>
+            <tr>
+                <th class="center-table" scope="col">#</th>
+                <th class="center-table" scope="col">NOM CLIENT</th>
+                <th class="center-table" scope="col">PRENOM CLIENT</th>
+                <th class="center-table" scope="col">ADRESSE</th>
+                <th class="center-table" scope="col">CP</th>
+                <th class="center-table" scope="col">VILLE</th>
+                <th class="center-table" scope="col">TARIF</th>
+                <th class="center-table" scope="col">DATE</th>
+                <th class="center-table" scope="col">INTERVENANT</th>
+                <th class="center-table" scope="col">FACTURE PDF</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for operation in stockOperation %}
+                {% if operation.status == "Realisé" %}
+                    <tr style="height: 3.125rem;">
+                        <td class="center-table">{{ operation.client.id }}</td>
+                        <td class="center-table">{{ operation.client.nom }}</td>
+                        <td class="center-table">{{ operation.client.prenom }}</td>
+                        <td class="center-table">{{ operation.adresse.getNRue() }} {{ operation.adresse.getNomRue() }}</td>
+                        <td class="center-table">{{ operation.adresse.cp }}</td>
+                        <td class="center-table">{{ operation.adresse.getNomVille }}</td>
+                        <td class="center-table">{{ operation.tarif }}</td>
+                        <td class="center-table">{{ operation.dateCreation ? operation.dateCreation|date('Y-m-d') }}</td>
+                        <td class="center-table">{{ operation.user.nom }} {{operation.user.prenom}}</td>
+                        <td class="center-table">
+                        <a href="{{ path('app_generate_pdf', {'id': operation.id}) }}" class="btn-style">Facture PDF</a>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

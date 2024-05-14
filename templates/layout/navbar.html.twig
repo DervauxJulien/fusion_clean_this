@@ -12,13 +12,14 @@
 
 {% block body %}
     <header id="navbar">
-        <img src='/images/icons/logo.svg' alt='website logo' name='navbar_logo' id='home_customer_logo' />
+        <a href="{{path('app_home')}}"><img src='/images/icons/logo.svg' alt='website logo' name='navbar_logo' id='home_customer_logo' /></a>
 
         <h3>Take your time and rest for a bit, Clean This will take care of this shit !</h3>
 
         {% if app.user %}
             <a onclick="return confirm('Voulez-vous vous deconnecter ?')" href="{{path('app_logout')}}" class="btn btn-danger">Deconnexion</a>
             {% else %}
+            
             <div></div>
             <div></div>
         {% endif %}

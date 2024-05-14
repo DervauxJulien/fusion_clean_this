@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Operation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType as TypeDateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,14 +19,11 @@ class AddOperationFormType extends AbstractType
             ->add('description_op')
             ->add('type', ChoiceType::class, [
                 'choices' => [
-                    '1' => 'petit',
-                    '2' => 'moyenne',
-                    '3' => 'grosse',
-                    '4' => 'custom',
+                    'Petite' => 'petit',
+                    'Moyenne' => 'moyenne',
+                    'Grosse' => 'grosse',
+                    'Custom' => 'custom',
                 ],
-            ])
-            ->add('submit', SubmitType::class,[
-                'label' => 'Envoyer'
             ])
         ;
     }

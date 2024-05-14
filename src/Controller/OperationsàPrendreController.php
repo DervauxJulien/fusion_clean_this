@@ -18,14 +18,14 @@ class OperationsàPrendreController extends AbstractController
     public function index(OperationRepository $operationRepository, ClientRepository $clientRepository): Response
     {
         // RECUPERATIONS DES DONNEES DES TABLES 'operation' et 'client'
-        $stockOp = $operationRepository->findAll();
+        $stockOperation = $operationRepository->findAll();
         $stockCli = $clientRepository->findAll();
         
 
         return $this->render('operationsàprendre/index.html.twig', [
             'controller_name' => 'OperationsàPrendreController',
             
-            'stockOp' => $stockOp,
+            'stockOperation' => $stockOperation,
             'stockCli' => $stockCli,
             'stringType' => $operationRepository->find(''),
         ]);

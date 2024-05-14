@@ -3,6 +3,17 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+/* Couleur de l'application */
+
+.bg-l-green{
+background-color: #43CAA9;
+}
+.bg-m-green{
+background-color: #007557;
+}
+.bg-d-green{
+background-color: #0C4B3B;
+}
 
 /* Navbar */
 
@@ -12,11 +23,11 @@ body {
     align-items: center;
 
     background-color: #0C4B3B;
-    padding: 0.25%;
+    padding: 0.6% 0%;
     color: white;
 }
 #navbar img {
-    width: 3%;
+    width: 15%;
     position: relative;
     bottom: 0.2rem;
     border: 3px solid white;
@@ -76,6 +87,7 @@ footer p{
 
 
 /* PAGE HOME -------------------------------- */
+
 #home_main {
     display: flex;
     justify-content: center;
@@ -123,6 +135,7 @@ footer p{
 
 
 /* PAGE LOGIN ------------------------------- */
+
 #login_main {
     display: flex;
     justify-content: center;
@@ -171,18 +184,17 @@ footer p{
 /* ------------------------------------------ */
 /* page chiffre d'affaire */
 
-.titreChiffreAffaire{
+.titreChiffreAffaire, .titreOperationsTerminees{
     text-align: center;
     font-size: 4rem;
     margin-top: 2%;
-    /* border: solid red; */
 }
 
 /*defillement de la page */
 
 .scrollable-content {
     overflow-y: auto; /* Activer le défilement vertical si nécessaire */
-    max-height: calc(100vh - 100px); /* Hauteur maximale de la zone de défilement */
+    max-height: calc(100vh - 50px); /* Hauteur maximale de la zone de défilement */
     /* 100px est une estimation de la hauteur de votre en-tête, ajustez-la si nécessaire */
 }
 
@@ -193,12 +205,13 @@ footer p{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-bottom: 5%;
-    margin-top: 5%;
+    margin-bottom: 3%;
+    margin-top: 3%;
 }
 
 .salesContainer1{
     width: 20%;
+    height: 15%;
     border: 5px solid #FAEBDA;
     border-radius: 0 0 50px 0;
     background-color: #FAEBDA;
@@ -206,6 +219,7 @@ footer p{
 }
 .salesContainer2{
     width: 20%;
+    height: 15%;
     border: 5px solid #ADD8CD;
     border-radius: 0 0 50px 0;
     background-color: #ADD8CD;
@@ -213,6 +227,7 @@ footer p{
 }
 .salesContainer3{
     width: 20%;
+    height: 15%;
     border: 5px solid #0A9672;
     border-radius: 0 0 50px 0;
     background-color: #0A9672;
@@ -220,27 +235,27 @@ footer p{
 }
 
 .titreContainer{
-    font-size: 19px;
+    font-size: 1.9rem;
     text-align: center;
     font-weight: bold;
 }
 
 .titreContainer3{
-    font-size: 19px;
+    font-size: 1.9rem;
     text-align: center;
     font-weight: bold;
     color: #FBF3F3;
 }
 
 .chiffreContainer{
-    font-size: 50px;
+    font-size: 3.125rem;
     font-weight: bold;
     text-align: right;
     padding-right: 10%;
 }
 
 .chiffreContainer3{
-    font-size: 50px;
+    font-size: 3.125rem;
     font-weight: bold;
     text-align: right;
     padding-right: 10%;
@@ -253,7 +268,7 @@ footer p{
 
 .salesBottom{
     display: flex;
-    font-size: 50px;
+    font-size: 3.125rem;
     border-radius:0 0 50px 0;
     background-color: #FDFDFD;
     display: flex;
@@ -271,7 +286,7 @@ footer p{
 
 /* body chiffre affaire */
 
-.chiffre-affaire-body{
+.chiffre-affaire-body, .operations-terminees-body{
     background-image: url('/images/photofond.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -279,6 +294,7 @@ footer p{
 }
 
 /* Styles généraux pour la table */
+
 .tableChiffre {
     width: 87%;
     border-collapse: collapse;
@@ -287,72 +303,71 @@ footer p{
     border-right: 4px solid #FAEBDA;
 }
 
-.name{
-    font-size: 19px;
-}
 
 .tableChiffre th, .tableChiffre td {
     border-top: 4px solid #FAEBDA;
     border-bottom: 4px solid #FAEBDA;
     background-color: #fffdfd;
-    padding: 8px;
+    padding: 0.5rem;
     text-align: left;
     padding-left: 2%;
+
 }
 
 .tableChiffre th {
     background-color: #f2f2f2;
-    font-size: 19px;
-
+    font-size: 1.9rem;
 }
 
 .objectiveColumn, .realisation {
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: bold;
     text-align: end;
 
 }
 
-.operation{
-    font-weight: bold;
-    font-size: 19px;
-    text-align: center;
+.user{
+    font-size: 1.3rem;
 }
 
 
-
 /* Style pour la colonne "Statut" en fonction du statut */
+
 .status-column {
     font-weight: bold;
 }
 
+.role{
+    font-size: 1.4rem;
+}
+
 .status-column.expert {
     color: #3B3355;
-    font-size: 19px;
 }
 
 .status-column.senior {
     color: #007557;
-    font-size: 19px;
 }
 
 .status-column.apprenti {
     color: #43CAA9;
-    font-size: 19px;
 }
 
+
 /* Styles pour les colonnes "Objectif" et "Réalisation" */
+
 .objectiveColumn {
     text-align: right;
 }
 
 /* Styles pour la barre de progression */
+
 .progress-container {
     width: 100%;
     background-color: #FAEBDA;
     height: 30px;
     border-radius: 50px;
-    margin-top: 20px;
+    margin-top: 1.25rem;
 }
 
 .progress-bar {
@@ -381,7 +396,6 @@ footer p{
 }
 
 
-
 /* body chiffre affaire */
 
 .chiffre-affaire-body{
@@ -393,13 +407,13 @@ footer p{
 
 
 .objectiveColumn {
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: bold;
 }
 
 .operation{
     font-weight: bold;
-    font-size: 19px;
+    font-size: 1.7rem;
 }
 
 /* Style pour la colonne "Statut" en fonction du statut */
@@ -409,17 +423,17 @@ footer p{
 
 .status-column.expert {
     color: #3B3355;
-    font-size: 19px;
+    font-size: 1.19rem;
 }
 
 .status-column.senior {
     color: #007557;
-    font-size: 19px;
+    font-size: 1.19rem;
 }
 
 .status-column.apprenti {
     color: #43CAA9;
-    font-size: 19px;
+    font-size: 1.19rem;
 }
 
 /* Styles pour les colonnes "Objectif" et "Réalisation" */
@@ -431,9 +445,9 @@ footer p{
 .progress-container {
     width: 100%;
     background-color: #FAEBDA;
-    height: 30px;
-    border-radius: 50px;
-    margin-top: 20px;
+    height: 2rem;
+    border-radius: 3.125rem;
+    margin-top: 1.25rem;
 }
 
 .progress-bar {
@@ -443,6 +457,44 @@ footer p{
     border-radius: 50px 0 0 50px;
     transition: width 0.3s ease;
 }
+
+/*Opérations terminées*/
+
+.tableOpTerminees-tread{
+    background-color: #3B3355;
+
+}
+
+.tableOpTerminees {
+    width: 87%;
+    border-collapse: collapse;
+    margin-left: 6.5%;
+    border-bottom: 4px solid #000000;
+
+}
+
+.teteOpTerm {
+    border-radius: 0 50px 0 50px;
+}
+
+.tableOpTerminees th,
+.tableOpTerminees td {
+    padding: 0.5rem;
+    text-align: left;
+    padding-left: 2%;
+}
+
+.tableOpTerminees th {
+    background-color: #3B3355;
+    color: white;
+    font-size: 1.9rem;
+}
+
+
+
+
+
+
 
 
 /* Page formulaire de demande d'opération */
@@ -493,14 +545,14 @@ footer p{
     margin-top: 2%;
     margin-left: 35%;
     padding-bottom: 5%;
-
-    width: 25%;
+    width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 10%;
     border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
     
 }
 #btn_val{
@@ -531,7 +583,7 @@ footer p{
     align-items: center;
     gap: 5%;
     
-    padding: 0.5% 0%;
+    padding: 0.4% 0%;
     background-color: #43CAA9;
 }
 #operations_nav h3{
@@ -619,7 +671,6 @@ footer p{
 
     background-color: #0C4B3B;
     width: 100%;
-
     border-radius: 0px 0px 20px 20px;
     padding: 2% 0%;
 }
@@ -655,3 +706,44 @@ footer p{
     background-repeat: no-repeat;
     height: 20rem;
 }
+
+/* class pour centrer element dans tableau */
+
+.center-table tr,td{
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+/* Style btn  ------------------------------------------------------- */ 
+
+.btn-style {
+    background-color: #43CAA9;
+    padding: 14px 40px;
+    color:#fff;
+    /* text-transform: uppercase; */
+    /* letter-spacing: 2px;  */
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: .4s;
+   }
+   
+   .btn-style span:last-child {
+    display: none;
+   }
+   
+   .btn-style:hover {
+    transition: .4s;
+    border: 2px solid #43CAA9;
+    background-color: #fff;
+    color: #43CAA9;
+   }
+   
+   .btn-style:active {
+    background-color: #43CAA9;
+   }
+   
+   /* --------------------------------------------------------------------- */
+   

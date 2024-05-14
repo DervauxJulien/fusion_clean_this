@@ -16,16 +16,16 @@ class Adresse
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $N_rue = null;
+    private ?int $n_rue = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Nom_Rue = null;
+    private ?string $nom_rue = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Nom_Ville = null;
+    private ?string $nom_ville = null;
 
     #[ORM\Column]
-    private ?int $CP = null;
+    private ?int $cp = null;
 
     /**
      * @var Collection<int, Operation>
@@ -45,54 +45,54 @@ class Adresse
 
     public function getNRue(): ?int
     {
-        return $this->N_rue;
+        return $this->n_rue;
     }
 
-    public function setNRue(int $N_rue): static
+    public function setNRue(int $n_rue): static
     {
-        $this->N_rue = $N_rue;
+        $this->n_rue = $n_rue;
 
         return $this;
     }
 
     public function getNomRue(): ?string
     {
-        return $this->Nom_Rue;
+        return $this->nom_rue;
     }
 
-    public function setNomRue(string $Nom_Rue): static
+    public function setNomRue(string $nom_rue): static
     {
-        $this->Nom_Rue = $Nom_Rue;
+        $this->nom_rue = $nom_rue;
 
         return $this;
     }
 
     public function getNomVille(): ?string
     {
-        return $this->Nom_Ville;
+        return $this->nom_ville;
     }
 
-    public function setNomVille(string $Nom_Ville): static
+    public function setNomVille(string $nom_ville): static
     {
-        $this->Nom_Ville = $Nom_Ville;
+        $this->nom_ville = $nom_ville;
 
         return $this;
     }
 
-    public function getCP(): ?int
+    public function getcp(): ?int
     {
-        return $this->CP;
+        return $this->cp;
     }
 
-    public function setCP(int $CP): static
+    public function setcp(int $cp): static
     {
-        $this->CP = $CP;
+        $this->cp = $cp;
 
         return $this;
     }
     public function __toString()
     {
-        return $this->N_rue  . " " . $this->Nom_Rue;  
+        return $this->n_rue  . " " . $this->nom_rue;  
     }
 
     /**
