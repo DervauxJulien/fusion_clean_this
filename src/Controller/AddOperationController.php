@@ -26,7 +26,7 @@ class AddOperationController extends AbstractController
 
         $stockCli = $clientRepository->findAll();
         $stockOp = $operationRepository->findAll();
-        $stockWaitOp = $operationRepository->findByStatus($operationRepository->getStatus());
+        $stockWaitOp = $operationRepository->findBy(['status' => 'A faire']);
         
 
         // Création d'une nouvelle instance d'Operation en dehors de la boucle
