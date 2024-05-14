@@ -14,6 +14,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DemandeOperationController extends AbstractController
 {
@@ -25,8 +27,9 @@ class DemandeOperationController extends AbstractController
     //     ]);
     // }
 
+
     #[Route('/demande/operation', name: 'app_demande_operation')]
-    public function validate(Request $request, EntityManagerInterface $em): Response
+    public function validate(EntityManagerInterface $em, Request $request): Response
     {
         $client = new Client();
         $adresse = new Adresse();
