@@ -92,6 +92,7 @@ footer p{
     display: flex;
     justify-content: center;
     gap: 10%;
+    height: 61vh;
 
     margin: 10% 12% 0% 12%;
 }
@@ -107,6 +108,7 @@ footer p{
     width: 32%;
     border-radius: 30px;
     padding: 8% 0%;
+    height: fit-content;
 }
 .choice_section:hover{
     background-color: #007557;
@@ -721,8 +723,8 @@ footer p{
     align-items: center;
 
     background-color: #43CAA9;
-    border-radius: 20px;
-    box-shadow: 0px 0px 6px;
+    height: 86vh;
+
 }
 
 /* Style btn  ------------------------------------------------------- */ 

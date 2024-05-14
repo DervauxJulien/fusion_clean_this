@@ -36,31 +36,31 @@ function dragOverHandler(event) {
 // Création de la fonction "descriptionClient()" pour la page "templates\add_operation\index.html.twig"
 // afin de gérer l'affichage des description client
 
-function descriptionClient(cardId) {
-  let descriptionElement = document.getElementById(cardId); // Je vais chercher l'id
-  descriptionElement.classList.toggle("d-none"); // Je change le style via les class Bootstrap
-}
-let count = 0;
+// function descriptionClient(cardId) {
+//   let descriptionElement = document.getElementById(cardId); // Je vais chercher l'id
+//   descriptionElement.classList.toggle("d-none"); // Je change le style via les class Bootstrap
+// }
+// let count = 0;
 
-function addTitleCard() {
+// function addTitleCard() {
 
-  let tab = ["A propos", "Petite", "Moyenne", "Grosse", "Custom"];
+//   let tab = ["A propos", "Petite", "Moyenne", "Grosse", "Custom"];
 
-  let stockDiv = document.getElementById("stockDivCarousel");
+//   let stockDiv = document.getElementById("stockDivCarousel");
 
-  if(count < tab.length){
-  stockDiv.textContent = tab[count];
-  count++;
-  console.log(count);
-  console.log(stockDiv)
-}
-else  {
-  count = 1
-  stockDiv.textContent = tab[count];
-  console.log("ici le else" + count);
-  console.log("ici le else" + stockDiv)
-}
-}
+//   if(count < tab.length){
+//   stockDiv.textContent = tab[count];
+//   count++;
+//   console.log(count);
+//   console.log(stockDiv)
+// }
+// else  {
+//   count = 0
+//   stockDiv.textContent = tab[count];
+//   console.log("ici le else" + count);
+//   console.log("ici le else" + stockDiv)
+// }
+// }
 
 // function addTitleCard() {
 //   let tab = ["A propos", "Petite", "Moyenne", "Grosse", "Custom"];

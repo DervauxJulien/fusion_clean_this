@@ -4,15 +4,11 @@
 
 {% block body %}
 
-<div id="carouselExampleIndicators" class="carousel slide caroutaf vh-100" >
-    <div id="stockDivCarousel" class='bg-d-green' style="width: 40rem;"></div>
-    <div class="carousel-indicators gap-5">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="A propos"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-      </div>
+{% include "layout/navbar.html.twig" %}
+
+<div id="carouselExample" class="carousel slide caroutaf" >
+    {# <div id="stockDivCarousel" class='bg-d-green text-light' style="width: 40rem;"></div> #}
+    
     <div class="carousel-inner">
       <div class="carousel-item active">
 
@@ -41,71 +37,70 @@
             <div class="card-body d-flex flex-column align-items-center">
                 <h3>Fast and Clean</h3><br><br>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
-                <br><br>
-                <a href="{{path('app_demande_operation')}}"><button class="btn_nav">Demmande d'operation</button></a>
             </div>
         </div>
-    </div>
+    </div><br>
+        <div class="text-center">
+        <a href="{{path('app_demande_operation')}}"><button class="btn-style">Demande d'opération</button></a>
+        </div>
         </div>
 
-      <div class="carousel-item">
+        <div class="carousel-item">
 
-        <div class="d-flex justify-content-around pt-5">
-        <div class="card w-25 ">
-            <div class="card-header">Moyenne Opération</div>
-            <div class="card-img mt-2 ms-4"></div>
-            <div class="card-body d-flex flex-column align-items-center">
-                <h3>Fast and Clean</h3><br><br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
-                <br><br>
-                <a href="{{path('app_demande_operation')}}"><button class="btn_nav">Demmande d'operation</button></a>
+            <div class="d-flex justify-content-around pt-5">
+            <div class="card w-25 ">
+                <div class="card-header">Moyenne Opération</div>
+                <div class="card-img mt-2 ms-4"></div>
+                <div class="card-body d-flex flex-column align-items-center">
+                    <h3>Fast and Clean</h3><br><br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
+                </div>
             </div>
-        </div>
-        </div>
-      </div>
-
-      <div class="carousel-item">
-
-        <div class="d-flex justify-content-around pt-5">
-        <div class="card w-25 ">
-            <div class="card-header">Grosse Opération</div>
-            <div class="card-img mt-2 ms-4"></div>
-            <div class="card-body d-flex flex-column align-items-center">
-                <h3>Fast and Clean</h3><br><br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
-                <br><br>
-                <a href="{{path('app_demande_operation')}}"><button class="btn_nav">Demmande d'operation</button></a>
+        </div><br>
+            <div class="text-center">
+            <a href="{{path('app_demande_operation')}}"><button class="btn-style">Demande d'opération</button></a>
             </div>
-        </div>
-    </div>
-
-        </div>
-
-      <div class="carousel-item">
-
-        <div class="d-flex justify-content-around pt-5">
-        <div class="card w-25 ">
-            <div class="card-header">Custom Opération</div>
-            <div class="card-img mt-2 ms-4"></div>
-            <div class="card-body d-flex flex-column align-items-center">
-                <h3>Fast and Clean</h3><br><br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
-                <br><br>
-                <a href="{{path('app_demande_operation')}}"><button class="btn_nav">Demmande d'operation</button></a>
             </div>
-        </div>
-        </div>
-      </div>
-        
-      </div>
 
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <div class="carousel-item">
+
+                <div class="d-flex justify-content-around pt-5">
+                <div class="card w-25 ">
+                    <div class="card-header">Grosse Opération</div>
+                    <div class="card-img mt-2 ms-4"></div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <h3>Fast and Clean</h3><br><br>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
+                    </div>
+                </div>
+            </div><br>
+                <div class="text-center">
+                <a href="{{path('app_demande_operation')}}"><button class="btn-style">Demande d'opération</button></a>
+                </div>
+                </div>
+
+                <div class="carousel-item">
+
+                    <div class="d-flex justify-content-around pt-5">
+                    <div class="card w-25 ">
+                        <div class="card-header">Custom Opération</div>
+                        <div class="card-img mt-2 ms-4"></div>
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <h3>Fast and Clean</h3><br><br>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
+                        </div>
+                    </div>
+                </div><br>
+                    <div class="text-center">
+                    <a href="{{path('app_demande_operation')}}"><button class="btn-style">Demande d'opération</button></a>
+                    </div>
+                    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden" id="click" onclick="addTitleCard()">Previous</span>
-      <button id="click" onclick="addTitleCard()">click</button>
+      {# <span class="visually-hidden">Previous</span> #}
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
