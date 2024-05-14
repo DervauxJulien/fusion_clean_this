@@ -59,9 +59,9 @@ class MailController extends AbstractController
 
         // Envoyer le PDF par e-mail
         $email = (new Email())
-        ->from('mailtrap@example.com')
-        ->to('you@example.com')
-        ->cc('franck.lamyformationafpa@gmail.com')
+        ->from('mailjet@example.com')
+        ->to('franck.lamyformationafpa@gmail.com')
+        // ->cc('franck.lamyformationafpa@gmail.com')
         ->subject('Votre facture')
         ->text('Voici ci-joint votre facture relatif à la prestaiton de nettoyage. A bientôt avec CleanThis')
         ->attach($dompdf->output(), $fileName, 'application/pdf');
