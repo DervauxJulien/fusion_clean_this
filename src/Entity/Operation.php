@@ -31,7 +31,7 @@ class Operation
     #[ORM\Column(length: 30)]
     private ?string $status = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_creation = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
@@ -46,14 +46,16 @@ class Operation
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $img = null;
 
-    #[ORM\Column]
-    private ?bool $validation_demande = null;
 
-    #[ORM\Column]
+
+    #[ORM\Column(type: Types::FLOAT, nullable: true)]
     private ?float $tarif = null;
 
-    #[ORM\Column(length: 30)]
+    #[ORM\Column(length: 30, nullable: true)]
     private ?string $type = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date_demande = null;
 
     public function getId(): ?int
     {
@@ -180,18 +182,6 @@ class Operation
         return $this;
     }
 
-    public function isValidationDemande(): ?bool
-    {
-        return $this->validation_demande;
-    }
-
-    public function setValidationDemande(bool $validation_demande): static
-    {
-        $this->validation_demande = $validation_demande;
-
-        return $this;
-    }
-
     public function getTarif(): ?float
     {
         return $this->tarif;
@@ -216,13 +206,15 @@ class Operation
         return $this;
     }
 
-    /**
-     * @return Collection|array
-     */
-    // public function getItems()
-    // {
+    public function getDateDemande(): ?\DateTimeInterface
+    {
+        return $this->date_demande;
+    }
 
-    //     return $this->items;
-    // }
+    public function setDateDemande(\DateTimeInterface $date_demande): static
+    {
+        $this->date_demande = $date_demande;
 
+        return $this;
+    }
 }

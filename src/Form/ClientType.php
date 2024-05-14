@@ -17,10 +17,6 @@ class ClientType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('email')
-            ->add('adresse', EntityType::class, [
-                'class' => adresse::class,
-                'choice_label' => 'id',
-            ])
         ;
     }
 
