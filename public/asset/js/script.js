@@ -42,6 +42,10 @@ function dropHandler(event) {
     descriptionElement.classList.toggle("d-none"); // Je change le style via les class Bootstrap
 }
 
+function affichageEnAttente(){
+let tab = [];
+
+}
 
 
 

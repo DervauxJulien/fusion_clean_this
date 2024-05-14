@@ -22,6 +22,8 @@ class OperationsàPrendreController extends AbstractController
         // RECUPERATIONS DES DONNEES DES TABLES 'operation' et 'client'
         $stockOperation = $operationRepository->findAll();
         $stockCli = $clientRepository->findAll();
+        $stockOpFilter = $operationRepository->findByStatus($_GET['status']);
+
         
         return $this->render('operationsàprendre/index.html.twig', [
             'controller_name' => 'OperationsàPrendreController',
@@ -29,7 +31,8 @@ class OperationsàPrendreController extends AbstractController
             'stockOperation' => $stockOperation,
             'stockCli' => $stockCli,
             'stringType' => $operationRepository->find(''),
-            'users' => $user->findAll()
+            'users' => $user->findAll(),
+            'stockOpFilter' => $stockOpFilter
         ]);
     }
 }

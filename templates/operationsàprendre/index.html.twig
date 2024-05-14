@@ -16,7 +16,7 @@
     <h1>Prendre des opérations</h1>
 
     <section id="operations_list">
-        {% for operation in stockOperation %}
+        {% for operation in stockOpFilter %}
             <div class='operation_to_take'>
                 <h2>{{operation.type}}</h2>
                 <div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>

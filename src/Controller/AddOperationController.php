@@ -29,7 +29,6 @@ class AddOperationController extends AbstractController
         $stockCli = $clientRepository->findAll();
         $stockOp = $operationRepository->findAll();
         $stockWaitOp = $operationRepository->findBy(['status' => 'En cours']);
-        $userStock = $userRepository->findAll();
 
         // Création d'une nouvelle instance d'Operation en dehors de la boucle
         $stock = new Operation();
@@ -58,7 +57,8 @@ class AddOperationController extends AbstractController
             'form' => $form->createView(),
             'stock' => $stock,
             'stockWaitOp' =>  $stockWaitOp,
-            'users' => $userRepository
+            'users' => $userRepository,
+
         ]);
     }
 
@@ -112,5 +112,16 @@ class AddOperationController extends AbstractController
 
         
         return $this->redirectToRoute('app_add_operation');
+    }
+
+    #[Route('/operation/filter/{status}', name: 'app_operation_filter')]
+
+    public function filterByStatus(OperationRepository $operationRepository, $status): Response
+    {
+        $operations = $operationRepository->findByStatus($status);
+        
+        return $this->render('operations/index.html.twig', [
+            'operations' => $operations,
+        ]);
     }
 }
