@@ -5,10 +5,12 @@ namespace App\Controller;
 use App\Entity\Adresse;
 use App\Entity\Client;
 use App\Entity\Operation;
+use App\Entity\User;
 use App\Form\AddOperationFormType;
 use App\Repository\AdresseRepository;
 use App\Repository\ClientRepository;
 use App\Repository\OperationRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,13 +23,13 @@ class AddOperationController extends AbstractController
 
 {
     #[Route('/add', name: 'app_add_operation')]
-    public function index(OperationRepository $operationRepository, Request $request, EntityManagerInterface $entityManager, ClientRepository $clientRepository): Response
+    public function index(OperationRepository $operationRepository, Request $request, EntityManagerInterface $entityManager, ClientRepository $clientRepository, UserRepository $userRepository): Response
     {
 
         $stockCli = $clientRepository->findAll();
         $stockOp = $operationRepository->findAll();
-        $stockWaitOp = $operationRepository->findBy(['status' => 'A faire']);
-        
+        $stockWaitOp = $operationRepository->findBy(['status' => 'En cours']);
+        $userStock = $userRepository->findAll();
 
         // Création d'une nouvelle instance d'Operation en dehors de la boucle
         $stock = new Operation();
@@ -55,7 +57,8 @@ class AddOperationController extends AbstractController
             'stockOp' => $stockOp,
             'form' => $form->createView(),
             'stock' => $stock,
-            'stockWaitOp' =>  $stockWaitOp
+            'stockWaitOp' =>  $stockWaitOp,
+            'users' => $userRepository
         ]);
     }
 

@@ -5,14 +5,14 @@
 {% block body %}
 	<header>
 		{% include "/layout/navbar.html.twig" %}
-		{% include "/layout/drop_down.html.twig" %}
 		{% include "/layout/operations_nav.html.twig" %}
+		{# {% include "/layout/drop_down.html.twig" %} #}
    		{% include "layout/_flash_message.html.twig" %}
 
 
 	</header>
 	<div>
-	{{dump(stockWaitOp)}}
+	{# {{dump(stockWaitOp)}} #}
 	</div>
 	<div class="container  min-vh-100">
 		<h2 class="text-center mt-5">Ajouter des opérations
@@ -89,8 +89,4 @@
 				{% endfor %}
 			</tbody>
 		</table>
-<<<<<<< HEAD
-
-=======
->>>>>>> cd14e1f0ec5915f85830fb66dbb2b4cbe84baa57
 	{% endblock %}

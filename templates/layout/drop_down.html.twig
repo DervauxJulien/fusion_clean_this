@@ -1,15 +1,26 @@
-
 {% extends "base.html.twig" %}
 
 {% block body %}
 <div class="btn-group">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Menu item</a></li>
-    <li><a class="dropdown-item" href="#">Menu item</a></li>
-    <li><a class="dropdown-item" href="#">Menu item</a></li>
-  </ul>
-</div>
+		<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+			Dropdown
+		</button>
+		<ul class="dropdown-menu">
+            {# {{ dump(user) }} #}
+			{% if ('ROLE_EXPERT' in app.user.roles) %}
+				<li>
+					<a class="dropdown-item" href="#">En attente</a>
+				</li>
+			{% endif %}
+			<li>
+				<a class="dropdown-item" href="#">En cours</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="#">Terminé</a>
+			</li>
+		</ul>
+	</div>
+	{% block javascripts %}
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+	{% endblock %}
 {% endblock %}
