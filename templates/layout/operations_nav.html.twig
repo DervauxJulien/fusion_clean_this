@@ -13,7 +13,7 @@
 
 {% block body %}
     <nav id="operations_nav">
-        <a href="{{path('app_add_operation')}}" class="nav-link"><h3>Ajouter des opérations</h3></a>
+        {# <a href="{{path('app_add_operation')}}" class="nav-link"><h3>Ajouter des opérations</h3></a> #}
         <a href="{{path('app_operations_prendre')}}"class="nav-link"><h3>Liste des opérations en cours</h3></a>
         <a href="{{path('app_operations_terminees')}}" class="nav-link"><h3>Opérations terminées</h3></a>
         {% if is_granted("ROLE_EXPERT") %}
@@ -22,6 +22,7 @@
               Administration
             </button>
         <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{path('app_add_operation')}}">Ajouter des opérations</a></li>
             <li><a class="dropdown-item" href="{{path('app_gestion_utilisateur')}}">Utilisateur</a></li>
             <li><a class="dropdown-item" href="{{path('app_chiffre_affaire')}}">Chiffre d'affaire</a></li>
         </ul>
