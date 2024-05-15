@@ -501,6 +501,8 @@ footer p{
 
 
 
+
+
 /* Page formulaire de demande d'opération */
 
 .globale{
@@ -728,6 +730,13 @@ footer p{
     height: 86vh;
 
 }
+/* Page message envoi mail -------------------------------------------*/
+
+.messageMailSend{
+    margin-top: 10%;
+    text-align: center;
+    color: #0A9672;
+}
 
 /* Style btn  ------------------------------------------------------- */ 
 
@@ -741,6 +750,7 @@ footer p{
     border: 2px solid #fff;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     transition: .4s;
+    text-decoration: none;
    }
    
    .btn-style span:last-child {
