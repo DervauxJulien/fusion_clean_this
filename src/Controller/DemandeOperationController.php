@@ -19,14 +19,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DemandeOperationController extends AbstractController
 {
-    // #[Route('/demande/operation', name: 'app_demande_operation')]
-    // public function index(): Response
-    // {
-    //     return $this->render('demande_operation/index.html.twig', [
-    //         'controller_name' => 'DemandeOperationController',
-    //     ]);
-    // }
-
 
     #[Route('/demande/operation', name: 'app_demande_operation')]
     public function validate(EntityManagerInterface $em, Request $request): Response
@@ -76,3 +68,17 @@ class DemandeOperationController extends AbstractController
         return $this->render('demande_operation/validation.html.twig');
     }
 }
+
+// $image = $_GET['image'];
+
+// require 'path/to/google-search-results.php';
+// require 'path/to/restclient.php';
+
+// $query = [
+//  "engine" => "google_lens",
+//  "url" => "$image",
+// ];
+
+// $search = new GoogleSearch('ae0c3fa6f5a9a50a7d593f7661c93714504c1b13aac9df75536a29fda230f056');
+// $result = $search->get_json($query);
+// $visual_matches = $result->visual_matches;

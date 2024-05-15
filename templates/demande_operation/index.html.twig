@@ -4,82 +4,113 @@
 {% block title %}Demande d'opération
 {% endblock %}
 {% block body %}
-	<div class="d-flex globale">
-		<div class='margeGauche w-25 h-100'>
-			<img src="\images\icons\logo.svg" alt="logo" width="20%" height="20%" class"logodop"/>
+	<form action="submit" method="GET">
+		<div class="d-flex globale">
+			<div class='margeGauche w-25 h-100'>
+				<img src="\images\icons\logo.svg" alt="logo" width="20%" height="20%" class"logodop"/>
 
-			<h1 class='text-white titreDOP'>
-				<b>Merci d'avoir choisi Clean This</b>
-			</h1>
-		</div>
-		<div class="formDOP ">
-			<h2>
-				<b>Formulaire de demande d'opération :</b><br><br>
-			</h2>
-			{{form_start(createForm)}}
-
-			<h3><b>Client :</b></h3>
-			<br>
-			<div class='d-flex flex-row justify-content-between w-75'>
-				<div>
-					{{form_label(createForm.client.nom, 'Nom :')}}
-					{{form_widget(createForm.client.nom,{'attr':{'class': 'form form-control','placeholder': 'ex: Dupont'}})}}
-				</div>
-				<div>
-					{{form_label(createForm.client.prenom, 'Prenom :')}}
-					{{form_widget(createForm.client.prenom,{'attr':{'class': 'form form-control ','placeholder': 'ex: Jean-Pierre'}})}}
-				</div>
-				<div>
-					{{form_label(createForm.client.email, 'Mail :')}}
-					{{form_widget(createForm.client.email,{'attr':{'class': 'form form-control ','placeholder': 'ex: clean.this@example.com'}})}}
-				</div>
+				<h1 class='text-white titreDOP'>
+					<b>Merci d'avoir choisi Clean This</b>
+				</h1>
 			</div>
-			<br>
-			<h3><b>Adresse du site à nettoyer :</b></h3><br>
-			<div class='d-flex flex-row justify-content-between' style='width: 70rem'>
-				<div style="width: 5rem">
-					{{form_label(createForm.adresse.N_rue, 'N° rue :')}}
-					{{form_widget(createForm.adresse.N_rue,{'attr':{'class': 'form form-control','placeholder': 'ex: 4'}})}}
-				</div>
-				<div>
-					{{form_label(createForm.adresse.Nom_Rue, 'Nom de la rue :')}}
-					{{form_widget(createForm.adresse.Nom_Rue,{'attr':{'class': 'form form-control','placeholder': 'ex: Avenue des Lilas'}})}}
-				</div>
-				<div class='w-25'>
-					{{form_label(createForm.adresse.Nom_Ville, 'Nom de la ville :')}}
-					{{form_widget(createForm.adresse.Nom_Ville,{'attr':{'class': 'form form-control','placeholder': 'ex: Monaco'}})}}
-				</div>
-				<div>
-					{{form_label(createForm.adresse.CP, 'Code Postal :')}}
-					{{form_widget(createForm.adresse.CP,{'attr':{'class': 'form form-control','placeholder': 'ex: 75000 ou 974'}})}}
+			<div class="formDOP ">
+				<h2>
+					<b>Formulaire de demande d'opération :</b><br><br>
+				</h2>
+				{{form_start(createForm)}}
+
+				<h3>
+					<b>Client :</b>
+				</h3>
+				<br>
+				<div class='d-flex flex-row justify-content-between w-75'>
+					<div>
+						{{form_label(createForm.client.nom, 'Nom :')}}
+						{{form_widget(createForm.client.nom,{'attr':{'class': 'form form-control','placeholder': 'ex: Dupont'}})}}
+					</div>
+					<div>
+						{{form_label(createForm.client.prenom, 'Prenom :')}}
+						{{form_widget(createForm.client.prenom,{'attr':{'class': 'form form-control ','placeholder': 'ex: Jean-Pierre'}})}}
+					</div>
+					<div>
+						{{form_label(createForm.client.email, 'Mail :')}}
+						{{form_widget(createForm.client.email,{'attr':{'class': 'form form-control ','placeholder': 'ex: clean.this@example.com'}})}}
+					</div>
 				</div>
 				<br>
-			</div>
-			<br>
-			<h3><b>Opération :</b></h3>
-			<br>
+				<h3>
+					<b>Adresse du site à nettoyer :</b>
+				</h3><br>
+				<div class='d-flex flex-row justify-content-between' style='width: 70rem'>
+					<div style="width: 5rem">
+						{{form_label(createForm.adresse.N_rue, 'N° rue :')}}
+						{{form_widget(createForm.adresse.N_rue,{'attr':{'class': 'form form-control','placeholder': 'ex: 4'}})}}
+					</div>
+					<div>
+						{{form_label(createForm.adresse.Nom_Rue, 'Nom de la rue :')}}
+						{{form_widget(createForm.adresse.Nom_Rue,{'attr':{'class': 'form form-control','placeholder': 'ex: Avenue des Lilas'}})}}
+						<div>
+							<ul class='rue-list'>
+								<li>
+									<p></p>
+								</li>
+							</ul>
+						</div>
+					</div>
 
-			{{form_label(createForm.operation.description_client, "Description de l'opération :")}}
-			{{form_widget(createForm.operation.description_client,{'attr':{'class': 'form form-control','placeholder': 'Dans une limite de 255 caractères'}})}}
-			<br>
-			{{form_label(createForm.operation.img)}}
-			{{form_widget(createForm.operation.img,{'attr':{'class': 'form form-control','placeholder': 'Glissez vos fichiers photos'}})}}
 
-			<p></p>
-
-			<label for="Photo">Photos du site à nettoyer :
-				<br>
-				<div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
-
-					<p>Faites glisser un fichier dans cette
-						<b>drop zone</b>
-					</p>
+					<div class='w-25'>
+						{{form_label(createForm.adresse.Nom_Ville, 'Nom de la ville :')}}
+						{{form_widget(createForm.adresse.Nom_Ville,{'attr':{'class': 'form form-control','placeholder': 'ex: Monaco'}})}}
+						<div>
+							<ul class='ville-list'>
+								<li>
+									<p></p>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						{{form_label(createForm.adresse.CP, 'Code Postal :')}}
+						{{form_widget(createForm.adresse.CP,{'attr':{'class': 'form form-control','placeholder': 'ex: 75000 ou 974'}})}}
+						<div>
+							<ul class='cp-list'>
+								<li>
+									<p></p>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<br>
 				</div>
 				<br>
-				<input type="submit" value="Soumettre la demande">
-				{{form_end(createForm)}}
-			</div>
+				<h3>
+					<b>Opération :</b>
+				</h3>
+				<br>
 
-		</div>
+				{{form_label(createForm.operation.description_client, "Description de l'opération :")}}
+				{{form_widget(createForm.operation.description_client,{'attr':{'class': 'form form-control','placeholder': 'Dans une limite de 255 caractères'}})}}
+				<br>
+				{{form_label(createForm.operation.img)}}
+				{{form_widget(createForm.operation.img,{'attr':{'class': 'form form-control','placeholder': 'Glissez vos fichiers photos'}})}}
+
+				<p></p>
+
+				<label for="Photo">Photos du site à nettoyer :
+					<br>
+					<div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+
+						<p>Faites glisser un fichier dans cette
+							<b>drop zone</b>
+						</p>
+					</div>
+					<br>
+					<input type="submit" value="Soumettre la demande">
+					{{form_end(createForm)}}
+				</div>
+
+			</div>
+		</form>
 		<script src="{{ asset('asset/js/script.js') }}"></script>
 	{% endblock %}

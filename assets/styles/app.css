@@ -526,6 +526,29 @@ footer p{
     
 }
 
+/* Partie liste des adresses */
+
+
+
+.adress-list {
+    list-style: none;
+    position: left;
+    border: 1px solid gray;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.adress-list .content{
+    cursor: pointer;
+    background-color: white;
+    border-bottom: 1px solid black;
+}
+
+.adress-list .content:last-child {
+    border-bottom: none;
+}
 
 /* Page Gestion utilisateur------------------------------------- */
 
