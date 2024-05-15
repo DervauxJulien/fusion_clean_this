@@ -23,7 +23,7 @@ class MesOperationController extends AbstractController
             'MyOps' => $operationRepository->findAll(),
         ]);
     }
-    #[Route('admin/mes/operation', name: 'app_mes_operationA')]
+    #[Route('admin/mes/operation', name: 'app_mes_operationE')]
     public function index(OperationRepository $operationRepository): Response
     {
         return $this->render('mes_operation/index.html.twig', [
