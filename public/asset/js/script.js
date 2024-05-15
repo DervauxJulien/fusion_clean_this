@@ -36,6 +36,18 @@ function dragOverHandler(event) {
 // Création de la fonction "descriptionClient()" pour la page "templates\add_operation\index.html.twig"
 // afin de gérer l'affichage des description client
 
+  function descriptionClient(cardId) {
+    let descriptionElement = document.getElementById(cardId); // Je vais chercher l'id 
+    descriptionElement.classList.toggle("d-none"); // Je change le style via les class Bootstrap
+}
+
+function affichageEnAttente(){
+let tab = [];
+
+}
+
+
+
 // function descriptionClient(cardId) {
 //   let descriptionElement = document.getElementById(cardId); // Je vais chercher l'id
 //   descriptionElement.classList.toggle("d-none"); // Je change le style via les class Bootstrap
