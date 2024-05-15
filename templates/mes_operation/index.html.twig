@@ -14,7 +14,8 @@
     <section id="operations_list">
         {% for op in MyOps %}
 
-            {% if app.user.id == op.user.id %}
+        {% if ((app.user.id == op.user.id) and op.status == "En cours" )  %}
+        {{ dump(op) }}
                 
        
             <div class='operation_to_take' id="{{op.id}}">
@@ -44,7 +45,8 @@
     <section id="operations_list">
         {% for op in MyOps %}
 
-            {% if app.user.id == op.user.id %}
+        {% if ((app.user.id == op.user.id) and op.status == "En cours" )  %}
+        {{ dump(op) }}
        
                 <div class='operation_to_take'>
                     <h2>{{op.type}}</h2>
@@ -74,8 +76,8 @@
     <section id="operations_list">
         {% for op in MyOps %}
 
-            {% if app.user.id == op.user.id %}
-
+            {% if ((app.user.id == op.user.id) and op.status == "En cours" )  %}
+            {{ dump(op) }}
 
                 <div class='operation_to_take'>
                     <h2>{{op.type}}</h2>

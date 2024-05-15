@@ -21,10 +21,10 @@ class OperationsàPrendreController extends AbstractController
     {
         // RECUPERATIONS DES DONNEES DES TABLES 'operation' et 'client'
         
-        $getUrlStatus = $_GET['status'].str_replace('%20', ' ', 'status');
+        // $getUrlStatus = $_GET['status'].str_replace('%20', ' ', 'status');
         $stockOperation = $operationRepository->findAll();
         $stockCli = $clientRepository->findAll();
-        $stockOpFilter = $operationRepository->findByStatus($_GET['status']);
+        // $stockOpFilter = $operationRepository->findByStatus($_GET['status']);
 
         
         return $this->render('operationsàprendre/index.html.twig', [
@@ -34,7 +34,7 @@ class OperationsàPrendreController extends AbstractController
             'stockCli' => $stockCli,
             'stringType' => $operationRepository->find(''),
             'users' => $user->findAll(),
-            'stockOpFilter' => $stockOpFilter
+            // 'stockOpFilter' => $stockOpFilter
             
         ]);
     }

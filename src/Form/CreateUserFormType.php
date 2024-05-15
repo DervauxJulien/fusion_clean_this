@@ -5,6 +5,8 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -37,6 +39,26 @@ class CreateUserFormType extends AbstractType
             ])
             ->add('nom')
             ->add('prenom')
+            ->add('roles', ChoiceType::class ,[
+                'choices' =>[
+                    "Expert" => "ROLE_EXPERT",
+                    "Senior" => "ROLE_SENIOR",
+                    "Apprenti" => "ROLE_APPRENTI"
+                ]
+            ])
+            
+            
+        ;
+    
+        $builder->get('roles')
+            ->addModelTransformer(new CallbackTransformer(
+                function ($roleAsArray): string {
+                    return implode(', ' , $roleAsArray);
+                },
+                function($roleAsArray): array {
+                    return explode(', ', $roleAsArray);
+                }
+            ))
         ;
     }
 
