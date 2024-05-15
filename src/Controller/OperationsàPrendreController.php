@@ -20,19 +20,22 @@ class OperationsàPrendreController extends AbstractController
     public function index(OperationRepository $operationRepository, ClientRepository $clientRepository, UserRepository $user): Response
     {
         // RECUPERATIONS DES DONNEES DES TABLES 'operation' et 'client'
+        
+        $getUrlStatus = $_GET['status'].str_replace('%20', ' ', 'status');
         $stockOperation = $operationRepository->findAll();
         $stockCli = $clientRepository->findAll();
         $stockOpFilter = $operationRepository->findByStatus($_GET['status']);
 
         
         return $this->render('operationsàprendre/index.html.twig', [
+
             'controller_name' => 'OperationsàPrendreController',
-            
             'stockOperation' => $stockOperation,
             'stockCli' => $stockCli,
             'stringType' => $operationRepository->find(''),
             'users' => $user->findAll(),
             'stockOpFilter' => $stockOpFilter
+            
         ]);
     }
 }
