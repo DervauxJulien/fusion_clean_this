@@ -15,13 +15,13 @@
     <section id="operations_list">
         {% for operation in operations %}
                 {% if operation.status == getUrlStatus %}
-                    {{ dump(operation.status) }}
+                    {{ dump(operation) }}
                     <div class='operation_to_take'>
                         <h2>{{ operation.type }}</h2>
                         <div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
                             <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture' />
                             <br><br>
-                            <h4 style='text-align: center; width: 100%; background-color: white;'>{{ operation.id }}</h4>
+                            <h4 style='text-align: center; width: 100%; background-color: white;'>{{ operation.client.nom }}</h4>
                         </div>
                         <div class='operation_bottom_part'>
                             <div class='operation_localisation'>

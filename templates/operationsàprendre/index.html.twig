@@ -15,7 +15,7 @@
     <section id="operations_list">
         {% for operation in stockOperation %}
             {# {% if getUrlStatus %} #}
-              				{% if operation.status == "A faire" %}
+              		{% if operation.status == "A faire" %}
                     {{ dump(operation.status) }}
                     <div class='operation_to_take'>
                         <h2>{{ operation.type }}</h2>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                 {# {% endif %} #}
-            {% elseif operation.status != "En attente" %}
+            {# {% elseif operation.status != "En attente" %}
             {{ dump(operation.status) }}
            
                 <div class='operation_to_take'>
@@ -50,7 +50,7 @@
                         </div>
                         <button class='operation_add_button'>Ajouter</button>
                     </div>
-                </div>
+                </div> #}
             {% endif %}
         {% endfor %}
     </section>

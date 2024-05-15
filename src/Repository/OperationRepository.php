@@ -21,28 +21,30 @@ class OperationRepository extends ServiceEntityRepository
         parent::__construct($registry, Operation::class);
     }
 
-//    /**
-//     * @return Operation[] Returns an array of Operation objects
-//     */
-   public function findByStatus($value): array
-   {
-       return $this->createQueryBuilder('o')
-           ->andWhere('o.status = :val')
-           ->setParameter('val', $value)
-           ->orderBy('o.date_demande', 'ASC')
-           ->setMaxResults(10)
-           ->getQuery()
-           ->getResult()
-       ;
-   }
+    //    /**
+    //     * @return Operation[] Returns an array of Operation objects
+    //     */
+    public function findByStatus($value, $clientName): array
+    {
+        return $this->createQueryBuilder('o')
+            ->join('o.client', 'c')
+            ->andWhere('o.status = :val')
+            ->andWhere('c.nom = :clientName')
+            ->setParameter('val', $value)
+            ->setParameter('clientName', $clientName)
+            ->orderBy('c.nom', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
 
-//    public function findOneBySomeField($value): ?Operation
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->andWhere('o.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    public function findOneBySomeField($value): ?Operation
+    //    {
+    //        return $this->createQueryBuilder('o')
+    //            ->andWhere('o.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

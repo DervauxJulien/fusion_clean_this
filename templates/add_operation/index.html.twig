@@ -39,7 +39,10 @@
 				
 				{# {{dump(operation.status)}} #}
 					<tr>
-						<th class="">0/0/0</th>
+						<th class="">
+							{# {{ dump(operation) }} #}
+							{{operation.getDateCreation()|date("d/m/Y")}}
+					</th>
 						<td class="">{{operation.client.nom}}</td>
 						<td class="">{{operation.client.prenom}}</td>
 						<td class="">{{operation.client.email}}</td>

@@ -33,17 +33,16 @@ class OperationsàPrendreController extends AbstractController
         ]);
     }
 
-    #[Route('/operation/filter/{status}', name: 'app_operation_filter', methods: ['GET'])]
+    #[Route('/operation/filter/{status}/{clientName}', name: 'app_operation_filter', methods: ['GET'])]
 
-    public function filterByStatus(OperationRepository $operationRepository, $status): Response
+    public function filterByStatus(OperationRepository $operationRepository, $status, $clientName): Response
     {
-        // $status = $_GET['status'];
+        $operations = $operationRepository->findByStatus($status, $clientName);
 
-        $operations = $operationRepository->findByStatus($status);
-        
         return $this->render('operationsàprendre/filter.html.twig', [
             'operations' => $operations,
-            'getUrlStatus' => $status
+            'getUrlStatus' => $status,
+            'clientName' => $clientName
         ]);
     }
 }
