@@ -83,7 +83,7 @@ class AddOperationController extends AbstractController
 
             $operation->setDateCreation(new \DateTime());
 
-            $operation->setStatus('a faire'); 
+            $operation->setStatus('A faire'); 
 
 
             $entityManager->flush();
@@ -114,14 +114,5 @@ class AddOperationController extends AbstractController
         return $this->redirectToRoute('app_add_operation');
     }
 
-    #[Route('/operation/filter/{status}', name: 'app_operation_filter')]
 
-    public function filterByStatus(OperationRepository $operationRepository, $status): Response
-    {
-        $operations = $operationRepository->findByStatus($status);
-        
-        return $this->render('operations/index.html.twig', [
-            'operations' => $operations,
-        ]);
-    }
 }
