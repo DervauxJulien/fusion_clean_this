@@ -529,8 +529,7 @@ footer p{
 /* Partie liste des adresses */
 
 
-
-.adress-list {
+.globale li {
     list-style: none;
     position: left;
     border: 1px solid gray;
@@ -538,15 +537,17 @@ footer p{
     text-align: left;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
-.adress-list .content{
+
+.liste {
     cursor: pointer;
     background-color: white;
     border-bottom: 1px solid black;
 }
 
-.adress-list .content:last-child {
+.liste :last-child {
     border-bottom: none;
 }
 

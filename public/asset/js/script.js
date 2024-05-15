@@ -54,6 +54,7 @@ let fetchDatas = async () => {
         q: e.target.value
       });
       const URL = `${baseUrl}?${queryParams}`;
+      console.log(URL);
       const response = await fetch(URL);
       const data = await response.json();
       adressDatas = data.features;
@@ -80,9 +81,15 @@ const renderAdressListRue = () => {
 
     li.addEventListener("click", () =>  {
       listeRue.value = li.textContent;
+      listeVille.value = properties.city;
+      listeCP.value = properties.citycode;
+      villeList.style.display = "none";
+      cpList.style.display = "none";
       adressList.style.display = "none";
     });
   });
+  villeList.style.display = "block";
+  cpList.style.display = "block";
   adressList.style.display = "block";
 };
 
@@ -119,7 +126,7 @@ const renderAdressListCp = () => {
 
     li.appendChild(p1);
     li.classList.add("content");
-
+ 
     cpList.appendChild(li);
 
     li.addEventListener("click", () =>  {
