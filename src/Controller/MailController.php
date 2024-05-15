@@ -59,7 +59,7 @@ class MailController extends AbstractController
 
         // Envoyer le PDF par e-mail
         $email = (new Email())
-        ->from('mailjet@example.com')
+        ->from('contactcleanthis@gmail.com')
         ->to('franck.lamyformationafpa@gmail.com')
         // ->cc('franck.lamyformationafpa@gmail.com')
         ->subject('Votre facture')
