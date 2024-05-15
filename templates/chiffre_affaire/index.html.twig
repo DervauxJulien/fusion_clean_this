@@ -15,6 +15,7 @@
 <body class="chiffre-affaire-body">
     <h1 class='titreChiffreAffaire'>CHIFFRE D'AFFAIRE</h1>
 
+    {{ render(controller('App\\Controller\\DonutsChartController::DonutsChart')) }}
     {{ render(controller('App\\Controller\\SalesController::salesStats')) }}
     {{ render(controller('App\\Controller\\TableController::tableIndex')) }}
 

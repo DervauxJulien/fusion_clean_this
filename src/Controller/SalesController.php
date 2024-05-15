@@ -10,6 +10,12 @@ use DateTime;
 
 class SalesController extends AbstractController
 {
+    /**
+     * Undocumented function
+     *
+     * @param OperationRepository $operationRepository
+     * @return Response
+     */
     public function salesStats(OperationRepository $operationRepository): Response
     {
         // Récupération des opérations depuis le repository

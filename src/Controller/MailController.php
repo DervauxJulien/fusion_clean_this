@@ -42,6 +42,9 @@ class MailController extends AbstractController
         // Récupérer le nom du client
         $clientName = $operation->getClient()->getNom();
 
+        //Récupérer le mail du client
+        $clientMail = $operation->getClient()->getEmail();
+
         // Charger le contenu HTML dans Dompdf
         $dompdf->loadHtml($html);
 
@@ -60,7 +63,7 @@ class MailController extends AbstractController
         // Envoyer le PDF par e-mail
         $email = (new Email())
         ->from('contactcleanthis@gmail.com')
-        ->to('franck.lamyformationafpa@gmail.com')
+        ->to($clientMail)
         // ->cc('franck.lamyformationafpa@gmail.com')
         ->subject('Votre facture')
         ->text('Voici ci-joint votre facture relatif à la prestaiton de nettoyage. A bientôt avec CleanThis')

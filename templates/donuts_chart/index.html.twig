@@ -1,0 +1,184 @@
+
+{% block body %}
+
+<style>
+
+/* (A) PIE CHART */
+#donut {
+  /* (A1) CIRCLE */
+  width: 300px; height: 300px;
+  border-radius: 50%;
+
+  /* (A2) SEGMENTS */
+background: conic-gradient(
+    blue 0deg {{ petitePercent }}%,
+    green {{ petitePercent }}% {{ petitePercent + moyennePercent }}%,
+    yellow {{ petitePercent + moyennePercent }}% {{ petitePercent + moyennePercent + grandePercent }}%,
+    orange {{ petitePercent + moyennePercent + grandePercent }}% 100%
+  );}
+
+/* (B) DONUT "CONVERSION" */
+/* (B1) SMALLER CIRCLE */
+#donut::before {
+  content: "";
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: #fff;
+box-shadow: inset 0px 0px 10px 5px grey;
+}
+
+/* (B2) "CONVERT PIE TO DONUT" - CENTER SMALLER CIRCLE */
+#donut {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    box-shadow: 15px 8px 8px grey;
+    box-shadow: inset 0px 0px 10px 5px white;
+
+    
+}
+
+/* (C) LEGEND */
+/* (C1) LEGEND CONTAINER */
+#legend {
+  display: flex;
+  margin-top: 30px;
+}
+
+/* (C2) SEGMENTS */
+#legend div { padding: 0 10px; }
+#segment1 { background: red; }
+#segment2 { background: green; }
+#segment3 { background: blue; }
+#segment4 { background: orange; }
+
+.wrapper{
+    border: solid 1px grey;
+    border-radius: 10px;
+    padding: 1%;
+    padding-left: 5%;
+    margin-left: 8%;
+    margin-right: 8%;
+    box-shadow: 10px 5px 5px grey;
+    display: flex;
+    align-items: center;
+}
+
+#cbwrap {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+#segment1 {
+  background-color: blue; /* Couleur pour le segment "Petite" */
+}
+
+#segment2 {
+  background-color: green; /* Couleur pour le segment "Moyenne" */
+}
+
+#segment3 {
+  background-color: yellow; /* Couleur pour le segment "Grande" */
+}
+
+#segment4 {
+  background-color: orange; /* Couleur pour le segment "Custom" */
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  border: 5px solid #ddd; 
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  font-weight: 20%;
+  font-size: 220%;
+  border: 5px solid #fff; 
+}
+
+th {
+  background-color: #f2f2f2; 
+}
+
+.casePourcent{
+    background-color: white;
+}
+
+.resultdonut{
+    font-weight: bold;
+    font-size: 320%;
+}
+
+.petite{
+color: blue;
+  -webkit-text-stroke: 0.5px black;
+  text-stroke: 1px black;
+
+}
+
+.moyenne{
+color: green;
+  -webkit-text-stroke: 0.5px black;
+  text-stroke: 1px black;
+
+}
+
+.grande {
+  color: yellow;
+  -webkit-text-stroke: 0.5px black;
+  text-stroke: 1px black;
+}
+
+.custom{
+color: orange;
+  -webkit-text-stroke: 0.5px black;
+  text-stroke: 1px black;
+
+}
+
+</style>
+
+<div class="wrapper">
+
+<div id="cbwrap">
+
+<div class="donutStat">
+  <h1 id="cbtitle">Donut Chart par type d'opération</h1>
+
+  <div id="donut"></div>
+
+  <div id="legend">
+    <div id="segment1"></div> <div>Petites</div>
+    <div id="segment2"></div> <div>Moyennes</div>
+    <div id="segment3"></div> <div>Grandes</div>
+    <div id="segment4"></div> <div>Customs</div>
+  </div>
+</div>
+
+ <table>
+
+      <tr>
+        <th>Types</th>
+        <th class="petite">Petites opérations</th>
+        <th class="moyenne">Moyennes opérations</th>
+        <th class="grande">Grandes opérations</th>
+        <th class="custom">Customs opérations</th>
+      </tr>
+          <tr>
+            <td class="casePourcent">Pourcentages (%)</td>
+            <td class="resultdonut">{{ petitePercent }}%</td>
+            <td class="resultdonut">{{ moyennePercent }}%</td>
+            <td class="resultdonut">{{ grandePercent }}%</td>
+            <td class="resultdonut">{{ customPercent }}%</td>
+          </tr>
+    </table>
+
+</div>
+
+</div>
+{% endblock %}
