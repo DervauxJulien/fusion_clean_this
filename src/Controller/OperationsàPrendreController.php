@@ -16,6 +16,8 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class OperationsàPrendreController extends AbstractController
 {
+
+    
     #[Route('/operations/prendre', name: 'app_operations_prendre' , methods: ['GET'])]
     public function index(OperationRepository $operationRepository, ClientRepository $clientRepository, UserRepository $user): Response
     {
