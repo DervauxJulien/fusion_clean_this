@@ -16,26 +16,34 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class OperationsàPrendreController extends AbstractController
 {
-    #[Route('/operations/prendre', name: 'app_operations_prendre' , methods: ['GET'])]
+    #[Route('/operations/prendre/', name: 'app_operations_prendre' , methods: ['GET'])]
     public function index(OperationRepository $operationRepository, ClientRepository $clientRepository, UserRepository $user): Response
     {
         // RECUPERATIONS DES DONNEES DES TABLES 'operation' et 'client'
-        
-        // $getUrlStatus = $_GET['status'].str_replace('%20', ' ', 'status');
         $stockOperation = $operationRepository->findAll();
         $stockCli = $clientRepository->findAll();
-        // $stockOpFilter = $operationRepository->findByStatus($_GET['status']);
-
+        // $getUrlStatus = $_GET['status'];
         
         return $this->render('operationsàprendre/index.html.twig', [
-
             'controller_name' => 'OperationsàPrendreController',
             'stockOperation' => $stockOperation,
             'stockCli' => $stockCli,
             'stringType' => $operationRepository->find(''),
-            'users' => $user->findAll(),
-            // 'stockOpFilter' => $stockOpFilter
-            
+            'users' => $user->findAll(),    
+        ]);
+    }
+
+    #[Route('/operation/filter/{status}', name: 'app_operation_filter', methods: ['GET'])]
+
+    public function filterByStatus(OperationRepository $operationRepository, $status): Response
+    {
+        // $status = $_GET['status'];
+
+        $operations = $operationRepository->findByStatus($status);
+        
+        return $this->render('operationsàprendre/filter.html.twig', [
+            'operations' => $operations,
+            'getUrlStatus' => $status
         ]);
     }
 }

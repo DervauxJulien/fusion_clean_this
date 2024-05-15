@@ -13,9 +13,8 @@
     <h1>Prendre des opérations</h1>
 
     <section id="operations_list">
-        {% for operation in stockOperation %}
-            {# {% if getUrlStatus %} #}
-              				{% if operation.status == "A faire" %}
+        {% for operation in operations %}
+                {% if operation.status == getUrlStatus %}
                     {{ dump(operation.status) }}
                     <div class='operation_to_take'>
                         <h2>{{ operation.type }}</h2>
@@ -32,9 +31,8 @@
                             <button class='operation_add_button'>Ajouter</button>
                         </div>
                     </div>
-                {# {% endif %} #}
-            {# {% else %}
-            salut
+                {% endif %}
+            {% else %}
                 <div class='operation_to_take'>
                     <h2>{{ operation.type }}</h2>
                     <div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
@@ -49,8 +47,7 @@
                         </div>
                         <button class='operation_add_button'>Ajouter</button>
                     </div>
-                </div> #}
-            {% endif %}
+                </div>
         {% endfor %}
     </section>
 </main>
