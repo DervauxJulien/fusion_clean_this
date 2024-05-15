@@ -10,20 +10,39 @@
 		{% include "/layout/operations_nav.html.twig" %}
 	</header>
 
-	<div class="container min-vh-100 ">
-		<div class="card pt-2" id="createUser">
-			<div class="card-head">
-			<h2>Formulaire de validation</h2>
-				{{form_start(form)}}
-				{{form_label(form.description_op, 'Entrez votre nouvelle description :')}}
-				{{form_widget(form.description_op,{'attr':{'class': 'form form-control', 'label' : 'Description'}})}}
-				{{form_label(form.description_op, "Choisissez le type d'opération :")}}
-				{{form_widget(form.type,{'attr':{'class': 'form form-control'}})}}
-				<div class="d-flex justify-content-center ">
-				<input class="btn-style mt-5  " type="submit" value="Valider">
+	{# {{dump(stockOp)}} #}
+
+	<div class="container-fluid min-vh-100 pt-5 ">
+		<div class="d-flex justify-content-center h-100">
+			<div class="card pt-2 bg-l-green text-white box-shadow me-4 " style="width: 30rem; ">
+				<div class="card-body d-flex flex-column">
+					<h2 class="text-center pb-2">Récapitulatif</h2>
+					<div class="fw-bold ">
+						<p>Nom client(e) : {{client}}</p>
+					</div>
+					<div class="fw-bold ">
+						<p>Adresse : {{adresse}}</p>
+					</div>
+					<div class="fw-bold ">
+						<p>Description :</p>
+					</div>
+					{{stockOp.getDescriptionClient()}}
 				</div>
 			</div>
-			{{form_end(form)}}
+			<div class="card pt-2  bg-l-green text-white box-shadow" style="width: 30rem;">
+				<div class="card-body">
+					<h2>Formulaire de validation</h2>
+					{{form_start(form)}}
+					{{form_label(form.description_op, 'Entrez votre nouvelle description :')}}
+					{{form_widget(form.description_op,{'attr':{'class': 'form form-control', 'label' : 'Description'}})}}
+					{{form_label(form.description_op, "Choisissez le type d'opération :")}}
+					{{form_widget(form.type,{'attr':{'class': 'form form-control'}})}}
+					<div class="d-flex justify-content-center ">
+						<input class="btn-style mt-5  " type="submit" value="Valider">
+					</div>
+				</div>
+				{{form_end(form)}}
+			</div>
 		</div>
 	</div>
 

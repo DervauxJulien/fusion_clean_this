@@ -17,6 +17,7 @@ class TableOpTermineesController extends AbstractController
         $clients = $clientRepository->findAll();
         $operations = $operationRepository->findAll();
         $stockOperation = $operationRepository->findAll();
+        // $stockOperation = $operationRepository->findBy(['status' => 'Terminé']);
     
         $operationDetails = [];
     

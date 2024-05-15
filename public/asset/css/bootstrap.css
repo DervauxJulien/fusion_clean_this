@@ -6096,20 +6096,20 @@ textarea.form-control-lg {
 .carousel-control-prev,
 .carousel-control-next {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 50%;
+  bottom: auto;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 15%;
+  width: 5%;
   padding: 0;
   color: #fff;
   text-align: center;
   background: none;
   border: 0;
   opacity: 0.5;
-  transition: opacity 0.15s ease;
+  transition: opacity 0.10s ease;
 }
 @media (prefers-reduced-motion: reduce) {
   .carousel-control-prev,
@@ -6138,10 +6138,10 @@ textarea.form-control-lg {
 .carousel-control-next-icon {
   display: inline-block;
   width: 2rem;
-  height: 2rem;
+  height: 1rem;
   background-repeat: no-repeat;
   background-position: 50%;
-  background-size: 100% 100%;
+  background-size: 50% 50%;
 }
 
 /* rtl:options: {

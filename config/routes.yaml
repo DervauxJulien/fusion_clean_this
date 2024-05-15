@@ -6,3 +6,8 @@ controllers:
 redirection_vue:
     path: /redirection
     controller: App\Controller\HomeController::index
+
+    # config/routes.yaml pour générer pdf et envoi par mail
+app_generate_pdf_and_send_email:
+    path: '/generate-pdf-and-send-email/{id}'
+    controller: 'App\Controller\MailController::generatePdfAndSendEmail'

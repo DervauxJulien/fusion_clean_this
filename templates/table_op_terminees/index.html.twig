@@ -14,6 +14,8 @@
                 <th class="center-table" scope="col">DATE</th>
                 <th class="center-table" scope="col">INTERVENANT</th>
                 <th class="center-table" scope="col">FACTURE PDF</th>
+                <th class="center-table" scope="col">FACTURE PAR MAIL</th>
+
             </tr>
         </thead>
         <tbody>
@@ -30,7 +32,10 @@
                         <td class="center-table">{{ operation.dateCreation ? operation.dateCreation|date('Y-m-d') }}</td>
                         <td class="center-table">{{ operation.user.nom }} {{operation.user.prenom}}</td>
                         <td class="center-table">
-                        <a href="{{ path('app_generate_pdf', {'id': operation.id}) }}" class="btn-style">Facture PDF</a>
+                        <a href="{{ path('app_generate_pdf', {'id': operation.id}) }}" class="btn-style">PDF</a>
+                        </td>
+                        <td class="center-table">
+                        <a href="{{ path('app_generate_pdf_and_send_email', {'id': operation.id}) }}" class="btn-style">Par mail</a>
                         </td>
                     </tr>
                 {% endif %}

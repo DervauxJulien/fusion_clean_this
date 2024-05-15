@@ -4,70 +4,108 @@
 
 {% block body %}
 
-<header class="d-flex justify-content-around pt-5">
-    <a href="{{path('app_home')}}"><img src="/images/icons/logo.svg" alt="website logo"></a>
+{% include "layout/navbar.html.twig" %}
 
-    <div class="w-50 pt-5">
-        <h2>Qui sommes-nous ?</h2>
-        <br>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque facilisis ornare. Suspendisse id est suscipit orci pellentesque egestas vel at ligula. Integer a leo id sem auctor facilisis. Donec at sem quis mauris gravida elementum. Vivamus ac nisl non mi sodales posuere id vel mauris. Proin eget risus tortor. Morbi feugiat porta sagittis.
-    </div>
-    </p>
-</header>
-<br><br>
-
-<h1>Demande votre prestation</h1>
-<br><br>
-
-<div class="d-flex justify-content-around flex-wrap gap-5 ps-2 pe-2">
-    <div class="card w-25 ">
-        <div class="card-header">Petite Opération</div>
-        <div class="card-img mt-2 ms-4"></div>
-        <div class="card-body d-flex flex-column align-items-center">
-            <h3>Fast and Clean</h3><br><br>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
-            <br><br>
-            <a href="{{path('app_demande_operation')}}"><button class="btn_nav">Demmande d'operation</button></a>
-        </div>
-    </div>
-
-
-    <div class="card w-25">
-        <div class="card-header">Moyenne Opération</div>
-        <div class="card-img mt-2 ms-4"></div>
-        <div class="card-body d-flex flex-column align-items-center">
-            <h3>Fast and Clean</h3><br><br>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
-            <br><br>
-            <a href="{{path('app_demande_operation')}}"><button class="btn_nav">Demmande d'operation</button></a>
-        </div>
-    </div>
-
-    <div class="card w-25">
-        <div class="card-header">Grande Opération</div>
-        <div class="card-img mt-2 ms-4"></div>
-        <div class="card-body d-flex flex-column align-items-center">
-            <h3>Fast and Clean</h3><br><br>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
-            <br><br>
-            <a href="{{path('app_demande_operation')}}"><button class="btn_nav">Demmande d'operation</button></a>
-        </div>
-    </div>
-
-    <div class="card w-25 ">
-        <div class="card-header">Customisable Opération</div>
-        <div class="card-img mt-2 ms-4"></div>
-        <div class="card-body d-flex flex-column align-items-center">
-            <h3>Fast and Clean</h3><br><br>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
-            <br><br>
-            <a href="{{path('app_demande_operation')}}"><button class="btn_nav">Demmande d'operation</button></a>
-        </div>
-    </div>
+<div id="carouselExample" class="carousel slide caroutaf" >
+    {# <div id="stockDivCarousel" class='bg-d-green text-light' style="width: 40rem;"></div> #}
     
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+
+        <div class="d-flex justify-content-around text-center pt-5">
+            <div class="card w-50">
+                <h2 class="card-header">Qui sommes-nous ?</h2>
+                <div class="mt-2 ms-4"><img src="/images/icons/logo.svg" alt="website logo" class="w-25"></div>
+                
+                
+                <div class="card-body d-flex flex-column align-items-center">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque facilisis ornare. Suspendisse id est suscipit orci pellentesque egestas vel at ligula. Integer a leo id sem auctor facilisis. Donec at sem quis mauris gravida elementum. Vivamus ac nisl non mi sodales posuere id vel mauris. Proin eget risus tortor. Morbi feugiat porta sagittis.</p>
+                </div>
+            </div>
+        </div>
+
+        
+      </div>
+
+
+      <div class="carousel-item">
+
+        <div class="d-flex justify-content-around text-center pt-5">
+        <div class="card w-25 ">
+            <div class="card-header">Petite Opération</div>
+            <div class="card-img mt-2 ms-4"></div>
+            <div class="card-body d-flex flex-column align-items-center">
+                <h3>Fast and Clean</h3><br><br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
+            </div>
+        </div>
+    </div><br>
+        <div class="text-center">
+        <a href="{{path('app_demande_operation')}}"><button class="btn-style">Demande d'opération</button></a>
+        </div>
+        </div>
+
+        <div class="carousel-item">
+
+            <div class="d-flex justify-content-around text-center pt-5">
+            <div class="card w-25 ">
+                <div class="card-header">Moyenne Opération</div>
+                <div class="card-img mt-2 ms-4"></div>
+                <div class="card-body d-flex flex-column align-items-center">
+                    <h3>Fast and Clean</h3><br><br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
+                </div>
+            </div>
+        </div><br>
+            <div class="text-center">
+            <a href="{{path('app_demande_operation')}}"><button class="btn-style">Demande d'opération</button></a>
+            </div>
+            </div>
+
+            <div class="carousel-item">
+
+                <div class="d-flex justify-content-around text-center pt-5">
+                <div class="card w-25 ">
+                    <div class="card-header">Grosse Opération</div>
+                    <div class="card-img mt-2 ms-4"></div>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <h3>Fast and Clean</h3><br><br>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
+                    </div>
+                </div>
+            </div><br>
+                <div class="text-center">
+                <a href="{{path('app_demande_operation')}}"><button class="btn-style">Demande d'opération</button></a>
+                </div>
+                </div>
+
+                <div class="carousel-item">
+
+                    <div class="d-flex justify-content-around text-center pt-5">
+                    <div class="card w-25 ">
+                        <div class="card-header">Custom Opération</div>
+                        <div class="card-img mt-2 ms-4"></div>
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <h3>Fast and Clean</h3><br><br>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
+                        </div>
+                    </div>
+                </div><br>
+                    <div class="text-center">
+                    <a href="{{path('app_demande_operation')}}"><button class="btn-style">Demande d'opération</button></a>
+                    </div>
+                    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      {# <span class="visually-hidden">Previous</span> #}
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </div>
-<br><br>
 
 {% include "layout/footer.html.twig" %}
 
