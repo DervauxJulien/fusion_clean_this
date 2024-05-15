@@ -17,7 +17,9 @@ background-color: #007557;
 .bg-d-green{
 background-color: #0C4B3B;
 }
-
+.box-shadow{
+box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
 /* Navbar */
 
 #navbar {
@@ -662,7 +664,7 @@ footer p{
     margin-bottom: 4%;
     padding: 4% 0%;
     font-weight: 600;
-    font-size: 120%;
+    font-size: 100%;
 }
 .operation_to_take img{
     padding: 5% 0%;
@@ -711,13 +713,6 @@ footer p{
     height: 20rem;
 }
 
-/* class pour centrer element dans tableau */
-
-.center-table tr,td{
-    text-align: center;
-    vertical-align: middle;
-}
-
 .caroutaf{
     display: flex;
     justify-content: center;
@@ -736,14 +731,32 @@ footer p{
     color: #0A9672;
 }
 
+/* ----Page Mention legale---------------------------- */
+
+#pLegal{
+    background-image: url("/images/photofond.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+
+/* class pour centrer element dans tableau */
+
+.center-table tr,td{
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+
 /* Style btn  ------------------------------------------------------- */ 
 
 .btn-style {
+
     background-color: #43CAA9;
     padding: 14px 40px;
     color:#fff;
-    /* text-transform: uppercase; */
-    /* letter-spacing: 2px;  */
     cursor: pointer;
     border-radius: 10px;
     border: 2px solid #fff;

@@ -72,7 +72,7 @@ class UserController extends AbstractController
         {
             $entityManager->flush();
 
-            $this->addFlash('success', "L'utilisateur {$user->getUsername()} a bien été modifier.");
+            $this->addFlash('info', "L'utilisateur {$user->getUsername()} a bien été modifier.");
             return $this->redirectToRoute('app_gestion_utilisateur');
 
         }
