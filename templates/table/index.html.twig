@@ -31,17 +31,15 @@
             </td>
             <td class='objectiveColumn'>{{ objectiveUser }} €</td>
 
-            <td class='realisation'> 
-
-             {% set operationTarif = 0 %}
-                {% for operation in operations %}
-                    {% if operation.user.id == user.id %}
-                        {% set operationTarif = operationTarif + operation.tarif %}
-                    {% endif %}
-                {% endfor %}
-                {{ operationTarif }} €          
-
-            </td>
+<td class='realisation'>              
+    {% set operationTarif = 0 %}
+    {% for operation in operations %}
+        {% if operation.user is not null and operation.user.id == user.id %}
+            {% set operationTarif = operationTarif + operation.tarif %}
+        {% endif %}
+    {% endfor %}
+    {{ operationTarif }} €          
+</td>
 
 
             <td>
@@ -50,15 +48,15 @@
                 </div>
              </td>
 
-            <td class='operation'>
-                {% set operationCount = 0 %}
-                {% for operation in operations %}
-                    {% if operation.user.id == user.id %}
-                        {% set operationCount = operationCount + 1 %}
-                    {% endif %}
-                {% endfor %}
-                {{ operationCount }}           
-            </td>
+<td class='operation'>
+    {% set operationCount = 0 %}
+    {% for operation in operations %}
+        {% if operation.user is not null and operation.user.id == user.id %}
+            {% set operationCount = operationCount + 1 %}
+        {% endif %}
+    {% endfor %}
+    {{ operationCount }}           
+</td>
         </tr>
         {% endfor %}
     </tbody>
