@@ -20,7 +20,7 @@
         </thead>
         <tbody>
             {% for operation in stockOperation %}
-                {% if operation.status == "Realisé" %}
+                {% if operation.status == "Terminer" %}
                     <tr style="height: 3.125rem;">
                         <td class="center-table">{{ operation.client.id }}</td>
                         <td class="center-table">{{ operation.client.nom }}</td>
