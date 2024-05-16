@@ -29,11 +29,11 @@
                                 <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
                                 <h3>Localisation</h3>
                             </div>
-                            <button class='operation_add_button'>Ajouter</button>
+                            <a href="{{path('app_operation_ajout', 'id': "operation.id")}}"><button class='operation_add_button'>Ajouter</button></a>
                         </div>
                     </div>
                 {# {% endif %} #}
-            {% elseif operation.status != "En attente" %}
+            {# {% elseif operation.status != "En attente" %}
             {{ dump(operation.status) }}
            
                 <div class='operation_to_take'>
@@ -50,7 +50,7 @@
                         </div>
                         <button class='operation_add_button'>Ajouter</button>
                     </div>
-                </div>
+                </div> #}
             {% endif %}
         {% endfor %}
     </section>

@@ -10,7 +10,9 @@ use App\Repository\FactureRepository;
 use App\Repository\OperationRepository;
 use App\Repository\TypeRepository;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -45,5 +47,26 @@ class OperationsàPrendreController extends AbstractController
             'operations' => $operations,
             'getUrlStatus' => $status
         ]);
+    }
+
+    #[Route('/operation/ajout/{id}', name: 'app_operation_ajout')]
+    public function ajout(Request $request, OperationRepository $operationRepository, EntityManager $entityManager, int $id): Response
+    {
+        $user = $this->getUser();
+        $operationEnCours = $operationRepository->OperationEnCours($user->getId());
+        if($operationEnCours >= 5){
+            $this->addFlash("error", "Tu as deja atteint la limite d'opérations possible pour ton rôle !");
+            return $this->redirectToRoute('app_opereration_prendre');
+        }
+
+        $operation = $operationRepository->find($id);
+
+        $operation->setUser($user);
+        $operation->setStatus('En cours');
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_operations_prendre');
+        
     }
 }

@@ -36,6 +36,19 @@ class OperationRepository extends ServiceEntityRepository
        ;
    }
 
+   public function OperationEnCours(int $userId) : int
+   {
+    return $this->createQueryBuilder('o')
+        ->select('count(o.id)')
+        ->where('o.user = :user')
+        ->andWhere('o.status = :status')
+        ->setParameter('user', $userId)
+        ->setParameter('status', 'En cours')
+        ->getQuery()
+        ->getSingleScalarResult()
+        ;
+   }
+
 //    public function findOneBySomeField($value): ?Operation
 //    {
 //        return $this->createQueryBuilder('o')
