@@ -20,29 +20,50 @@ class OperationsàPrendreController extends AbstractController
     public function index(OperationRepository $operationRepository, ClientRepository $clientRepository, UserRepository $user): Response
     {
         // RECUPERATIONS DES DONNEES DES TABLES 'operation' et 'client'
+        
         $stockOperation = $operationRepository->findAll();
         $stockCli = $clientRepository->findAll();
-        // $getUrlStatus = $_GET['status'];
         
         return $this->render('operationsàprendre/index.html.twig', [
             'controller_name' => 'OperationsàPrendreController',
-            'stockOperation' => $stockOperation,
+            'operations' => $stockOperation,
             'stockCli' => $stockCli,
             'stringType' => $operationRepository->find(''),
             'users' => $user->findAll(),    
         ]);
     }
 
-    #[Route('/operation/filter/{status}/{clientName}', name: 'app_operation_filter', methods: ['GET'])]
+    #[Route('/operation/filter/{status}', name: 'app_operation_filter', methods: ['GET'])]
 
-    public function filterByStatus(OperationRepository $operationRepository, $status, $clientName): Response
+    public function filterByStatus(OperationRepository $operationRepository, $status): Response
     {
-        $operations = $operationRepository->findByStatus($status, $clientName);
+        $operations = $operationRepository->findByStatus($status);
 
         return $this->render('operationsàprendre/filter.html.twig', [
             'operations' => $operations,
             'getUrlStatus' => $status,
-            'clientName' => $clientName
         ]);
     }
+
+    #[Route('/operation/filter/{status}/{query?}', name: 'app_operation_filter_query', methods: ['GET'])]
+
+    public function filterBySearch(OperationRepository $operationRepository, $status, $query = ''): Response
+    {
+        $operations = $operationRepository->findByStatus($status);
+        $operationsSearch = [];
+
+        if ($query !== '') {
+            $operationsSearch = $operationRepository->findByClientName($query);
+        }
+
+        return $this->render('operationsàprendre/search.html.twig', [
+            'operations' => $operations,
+            'getUrlStatus' => $status,
+            'operationsSearch' => $operationsSearch,
+            'query' => $query,
+        ]);
+    }
+
+
+
 }

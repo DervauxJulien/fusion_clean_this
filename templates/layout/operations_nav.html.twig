@@ -1,40 +1,71 @@
-
 {% extends 'base.html.twig' %}
 
 
 {% block head %}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    
-    {% block title %}{% endblock %}
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+	{% block title %}{% endblock %}
 {% endblock %}
 
 
 {% block body %}
-    <nav id="operations_nav">
-        {% if is_granted("ROLE_EXPERT") %}
-            <a href="{{path('app_mes_operationE')}}" class="nav-link"><h3>Mes opérations</h3></a>
-        {% elseif is_granted("ROLE_SENIOR") %}
-            <a href="{{path('app_mes_operationS')}}" class="nav-link"><h3>Mes opérations</h3></a>
+	<nav id="operations_nav">
+		{% if is_granted("ROLE_EXPERT") %}
+			<a href="{{path('app_mes_operationE')}}" class="nav-link">
+				<h3>Mes opérations</h3>
+			</a>
+		{% elseif is_granted("ROLE_SENIOR") %}
+			<a href="{{path('app_mes_operationS')}}" class="nav-link">
+				<h3>Mes opérations</h3>
+			</a>
 
-        {% else %}
-            <a href="{{path('app_mes_operationA')}}" class="nav-link"><h3>Mes opérations</h3></a>
-        {% endif %}
-       
-        <a href="{{path('app_operations_prendre')}}"class="nav-link"><h3>Liste des opérations en cours</h3></a>
-        <a href="{{path('app_operations_terminees')}}" class="nav-link"><h3>Opérations terminées</h3></a>
-        {% if is_granted("ROLE_EXPERT") %}
-        
-            <button class="nav-toggler dropdown-toggle text-light btn_nav" type="button" data-bs-toggle="dropdown" >
-              Administration
-            </button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{path('app_add_operation')}}">Ajouter des opérations</a></li>
-            <li><a class="dropdown-item" href="{{path('app_gestion_utilisateur')}}">Utilisateur</a></li>
-            <li><a class="dropdown-item" href="{{path('app_chiffre_affaire')}}">Chiffre d'affaire</a></li>
-        </ul>
-        {% endif %}
+		{% else %}
+			<a href="{{path('app_mes_operationA')}}" class="nav-link">
+				<h3>Mes opérations</h3>
+			</a>
+		{% endif %}
 
-    </nav>
+		{# <a href="{{path('app_operations_prendre')}}" class="nav-link">
+			<h3>Liste des opérations en cours</h3>
+		</a> #}
+		<a href="{{path('app_operations_terminees')}}" class="nav-link">
+			<h3>Opérations terminées</h3>
+		</a>
+		<div class="btn-group">
+			<button class="nav-toggler dropdown-toggle text-light btn_nav" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+				Liste des opérations
+			</button>
+			<ul class="dropdown-menu">
+				<li>
+					<a class="dropdown-item" href="{{path('app_operations_prendre')}}">A faire</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="{{ path('app_operation_filter', {'status': 'En cours'}) }}">En cours</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="{{ path('app_operation_filter', {'status': 'Terminer'}) }}">Terminé</a>
+				</li>
+			</ul>
+		</div>
+		{% if is_granted("ROLE_EXPERT") %}
+
+			<button class="nav-toggler dropdown-toggle text-light btn_nav" type="button" data-bs-toggle="dropdown">
+				Administration
+			</button>
+			<ul class="dropdown-menu">
+				<li>
+					<a class="dropdown-item" href="{{path('app_add_operation')}}">Ajouter des opérations</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="{{path('app_gestion_utilisateur')}}">Utilisateur</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="{{path('app_chiffre_affaire')}}">Chiffre d'affaire</a>
+				</li>
+			</ul>
+		{% endif %}
+
+	</nav>
 {% endblock %}
