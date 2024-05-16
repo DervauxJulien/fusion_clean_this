@@ -14,7 +14,18 @@ class TableController extends AbstractController
     public function tableIndex(UserRepository $userRepository, OperationRepository $operationRepository): Response
     {
 
-        $objectiveUser = 24100;
+        $objectiveUser = 27560;
+
+        // Récupération de l'objectif depuis le localStorage
+        // $objectif = $request->getSession()->get('objectif');
+
+        // Si l'objectif n'est pas encore défini dans le localStorage, on utilise la valeur par défaut
+        // if (!$objectif) {
+        //     $objectif = 220500;
+        // }
+
+
+
 
         // Récupération des opérations depuis le repository
         $operations = $operationRepository->findAll();
