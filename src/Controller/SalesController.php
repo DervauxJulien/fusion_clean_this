@@ -40,12 +40,12 @@ class SalesController extends AbstractController
         //Definition de la date du mois en cours
         $currentMonth = (new DateTime())-> format('m');
     
-        //Calcul des ventes du mois en cours
-        foreach ($operations as $operation) {
-            if ($operation->getDateCreation()->format('m') === $currentMonth) {
-                $monthSales += $operation->getTarif();
-            }
-        }
+        //Calcul des ventes du mois en cours *********  A coriger format() erreur ************
+        // foreach ($operations as $operation) {
+        //     if ($operation->getDateCreation()->format('m') === $currentMonth) {
+        //         $monthSales += $operation->getTarif();
+        //     }
+        // }
 
         //Calcul du pourcentage des ventes du mois en cours
         $percentageMonthSales = number_format((($monthSales * 100) / 24100), 1);
