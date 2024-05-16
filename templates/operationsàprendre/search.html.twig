@@ -16,7 +16,7 @@
 	</form>
 	<main id="to_take_main">
     <p>salut</p>
-		{% if operationsSearch is not empty %}
+		{# {% if operationsSearch is not empty %} #}
 			<h2>Résultats de la recherche pour "{{ query }}"</h2>
 			<section id="operations_list">
 				{% for operation in operations %}
@@ -39,12 +39,12 @@
 								{% endif %}
 							</div>
 						</div>
-					{% endif %}
+					{# {% endif %} #}
 				{% endfor %}
 			</section>
-		{% else %}
+		{# {% else %} #}
 			<p>Aucune opération trouvée pour ce client.</p>
-		{% endif %}
+		{# {% endif %} #}
 
 	</main>
 {% endblock %}

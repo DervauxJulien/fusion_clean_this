@@ -52,9 +52,9 @@ class OperationsàPrendreController extends AbstractController
         $operations = $operationRepository->findByStatus($status);
         $operationsSearch = [];
 
-        if ($query !== '') {
-            $operationsSearch = $operationRepository->findByClientName($query);
-        }
+        // if ($query !== '') {
+            $operationsSearch = $operationRepository->findOneByClientName($query);
+        // }
 
         return $this->render('operationsàprendre/search.html.twig', [
             'operations' => $operations,

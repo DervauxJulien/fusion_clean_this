@@ -30,7 +30,7 @@ class TableOpTermineesController extends AbstractController
     
         return $this->render('table_op_terminees/index.html.twig', [
             'clients' => $clients,
-            'stockOperation' => $stockOperation,
+            'operations' => $stockOperation,
             'operationDetails' => $operationDetails,
         ]);
     }
