@@ -22,14 +22,8 @@
 
     <section id="operations_list">
         {% for op in MyOps %}
-       
-        
-
         {% if ((app.user == op.user) and op.status == "En cours" )  %}
-        {{ dump(app.user.id) }}
-        {{ dump(op.user.id) }}
                 
-       
             <div class='operation_to_take' id="{{op.id}}">
                 <h2>{{op.type}}</h2>
                 <div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
@@ -41,7 +35,7 @@
                         <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
                         <h3>{{op.adresse}}</h3>
                     </div>
-                    <button class='operation_add_button'>Terminer</button>
+                    <a href="{{path('app_operation_terminerE', {'id': op.id})}}" class="btn-style">Terminer</a>
                 </div>
             </div>
             {% endif %}
@@ -73,7 +67,7 @@
                         <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
                         <h3>{{op.adresse}}</h3>
                     </div>
-                    <button class='operation_add_button'>Ajouter</button>
+                    <a href="{{path('app_operation_terminerS', {'id': op.id})}}" class="btn-style">Terminer</a>
                 </div>
             </div>
             {% endif %}
@@ -105,7 +99,7 @@
                             <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
                             <h3>{{op.adresse}}</h3>
                         </div>
-                    <button class='operation_add_button'>Ajouter</button>
+                        <a href="{{path('app_operation_terminerA', {'id': op.id})}}" class="btn-style">Terminer</a>
                     </div>
                 </div>
             {% endif %}
