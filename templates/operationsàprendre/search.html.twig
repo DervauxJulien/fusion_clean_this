@@ -37,13 +37,13 @@
 								</div>
 							</div>
 						</div>
+						{% elseif operation.status == "Terminer" %}
+							{% include "table_op_terminees/index.html.twig" %}
 					{% endif %}
 				{% endfor %}
 				{% if not operations_found %}
 					<p>Aucune opération trouvée pour "{{ query }}".</p>
 				{% endif %}
-			{% else %}
-				<p>Aucune opération trouvée pour "{{ query }}".</p>
 			{% endif %}
 		</section>
 	</main>
