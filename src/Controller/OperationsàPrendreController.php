@@ -2,15 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Client;
-use App\Entity\Operation;
 use App\Entity\User;
 use App\Repository\ClientRepository;
-use App\Repository\FactureRepository;
 use App\Repository\OperationRepository;
-use App\Repository\TypeRepository;
 use App\Repository\UserRepository;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -51,10 +46,17 @@ class OperationsàPrendreController extends AbstractController
     }
 
     #[Route('/operation/ajout/{id}', name: 'app_operation_ajout')]
-    public function ajout(Request $request, OperationRepository $operationRepository, EntityManagerInterface $entityManager, int $id): Response
+    public function ajout(OperationRepository $operationRepository, EntityManagerInterface $entityManager, int $id): Response
     {
         $user = $this->getUser();
+
+
+    //Verification du nombre d'operation que l'utilisateur a ajouter
         $operationEnCours = $operationRepository->OperationEnCours($user->getId());
+
+        if (!$user instanceof User) {
+            throw new \LogicException('The user is not an instance of the User entity.');
+        }
         if($operationEnCours >= 5){
             $this->addFlash("error", "Tu as deja atteint la limite d'opérations possible pour ton rôle !");
             return $this->redirectToRoute('app_opereration_prendre');

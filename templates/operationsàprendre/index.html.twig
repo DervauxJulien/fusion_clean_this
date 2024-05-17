@@ -12,6 +12,8 @@
 <main id="to_take_main">
     <h1>Prendre des opérations</h1>
 
+    {% include "layout/_flash_message.html.twig" %}
+
     <section id="operations_list">
         {% for operation in stockOperation %}
             {# {% if getUrlStatus %} #}
