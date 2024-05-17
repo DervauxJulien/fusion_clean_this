@@ -56,8 +56,6 @@ class DemandeOperationController extends AbstractController
             $em->persist($operation);
             $em->flush();
 
-            dd($form);
-
             return $this->redirectToRoute('app_validation');
         }
         return $this->render('demande_operation/index.html.twig', [
