@@ -3,60 +3,48 @@
 {% block title %}Liste des opérations{% endblock %}
 
 {% block body %}
-    <header>
-        {% include "/layout/navbar.html.twig" %}
-        {% include "/layout/operations_nav.html.twig" %}
-        {% include "/layout/search_results.html.twig" %}
-    </header>
+	<header>
+		{% include "/layout/navbar.html.twig" %}
+		{% include "/layout/operations_nav.html.twig" %}
+		{% include "/layout/search_results.html.twig" %}
+	</header>
 
-    <form method="GET" action="{{ path('app_operation_filter_query', {'status': getUrlStatus}) }}">
-        <input type="text" name="query" placeholder="Rechercher par nom de client" required>
-        <button type="submit">Rechercher</button>
-    </form>
+	<form method="GET" action="{{ path('app_operation_filter_query', {'status': getUrlStatus}) }}">
+		<input type="text" name="query" placeholder="Rechercher par nom de client" required>
+		<button type="submit">Rechercher</button>
+	</form>
 
-    <main id="to_take_main">
-        {% set included_table_op = false %}
-        {{ dump(operationsSearch) }}
-        {# <h2>Résultats de la recherche pour "{{ query }}"</h2> #}
-        <section id="operations_list">
-            {% if operationsSearch is not empty %}
-                {% for operation in operationsSearch %}
-                    {% if operation.status == getUrlStatus and operation.status != "Terminer" %}
-                        <div class='operation_to_take'>
-                            <h2>{{ operation.type }}</h2>
-                            <div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
-                                <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
-                                <br><br>
-                                <h4 style='text-align: center; width: 100%; background-color: white;'>{{ operation.getClient() }}</h4>
-                            </div>
-                            <div class='operation_bottom_part'>
-                                <div class='operation_localisation'>
-                                    <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
-                                    <h3>Localisation</h3>
-                                </div>
-                                {# Uncomment the following block if needed for completed operations
-                                {% if operation.status == "Terminer" %}
-                                    <a href="{{ path('app_generate_pdf', {'id': operation.id}) }}" class="btn-style">PDF</a>
-                                    <a href="{{ path('app_generate_pdf_and_send_email', {'id': operation.id}) }}" class="btn-style">Par mail</a>
-                                {% endif %}
-                                #}
-                            </div>
-                        </div>
-					{% else %}
-					{% if not included_table_op %}
-                    {% include "table_op_terminees/index.html.twig" %}
-                    {% set included_table_op = true %}
-                {% endif %}
-                    {% endif %}
-                {% endfor %}
-                {# Include the following block if needed for completed operations #}
-                {% if not included_table_op %}
-                    {% include "table_op_terminees/index.html.twig" %}
-                    {% set included_table_op = true %}
-                {% endif %}
-            {% else %}
-                <p>Aucune opération trouvée pour "{{ query }}".</p>
-            {% endif %}
-        </section>
-    </main>
+	<main id="to_take_main">
+		{# {{ dump(operationsSearch) }} #}
+		<h2>Résultats de la recherche pour "{{ query }}"</h2>
+		<section id="operations_list">
+			{% if operationsSearch is not empty %}
+				{% set operations_found = false %}
+				{% for operation in operationsSearch %}
+					{% if operation.status == getUrlStatus and operation.status != "Terminer" %}
+						{% set operations_found = true %}
+						<div class='operation_to_take'>
+							<h2>{{ operation.type }}</h2>
+							<div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
+								<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
+								<br><br>
+								<h4 style='text-align: center; width: 100%; background-color: white;'>{{ operation.getClient() }}</h4>
+							</div>
+							<div class='operation_bottom_part'>
+								<div class='operation_localisation'>
+									<img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
+									<h3>Localisation</h3>
+								</div>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+				{% if not operations_found %}
+					<p>Aucune opération trouvée pour "{{ query }}".</p>
+				{% endif %}
+			{% else %}
+				<p>Aucune opération trouvée pour "{{ query }}".</p>
+			{% endif %}
+		</section>
+	</main>
 {% endblock %}
