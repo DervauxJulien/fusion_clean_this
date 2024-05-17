@@ -46,8 +46,8 @@ let cpList = document.querySelector(".cp-list");
 
 let adressDatas = [];
 
-let fetchDatas = async () => {
-  listeRue.addEventListener("input", async (e) => {
+let fetchDatas = async (param) => {
+  param.addEventListener("input", async (e) => {
     if (e.target.value.length > 3) {
       const baseUrl = "https://api-adresse.data.gouv.fr/search/"
       const queryParams = new URLSearchParams({
@@ -58,43 +58,72 @@ let fetchDatas = async () => {
       const response = await fetch(URL);
       const data = await response.json();
       adressDatas = data.features;
-      renderAdressListRue();
-      renderAdressListCp();
-      renderAdressListVille();
+      renderAdressList(villeList);
+      renderAdressList(adressList);
+      renderAdressList(cpList);
+      // renderAdressListRue();
+      // renderAdressListCp();
+      // renderAdressListVille();
     }
   });
 };
 
-const renderAdressListRue = () => {
-  adressList.innerHTML = "";
-  adressDatas.forEach(({properties}, index) =>{
-    const li = document.createElement("li");
-    const p1 = document.createElement("p");
+// const renderAdressListRue = () => {
+//   adressList.innerHTML = "";
+//   adressDatas.forEach(({properties}, index) =>{
+//     const li = document.createElement("li");
+//     const p1 = document.createElement("p");
 
-    p1.textContent = properties.name;
+//     p1.textContent = properties.name;
     
 
-    li.appendChild(p1);
-    li.classList.add("content");
+//     li.appendChild(p1);
+//     li.classList.add("content");
 
-    adressList.appendChild(li);
+//     adressList.appendChild(li);
 
-    li.addEventListener("click", () =>  {
-      listeRue.value = li.textContent;
-      listeVille.value = properties.city;
-      listeCP.value = properties.citycode;
-      villeList.style.display = "none";
-      cpList.style.display = "none";
-      adressList.style.display = "none";
-    });
-  });
-  villeList.style.display = "block";
-  cpList.style.display = "block";
-  adressList.style.display = "block";
-};
+//     li.addEventListener("click", () =>  {
+//       listeRue.value = li.textContent;
+//       listeVille.value = properties.city;
+//       listeCP.value = properties.citycode;
+//       villeList.style.display = "none";
+//       cpList.style.display = "none";
+//       adressList.style.display = "none";
+//     });
+//   });
+//   villeList.style.display = "block";
+//   cpList.style.display = "block";
+//   adressList.style.display = "block";
+// };
 
-const renderAdressListVille = () => {
-  villeList.innerHTML = "";
+// const renderAdressListVille = () => {
+//   villeList.innerHTML = "";
+//   adressDatas.forEach(({properties}, index) =>{
+//     const li = document.createElement("li");
+//     const p1 = document.createElement("p");
+
+//     p1.textContent = properties.city;
+    
+
+//     li.appendChild(p1);
+//     li.classList.add("content");
+
+//     villeList.appendChild(li);
+
+//     li.addEventListener("click", () =>  {
+//       listeVille.value = li.textContent;
+//       listeRue.value = li.textContent;
+//       listeCP.value = properties.citycode;
+//       villeList.style.display = "none";
+//       cpList.style.display = "none";
+//       adressList.style.display = "none";
+//     });
+//   });
+//   adressList.style.display = "block";
+// };
+
+const renderAdressList = (param) => {
+  param.innerHTML = "";
   adressDatas.forEach(({properties}, index) =>{
     const li = document.createElement("li");
     const p1 = document.createElement("p");
@@ -105,42 +134,23 @@ const renderAdressListVille = () => {
     li.appendChild(p1);
     li.classList.add("content");
 
-    villeList.appendChild(li);
+    param.appendChild(li);
 
-    li.addEventListener("click", () =>  {
-      listeVille.value = li.textContent;
-      villeList.style.display = "none";
+    li.addEventListener("click", (param) =>  {
+      param.value = li.textContent;
+      // listeRue.value = li.textContent;
+      // listeCP.value = properties.citycode;
+      param.style.display = "none";
+      
     });
   });
-  adressList.style.display = "block";
-};
-
-const renderAdressListCp = () => {
-  cpList.innerHTML = "";
-  adressDatas.forEach(({properties}, index) =>{
-    const li = document.createElement("li");
-    const p1 = document.createElement("p");
-
-    p1.textContent = properties.citycode;
-    
-
-    li.appendChild(p1);
-    li.classList.add("content");
- 
-    cpList.appendChild(li);
-
-    li.addEventListener("click", () =>  {
-      listeCP.value = li.textContent;
-      cpList.style.display = "none";
-    });
-  });
-  adressList.style.display = "block";
+  param.style.display = "block";
 };
 
 
-
-
-fetchDatas();
+fetchDatas(listeRue);
+fetchDatas(listeCP);
+fetchDatas(listeVille);
 
 // Julien
 // Création de la fonction "descriptionClient()" pour la page "templates\add_operation\index.html.twig"

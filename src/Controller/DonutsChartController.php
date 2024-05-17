@@ -13,7 +13,7 @@ class DonutsChartController extends AbstractController
     public function DonutsChart(OperationRepository $operationRepository): Response
     {
         // Récupération des opérations terminées depuis le repository
-        $operations = $operationRepository->findBy(['status' => 'Realisé']);
+        $operations = $operationRepository->findBy(['status' => 'Terminer']);
 
         // Initialisation des variables pour stocker les tarifs par type d'opération
         $petite = 0;
@@ -25,31 +25,35 @@ class DonutsChartController extends AbstractController
         $grandePercent = 0;
         $customPercent = 0;
 
-
+        
         // Boucle sur chaque opération pour regrouper les tarifs par type d'opération
         foreach ($operations as $operation) {
             switch ($operation->getType()) {
                 case 'Petite manœuvre':
                     $petite += $operation->getTarif();
                     break;
-                case 'Moyenne':
-                    $moyenne += $operation->getTarif();
-                    break;
-                case 'Grosse':
-                    $grande += $operation->getTarif();
-                    break;
-                case 'Custom':
-                    $custom += $operation->getTarif();
-                    break;
-            }
-        }
-
+                    case 'Moyenne':
+                        $moyenne += $operation->getTarif();
+                        break;
+                        case 'Grosse':
+                            $grande += $operation->getTarif();
+                            break;
+                            case 'Custom':
+                                $custom += $operation->getTarif();
+                                break;
+                            }
+                        }
+                        
         //Calcule des pourcentages
-        $total = $petite+$moyenne+$grande+$custom;
-        $petitePercent = number_format( (($petite*100) / $total),1);
-        $moyennePercent = number_format( (($moyenne*100) / $total),1);
-        $grandePercent = number_format( (($grande*100) / $total),1);
-        $customPercent = number_format( (($custom*100) / $total),1);
+
+            $total = $petite+$moyenne+$grande+$custom;
+            $petitePercent = number_format( (($petite*100) / $total),1);
+            $moyennePercent = number_format( (($moyenne*100) / $total),1);
+            $grandePercent = number_format( (($grande*100) / $total),1);
+            $customPercent = number_format( (($custom*100) / $total),1);
+        
+
+
 
         return $this->render('donuts_chart/index.html.twig', [
             'petiteTarif' => $petite,
@@ -60,6 +64,8 @@ class DonutsChartController extends AbstractController
             'moyennePercent' => $moyennePercent,
             'grandePercent' => $grandePercent,
             'customPercent' => $customPercent,
+            'total' => $total,
+            'operations'=>$operations,
         ]);
             }
 }

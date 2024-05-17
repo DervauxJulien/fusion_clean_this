@@ -4,46 +4,68 @@
 
 {% block body %}
 
-
 <div class='lotContainer'>
 
-<div class="salesContainer1">
-    <div class="salesTop">
-        <h2 class='titreContainer'>ANNEE EN COURS</h2>
-        <p class='chiffreContainer'><span class="euroSymbol">€</span> {{ currentYearSales }}</p>
+    <div class="salesContainer1">
+        <div class="salesTop">
+            <h2 class='titreContainer'>ANNEE EN COURS</h2>
+            <p class='chiffreContainer'><span class="euroSymbol">€</span> {{ currentYearSales }}</p>
+        </div>
+
+        <div class="salesBottom" >
+            <img src="/images/icons/Positive Dynamic.svg" alt="iconeSales">
+            <p class='percentage'>+ {{ percentageCurrentSales }} %</p>
+        </div>
+
     </div>
 
-    <div class="salesBottom" >
-        <img src="/images/icons/Positive Dynamic.svg" alt="iconeSales">
-        <p class='percentage'>+ {{ percentageCurrentSales }} %</p>
+    <div class="salesContainer2">
+        <div class="salesTop">
+            <h2 class='titreContainer'>MOIS EN COURS</h2>
+            <p class='chiffreContainer'><span class="euroSymbol">€</span> {{ monthSales }}</p>
+        </div>
+
+        <div class="salesBottom" >
+            <img src="/images/icons/Positive Dynamic.svg" alt="iconeSales">
+            <p class='percentage'>+ {{ percentageMonthSales }} %</p>
+        </div>
+
+    </div>
+
+    <div class="salesContainer3">
+        <div class="salesTop">
+            <h2 class='titreContainer3'>OBJECTFS</h2>
+            <p class='chiffreContainer3'><span class="euroSymbol3">€</span> <span id="objectif">{{ objectif }}</span></p>
+            <button class="btnObjectif">Modifier Objectif</button>
+
+        </div>
+        
+        <div class="salesBottom" >
+            <img src="/images/icons/Positive Dynamic.svg" alt="iconeSales">
+            <p class='percentage'>+ {{ percentageObjectif }} %</p>
+        </div>
     </div>
 
 </div>
 
-<div class="salesContainer2">
-    <div class="salesTop">
-        <h2 class='titreContainer'>MOIS EN COURS</h2>
-        <p class='chiffreContainer'><span class="euroSymbol">€</span> {{ monthSales }}</p>
-    </div>
+<script>
+    // Récupération de l'élément du bouton
+    var btnObjectif = document.querySelector('.btnObjectif');
 
-    <div class="salesBottom" >
-<img src="/images/icons/Positive Dynamic.svg" alt="iconeSales">
-        <p class='percentage'>+ {{ percentageMonthSales }} %</p>
-    </div>
+    // Gestionnaire d'événements pour le clic sur le bouton
+    btnObjectif.addEventListener('click', function() {
+        // Afficher une boîte de dialogue de saisie (prompt) pour entrer le nouvel objectif
+        var newObjectif = prompt("Entrez le nouvel objectif:");
 
-</div>
+        // Vérifier si une valeur a été saisie
+        if (newObjectif !== null && newObjectif !== "") {
+            // Mise à jour de la valeur de l'objectif dans le localStorage
+            localStorage.setItem('objectif', newObjectif);
 
-<div class="salesContainer3">
-    <div class="salesTop">
-        <h2 class='titreContainer3'>OBJECTFS</h2>
-        <p class='chiffreContainer3'><span class="euroSymbol3">€</span> {{ objectif }}</p>
-    </div>
-    
-    <div class="salesBottom" >
-<img src="/images/icons/Positive Dynamic.svg" alt="iconeSales">
-        <p class='percentage'>+ {{ percentageObjectif }} %</p>
-    </div>
-</div>
+            // Mettre à jour le contenu de la div avec la nouvelle valeur de l'objectif
+            document.getElementById('objectif').textContent = newObjectif;
+        }
+    });
+</script>
 
-</div>
 {% endblock %}
