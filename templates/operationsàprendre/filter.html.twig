@@ -32,10 +32,10 @@
                                 <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
                                 <h3>Localisation</h3>
                             </div>
-                            {% if operation.status == "Terminer" %}
+                            {# {% if operation.status == "Terminer" %}
                                 <a href="{{ path('app_generate_pdf', {'id': operation.id}) }}" class="btn-style">PDF</a>
                                 <a href="{{ path('app_generate_pdf_and_send_email', {'id': operation.id}) }}" class="btn-style">Par mail</a>
-                            {% endif %}
+                            {% endif %} #}
                         </div>
                     </div>
                 {% else %}

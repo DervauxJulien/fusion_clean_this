@@ -32,6 +32,7 @@ class OperationRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('o')
             ->join('o.client', 'c')
+            ->andWhere('o.status = :val')
             ->where('c.nom LIKE :clientName')
             ->setParameter('clientName', '%' . $clientName . '%')
             ->getQuery()
