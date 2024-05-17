@@ -17,8 +17,9 @@
         <h1>{{ getUrlStatus }}</h1>
 
         <section id="operations_list">
+            {% set included_table_op = false %}
             {% for operation in operations %}
-                {% if (operation.status == getUrlStatus) and (operation.status != "Terminer") %}
+                {% if operation.status == getUrlStatus and operation.status != "Terminer" %}
                     <div class='operation_to_take'>
                         <h2>{{ operation.type }}</h2>
                         <div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
@@ -37,11 +38,13 @@
                             {% endif %}
                         </div>
                     </div>
-                     {% else %}
-            {% include "table_op_terminees/index.html.twig" %}
-            {% endif %}
+                {% else %}
+                    {% if not included_table_op %}
+                        {% include "table_op_terminees/index.html.twig" %}
+                        {% set included_table_op = true %}
+                    {% endif %}
+                {% endif %}
             {% endfor %}
-              
         </section>
     </main>
 {% endblock %}
