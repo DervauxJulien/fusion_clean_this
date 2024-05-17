@@ -49,14 +49,12 @@ class DemandeOperationController extends AbstractController
             $em->persist($client);
             $em->flush();
 
-            $operation->setStatus('à faire'); 
+            $operation->setStatus('En attente'); 
             $operation->setDateDemande(new \DateTime());
             $operation->setAdresse($adresse);
             $operation->setClient($client);
             $em->persist($operation);
             $em->flush();
-
-            dd($form);
 
             return $this->redirectToRoute('app_validation');
         }

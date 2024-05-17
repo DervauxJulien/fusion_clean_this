@@ -4,7 +4,7 @@
 {% block title %}Demande d'opération
 {% endblock %}
 {% block body %}
-	<form method="GET">
+	<form method="POST">
 		<div class="d-flex globale">
 			<div class='margeGauche w-25 h-100'>
 				<img src="\images\icons\logo.svg" alt="logo" width="20%" height="20%" class"logodop"/>
@@ -93,8 +93,10 @@
 				{{form_widget(createForm.operation.description_client,{'attr':{'class': 'form form-control','placeholder': 'Dans une limite de 255 caractères'}})}}
 				<br>
 				{{form_label(createForm.operation.img)}}
-				{{form_widget(createForm.operation.img,{'attr':{'class': 'form form-control','placeholder': 'Glissez vos fichiers photos'}})}}
-
+				<label for="">
+				<input type="file" id="img" accept="image/png, image/jpeg" multiple>
+				{{form_widget(createForm.operation.img,{'attr':{'class': 'form form-control','placeholder': 'Type .jpeg et .png'}})}}
+				</label>
 				<p></p>
 
 				{# <label for="Photo">Photos du site à nettoyer :
