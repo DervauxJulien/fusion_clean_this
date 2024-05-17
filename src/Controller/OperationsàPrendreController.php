@@ -11,6 +11,7 @@ use App\Repository\OperationRepository;
 use App\Repository\TypeRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -50,7 +51,7 @@ class OperationsàPrendreController extends AbstractController
     }
 
     #[Route('/operation/ajout/{id}', name: 'app_operation_ajout')]
-    public function ajout(Request $request, OperationRepository $operationRepository, EntityManager $entityManager, int $id): Response
+    public function ajout(Request $request, OperationRepository $operationRepository, EntityManagerInterface $entityManager, int $id): Response
     {
         $user = $this->getUser();
         $operationEnCours = $operationRepository->OperationEnCours($user->getId());

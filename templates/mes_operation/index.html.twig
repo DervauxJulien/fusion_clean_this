@@ -3,8 +3,8 @@
 {% block title %}Hello MesOperationController!{% endblock %}
 
 {% set op_en_cours = 0 %}
-        {% for op in MyOps %}
-        {% if ((app.user.id == op.user.id) and op.status == "En cours" )  %}
+{% for op in MyOps %}
+         {% if app.user == op.user and op.status ==  "En cours" %}
         {% set op_en_cours = op_en_cours + 1 %}
         {% endif %}
         {% endfor %}
@@ -12,7 +12,7 @@
 {% block body %}
 {% include "layout/navbar.html.twig" %}
 {% include "layout/operations_nav.html.twig" %}
-
+        
 {% if is_granted("ROLE_EXPERT") %} 
 
 <main id="to_take_main">
@@ -22,9 +22,12 @@
 
     <section id="operations_list">
         {% for op in MyOps %}
+       
+        
 
-        {% if ((app.user.id == op.user.id) and op.status == "En cours" )  %}
-        {{ dump(op) }}
+        {% if ((app.user == op.user) and op.status == "En cours" )  %}
+        {{ dump(app.user.id) }}
+        {{ dump(op.user.id) }}
                 
        
             <div class='operation_to_take' id="{{op.id}}">
