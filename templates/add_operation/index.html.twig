@@ -6,7 +6,6 @@
 	<header>
 		{% include "/layout/navbar.html.twig" %}
 		{% include "/layout/operations_nav.html.twig" %}
-		{% include "/layout/drop_down.html.twig" %}
    		{% include "layout/_flash_message.html.twig" %}
 
 
@@ -39,7 +38,10 @@
 				
 				{# {{dump(operation.status)}} #}
 					<tr>
-						<th class="">0/0/0</th>
+						<th class="">
+							{# {{ dump(operation) }} #}
+							{{operation.getDateCreation()|date("d/m/Y")}}
+					</th>
 						<td class="">{{operation.client.nom}}</td>
 						<td class="">{{operation.client.prenom}}</td>
 						<td class="">{{operation.client.email}}</td>

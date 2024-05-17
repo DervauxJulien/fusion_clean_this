@@ -1,60 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello OperationsàPrendreController!{% endblock %}
+{% block title %}Hello OperationsàPrendreController!
+{% endblock %}
 
 {% block body %}
-<header>
-    {% include "/layout/navbar.html.twig" %}
-    {% include "/layout/operations_nav.html.twig" %}
-    {% include "/layout/drop_down.html.twig" %}
-</header>
+	<header>
+		{% include "/layout/navbar.html.twig" %}
+		{% include "/layout/operations_nav.html.twig" %}
+	</header>
 
-<main id="to_take_main">
-    <h1>Prendre des opérations</h1>
+	<main id="to_take_main">
+		<h1>Opérations disponibles</h1>
 
     {% include "layout/_flash_message.html.twig" %}
 
-    <section id="operations_list">
-        {% for operation in stockOperation %}
-            {# {% if getUrlStatus %} #}
-              				{% if operation.status == "A faire" %}
-                    {{ dump(operation.status) }}
-                    <div class='operation_to_take'>
-                        <h2>{{ operation.type }}</h2>
-                        <div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
-                            <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture' />
-                            <br><br>
-                            <h4 style='text-align: center; width: 100%; background-color: white;'>{{ operation.id }}</h4>
-                        </div>
-                        <div class='operation_bottom_part'>
-                            <div class='operation_localisation'>
-                                <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
-                                <h3>Localisation</h3>
-                            </div>
-                            <a href="{{path('app_operation_ajout', {'id': operation.id}) }}"><button class='operation_add_button'>Ajouter</button></a>
-                        </div>
-                    </div>
-                {# {% endif %} #}
-            {# {% elseif operation.status != "En attente" %}
-            {{ dump(operation.status) }}
-           
-                <div class='operation_to_take'>
-                    <h2>{{ operation.type }}</h2>
-                    <div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
-                        <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture' />
-                        <br><br>
-                        <h4 style='text-align: center; width: 100%; background-color: white;'>{{ operation.id }}</h4>
-                    </div>
-                    <div class='operation_bottom_part'>
-                        <div class='operation_localisation'>
-                            <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
-                            <h3>Localisation</h3>
-                        </div>
-                        <button class='operation_add_button'>Ajouter</button>
-                    </div>
-                </div> #}
-            {% endif %}
-        {% endfor %}
-    </section>
-</main>
-{% endblock %}
+		<section id="operations_list">
+			{% for operation in operations %}
+				{% if operation.status == "A faire" %}
+					{# {{ dump(operation.status) }} #}
+					<div class='operation_to_take'>
+						<h2>{{ operation.type }}</h2>
+						<div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
+							<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
+							<br><br>
+							<h4 style='text-align: center; width: 100%; background-color: white;'>{{ operation.getClient()}}</h4>
+						</div>
+						<div class='operation_bottom_part'>
+							<div class='operation_localisation'>
+								<img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
+								<h3>Localisation</h3>
+							</div>
+							<a href="{{ path('app_generate_ajout', {'id': operation.id}) }}" class="btn-style">Ajouter à ma liste</a>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</section>
+		</main>
+	{% endblock %}

@@ -85,7 +85,6 @@ class AddOperationController extends AbstractController
 
             $operation->setStatus('A faire'); 
 
-
             $entityManager->flush();
 
             return $this->redirectToRoute('app_add_operation');

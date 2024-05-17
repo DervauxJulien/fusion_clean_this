@@ -17,7 +17,11 @@ class TableOpTermineesController extends AbstractController
         $clients = $clientRepository->findAll();
         $operations = $operationRepository->findAll();
         $stockOperation = $operationRepository->findAll();
-        // $stockOperation = $operationRepository->findBy(['status' => 'Terminé']);
+
+        // Tri des opérations par le nom du client
+        usort($operations, function ($a, $b) {
+            return strcmp($a->getClient()->getNom(), $b->getClient()->getNom());
+        });
     
         $operationDetails = [];
     
@@ -30,8 +34,9 @@ class TableOpTermineesController extends AbstractController
     
         return $this->render('table_op_terminees/index.html.twig', [
             'clients' => $clients,
-            'stockOperation' => $stockOperation,
+            'operations' => $stockOperation,
             'operationDetails' => $operationDetails,
+            'operations'=> $operations,
         ]);
     }
     }
