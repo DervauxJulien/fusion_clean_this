@@ -56,6 +56,8 @@ class DemandeOperationController extends AbstractController
             $em->persist($operation);
             $em->flush();
 
+            dd($form);
+
             return $this->redirectToRoute('app_validation');
         }
         return $this->render('demande_operation/index.html.twig', [
@@ -63,11 +65,18 @@ class DemandeOperationController extends AbstractController
         ]);
     }
 
+    
+
+
     #[Route('/validation', name: 'app_validation')]
     public function validation(){
         return $this->render('demande_operation/validation.html.twig');
     }
 }
+
+
+
+
 
 // $image = $_GET['image'];
 
