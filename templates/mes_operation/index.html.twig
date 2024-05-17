@@ -35,7 +35,7 @@
                         <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
                         <h3>{{op.adresse}}</h3>
                     </div>
-                    <a href="{{path('app_operation_terminerE', {'id': op.id})}}" class="btn-style">Terminer</a>
+                    <a href="{{path('app_operation_terminerE', {'id': op.id})}}" class="btn-style" onclick="return confirm('Confirmez-vous avoir terminer cette operation ?')">Terminer</a>
                 </div>
             </div>
             {% endif %}
@@ -67,7 +67,7 @@
                         <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
                         <h3>{{op.adresse}}</h3>
                     </div>
-                    <a href="{{path('app_operation_terminerS', {'id': op.id})}}" class="btn-style">Terminer</a>
+                    <a href="{{path('app_operation_terminerS', {'id': op.id})}}" class="btn-style" onclick="return confirm('Confirmez-vous avoir terminer cette operation ?')">Terminer</a>
                 </div>
             </div>
             {% endif %}
@@ -99,7 +99,7 @@
                             <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
                             <h3>{{op.adresse}}</h3>
                         </div>
-                        <a href="{{path('app_operation_terminerA', {'id': op.id})}}" class="btn-style">Terminer</a>
+                        <a href="{{path('app_operation_terminerA', {'id': op.id})}}" class="btn-style" onclick="return confirm('Confirmez-vous avoir terminer cette operation ?')">Terminer</a>
                     </div>
                 </div>
             {% endif %}
