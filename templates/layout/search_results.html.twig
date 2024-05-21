@@ -1,8 +1,8 @@
-{# {% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
-<form method="GET" action="{{ path('app_operation_filter_query') }}">
-    <input type="text" name="query" placeholder="Rechercher par nom de client" required>
-    <button type="submit">Rechercher</button>
-</form>
-{% endblock %} #}
+		<form method="GET" action="{{ path('app_operation_filter_query', {'status': getUrlStatus}) }}">
+			<input type="text" name="query" placeholder="Rechercher par nom de client" required>
+			<button type="submit">Rechercher</button>
+		</form>
+{% endblock %}
