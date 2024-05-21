@@ -58,13 +58,14 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6
 /* Footer ------------ */
 
 footer {
-     display: flex;
+    display: flex;
     justify-content: space-between; 
     align-items: center;
-    padding-left: 2%;
+    padding-left: 0.5%;
     background-color: #0C4B3B;
     color: white;
-    position: relative;
+    /* position: relative; */
+    position: fixed;
     bottom: 0;
     width: 100%;
 
@@ -147,8 +148,9 @@ footer p{
     align-items: center;
     flex-direction: column;
     gap: 10%;
-
-    margin: 10% 0%; 
+    position: relative;
+    z-index: +1;
+    padding-bottom: 12rem;
 }
 
 
@@ -186,6 +188,51 @@ footer p{
     padding: 2% 5%;
     margin-top: 8%;
 }
+
+/* ------------------------------------------------------*/
+/*    Page connexion utilisateur/*
+/* ------------------------------------------------------*/
+
+
+#persoCo{
+    position: absolute;
+    z-index: -1;
+    width: 92%;
+    margin-left: 7%;
+} 
+
+#logoCo{
+    width: 5rem;
+}
+
+#enteteCo {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#titrePageCo{
+   font-size: 3.125rem;
+   font-weight: bold;
+   text-shadow: 1px 3px 3px grey ;
+   width: 70rem;
+   margin-left: 5rem;
+   margin-top: 1rem;
+}
+
+#logoText{
+    display: flex;
+    margin-left: 3%;
+}
+
+
+
+
+
 /* ------------------------------------------ */
 /* page chiffre d'affaire */
 
