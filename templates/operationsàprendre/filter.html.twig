@@ -6,11 +6,22 @@
 <header>
     {% include "/layout/navbar.html.twig" %}
     {% include "/layout/operations_nav.html.twig" %}
-    {% include "/layout/search_results.html.twig" %}
+		
 </header>
-<body class="op-terminer-body min-vh-100">
-    <main class="text-center">
-        <h1>{{ getUrlStatus }}</h1>
+<body class="op-terminer-body">
+	<div class="d-flex align-items-center justify-content-center bg-d-green text-white p-2">
+	{% if getUrlStatus == "A faire" %}
+	        <h3>Opérations disponibles</h3>
+			{% elseif getUrlStatus == "En cours"%}
+			<h3>Opérations en cours</h3>
+			{% else %}
+				<h3>Opérations terminées</h3>
+	{% endif %}
+	<div class="p-1 ms-2 >
+		{% include "/layout/search_results.html.twig" %}
+	</div>
+	</div>
+    <main class="container-fluid text-center min-vh-100">
         <section class='d-flex flex-wrap m-5 justify-content-center'>
             {% set included_table_op = false %}
             {% for operation in operations %}
