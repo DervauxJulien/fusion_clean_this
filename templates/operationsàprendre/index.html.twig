@@ -30,8 +30,13 @@
 								<img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
 								<h3>Localisation</h3>
 							</div>
-							<a href="{{ path('app_operation_ajout', {'id': operation.id}) }}" class="btn-style">Ajouter à ma liste</a>
+                            {% if operationsEnCours < 5 %}
+                                <a href="{{ path('app_operation_ajout', {'id': operation.id}) }}" class="btn-style">Ajouter à ma liste</a>  
+                            {% else %}
+                                <a href="{{ path('app_operation_ajout', {'id': operation.id}) }}" class="btn-style" disabled>Limite Atteinte</a>
+                            {% endif %}
 						</div>
+					</div>
 					{% endif %}
 				{% endfor %}
 			</section>

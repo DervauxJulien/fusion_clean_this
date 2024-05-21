@@ -16,9 +16,15 @@ class OperationsàPrendreController extends AbstractController
     #[Route('/operations/prendre/', name: 'app_operations_prendre', methods: ['GET'])]
     public function index(OperationRepository $operationRepository): Response
     {
+
         $stockOperation = $operationRepository->findAll();
+
+        $user = $this->getUser();
+        $operationEnCours = $operationRepository->OperationEnCours($user->getId());
+
         return $this->render('operationsàprendre/index.html.twig', [
             'operations' => $stockOperation,
+            'operationsEnCours' => $operationEnCours,
         ]);
     }
 
