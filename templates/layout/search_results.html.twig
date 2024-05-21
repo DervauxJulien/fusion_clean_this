@@ -2,7 +2,7 @@
 
 {% block body %}
 		<form class="d-flex" method="GET" action="{{ path('app_operation_filter_query', {'status': getUrlStatus}) }}">
-			<input class="form-control me-2" type="text" name="query" placeholder="Rechercher par nom de client" required>
+			<input class="form-control form-control-sm me-2" type="text" name="query" placeholder="Rechercher par nom de client" required>
 			<button class="btn-style h-auto " type="submit">Rechercher</button>
 		</form>
 {% endblock %}
