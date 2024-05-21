@@ -146,8 +146,9 @@ footer p{
     align-items: center;
     flex-direction: column;
     gap: 10%;
-
-    margin: 10% 0%; 
+    position: relative;
+    z-index: +1;
+    padding-bottom: 12rem;
 }
 
 
@@ -185,6 +186,51 @@ footer p{
     padding: 2% 5%;
     margin-top: 8%;
 }
+
+/* ------------------------------------------------------*/
+/*    Page connexion utilisateur/*
+/* ------------------------------------------------------*/
+
+
+#persoCo{
+    position: absolute;
+    z-index: -1;
+    width: 92%;
+    margin-left: 7%;
+} 
+
+#logoCo{
+    width: 5rem;
+}
+
+#enteteCo {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#titrePageCo{
+   font-size: 3.125rem;
+   font-weight: bold;
+   text-shadow: 1px 3px 3px grey ;
+   width: 70rem;
+   margin-left: 5rem;
+   margin-top: 1rem;
+}
+
+#logoText{
+    display: flex;
+    margin-left: 3%;
+}
+
+
+
+
+
 /* ------------------------------------------ */
 /* page chiffre d'affaire */
 
