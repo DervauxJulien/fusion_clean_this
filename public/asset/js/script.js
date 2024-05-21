@@ -61,7 +61,7 @@ let fetchDatas = async (param) => {
       renderAdressList(villeList);
       renderAdressList(adressList);
       renderAdressList(cpList);
-      renderAdressListRue(listeRue);
+      // renderAdressListRue(listeRue);
       // renderAdressListCp();
       // renderAdressListVille();
     }
