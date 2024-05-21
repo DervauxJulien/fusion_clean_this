@@ -24,17 +24,22 @@
 				{% for operation in operationsSearch %}
 					{% if operation.status == getUrlStatus and operation.status != "Terminer" %}
 						{% set operations_found = true %}
-						<div class='operation_to_take'>
-							<h2>{{ operation.type }}</h2>
-							<div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
-								<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
-								<br><br>
-								<h4 style='text-align: center; width: 100%; background-color: white;'>{{ operation.client.nom }}</h4>
+						<div class='card rounded-3 box-shadow m-3 ' style='width: 25rem;'>
+							<div class='rounded-top-3 bg-white text-center'>
+								<h2>{{ operation.type }}</h2>
 							</div>
-							<div class='operation_bottom_part'>
-								<div class='operation_localisation'>
-									<img  src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
-									<h3>Localisation</h3>
+							<div class='d-flex flex-column h-100 bg-l-green rounded-bottom-3 '>
+								<img class="h-50" src='/images/broken_image.svg' alt='operation picture' />
+                                <div class="d-flex justify-content-center bg-white ">                                
+								<h4 class="pt-1">User : {{ operation.user.nom}} {{ operation.user.prenom}}</h4>
+                                </div>
+								<div class='bg-d-green w-100 rounded-bottom-3 h-100 '>
+									<div class='d-flex flex-column  flex-wrap text-white pt-3  '>
+                                    <div class="border-bottom d-flex justify-content-center align-items-center">
+								    <h4 class="pt-1 ">{{ operation.getClient()}}</h4>
+                                    </div>
+										<h3>{{operation.getAdresse()}}</h3>
+									</div>
 								</div>
 							</div>
 						</div>

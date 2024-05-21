@@ -22,27 +22,38 @@
 				{% for operation in operations %}
 					{% if operation.status == getUrlStatus and operation.status != "Terminer" %}
 
-						<div class='card rounded-3 box-shadow m-3 ' style='width: 18rem;'>
+						<div class='card rounded-3 box-shadow m-3 ' style='width: 25rem;'>
 							<div class='rounded-top-3 bg-white text-center'>
 								<h2>{{ operation.type }}</h2>
 							</div>
 							<div class='d-flex flex-column h-100 bg-l-green rounded-bottom-3 '>
-								<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
-                                <div class="d-flex justify-content-center bg-white ">                                
-								<h4 class="pt-1">User : {{ operation.user.nom}} {{ operation.user.prenom}}</h4>
-                                </div>
+								<img class="h-50" src='/images/broken_image.svg' alt='operation picture'/>
+								<div class="d-flex justify-content-center bg-white ">
+									<h4 class="pt-1">User :
+										{{ operation.user.nom}}
+										{{ operation.user.prenom}}</h4>
+								</div>
 								<div class='bg-d-green w-100 rounded-bottom-3 h-100 '>
 									<div class='d-flex flex-column  flex-wrap text-white pt-3  '>
-                                    <div class="border-bottom d-flex justify-content-center align-items-center">
-								    <h4 class="pt-1 ">{{ operation.getClient()}}</h4>
-                                    </div>
+										<div class="border-bottom d-flex justify-content-center align-items-center">
+											<h4 class="pt-1 ">{{ operation.getClient()}}</h4>
+										</div>
 										<h3>{{operation.getAdresse()}}</h3>
 									</div>
 								</div>
-							</div>
+                                <div class='d-flex justify-content-center w-100  '>
 
+                                    {% if operation.status == "A faire"   %}
+    
+									{% elseif operationsEnCours < 5  %}
+										<a href="{{ path('app_operation_ajout', {'id': operation.id}) }}" class="d-flex btn-style w-100">Ajouter à ma liste</a>
+									{% else %}
+										<a href="{{ path('app_operation_ajout', {'id': operation.id}) }}" class="d-flex btn-style w-100" disabled>Limite Atteinte</a>
+									{% endif %}
+								</div>
+							</div>
 						</div>
-					{% else %}
+					{% elseif operation.status == "Terminer"  %}
 						{% if not included_table_op %}
 							{% include "table_op_terminees/index.html.twig" %}
 							{% set included_table_op = true %}
