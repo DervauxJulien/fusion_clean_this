@@ -406,7 +406,7 @@ footer p{
     background-image: url('/images/photofond.png');
     background-size: cover;
     background-repeat: no-repeat;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 
@@ -704,7 +704,6 @@ footer p{
     display: flex;
     justify-content: space-around;
     align-items: center;
-
     background-color: #0C4B3B;
     width: 100%;
     border-radius: 0px 0px 20px 20px;
@@ -727,7 +726,7 @@ footer p{
 }
 .operation_localisation h3{
     color: white;
-    font-size: 92%;
+    font-size: 90%;
     text-transform: uppercase;
     font-weight: 600;
 }
@@ -785,7 +784,7 @@ footer p{
 .btn-style {
 
     background-color: #43CAA9;
-    padding: 14px 40px;
+    padding: 1rem;
     color:#fff;
     cursor: pointer;
     border-radius: 10px;

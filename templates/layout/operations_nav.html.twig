@@ -39,13 +39,13 @@
 			</button>
 			<ul class="dropdown-menu">
 				<li>
-					<a class="dropdown-item" href="{{path('app_operations_prendre')}}">A faire</a>
+					<a class="dropdown-item" href="{{path('app_operation_filter', {'status': 'A faire'})}}">A faire</a>
 				</li>
 				<li>
-					<a class="dropdown-item" href="{{ path('app_operation_filter', {'status': 'En cours'}) }}">En cours</a>
+					<a class="dropdown-item" href="{{ path('app_operation_filter', {'status': 'En cours'})}}">En cours</a>
 				</li>
 				<li>
-					<a class="dropdown-item" href="{{ path('app_operation_filter', {'status': 'Terminer'}) }}">Terminé</a>
+					<a class="dropdown-item" href="{{ path('app_operation_filter', {'status': 'Terminer'})}}">Terminé</a>
 				</li>
 			</ul>
 		</div>

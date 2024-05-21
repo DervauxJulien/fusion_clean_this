@@ -13,20 +13,20 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class OperationsàPrendreController extends AbstractController
 {
-    #[Route('/operations/prendre/', name: 'app_operations_prendre', methods: ['GET'])]
-    public function index(OperationRepository $operationRepository): Response
-    {
+    // #[Route('/operations/prendre/filter/{status}', name: 'app_operations_prendre', methods: ['GET'])]
+    // public function index(OperationRepository $operationRepository,string $status): Response
+    // {
+    //     $stockOperation = $operationRepository->findAll();
+    //     $user = $this->getUser();
+    //     $operationEnCours = $operationRepository->OperationEnCours($user->getId());
+    //     $status = "A faire";
 
-        $stockOperation = $operationRepository->findAll();
-
-        $user = $this->getUser();
-        $operationEnCours = $operationRepository->OperationEnCours($user->getId());
-
-        return $this->render('operationsàprendre/index.html.twig', [
-            'operations' => $stockOperation,
-            'operationsEnCours' => $operationEnCours,
-        ]);
-    }
+    //     return $this->render('operationsàprendre/filter.html.twig', [
+    //         'operations' => $stockOperation,
+    //         'operationsEnCours' => $operationEnCours,
+    //         'getUrlStatus' => $status,
+    //     ]);
+    // }
 
     #[Route('/operation/filter/{status}', name: 'app_operation_filter', methods: ['GET'])]
     public function filterByStatus(OperationRepository $operationRepository, string $status): Response

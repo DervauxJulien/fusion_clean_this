@@ -8,6 +8,7 @@
 		{% include "/layout/operations_nav.html.twig" %}
 		{% include "/layout/search_results.html.twig" %}
 	</header>
+	<body class="op-terminer-body">
 
 	<form method="GET" action="{{ path('app_operation_filter_query', {'status': getUrlStatus}) }}">
 		<input type="text" name="query" placeholder="Rechercher par nom de client" required>
@@ -66,7 +67,7 @@
 						</thead>
 						<tbody>
 							{% for operation in operationsSearch %}
-								{# {% if operation.status == "Terminer" %} #}
+								{% if operation.status == "Terminer" %}
 									<tr style="height: 3.125rem;">
 										<td class="center-table">{{ operation.id }}</td>
 										<td class="center-table">{{ operation.client.nom }}</td>
@@ -84,7 +85,7 @@
 											<a href="{{ path('app_generate_pdf_and_send_email', {'id': operation.id}) }}" class="btn-style">Par mail</a>
 										</td>
 									</tr>
-								{# {% endif %} #}
+								{% endif %}
 							{% endfor %}
 						</tbody>
 					</table>
@@ -92,4 +93,5 @@
 			{% endif %}
 		</section>
 	</main>
+	</body>
 {% endblock %}

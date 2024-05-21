@@ -95,9 +95,9 @@ class AddOperationController extends AbstractController
     
         return $this->render('add_operation/edit.html.twig', [
             'form' => $form->createView(),
-            'stockOp' => $stockOp,
-            'adresse' => $adresse->__toString(),
-            'client' => $client->__toString()
+            'operations' => $stockOp,
+            // 'adresse' => $adresse->__toString(),
+            // 'client' => $client->__toString()
         ]);
     }
 
