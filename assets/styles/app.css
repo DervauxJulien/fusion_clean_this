@@ -402,7 +402,7 @@ footer p{
 
 /* body chiffre affaire */
 
-.chiffre-affaire-body{
+.chiffre-affaire-body, .op-terminer-body{
     background-image: url('/images/photofond.png');
     background-size: cover;
     background-repeat: no-repeat;
