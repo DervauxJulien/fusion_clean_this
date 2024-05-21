@@ -46,7 +46,7 @@
 				<p>Aucune opération trouvée pour "{{ query }}".</p>
 			{% endif %}
 
-			{% if operationsSearch is not empty %}
+			{% if operationsSearch is not empty and getUrlStatus == "Terminer"   %}
 				<div class="container min-vh-100">
 					<table class="table table-hover table-striped border-2 mt-5">
 						<thead class='bg-violet'>
@@ -66,7 +66,7 @@
 						</thead>
 						<tbody>
 							{% for operation in operationsSearch %}
-								{% if operation.status == "Terminer" %}
+								{# {% if operation.status == "Terminer" %} #}
 									<tr style="height: 3.125rem;">
 										<td class="center-table">{{ operation.id }}</td>
 										<td class="center-table">{{ operation.client.nom }}</td>
@@ -84,7 +84,7 @@
 											<a href="{{ path('app_generate_pdf_and_send_email', {'id': operation.id}) }}" class="btn-style">Par mail</a>
 										</td>
 									</tr>
-								{% endif %}
+								{# {% endif %} #}
 							{% endfor %}
 						</tbody>
 					</table>
