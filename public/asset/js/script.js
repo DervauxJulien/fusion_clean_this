@@ -109,10 +109,14 @@ const renderAdressListVille = () => {
 
     li.addEventListener("click", () =>  {
       listeVille.value = li.textContent;
+      listeRue.value = properties.name;
+      listeCP.value = properties.citycode;
       villeList.style.display = "none";
+      cpList.style.display = "none";
+      adressList.style.display = "none";
     });
   });
-  adressList.style.display = "block";
+  
 };
 
 const renderAdressListCp = () => {
@@ -131,10 +135,13 @@ const renderAdressListCp = () => {
 
     li.addEventListener("click", () =>  {
       listeCP.value = li.textContent;
+      listeRue.value = properties.name;
+      listeVille.value = properties.city;
+      villeList.style.display = "none";
       cpList.style.display = "none";
+      adressList.style.display = "none";
     });
   });
-  adressList.style.display = "block";
 };
 
 
