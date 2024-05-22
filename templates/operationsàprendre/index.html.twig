@@ -8,37 +8,38 @@
 		{% include "/layout/navbar.html.twig" %}
 		{% include "/layout/operations_nav.html.twig" %}
 	</header>
-	
-	<main id="to_take_main">
-		<h1>Opérations disponibles</h1>
+	<body class="op-terminer-body">
 
-    {% include "layout/_flash_message.html.twig" %}
+		<main id="to_take_main">
+			<h1>Opérations disponibles</h1>
 
-		<section id="operations_list">
-			{% for operation in operations %}
-				{% if operation.status == "A faire" %}
-					{# {{ dump(operation.status) }} #}
-					<div class='operation_to_take'>
-						<h2>{{ operation.type }}</h2>
-						<div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
-							<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
-							<br><br>
-							<h4 style='text-align: center; width: 100%; background-color: white;'>{{ operation.getClient()}}</h4>
-						</div>
-						<div class='operation_bottom_part'>
-							<div class='operation_localisation'>
-								<img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
-								<h3>Localisation</h3>
+			{% include "layout/_flash_message.html.twig" %}
+
+			<section id="operations_list">
+				{% for operation in operations %}
+					{% if operation.status == "A faire" %}
+						<div class='card rounded-3' style='width: 18rem'>
+							<h2 class='d-flex justify-content-center'>{{ operation.type }}</h2>
+							<div class='d-flex text-center flex-column bg-l-green rounded-bottom-3'>
+								<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
+								<h4>{{operation.getClient()}}</h4>
+								<div class='operation_localisation'>
+									<img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
+									<h3>Localisation</h3>
+								</div>
+								<div class='d-flex justify-content-center w-100  '>
+									{% if operationsEnCours < 5 %}
+										<a href="{{ path('app_operation_ajout', {'id': operation.id}) }}" class="d-flex btn-style w-100">Ajouter à ma liste</a>
+									{% else %}
+										<a href="{{ path('app_operation_ajout', {'id': operation.id}) }}" class="d-flex btn-style w-100" disabled>Limite Atteinte</a>
+									{% endif %}
+								</div>
 							</div>
-                            {% if operationsEnCours < 5 %}
-                                <a href="{{ path('app_operation_ajout', {'id': operation.id}) }}" class="btn-style">Ajouter à ma liste</a>  
-                            {% else %}
-                                <a href="" class="btn-style" disabled>Limite Atteinte</a>
-                            {% endif %}
 						</div>
 					</div>
-					{% endif %}
-				{% endfor %}
-			</section>
-		</main>
-	{% endblock %}
+
+				{% endif %}
+			{% endfor %}
+		</section>
+	</body>
+</main></body>{% endblock %}

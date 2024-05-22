@@ -4,6 +4,18 @@
 {% endblock %}
 
 {% block body %}
+<div  id="bodyCoUtili">
+
+	<div id="enteteCo">
+		<div id="logoText">
+			<img src="\images\icons\logo.svg" alt="logo" id="logoCo">
+			<h3 id="titrePageCo">Connectez-vous à votre <br>
+			compte employé</h3>
+		</div>
+			<img src="\images\DrapeauFr.png" alt="Drapeau" id="drapeau">
+	</div>
+	<img src="\images\Accueil_personnages.png" alt="persoCo" id="persoCo">
+
 	<main id='login_main'>
 		<form method="post" id='login_form'>
 			{% if error %}
@@ -42,4 +54,8 @@
 			</button>
 		</form>
 	</main>
+</div>
+<footer>
+{% include "layout/footer.html.twig" %}
+</footer>
 {% endblock %}
