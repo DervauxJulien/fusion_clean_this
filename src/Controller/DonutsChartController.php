@@ -1,4 +1,5 @@
 <?php
+
 // src/Controller/DonutsChartController.php
 
 namespace App\Controller;
@@ -7,10 +8,12 @@ use App\Entity\Operation;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Repository\OperationRepository;
+use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
+use Symfony\UX\Chartjs\Model\Chart;
 
 class DonutsChartController extends AbstractController
 {
-    public function DonutsChart(OperationRepository $operationRepository): Response
+    public function DonutsChart(OperationRepository $operationRepository, ChartBuilderInterface $chartBuilder): Response
     {
         // Récupération des opérations terminées depuis le repository
         $operations = $operationRepository->findBy(['status' => 'Terminer']);
@@ -20,40 +23,65 @@ class DonutsChartController extends AbstractController
         $moyenne = 0;
         $grande = 0;
         $custom = 0;
-        $petitePercent= 0;
-        $moyennePercent = 0;
-        $grandePercent = 0;
-        $customPercent = 0;
 
-        
         // Boucle sur chaque opération pour regrouper les tarifs par type d'opération
         foreach ($operations as $operation) {
             switch ($operation->getType()) {
                 case 'Petite manœuvre':
                     $petite += $operation->getTarif();
                     break;
-                    case 'Moyenne':
-                        $moyenne += $operation->getTarif();
-                        break;
-                        case 'Grosse':
-                            $grande += $operation->getTarif();
-                            break;
-                            case 'Custom':
-                                $custom += $operation->getTarif();
-                                break;
-                            }
-                        }
-                        
-        //Calcule des pourcentages
+                case 'Moyenne':
+                    $moyenne += $operation->getTarif();
+                    break;
+                case 'Grosse':
+                    $grande += $operation->getTarif();
+                    break;
+                case 'Custom':
+                    $custom += $operation->getTarif();
+                    break;
+            }
+        }
 
-            $total = $petite+$moyenne+$grande+$custom;
-            $petitePercent = number_format( (($petite*100) / $total),1);
-            $moyennePercent = number_format( (($moyenne*100) / $total),1);
-            $grandePercent = number_format( (($grande*100) / $total),1);
-            $customPercent = number_format( (($custom*100) / $total),1);
-        
+        // Calcul des pourcentages
+        $total = $petite + $moyenne + $grande + $custom;
+        $petitePercent = number_format(($petite * 100) / $total, 1);
+        $moyennePercent = number_format(($moyenne * 100) / $total, 1);
+        $grandePercent = number_format(($grande * 100) / $total, 1);
+        $customPercent = number_format(($custom * 100) / $total, 1);
 
+        // Création du graphique
+        $chart = $chartBuilder->createChart(Chart::TYPE_DOUGHNUT);
+        $chart2 = $chartBuilder->createChart(Chart::TYPE_LINE);
 
+        $chart->setData([
+            'labels' => ['Petite manœuvre', 'Moyenne', 'Grosse', 'Custom'],
+            'datasets' => [
+                [
+                    'label' => 'Tarifs par type d\'opération',
+                    'data' => [$petite, $moyenne, $grande, $custom],
+                    'backgroundColor' => [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)'
+                    ]
+                ]
+            ]
+        ]);
+
+        // $chart2->setData([
+            // 'labels'=>['Janvier', 'Février', 'Mars', 'Avri', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Octobre', 'Novembre', 'Décembre' ],
+            // 'labels'=>Utils.months({count: 12});
+            // 'datasets'=>[{
+            //     'label' => 'Résultats de l\'année 2024',
+            //     'data'=>[2500, 5400, 9500, 7465, 2980, 0, 0, 0, 0, 0, 0, 0],
+            //     fill: false,
+            //     borderColor: 'rgb(75, 192, 192)',
+            //     tension: 0.1,
+
+            //  } ]
+
+        // ]);
 
         return $this->render('donuts_chart/index.html.twig', [
             'petiteTarif' => $petite,
@@ -65,7 +93,9 @@ class DonutsChartController extends AbstractController
             'grandePercent' => $grandePercent,
             'customPercent' => $customPercent,
             'total' => $total,
-            'operations'=>$operations,
+            'operations' => $operations,
+            'chart' => $chart,
+            // 'chart2'=>$chart2,
         ]);
-            }
+    }
 }
