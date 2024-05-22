@@ -64,7 +64,6 @@ footer {
     padding-left: 0.5%;
     background-color: #0C4B3B;
     color: white;
-    /* position: relative; */
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -235,6 +234,18 @@ footer p{
 
 /* ------------------------------------------ */
 /* page chiffre d'affaire */
+/*--------------------------------------------*/
+
+
+/*DonnutsChart*/
+
+.wrapper{
+    width: 30rem;
+    margin-left: 4rem;
+    margin-top: 2rem;
+}
+
+
 
 .titreChiffreAffaire, .titreOperationsTerminees{
     text-align: center;
