@@ -611,6 +611,53 @@ footer p{
     border-bottom: none;
 }
 
+/* Page Validation de formulare de demande d'opération */
+
+.logoValid{
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+#titleValid{
+    padding-top: 4rem;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding-left: 4rem;
+}
+
+.leftValid{
+    display: block;
+    
+}
+
+.paraValid{
+    padding-left: 6rem;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding-top: 4rem;
+    
+}
+
+.triValid{
+    width  : 0;
+    height : 0;
+    border-bottom : 58rem solid #43CAA9;
+    border-left   : 20rem solid transparent;
+}
+
+.recValid{
+    display: flex;
+    background-color: #43CAA9;
+    height: 58rem;
+    width: 60rem;
+    float: right;
+}
+
+.fullValid{
+    justify-content: space-between;
+}
+
+
 /* Page Gestion utilisateur------------------------------------- */
 
 #colAp{
