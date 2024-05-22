@@ -2,6 +2,13 @@
 
 {% block title %}Hello MesOperationController!{% endblock %}
 
+{% set op_en_cours = 0 %}
+        {% for op in MyOps %}
+        {% if ((app.user.id == op.user.id) and op.status == "En cours" )  %}
+        {% set op_en_cours = op_en_cours + 1 %}
+        {% endif %}
+        {% endfor %}
+
 {% block body %}
 {% include "layout/navbar.html.twig" %}
 {% include "layout/operations_nav.html.twig" %}
@@ -9,12 +16,15 @@
 {% if is_granted("ROLE_EXPERT") %} 
 
 <main id="to_take_main">
-    <h1>Mes Operations (0/5)</h1>
+    
+    {% set max_op = op_en_cours %}
+    <h1>Mes Operations ({{max_op}}/5)</h1>
 
     <section id="operations_list">
         {% for op in MyOps %}
 
-            {% if app.user.id == op.user.id %}
+        {% if ((app.user.id == op.user.id) and op.status == "En cours" )  %}
+        {{ dump(op) }}
                 
        
             <div class='operation_to_take' id="{{op.id}}">
@@ -39,12 +49,14 @@
 {% elseif is_granted("ROLE_SENIOR") %} 
 
 <main id="to_take_main">
-    <h1>Mes Operations (0/3)</h1>
+    {% set max_op = op_en_cours %}
+    <h1>Mes Operations ({{max_op}}/3)</h1>
 
     <section id="operations_list">
         {% for op in MyOps %}
 
-            {% if app.user.id == op.user.id %}
+        {% if ((app.user.id == op.user.id) and op.status == "En cours" )  %}
+        {{ dump(op) }}
        
                 <div class='operation_to_take'>
                     <h2>{{op.type}}</h2>
@@ -69,13 +81,14 @@
 
 {% else %}
 <main id="to_take_main">
-    <h1>Mes Operations (0/1)</h1>
+    {% set max_op = op_en_cours %}
+    <h1>Mes Operations ({{max_op}}/1)</h1>
 
     <section id="operations_list">
         {% for op in MyOps %}
 
-            {% if app.user.id == op.user.id %}
-
+            {% if ((app.user.id == op.user.id) and op.status == "En cours" )  %}
+            {{ dump(op) }}
 
                 <div class='operation_to_take'>
                     <h2>{{op.type}}</h2>

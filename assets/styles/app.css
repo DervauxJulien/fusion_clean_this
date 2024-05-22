@@ -538,6 +538,7 @@ footer p{
 .globale li {
     list-style: none;
     position: left;
+    cursor: pointer;
     border: 1px solid gray;
     width: 100%;
     text-align: left;
@@ -546,9 +547,13 @@ footer p{
     box-sizing: border-box;
 }
 
+.globale li :hover{
+    background-color: rgb(176, 189, 199);
+}
+
 
 .liste {
-    cursor: pointer;
+    
     background-color: white;
     border-bottom: 1px solid black;
 }
