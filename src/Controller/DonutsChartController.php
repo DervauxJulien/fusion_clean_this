@@ -1,10 +1,10 @@
 <?php
 
+
 // src/Controller/DonutsChartController.php
 
 namespace App\Controller;
 
-use App\Entity\Operation;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Repository\OperationRepository;
@@ -24,7 +24,10 @@ class DonutsChartController extends AbstractController
         $grande = 0;
         $custom = 0;
 
-        // Boucle sur chaque opération pour regrouper les tarifs par type d'opération
+        // Initialisation des variables pour stocker les tarifs par mois
+        $monthlyData = array_fill(0, 12, 0);
+
+        // Boucle sur chaque opération pour regrouper les tarifs par type d'opération et par mois
         foreach ($operations as $operation) {
             switch ($operation->getType()) {
                 case 'Petite manœuvre':
@@ -40,6 +43,12 @@ class DonutsChartController extends AbstractController
                     $custom += $operation->getTarif();
                     break;
             }
+
+            // Ajout du tarif au mois correspondant
+            if ($operation->getDateCreation()) {
+                $month = $operation->getDateCreation()->format('n');
+                $monthlyData[$month] += $operation->getTarif();
+            }
         }
 
         // Calcul des pourcentages
@@ -49,9 +58,16 @@ class DonutsChartController extends AbstractController
         $grandePercent = number_format(($grande * 100) / $total, 1);
         $customPercent = number_format(($custom * 100) / $total, 1);
 
-        // Création du graphique
+        // Création du graphique doughnut
         $chart = $chartBuilder->createChart(Chart::TYPE_DOUGHNUT);
-        $chart2 = $chartBuilder->createChart(Chart::TYPE_LINE);
+
+        //Determination du moi sen cours
+        $currentMonth = (int)date('n');
+
+        //Création d'une table des mois jusqu'à celui en cours
+        $currenArrayMonth = array_slice($monthlyData, 0, $currentMonth);
+        $limitedLabels = array_slice(['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'], 0, $currentMonth);
+
 
         $chart->setData([
             'labels' => ['Petite manœuvre', 'Moyenne', 'Grosse', 'Custom'],
@@ -69,19 +85,21 @@ class DonutsChartController extends AbstractController
             ]
         ]);
 
-        // $chart2->setData([
-            // 'labels'=>['Janvier', 'Février', 'Mars', 'Avri', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Octobre', 'Novembre', 'Décembre' ],
-            // 'labels'=>Utils.months({count: 12});
-            // 'datasets'=>[{
-            //     'label' => 'Résultats de l\'année 2024',
-            //     'data'=>[2500, 5400, 9500, 7465, 2980, 0, 0, 0, 0, 0, 0, 0],
-            //     fill: false,
-            //     borderColor: 'rgb(75, 192, 192)',
-            //     tension: 0.1,
+        // Création du graphique line
+        $chart2 = $chartBuilder->createChart(Chart::TYPE_LINE);
 
-            //  } ]
-
-        // ]);
+        $chart2->setData([
+            'labels' => $limitedLabels,
+            'datasets' => [
+                [
+                    'label' => 'Résultats de l\'année 2024',
+                    'data' => $monthlyData,
+                    'fill' => false,
+                    'borderColor' => 'rgb(75, 192, 192)',
+                    'tension' => 0.1,
+                ]
+            ]
+        ]);
 
         return $this->render('donuts_chart/index.html.twig', [
             'petiteTarif' => $petite,
@@ -95,7 +113,8 @@ class DonutsChartController extends AbstractController
             'total' => $total,
             'operations' => $operations,
             'chart' => $chart,
-            // 'chart2'=>$chart2,
+            'chart2' => $chart2,
+            'currentMonth'=>$currentMonth,
         ]);
     }
 }

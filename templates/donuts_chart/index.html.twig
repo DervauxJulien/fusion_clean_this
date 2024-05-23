@@ -1,13 +1,14 @@
 
 {% block body %}
 
-
+<div class="statsHaut">
 <div class="wrapper">
-{{ render_chart(chart) }};
-{# {{ render_chart(chart2) }}; #}
-{# <pre>
-  {{ dump(chart2) }}
-</pre> #}
-
+{{ render_chart(chart) }}
 </div>
+<div class="chart2">
+{{ render_chart(chart2) }}
+</div>
+</div>
+
+
 {% endblock %}

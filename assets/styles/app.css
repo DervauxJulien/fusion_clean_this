@@ -241,10 +241,20 @@ footer p{
 
 .wrapper{
     width: 30rem;
-    margin-left: 4rem;
-    margin-top: 2rem;
 }
 
+.chart2{
+    width: 60rem;
+}
+
+.statsHaut{
+    margin-left: 4rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: space-around;
+
+}
 
 
 .titreChiffreAffaire, .titreOperationsTerminees{
