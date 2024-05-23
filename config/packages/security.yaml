@@ -22,7 +22,7 @@ security:
                 - App\Security\GoogleAuthenticator
             logout:
                 path: app_logout
-                path: auth_logout
+                # path: auth_logout
                 target : app_logout
                 # target: auth
                 # where to redirect after logout

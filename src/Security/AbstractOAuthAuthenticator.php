@@ -4,10 +4,7 @@ namespace App\Security;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
-use Doctrine\ORM\Query\Expr\Func;
 use Google\Auth\AccessToken;
-use Google\Service\Compute\RouterInterface;
-use Google\Service\Oauth2;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
@@ -20,7 +17,6 @@ use Symfony\Component\Routing\RouterInterface as RoutingRouterInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
-use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPassport;
 use Symfony\Component\Security\Http\SecurityRequestAttributes;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
@@ -39,7 +35,7 @@ abstract class AbstractOAuthAuthenticator extends OAuth2Authenticator
     }
     public function supports(Request $request): ?bool
     {
-        return 'auth_oauth_check' == $request->attributes->get('_route') &&
+        return 'app_check' == $request->attributes->get('_route') &&
             $request->get('service') == $this->serviceName;
     }
 
@@ -64,7 +60,7 @@ abstract class AbstractOAuthAuthenticator extends OAuth2Authenticator
     {
         $credentials = $this->fetchAccessToken($this->getClient());
         $resourceOwner = $this->getResourceOwnerFromCredentials($credentials);
-        $user = $this->getUserFromRessourceOwner($resourceOwner, $this->repository);
+        $user = $this->getUserFromResourceOwner($resourceOwner, $this->repository);
 
         return new SelfValidatingPassport(userBadge : new UserBadge($user->getUserIdentifier(), fn () => $user),
         badges: [
@@ -82,5 +78,5 @@ abstract class AbstractOAuthAuthenticator extends OAuth2Authenticator
     {
         return $this->clientRegistry->getClient($this->serviceName);
     }
-   abstract protected function getUserFromRessourceOwner(ResourceOwnerInterface $resourceOwner, UserRepository $repository): ?User;
+   abstract protected function getUserFromResourceOwner(ResourceOwnerInterface $resourceOwner, UserRepository $repository): ?User;
 }
