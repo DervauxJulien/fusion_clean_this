@@ -76,16 +76,3 @@ class DemandeOperationController extends AbstractController
 
 
 
-// $image = $_GET['image'];
-
-// require 'path/to/google-search-results.php';
-// require 'path/to/restclient.php';
-
-// $query = [
-//  "engine" => "google_lens",
-//  "url" => "$image",
-// ];
-
-// $search = new GoogleSearch('ae0c3fa6f5a9a50a7d593f7661c93714504c1b13aac9df75536a29fda230f056');
-// $result = $search->get_json($query);
-// $visual_matches = $result->visual_matches;

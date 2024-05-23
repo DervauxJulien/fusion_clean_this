@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Chiffre d'affaire{% endblock %}
+{% block title %}{% trans %}Chiffre d'affaire{% endtrans %}{% endblock %}
 
 {% block body %}
 
@@ -13,10 +13,9 @@
 
 
 <body class="chiffre-affaire-body">
-    <h1 class='titreChiffreAffaire'>CHIFFRE D'AFFAIRE</h1>
+    <h1 class='titreChiffreAffaire'>{% trans %}CHIFFRE D'AFFAIRE{% endtrans %}</h1>
 
     {{ render(controller('App\\Controller\\DonutsChartController::DonutsChart')) }}
-    {# {{ render(controller('App\\Controller\\SalesController::salesStats')) }} #}
     {{ render(controller('App\\Controller\\TableController::tableIndex')) }}
 
     </body>

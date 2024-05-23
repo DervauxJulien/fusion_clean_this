@@ -240,14 +240,24 @@ footer p{
 
 .wrapper{
     width: 30rem;
+    background-color: white;
+    border: solid 5px #FAEBDA;
+    border-radius: 25px;
+    padding: 2rem;
+
 }
 
 .chart2{
     width: 60rem;
+    background-color: white;
+    border: solid 5px #FAEBDA;
+    border-radius: 25px;
+    padding: 2rem;
 }
 
 .statsHaut{
-    margin-left: 4rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
     margin-top: 4rem;
     margin-bottom: 4rem;
     display: flex;
@@ -286,7 +296,7 @@ footer p{
     height: 15%;
     border: 5px solid #FAEBDA;
     border-radius: 0 0 50px 0;
-    background-color: #FAEBDA;
+    background-color: #faedda;
         
 }
 .salesContainer2{
