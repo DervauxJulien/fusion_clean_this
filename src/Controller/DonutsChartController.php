@@ -8,12 +8,13 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Repository\OperationRepository;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 use Symfony\UX\Chartjs\Model\Chart;
 
 class DonutsChartController extends AbstractController
 {
-    public function DonutsChart(OperationRepository $operationRepository, ChartBuilderInterface $chartBuilder): Response
+    public function DonutsChart(OperationRepository $operationRepository, ChartBuilderInterface $chartBuilder, TranslatorInterface $translator): Response
     {
         // Récupération des opérations terminées depuis le repository
         $operations = $operationRepository->findBy(['status' => 'Terminer']);
@@ -65,12 +66,11 @@ class DonutsChartController extends AbstractController
         $currentMonth = (int)date('n');
 
         //Création d'une table des mois jusqu'à celui en cours
-        $currenArrayMonth = array_slice($monthlyData, 0, $currentMonth);
         $limitedLabels = array_slice(['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'], 0, $currentMonth);
 
 
         $chart->setData([
-            'labels' => ['Petite manœuvre', 'Moyenne', 'Grosse', 'Custom'],
+            'labels' => ['Petite opération', 'Moyenne', 'Grosse', 'Custom'],
             'datasets' => [
                 [
                     'label' => 'Tarifs par type d\'opération',

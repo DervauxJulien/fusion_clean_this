@@ -8,11 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
 use App\Repository\OperationRepository;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class TableController extends AbstractController
 {
     #[Route('/table', name: 'table')]
-    public function tableIndex(Request $request, UserRepository $userRepository, OperationRepository $operationRepository): Response
+    public function tableIndex(Request $request, UserRepository $userRepository, OperationRepository $operationRepository, TranslatorInterface $translator): Response
     {
                 // Récupération de tous les utilisateurs
                 $users = $userRepository->findAll();

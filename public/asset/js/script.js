@@ -160,3 +160,23 @@ function descriptionClient(cardId) {
   let descriptionElement = document.getElementById(cardId); // Je vais chercher l'id
   descriptionElement.classList.toggle("d-none"); // Je change le style via les class Bootstrap
 }
+
+
+//************************************************** */
+//Franck-------------------------
+//Changement de langue au drapeau
+//************************************************** */
+
+// function changeLanguage(){
+//   let drapeau = document.getElementById('drapeauLang');
+//   drapeau.addEventListener('click', )
+//   if (condition) {
+    
+//   } else {
+    
+//   }
+// }
+
+function changeLanguage(locale){
+  window.location.href = '/change-language/' + locale;
+}
