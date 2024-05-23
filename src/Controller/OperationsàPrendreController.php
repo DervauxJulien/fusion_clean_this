@@ -70,13 +70,12 @@ class OperationsàPrendreController extends AbstractController
         $user = $this->getUser();
 
 
-    //Verification du nombre d'operation que l'utilisateur a ajouter
+        //Verification du nombre d'operation que l'utilisateur a ajouter
         $operationEnCours = $operationRepository->OperationEnCours($user->getId());
 
-        if (!$user instanceof User) {
-            throw new \LogicException('The user is not an instance of the User entity.');
-        }
+
         if($operationEnCours >= 5){
+            //Affichage d'un message 
             $this->addFlash("error", "Tu as deja atteint la limite d'opérations possible pour ton rôle !");
             return $this->redirectToRoute('app_opereration_prendre');
         }
