@@ -39,15 +39,9 @@
 											</div>
 											<h3>{{ op.getAdresse() }}</h3>
 										</div>
-										{% if op.status == "A faire" and getUrlStatus == "A faire" %}
 											<div class='d-flex justify-content-center w-auto'>
-												{% if opsEnCours < 5 %}
-													<a href="{{ path('app_op_ajout', {'id': op.id}) }}" class="d-flex btn-style">Ajouter à ma liste</a>
-												{% else %}
-													<a href="{{ path('app_op_ajout', {'id': op.id}) }}" class="d-flex btn-style" disabled>Limite Atteinte</a>
-												{% endif %}
+													<a href="{{ path('app_operation_terminerE', {'id': op.id}) }}" class="d-flex btn-style">Terminer</a>
 											</div>
-										{% endif %}
 									</div>
 								</div>
 							</div>

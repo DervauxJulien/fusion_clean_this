@@ -31,7 +31,7 @@
 									{% if operationsEnCours < 5 %}
 										<a href="{{ path('app_operation_ajout', {'id': operation.id}) }}" class="d-flex btn-style w-100">Ajouter à ma liste</a>
 									{% else %}
-										<a href="{{ path('app_operation_ajout', {'id': operation.id}) }}" class="d-flex btn-style w-100" disabled>Limite Atteinte</a>
+										<a href="" class="d-flex btn-style w-100" disabled>Limite Atteinte</a>
 									{% endif %}
 								</div>
 							</div>

@@ -21,6 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('admin/operation')]
 class AddOperationController extends AbstractController
 
+
 {
     #[Route('/add', name: 'app_add_operation')]
     public function index(OperationRepository $operationRepository, Request $request, EntityManagerInterface $entityManager, ClientRepository $clientRepository, UserRepository $userRepository): Response
@@ -97,7 +98,7 @@ class AddOperationController extends AbstractController
             'form' => $form->createView(),
             'operations' => $stockOp,
             'adresse' => $adresse,
-            'client' => $client->__toString()
+            'client' => $client
         ]);
     }
 

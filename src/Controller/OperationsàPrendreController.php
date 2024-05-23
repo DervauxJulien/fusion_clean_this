@@ -78,7 +78,7 @@ class OperationsàPrendreController extends AbstractController
         }
         if($operationEnCours >= 5){
             $this->addFlash("error", "Tu as deja atteint la limite d'opérations possible pour ton rôle !");
-            return $this->redirectToRoute('app_opereration_prendre');
+            return $this->redirectToRoute('app_operation_filter', ['status' => 'A faire']);
         }
 
         $operation = $operationRepository->find($id);
@@ -88,9 +88,7 @@ class OperationsàPrendreController extends AbstractController
 
         $entityManager->flush();
 
-        return $this->redirectToRoute('app_operations_prendre');
+        return $this->redirectToRoute('app_operation_filter', ['status' => 'A faire']);
         
     }
-
-    
 }
