@@ -2,6 +2,8 @@
 
 namespace App\Security;
 
+use App\Entity\User;
+use App\Repository\UserRepository;
 use Doctrine\ORM\Query\Expr\Func;
 use Google\Auth\AccessToken;
 use Google\Service\Compute\RouterInterface;
@@ -16,7 +18,10 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface as RoutingRouterInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
+use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPassport;
 use Symfony\Component\Security\Http\SecurityRequestAttributes;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
@@ -28,7 +33,8 @@ abstract class AbstractOAuthAuthenticator extends OAuth2Authenticator
 
     public function __construct(
         private readonly ClientRegistry $clientRegistry,
-        private readonly RoutingRouterInterface $router
+        private readonly RoutingRouterInterface $router,
+        private readonly UserRepository $repository
     ) {
     }
     public function supports(Request $request): ?bool
@@ -51,12 +57,20 @@ abstract class AbstractOAuthAuthenticator extends OAuth2Authenticator
         if ($request->hasSession()) {
             $request->getSession()->set(SecurityRequestAttributes::AUTHENTICATION_ERROR, $exception);
         }
-        return new RedirectResponse($this->router->generate('auth_oauth_login'));
+        return new RedirectResponse($this->router->generate('app_login'));
     }
 
-    public function authenticate(Request $request): Passport
+    public function authenticate(Request $request): SelfValidatingPassport
     {
         $credentials = $this->fetchAccessToken($this->getClient());
+        $resourceOwner = $this->getResourceOwnerFromCredentials($credentials);
+        $user = $this->getUserFromRessourceOwner($resourceOwner, $this->repository);
+
+        return new SelfValidatingPassport(userBadge : new UserBadge($user->getUserIdentifier(), fn () => $user),
+        badges: [
+            new RememberMeBadge()
+        ]
+        );
     }
 
     protected function getResourceOwnerFromCredentials(AccessToken $credentials): ResourceOwnerInterface
@@ -68,4 +82,5 @@ abstract class AbstractOAuthAuthenticator extends OAuth2Authenticator
     {
         return $this->clientRegistry->getClient($this->serviceName);
     }
+   abstract protected function getUserFromRessourceOwner(ResourceOwnerInterface $resourceOwner, UserRepository $repository): ?User;
 }
