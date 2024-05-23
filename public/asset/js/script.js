@@ -37,6 +37,8 @@ function dragOverHandler(event) {
 // Stan
 // Api gouv
 
+// Je récupère l'id de mes widget et les classe de mes ul et les stock dans des variables.
+
 let listeRue = document.getElementById("form_adresse_Nom_Rue");
 let listeVille = document.getElementById("form_adresse_Nom_Ville");
 let listeCP = document.getElementById("form_adresse_CP");
@@ -44,83 +46,48 @@ let adressList = document.querySelector(".rue-list");
 let villeList = document.querySelector(".ville-list");
 let cpList = document.querySelector(".cp-list");
 
+// Je créer une variable qui sera un tableau vide.
+
 let adressDatas = [];
 
 let fetchDatas = async (param) => {
+
+  // Je fais une fonction asyncrone pour utiliser mon api gouv, ici je créer une condition pour faire apparaitre mes listes d'adresses à partir de 4 caractères.
+
   param.addEventListener("input", async (e) => {
     if (e.target.value.length > 3) {
+
+      // Je stocke dans des variables l'url et les query ("ce qui sera écris dans les input"), j'instancie de la classe URLSearchParams pour spécifier que je cible la valeur de mon input grace au .value.
+
       const baseUrl = "https://api-adresse.data.gouv.fr/search/"
       const queryParams = new URLSearchParams({
         q: e.target.value
       });
+
+      // Je stocke dans ma variable URL l'url final qui utilisera la base de l'api gouv et les querys.
+
       const URL = `${baseUrl}?${queryParams}`;
       console.log(URL);
+
+      // J'établi la promesse de récuperer l'url en ajoutant la retranscription en JSON.
+
       const response = await fetch(URL);
       const data = await response.json();
+
+      // Je vais stocker dans mon tableau le résultat de la recherche.
+
+
       adressDatas = data.features;
+
+      // Je rapelle ma fonction renderAdressList avec en paramètres les champs souhaités dans mon formulaire.
+
       renderAdressList(villeList);
       renderAdressList(adressList);
       renderAdressList(cpList);
-      // renderAdressListRue();
-      // renderAdressListCp();
-      // renderAdressListVille();
     }
   });
 };
 
-// const renderAdressListRue = () => {
-//   adressList.innerHTML = "";
-//   adressDatas.forEach(({properties}, index) =>{
-//     const li = document.createElement("li");
-//     const p1 = document.createElement("p");
-
-//     p1.textContent = properties.name;
-    
-
-//     li.appendChild(p1);
-//     li.classList.add("content");
-
-//     adressList.appendChild(li);
-
-//     li.addEventListener("click", () =>  {
-//       listeRue.value = li.textContent;
-//       listeVille.value = properties.city;
-//       listeCP.value = properties.citycode;
-//       villeList.style.display = "none";
-//       cpList.style.display = "none";
-//       adressList.style.display = "none";
-//     });
-//   });
-//   villeList.style.display = "block";
-//   cpList.style.display = "block";
-//   adressList.style.display = "block";
-// };
-
-// const renderAdressListVille = () => {
-//   villeList.innerHTML = "";
-//   adressDatas.forEach(({properties}, index) =>{
-//     const li = document.createElement("li");
-//     const p1 = document.createElement("p");
-
-//     p1.textContent = properties.city;
-    
-
-//     li.appendChild(p1);
-//     li.classList.add("content");
-
-//     villeList.appendChild(li);
-
-//     li.addEventListener("click", () =>  {
-//       listeVille.value = li.textContent;
-//       listeRue.value = li.textContent;
-//       listeCP.value = properties.citycode;
-//       villeList.style.display = "none";
-//       cpList.style.display = "none";
-//       adressList.style.display = "none";
-//     });
-//   });
-//   adressList.style.display = "block";
-// };
 
 const renderAdressList = (param) => {
   param.innerHTML = "";
@@ -138,8 +105,6 @@ const renderAdressList = (param) => {
 
     li.addEventListener("click", (param) =>  {
       param.value = li.textContent;
-      // listeRue.value = li.textContent;
-      // listeCP.value = properties.citycode;
       param.style.display = "none";
       
     });
