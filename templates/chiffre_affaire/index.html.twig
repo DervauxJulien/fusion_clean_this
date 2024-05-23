@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% trans %}Chiffre d'affaire{% endtrans %}{% endblock %}
+{% block title %}{{ 'CHIFFRE D\'AFFAIRE'|trans }}{% endblock %}
 
 {% block body %}
+
+
 
 <div class="scrollable-content">
 
@@ -11,9 +13,20 @@
     {% include "/layout/operations_nav.html.twig" %}
 </header>
 
+{# <ul class="language">
+    <li><a href="{{ path('change_language', { 'locale': 'fr' }) }}">English</a></li>
+    <li><a href="{{ path('change_language', { 'locale': 'en' }) }}">Français</a></li>
+</ul> #}
+
+    <a href="{{ path('change_language', { 'locale': 'en' }) }}">
+        <img src="/images/DrapeauFr.png" alt="Drapeau français" id="drapeauLang">
+    </a>
+    <a href="{{ path('change_language', { 'locale': 'fr' }) }}">
+        <img src="/images/DrapeauEn.png" alt="Drapeau anglais" id="drapeauLang">
+    </a>
 
 <body class="chiffre-affaire-body">
-    <h1 class='titreChiffreAffaire'>{% trans %}CHIFFRE D'AFFAIRE{% endtrans %}</h1>
+    <h1 class='titreChiffreAffaire'>{{ 'CHIFFRE D\'AFFAIRE'|trans }}</h1>
 
     {{ render(controller('App\\Controller\\DonutsChartController::DonutsChart')) }}
     {{ render(controller('App\\Controller\\TableController::tableIndex')) }}
