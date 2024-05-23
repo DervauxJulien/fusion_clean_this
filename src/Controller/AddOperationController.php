@@ -2,17 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\Adresse;
-use App\Entity\Client;
 use App\Entity\Operation;
-use App\Entity\User;
 use App\Form\AddOperationFormType;
 use App\Repository\AdresseRepository;
 use App\Repository\ClientRepository;
 use App\Repository\OperationRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
