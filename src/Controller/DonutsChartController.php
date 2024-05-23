@@ -1,5 +1,6 @@
 <?php
 
+
 // src/Controller/DonutsChartController.php
 
 namespace App\Controller;
@@ -49,9 +50,8 @@ class DonutsChartController extends AbstractController
         $grandePercent = number_format(($grande * 100) / $total, 1);
         $customPercent = number_format(($custom * 100) / $total, 1);
 
-        // Création du graphique
+        // Création du graphique doughnut
         $chart = $chartBuilder->createChart(Chart::TYPE_DOUGHNUT);
-        $chart2 = $chartBuilder->createChart(Chart::TYPE_LINE);
 
         $chart->setData([
             'labels' => ['Petite manœuvre', 'Moyenne', 'Grosse', 'Custom'],
@@ -69,19 +69,21 @@ class DonutsChartController extends AbstractController
             ]
         ]);
 
-        // $chart2->setData([
-            // 'labels'=>['Janvier', 'Février', 'Mars', 'Avri', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Octobre', 'Novembre', 'Décembre' ],
-            // 'labels'=>Utils.months({count: 12});
-            // 'datasets'=>[{
-            //     'label' => 'Résultats de l\'année 2024',
-            //     'data'=>[2500, 5400, 9500, 7465, 2980, 0, 0, 0, 0, 0, 0, 0],
-            //     fill: false,
-            //     borderColor: 'rgb(75, 192, 192)',
-            //     tension: 0.1,
+        // Création du graphique line
+        $chart2 = $chartBuilder->createChart(Chart::TYPE_LINE);
 
-            //  } ]
-
-        // ]);
+        $chart2->setData([
+            'labels' => ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            'datasets' => [
+                [
+                    'label' => 'Résultats de l\'année 2024',
+                    'data' => [2500, 5400, 9500, 7465, 2980, 0, 0, 0, 0, 0, 0, 0],
+                    'fill' => false,
+                    'borderColor' => 'rgb(75, 192, 192)',
+                    'tension' => 0.1,
+                ]
+            ]
+        ]);
 
         return $this->render('donuts_chart/index.html.twig', [
             'petiteTarif' => $petite,
@@ -95,7 +97,7 @@ class DonutsChartController extends AbstractController
             'total' => $total,
             'operations' => $operations,
             'chart' => $chart,
-            // 'chart2'=>$chart2,
+            'chart2' => $chart2,
         ]);
     }
 }
