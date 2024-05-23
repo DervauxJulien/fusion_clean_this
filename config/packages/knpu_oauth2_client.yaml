@@ -6,5 +6,5 @@ knpu_oauth2_client:
             client_secret: '%env(GOOGLE_OAUTH_SECRET)%'
             redirect_route: app_check
             redirect_params: {}
-            service: "google"
-
+            access_type: offline
+            user_fields: ['email', 'name', 'verified_email']
