@@ -18,7 +18,6 @@ class ChiffreAffaireController extends AbstractController
         $progress = 30;
         $chiffreAnnee = 12500;
         $chiffreMois = 6250;
-        // $objectf = 120500;
 
         
         return $this->render('chiffre_affaire/index.html.twig', [
@@ -26,7 +25,6 @@ class ChiffreAffaireController extends AbstractController
             'progress' => $progress,
             'chiffreAnne'=> $chiffreAnnee,
             'chiffreMois' => $chiffreMois,
-            // 'objectif' => $objectf,
 
         ]);
     }
