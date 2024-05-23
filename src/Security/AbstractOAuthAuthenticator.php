@@ -3,11 +3,13 @@
 namespace App\Security;
 
 use Doctrine\ORM\Query\Expr\Func;
+use Google\Auth\AccessToken;
 use Google\Service\Compute\RouterInterface;
 use Google\Service\Oauth2;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
+use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
@@ -54,7 +56,12 @@ abstract class AbstractOAuthAuthenticator extends OAuth2Authenticator
 
     public function authenticate(Request $request): Passport
     {
-        $credentials = [];
+        $credentials = $this->fetchAccessToken($this->getClient());
+    }
+
+    protected function getResourceOwnerFromCredentials(AccessToken $credentials): ResourceOwnerInterface
+    {
+        return $this->getClient()->fetchUserFromToken($credentials);
     }
 
     private function getClient(): OAuth2ClientInterface
