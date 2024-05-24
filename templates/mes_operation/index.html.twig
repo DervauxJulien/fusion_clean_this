@@ -1,10 +1,17 @@
-{% extends 'base.html.twig' %} {% block title %}Mes Opérations {% endblock %} {%
-set op_en_cours = 0 %} {% for op in MyOps %} {% if app.user == op.user and
-op.status == "En cours" %} {% set op_en_cours = op_en_cours + 1 %} {% endif %}
-{% endfor %} {% block body %}
+{% extends 'base.html.twig' %} 
+{% block title %}Mes Opérations {% endblock %} 
+
+{% set op_en_cours = 0 %}
+ {% for op in MyOps %} 
+ {% if app.user == op.user and op.status == "En cours" %} 
+ {% set op_en_cours = op_en_cours + 1 %} 
+ {% endif %}
+{% endfor %} 
+
+{% block body %}
 <header>
-  {% include "layout/navbar.html.twig" %} {% include
-  "layout/operations_nav.html.twig" %}
+  {% include "layout/navbar.html.twig" %} 
+  {% include "layout/operations_nav.html.twig" %}
 </header>
 
 {% if is_granted("ROLE_EXPERT") %}
@@ -15,8 +22,7 @@ op.status == "En cours" %} {% set op_en_cours = op_en_cours + 1 %} {% endif %}
       <h1>Mes Operations ({{ max_op }}/5)</h1>
     </div>
     <section class="d-flex flex-wrap m-5 justify-content-center">
-      {% for op in MyOps %} {% if ((app.user == op.user) and op.status == "En
-      cours" ) %}
+      {% for op in MyOps %} {% if ((app.user == op.user) and op.status == "En cours" ) %}
       <div class="card rounded-3 box-shadow m-3 h-100 card-custom">
         <div class="rounded-top-5 bg-white text-center">
           <h2>{{ op.type }}</h2>
@@ -48,7 +54,8 @@ op.status == "En cours" %} {% set op_en_cours = op_en_cours + 1 %} {% endif %}
           </div>
         </div>
       </div>
-      {% endif %} {% endfor %}
+      {% endif %}
+       {% endfor %}
     </section>
   </main>
   {% elseif is_granted("ROLE_SENIOR") %}
@@ -59,8 +66,8 @@ op.status == "En cours" %} {% set op_en_cours = op_en_cours + 1 %} {% endif %}
       <h1>Mes Operations ({{ max_op }}/3)</h1>
     </div>
     <section class="d-flex flex-wrap m-5 justify-content-center">
-      {% for op in MyOps %} {% if ((app.user == op.user) and op.status == "En
-      cours" ) %}
+      {% for op in MyOps %} 
+      {% if ((app.user == op.user) and op.status == "En cours" ) %}
       <div class="card rounded-3 box-shadow m-3 h-100 card-custom">
         <div class="rounded-top-5 bg-white text-center">
           <h2>{{ op.type }}</h2>
@@ -92,7 +99,8 @@ op.status == "En cours" %} {% set op_en_cours = op_en_cours + 1 %} {% endif %}
           </div>
         </div>
       </div>
-      {% endif %} {% endfor %}
+      {% endif %}
+      {% endfor %}
     </section>
   </main>
   {% else %}
@@ -102,8 +110,7 @@ op.status == "En cours" %} {% set op_en_cours = op_en_cours + 1 %} {% endif %}
       <h1>Mes Operations ({{ max_op }}/1)</h1>
     </div>
     <section class="d-flex flex-wrap m-5 justify-content-center">
-      {% for op in MyOps %} {% if ((app.user == op.user) and op.status == "En
-      cours" ) %}
+      {% for op in MyOps %} {% if ((app.user == op.user) and op.status == "En cours" ) %}
       <div class="card rounded-3 box-shadow m-3 h-100 card-custom">
         <div class="rounded-top-5 bg-white text-center">
           <h2>{{ op.type }}</h2>
@@ -135,8 +142,10 @@ op.status == "En cours" %} {% set op_en_cours = op_en_cours + 1 %} {% endif %}
           </div>
         </div>
       </div>
-      {% endif %} {% endfor %}
+      {% endif %}
+      {% endfor %}
     </section>
   </main>
 </body>
-{% endif %} {% endblock %}
+{% endif %}
+{% endblock %}

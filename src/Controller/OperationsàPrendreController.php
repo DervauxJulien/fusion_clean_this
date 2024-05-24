@@ -67,12 +67,11 @@ class OperationsàPrendreController extends AbstractController
     #[Route('/operation/ajout/{id}', name: 'app_operation_ajout')]
     public function ajoutOperation(OperationRepository $operationRepository, EntityManagerInterface $entityManager, int $id): Response
     {
-        $user = $this->getUser();
-
+        
 
         //Verification du nombre d'operation que l'utilisateur a ajouter
+        $user = $this->getUser();
         $operationEnCours = $operationRepository->OperationEnCours($user->getId());
-
 
         if($operationEnCours >= 5){
             //Affichage d'un message 
@@ -80,15 +79,21 @@ class OperationsàPrendreController extends AbstractController
             return $this->redirectToRoute('app_opereration_prendre');
         }
 
+        //Ciblage de l'operation a traiter
         $operation = $operationRepository->find($id);
 
+        //Ajout d'un user sur l'operation
         $operation->setUser($user);
+        //Changement du status de l'operation
         $operation->setStatus('En cours');
 
+
+        //Envoie des changements dans la base de donnée
         $entityManager->flush();
 
-        return $this->redirectToRoute('app_operations_prendre');
-        
+
+        //redirection vers une route valide
+        return $this->redirectToRoute('app_operation_filter', ['status' => 'A faire']);
     }
 
     
