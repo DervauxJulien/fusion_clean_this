@@ -53,19 +53,27 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     //        ;
     //    }
 
-       public function findOrCreateFromGithubOauth($googleRessourceOwner $owner): User
+       public function findOrCreateFromGoogleOauth(GoogleRessourceOwner $owner): User
        {
            return $this->createQueryBuilder('u')
                ->where('u.googleId = :githubId')
                ->setParameter(['googleId' => $owner->getId()])
                ->getQuery()
-               ->getSingleResult();
+               ->getOneOrNullResult();
+
                if ($user)
                {
                 return $user;
                }
+
                $user = (new User())
-               ->setGithubId($owner->getId())
+               ->setRoles(['ROLE_USER'])
+               ->setGoogleId($owner->getId())
                ->setEmail($owner->getEmail());
+               $em = $this->getEntityManager();
+               $em->persist($user);
+               $em->flush();
+
+               return $user;
        }
 }

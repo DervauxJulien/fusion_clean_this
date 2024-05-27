@@ -3,6 +3,7 @@
 namespace App\Security;
 
 use App\Entity\User;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
@@ -22,12 +23,14 @@ class GoogleAuth extends SocialAuthenticator
     private $clientRegistry;
     private $entityManager;
     private $router;
+    private $userRepository;
 
-    public function __construct(ClientRegistry $clientRegistry, EntityManagerInterface $entityManager, RouterInterface $router)
+    public function __construct(ClientRegistry $clientRegistry, EntityManagerInterface $entityManager, RouterInterface $router, UserRepository $userRepository)
     {
         $this->clientRegistry = $clientRegistry;
         $this->entityManager = $entityManager;
         $this->router = $router;
+        $this->userRepository = $userRepository;
     }
 
     public function start(Request $request, AuthenticationException $authException = null): Response
@@ -47,38 +50,22 @@ class GoogleAuth extends SocialAuthenticator
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        /** @var \League\OAuth2\Client\Token\AccessToken $credentials */
-        $client = $this->clientRegistry->getClient('google');
-        $googleUser = $client->fetchUserFromToken($credentials);
+        /** @var \League\OAuth2\Client\Provider\GoogleUser $googleUser */
+        $googleUser = $this->clientRegistry->getClient('google')->fetchUserFromToken($credentials);
 
-        $email = $googleUser->getEmail();
-
-        // Look for existing user by email
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
-
-        if (!$user) {
-            // Create a new user if not found
-            $user = new User();
-            $user->setEmail($googleUser->getEmail());
-            // Set other necessary fields from the Google user
-            // $user->setGoogleId($googleUser->getId());
-            // etc.
-            $this->entityManager->persist($user);
-            $this->entityManager->flush();
-        }
-
-        return $user;
-    }
-
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
-    {
-        $targetUrl = $this->getTargetPath($request->getSession(), $firewallName) ?? $this->router->generate('app_homepage');
-        return new RedirectResponse($targetUrl);
+        // You can add a custom method in your UserRepository to handle finding/creating a user
+        return $this->userRepository->findOrCreateFromGoogleOauth($googleUser);
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
         $message = strtr($exception->getMessageKey(), $exception->getMessageData());
         return new Response($message, Response::HTTP_FORBIDDEN);
+    }
+
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey): ?Response
+    {
+        $targetPath = $this->getTargetPath($request->getSession(), $providerKey);
+        return new RedirectResponse($targetPath ?: '/');
     }
 }
