@@ -91,7 +91,7 @@ let fetchDatas = async (param) => {
 
 const renderAdressList = (param) => {
   param.innerHTML = "";
-  adressDatas.forEach(({properties}, index) =>{
+  adressDatas.forEach(({properties}) =>{
     const li = document.createElement("li");
     const p1 = document.createElement("p");
 
@@ -100,11 +100,13 @@ const renderAdressList = (param) => {
 
     li.appendChild(p1);
     li.classList.add("content");
-
+    
     param.appendChild(li);
+    console.log(param);
 
     li.addEventListener("click", (param) =>  {
       param.value = li.textContent;
+      
       param.style.display = "none";
       
     });
