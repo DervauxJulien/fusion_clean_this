@@ -20,19 +20,20 @@ class SocialOAuthController extends AbstractController
         $this->clientRegistry = $clientRegistry;
     }
     #[AttributeRoute('/oauth/service/google', name: 'app_oauth')]
-    public function authLogin(): RedirectResponse
+    public function authLogin()
     {
         /**
          * @var GoogleUser $client
          */
 
         $client = $this->clientRegistry->getClient('google');
-        return $client->redirect();
+        return $client->redirect(['read:user', 'user:email']);
     }
 
     #[AttributeRoute('/oauth/check/google', name: 'oauth_check')]
     public function check()
     {
         return new Response();
+        
     }
 }

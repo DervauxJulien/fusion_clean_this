@@ -11,3 +11,11 @@ redirection_vue:
 app_generate_pdf_and_send_email:
     path: '/generate-pdf-and-send-email/{id}'
     controller: 'App\Controller\MailController::generatePdfAndSendEmail'
+
+connect_google_start:
+    path: /connect/google
+    controller: App\Controller\GoogleController::connect
+
+connect_google_check:
+    path: /connect/google/check
+
