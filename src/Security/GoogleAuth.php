@@ -6,7 +6,9 @@ use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
-use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
+use KnpU\OAuth2ClientBundle\Client\Provider\GoogleClient;
+use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
+use League\OAuth2\Client\Provider\GoogleUser;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,9 +16,15 @@ use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
+use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
+use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
+use Symfony\Component\Security\Http\SecurityRequestAttributes;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-class GoogleAuth extends SocialAuthenticator
+class GoogleAuth extends OAuth2Authenticator
 {
     use TargetPathTrait;
 
@@ -33,28 +41,37 @@ class GoogleAuth extends SocialAuthenticator
         $this->userRepository = $userRepository;
     }
 
-    public function start(Request $request, AuthenticationException $authException = null): Response
-    {
-        return new RedirectResponse($this->router->generate('app_login'));
-    }
-
     public function supports(Request $request): ?bool
     {
         return $request->attributes->get('_route') === 'connect_google_check';
     }
 
-    public function getCredentials(Request $request)
+    public function authenticate(Request $request): Passport
     {
-        return $this->fetchAccessToken($this->clientRegistry->getClient('google'));
+        $client = $this->getClient();
+        $credentials = $this->fetchAccessToken($client);
+
+        /** @var GoogleUser $googleUser */
+        $googleUser = $client->fetchUserFromToken($credentials);
+
+        if ($googleUser->getEmail() === null) {
+            throw new AuthenticationException('No verified email address found.');
+        }
+
+        return new Passport(
+            new UserBadge($googleUser->getId()),
+            new PasswordCredentials($credentials->getToken()),
+            [
+                new CsrfTokenBadge('authenticate', $request->get('_csrf_token')),
+                new RememberMeBadge(),
+            ]
+        );
     }
 
-    public function getUser($credentials, UserProviderInterface $userProvider)
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        /** @var \League\OAuth2\Client\Provider\GoogleUser $googleUser */
-        $googleUser = $this->clientRegistry->getClient('google')->fetchUserFromToken($credentials);
-
-        // You can add a custom method in your UserRepository to handle finding/creating a user
-        return $this->userRepository->findOrCreateFromGoogleOauth($googleUser);
+        $targetPath = $this->getTargetPath($request->getSession(), $firewallName);
+        return new RedirectResponse($targetPath ?: '/');
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
@@ -63,9 +80,8 @@ class GoogleAuth extends SocialAuthenticator
         return new Response($message, Response::HTTP_FORBIDDEN);
     }
 
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey): ?Response
+    private function getClient(): GoogleClient
     {
-        $targetPath = $this->getTargetPath($request->getSession(), $providerKey);
-        return new RedirectResponse($targetPath ?: '/');
+        return $this->clientRegistry->getClient('google');
     }
 }

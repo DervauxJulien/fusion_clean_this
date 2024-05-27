@@ -8,6 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
+use League\OAuth2\Client\Provider\GoogleUser;
 
 /**
  * @extends ServiceEntityRepository<User>
@@ -38,42 +39,30 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->getEntityManager()->flush();
     }
 
-    //    /**
-    //     * @return User[] Returns an array of User objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('u')
-    //            ->andWhere('u.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('u.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function findOrCreateFromGoogleOauth(GoogleUser $googleUser): User
+    {
+        // Rechercher l'utilisateur par son ID Google
+        $user = $this->createQueryBuilder('u')
+            ->where('u.googleId = :googleId')
+            ->setParameter('googleId', $googleUser->getId())
+            ->getQuery()
+            ->getOneOrNullResult();
 
-       public function findOrCreateFromGoogleOauth(GoogleRessourceOwner $owner): User
-       {
-           return $this->createQueryBuilder('u')
-               ->where('u.googleId = :githubId')
-               ->setParameter(['googleId' => $owner->getId()])
-               ->getQuery()
-               ->getOneOrNullResult();
+        // Si l'utilisateur existe, le retourner
+        if ($user) {
+            return $user;
+        }
 
-               if ($user)
-               {
-                return $user;
-               }
+        // Sinon, créer un nouvel utilisateur
+        $user = (new User())
+            ->setRoles(['ROLE_USER'])
+            ->setGoogleId($googleUser->getId())
+            ->setEmail($googleUser->getEmail());
 
-               $user = (new User())
-               ->setRoles(['ROLE_USER'])
-               ->setGoogleId($owner->getId())
-               ->setEmail($owner->getEmail());
-               $em = $this->getEntityManager();
-               $em->persist($user);
-               $em->flush();
+        $em = $this->getEntityManager();
+        $em->persist($user);
+        $em->flush();
 
-               return $user;
-       }
+        return $user;
+    }
 }

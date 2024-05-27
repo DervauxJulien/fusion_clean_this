@@ -18,4 +18,5 @@ connect_google_start:
 
 connect_google_check:
     path: /connect/google/check
+    controller: App\Controller\SecurityController::connectCheckAction
 
