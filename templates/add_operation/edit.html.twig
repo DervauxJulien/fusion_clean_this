@@ -1,49 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter Opérations
-{% endblock %}
+{% block title %}Ajouter Opérations{% endblock %}
 
 {% block body %}
+    <header>
+        {% include "/layout/navbar.html.twig" %}
+        {% include "/layout/operations_nav.html.twig" %}
+    </header>
 
-	<header>
-		{% include "/layout/navbar.html.twig" %}
-		{% include "/layout/operations_nav.html.twig" %}
-	</header>
+    <div class="container-fluid pt-5  mt-5">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="card pt-2 bg-l-green text-white box-shadow mb-4 h-100 mb-4">
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="text-center pb-2">Récapitulatif</h2>
+                        <div class="fw-bold">
+                            <p>Nom client(e) : {{ operations.client.nom }}</p>
+                        </div>
+                        <div class="fw-bold">
+                            <p>Adresse : {{ operations.client.adresse() }}</p>
+                        </div>
+                        <div class="fw-bold">
+                            <p>Description : {{ operations.DescriptionClient }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="card pt-2 bg-l-green text-white box-shadow mb-4 h-100">
+                    <div class="card-body">
+                        <h2>Formulaire de validation</h2>
+                        {{ form_start(form) }}
+                        {{ form_label(form.description_op, 'Entrez votre nouvelle description :') }}
+                        {{ form_widget(form.description_op, {'attr': {'class': 'form form-control', 'label': 'Description'}}) }}
+                        {{ form_label(form.description_op, "Choisissez le type d'opération :") }}
+                        {{ form_widget(form.type, {'attr': {'class': 'form form-control'}}) }}
+                        <div class="d-flex justify-content-center">
+                            <input class="btn-style mt-5" type="submit" value="Valider">
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="container-fluid min-vh-100 pt-5 ">
-		<div class="d-flex justify-content-center h-100">
-			<div class="card pt-2 bg-l-green text-white box-shadow me-4 " style="width: 30rem; ">
-				<div class="card-body d-flex flex-column">
-					<h2 class="text-center pb-2">Récapitulatif</h2>
-						{# {{ dump(operations.client.adresse) }} #}
-					<div class="fw-bold ">
-						<p>Nom client(e) : {{operations.client.nom}}</p>
-					</div>
-					<div class="fw-bold ">
-						<p>Adresse : {{operations.client.adresse()}}</p>
-					</div>
-					<div class="fw-bold ">
-						<p>Description : {{operations.DescriptionClient}}</p>
-					</div>
-					{# {{stockOp.getDescriptionClient()}} #}
-				</div>
-			</div>
-			<div class="card pt-2  bg-l-green text-white box-shadow" style="width: 30rem;">
-				<div class="card-body">
-					<h2>Formulaire de validation</h2>
-					{{form_start(form)}}
-					{{form_label(form.description_op, 'Entrez votre nouvelle description :')}}
-					{{form_widget(form.description_op,{'attr':{'class': 'form form-control', 'label' : 'Description'}})}}
-					{{form_label(form.description_op, "Choisissez le type d'opération :")}}
-					{{form_widget(form.type,{'attr':{'class': 'form form-control'}})}}
-					<div class="d-flex justify-content-center ">
-						<input class="btn-style mt-5  " type="submit" value="Valider">
-					</div>
-				</div>
-				{{form_end(form)}}
-			</div>
-		</div>
-	</div>
-
-
+    {% block javascripts %}
+        <script src="{{ asset('asset/js/script.js') }}"></script>
+    {% endblock %}
 {% endblock %}
