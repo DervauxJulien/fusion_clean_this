@@ -7,12 +7,17 @@
 	<header>
 		{% include "/layout/navbar.html.twig" %}
 		{% include "/layout/operations_nav.html.twig" %}
-
 	</header>
 	<body class="op-terminer-body">
 		<div class="d-flex align-items-center justify-content-end bg-d-green text-white p-1">
-				{% include "/layout/search_results.html.twig" %}
+			{% include "/layout/search_results.html.twig" %}
 		</div>
+		{% if getUrlStatus != 'En cours' %}
+			<a href="{{path('app_operation_filter', {'status' : 'En cours'})}}">
+				<button id="return">←</button>
+			</a>
+		{% endif %}
+
 		<div class="d-flex justify-content-center pt-3">
 			{% if getUrlStatus == "A faire" %}
 				<h1>Opérations disponibles</h1>
