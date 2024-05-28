@@ -711,17 +711,19 @@ footer p{
 }
 
 #createUser{
-    background-color: #43CAA9;
-    color: white;
-    margin-top: 2%;
-    margin-left: 35%;
-    padding-bottom: 5%;
-    width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 10%;
+
+    background-color: #43CAA9;
+    color: white;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 5% 4%;
+    width: 40%;
     border-radius: 25px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
     
@@ -741,6 +743,7 @@ footer p{
     margin: 1%;
     padding-bottom: 0.2%;
     border-radius: 100%;
+    position: fixed;
 }
 
 
@@ -1068,5 +1071,15 @@ footer p{
         .titreDOP{
             justify-content: center;
             margin-top: 1%;
+        }
+
+
+        /* CREATE USER PORTRAIT */
+        #createUser{
+            margin: auto;
+            margin-top: 10%;
+            padding-bottom: 5%;
+            width: 60%;
+            font-size: 150%;
         }
     }
