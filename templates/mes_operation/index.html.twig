@@ -1,113 +1,166 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello MesOperationController!{% endblock %}
+{% extends 'base.html.twig' %} 
+{% block title %}Mes Opérations {% endblock %} 
 
 {% set op_en_cours = 0 %}
-{% for op in MyOps %}
-         {% if app.user == op.user and op.status ==  "En cours" %}
-        {% set op_en_cours = op_en_cours + 1 %}
-        {% endif %}
-        {% endfor %}
+ {% for op in MyOps %} 
+ {% if app.user == op.user and op.status == "En cours" %} 
+ {% set op_en_cours = op_en_cours + 1 %} 
+ {% endif %}
+{% endfor %} 
 
 {% block body %}
-{% include "layout/navbar.html.twig" %}
-{% include "layout/operations_nav.html.twig" %}
-        
-{% if is_granted("ROLE_EXPERT") %} 
+<header>
+  {% include "layout/navbar.html.twig" %} 
+  {% include "layout/operations_nav.html.twig" %}
+</header>
 
-<main id="to_take_main">
-    
+{% if is_granted("ROLE_EXPERT") %}
+<body class="op-terminer-body">
+  <main class="container-fluid text-center min-vh-100">
     {% set max_op = op_en_cours %}
-    <h1>Mes Operations ({{max_op}}/5)</h1>
-
-    <section id="operations_list">
-        {% for op in MyOps %}
-        {% if ((app.user == op.user) and op.status == "En cours" )  %}
-                
-            <div class='operation_to_take' id="{{op.id}}">
-                <h2>{{op.type}}</h2>
-                <div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
-                    <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture' />
-                    <br><br>
-                </div>
-                <div class='operation_bottom_part'>
-                    <div class='operation_localisation'>
-                        <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
-                        <h3>{{op.adresse}}</h3>
-                    </div>
-                    <a href="{{path('app_operation_terminerE', {'id': op.id})}}" class="btn-style" onclick="return confirm('Confirmez-vous avoir terminer cette operation ?')">Terminer</a>
-                </div>
+    <div class="d-flex justify-content-center pt-3">
+      <h1>Mes Operations ({{ max_op }}/5)</h1>
+    </div>
+    {% if op_en_cours == 0 %}
+      <h3>Aucune opération</h3>
+      <br>
+      <h4>Va donc en prendre <a href="{{path('app_operation_filter', {'status': 'A faire'})}}">dans la liste</a></h4>
+    {% endif %}
+    <section class="d-flex flex-wrap m-5 justify-content-center">
+      {% for op in MyOps %} {% if ((app.user == op.user) and op.status == "En cours" ) %}
+      <div class="card rounded-3 box-shadow m-3 h-100 card-custom">
+        <div class="rounded-top-5 bg-white text-center">
+          <h2>{{ op.type }}</h2>
+        </div>
+        <div
+          class="d-flex flex-column bg-l-green rounded-bottom-5 card-content"
+        >
+          <img
+            class="img-fluid card-img-custom"
+            src="/images/broken_image.svg"
+            alt="operation picture"
+          />
+          <div class="bg-d-green w-100 rounded-bottom-3">
+            <div class="d-flex flex-column flex-wrap text-white pt-3">
+              <div
+                class="border-bottom d-flex justify-content-center align-items-center"
+              >
+                <h4 class="pt-1">{{ op.getClient() }}</h4>
+              </div>
+              <h3>{{ op.getAdresse() }}</h3>
             </div>
-            {% endif %}
-        {% endfor %}
-    </section>
-        
-</main>
-{% elseif is_granted("ROLE_SENIOR") %} 
-
-<main id="to_take_main">
-    {% set max_op = op_en_cours %}
-    <h1>Mes Operations ({{max_op}}/3)</h1>
-
-    <section id="operations_list">
-        {% for op in MyOps %}
-
-        {% if ((app.user.id == op.user.id) and op.status == "En cours" )  %}
-        {{ dump(op) }}
-       
-                <div class='operation_to_take'>
-                    <h2>{{op.type}}</h2>
-                    <div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
-                        <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture' />
-                        <br><br>
-                        <h4 style='text-align: center; width: 100%; background-color: white;'>{{op.id}}</h4>
-                </div>
-                <div class='operation_bottom_part'>
-                    <div class='operation_localisation'>
-                        <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
-                        <h3>{{op.adresse}}</h3>
-                    </div>
-                    <a href="{{path('app_operation_terminerS', {'id': op.id})}}" class="btn-style" onclick="return confirm('Confirmez-vous avoir terminer cette operation ?')">Terminer</a>
-                </div>
+            <div class="d-flex justify-content-center w-auto">
+              <a
+                href="{{ path('app_operation_terminerE', { id: op.id }) }}"
+                class="d-flex btn-style"
+                >Terminer</a
+              >
             </div>
-            {% endif %}
-        {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+       {% endfor %}
     </section>
-        
-</main>
+  </main>
+  {% elseif is_granted("ROLE_SENIOR") %}
 
-{% else %}
-<main id="to_take_main">
+  <main class="container-fluid text-center min-vh-100">
     {% set max_op = op_en_cours %}
-    <h1>Mes Operations ({{max_op}}/1)</h1>
-
-    <section id="operations_list">
-        {% for op in MyOps %}
-
-            {% if ((app.user.id == op.user.id) and op.status == "En cours" )  %}
-            {{ dump(op) }}
-
-                <div class='operation_to_take'>
-                    <h2>{{op.type}}</h2>
-                    <div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
-                        <img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture' />
-                        <br><br>
-                        <h4 style='text-align: center; width: 100%; background-color: white;'>{{op.id}}</h4>
-                    </div>
-                    <div class='operation_bottom_part'>
-                        <div class='operation_localisation'>
-                            <img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon' />
-                            <h3>{{op.adresse}}</h3>
-                        </div>
-                        <a href="{{path('app_operation_terminerA', {'id': op.id})}}" class="btn-style" onclick="return confirm('Confirmez-vous avoir terminer cette operation ?')">Terminer</a>
-                    </div>
-                </div>
-            {% endif %}
-
-        {% endfor %}
+    <div class="d-flex justify-content-center pt-3">
+      <h1>Mes Operations ({{ max_op }}/3)</h1>
+    </div>
+    {% if op_en_cours == 0 %}
+    <h3>Aucune opération</h3>
+    <br>
+    <h4>Va donc en prendre <a href="{{path('app_operation_filter', {'status': 'A faire'})}}">dans la liste</a></h4>
+  {% endif %}
+    <section class="d-flex flex-wrap m-5 justify-content-center">
+      {% for op in MyOps %} 
+      {% if ((app.user == op.user) and op.status == "En cours" ) %}
+      <div class="card rounded-3 box-shadow m-3 h-100 card-custom">
+        <div class="rounded-top-5 bg-white text-center">
+          <h2>{{ op.type }}</h2>
+        </div>
+        <div
+          class="d-flex flex-column bg-l-green rounded-bottom-5 card-content"
+        >
+          <img
+            class="img-fluid card-img-custom"
+            src="/images/broken_image.svg"
+            alt="operation picture"
+          />
+          <div class="bg-d-green w-100 rounded-bottom-3">
+            <div class="d-flex flex-column flex-wrap text-white pt-3">
+              <div
+                class="border-bottom d-flex justify-content-center align-items-center"
+              >
+                <h4 class="pt-1">{{ op.getClient() }}</h4>
+              </div>
+              <h3>{{ op.getAdresse() }}</h3>
+            </div>
+            <div class="d-flex justify-content-center w-auto">
+              <a
+                href="{{ path('app_operation_terminerS', { id: op.id }) }}"
+                class="d-flex btn-style"
+                >Terminer</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
     </section>
-        
-</main>
-
+  </main>
+  {% else %}
+  <main class="container-fluid text-center min-vh-100">
+    {% set max_op = op_en_cours %}
+    <div class="d-flex justify-content-center pt-3">
+      <h1>Mes Operations ({{ max_op }}/1)</h1>
+    </div>
+    {% if op_en_cours == 0 %}
+    <h3>Aucune opération</h3>
+    <br>
+    <h4>Va donc en prendre <a href="{{path('app_operation_filter', {'status': 'A faire'})}}">dans la liste</a></h4>
+  {% endif %}
+    <section class="d-flex flex-wrap m-5 justify-content-center">
+      {% for op in MyOps %} {% if ((app.user == op.user) and op.status == "En cours" ) %}
+      <div class="card rounded-3 box-shadow m-3 h-100 card-custom">
+        <div class="rounded-top-5 bg-white text-center">
+          <h2>{{ op.type }}</h2>
+        </div>
+        <div
+          class="d-flex flex-column bg-l-green rounded-bottom-5 card-content"
+        >
+          <img
+            class="img-fluid card-img-custom"
+            src="/images/broken_image.svg"
+            alt="operation picture"
+          />
+          <div class="bg-d-green w-100 rounded-bottom-3">
+            <div class="d-flex flex-column flex-wrap text-white pt-3">
+              <div
+                class="border-bottom d-flex justify-content-center align-items-center"
+              >
+                <h4 class="pt-1">{{ op.getClient() }}</h4>
+              </div>
+              <h3>{{ op.getAdresse() }}</h3>
+            </div>
+            <div class="d-flex justify-content-center w-auto">
+              <a
+                href="{{ path('app_operation_terminerA', { id: op.id }) }}"
+                class="d-flex btn-style"
+                >Terminer</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </section>
+  </main>
+</body>
 {% endif %}
 {% endblock %}

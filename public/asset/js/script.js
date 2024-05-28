@@ -1,4 +1,3 @@
-
 function dropHandler(event) {
   
   let files = [];
@@ -61,67 +60,12 @@ let fetchDatas = async (param) => {
       renderAdressList(villeList);
       renderAdressList(adressList);
       renderAdressList(cpList);
-      // renderAdressListRue(listeRue);
+      // renderAdressListRue();
       // renderAdressListCp();
       // renderAdressListVille();
     }
   });
 };
-
-// const renderAdressListRue = () => {
-//   adressList.innerHTML = "";
-//   adressDatas.forEach(({properties}, index) =>{
-//     const li = document.createElement("li");
-//     const p1 = document.createElement("p");
-
-//     p1.textContent = properties.name;
-    
-
-//     li.appendChild(p1);
-//     li.classList.add("content");
-
-//     adressList.appendChild(li);
-
-//     li.addEventListener("click", () =>  {
-//       listeRue.value = li.textContent;
-//       listeVille.value = properties.city;
-//       listeCP.value = properties.citycode;
-//       villeList.style.display = "none";
-//       cpList.style.display = "none";
-//       adressList.style.display = "none";
-//     });
-//   });
-//   villeList.style.display = "block";
-//   cpList.style.display = "block";
-//   adressList.style.display = "block";
-// };
-
-// const renderAdressListVille = () => {
-//   villeList.innerHTML = "";
-//   adressDatas.forEach(({properties}, index) =>{
-//     const li = document.createElement("li");
-//     const p1 = document.createElement("p");
-
-//     p1.textContent = properties.city;
-    
-
-//     li.appendChild(p1);
-//     li.classList.add("content");
-
-//     villeList.appendChild(li);
-
-//     li.addEventListener("click", () =>  {
-//       listeVille.value = li.textContent;
-//       listeRue.value = li.textContent;
-//       listeCP.value = properties.citycode;
-//       villeList.style.display = "none";
-//       cpList.style.display = "none";
-//       adressList.style.display = "none";
-//     });
-//   });
-//   adressList.style.display = "block";
-// };
-
 const renderAdressList = (param) => {
   param.innerHTML = "";
   adressDatas.forEach(({properties}, index) =>{
@@ -129,7 +73,7 @@ const renderAdressList = (param) => {
     const p1 = document.createElement("p");
 
     p1.textContent = properties.city;
-    
+
 
     li.appendChild(p1);
     li.classList.add("content");
@@ -141,7 +85,7 @@ const renderAdressList = (param) => {
       // listeRue.value = li.textContent;
       // listeCP.value = properties.citycode;
       param.style.display = "none";
-      
+
     });
   });
   param.style.display = "block";

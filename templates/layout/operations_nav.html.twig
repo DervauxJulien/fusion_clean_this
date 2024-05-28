@@ -26,23 +26,19 @@
 				<h3>Mes opérations</h3>
 			</a>
 		{% endif %}
-
-		{# <a href="{{path('app_operations_terminees')}}" class="nav-link">
-			<h3>Opérations terminées</h3>
-		</a> #}
-		<div class="btn-group">
+		<div class="btn-group p-2">
 			<button class="nav-toggler dropdown-toggle text-light btn_nav" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 				Liste des opérations
 			</button>
 			<ul class="dropdown-menu">
 				<li>
-					<a class="dropdown-item" href="{{path('app_operations_prendre')}}">A faire</a>
+					<a class="dropdown-item" href="{{path('app_operation_filter', {'status': 'A faire'})}}">Opérations disponibles</a>
 				</li>
 				<li>
-					<a class="dropdown-item" href="{{ path('app_operation_filter', {'status': 'En cours'}) }}">En cours</a>
+					<a class="dropdown-item" href="{{ path('app_operation_filter', {'status': 'En cours'})}}">Opérations en cours</a>
 				</li>
 				<li>
-					<a class="dropdown-item" href="{{ path('app_operation_filter', {'status': 'Terminer'}) }}">Terminé</a>
+					<a class="dropdown-item" href="{{ path('app_operation_filter', {'status': 'Terminer'})}}">Opérations Terminées</a>
 				</li>
 			</ul>
 		</div>
@@ -63,6 +59,5 @@
 				</li>
 			</ul>
 		{% endif %}
-
 	</nav>
 {% endblock %}

@@ -93,14 +93,9 @@
 				{{form_widget(createForm.operation.description_client,{'attr':{'class': 'form form-control','placeholder': 'Dans une limite de 255 caractères'}})}}
 				<br>
 				{{form_label(createForm.operation.img)}}
-				<label for="">
-				<input type="file" id="img" accept="image/png, image/jpeg" multiple>
-				{{form_widget(createForm.operation.img,{'attr':{'class': 'form form-control','placeholder': 'Type .jpeg et .png'}})}}
-				</label>
-				<p></p>
-
-					<input type="submit" value="Soumettre la demande">
-					{{form_end(createForm)}}
+				{{form_widget(createForm.operation.img,{'attr':{'class': 'form form-control','placeholder': 'Glissez vos fichiers photos'}})}}
+				<input type="submit" value="Soumettre la demande">
+				{{form_end(createForm)}}
 				</div>
 
 			</div>

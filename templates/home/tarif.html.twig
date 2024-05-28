@@ -11,92 +11,127 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
 
-        <div class="d-flex justify-content-around text-center pt-5">
-            <div class="card w-50">
-                <h2 class="card-header">Qui sommes-nous ?</h2>
-                <div class="mt-2 ms-4"><img src="/images/icons/logo.svg" alt="website logo" class="w-25"></div>
+        
+        <div class="d-flex justify-content-center flex-nowrap flex-column align-items-center text-center gap-5">
+            <h2 class="bg-m-green text-light w-50">Qui sommes-nous ?</h2>
+            <div class=" w-50 bg-l-green d-flex nowrap align-items-center">
                 
                 
-                <div class="card-body d-flex flex-column align-items-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque facilisis ornare. Suspendisse id est suscipit orci pellentesque egestas vel at ligula. Integer a leo id sem auctor facilisis. Donec at sem quis mauris gravida elementum. Vivamus ac nisl non mi sodales posuere id vel mauris. Proin eget risus tortor. Morbi feugiat porta sagittis.</p>
+                    <img src="/images/icons/logo.svg" alt="website logo" class="w-25 ">
+                
+                
+                <div class="card-body text-light w-50">
+                    <p>Cleanthis est une société spécialisée dans le nettoyage de locaux pour particuliers et professionnels. 
+Nos équipes jouissent d'une expérience et d'un savoir-faire rares sur le marché. 
+N'attendez plus, choisissez le nettoyage façon Cleanthis !</p>
                 </div>
+                
             </div>
-        </div>
+            <a href="{{path('app_demande_operation')}}"><button class="btn-style ">Demande d'opération</button></a>
 
+        
+</div>
         
       </div>
 
 
-      <div class="carousel-item">
+      <div class="carousel-item " >
 
-        <div class="d-flex justify-content-around text-center pt-5">
-        <div class="card w-25 ">
-            <div class="card-header">Petite Opération</div>
-            <div class="card-img mt-2 ms-4"></div>
-            <div class="card-body d-flex flex-column align-items-center">
-                <h3>Fast and Clean</h3><br><br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
+        <div class="d-flex justify-content-center align-items-center gap-5 text-center pt-3">
+        <div class="operation_to_take">
+            <div class="card-header p-1">
+                <h3 class="text-light">Petite Opération</h3>
             </div>
+            <div class="card-img">
+                
+                <img src="/images/imgOpPetit.svg" class="img-thumbnail rounded-0" alt="">
+            </div>
+            <div class="card-body d-flex flex-column align-items-center bg-d-green text-light">
+                <h4>Fast and Clean</h4>
+                <p>Une opération rapide et efficace pour vos locaux à prix mini. </p>
+            </div>
+            <div class="text-center bg-d-green">
+        
         </div>
-    </div><br>
-        <div class="text-center">
-        <a href="{{path('app_demande_operation')}}"><button class="btn-style">Demande d'opération</button></a>
         </div>
+        <a href="{{path('app_demande_operation')}}"><button class="btn-style ">Demande d'opération</button></a>
+        </div>
+        
         </div>
 
         <div class="carousel-item">
 
-            <div class="d-flex justify-content-around text-center pt-5">
-            <div class="card w-25 ">
-                <div class="card-header">Moyenne Opération</div>
-                <div class="card-img mt-2 ms-4"></div>
-                <div class="card-body d-flex flex-column align-items-center">
-                    <h3>Fast and Clean</h3><br><br>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
+            <div class="d-flex justify-content-center align-items-center gap-5 text-center pt-3">
+                <div class="operation_to_take">
+                    <div class="card-header p-1">
+                        <h3 class="text-light">Moyenne Opération</h3>
+                    </div>
+                    <div class="card-img">
+                        
+                        <img src="/images/imgOpMoyen.svg" class="img-thumbnail rounded-0" alt="">
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center bg-d-green text-light">
+                        <h4>Efficacity and quality</h4>
+                        <p>Un petit nettoyage ne suffit pas ? La moyenne opération est le service idéal avec toujours plus d'efficacité.</p>
+                    </div>
+                    <div class="text-center bg-d-green">
+                
                 </div>
-            </div>
-        </div><br>
-            <div class="text-center">
-            <a href="{{path('app_demande_operation')}}"><button class="btn-style">Demande d'opération</button></a>
-            </div>
+                </div>
+                <a href="{{path('app_demande_operation')}}"><button class="btn-style ">Demande d'opération</button></a>
+                </div>
             </div>
 
             <div class="carousel-item">
 
-                <div class="d-flex justify-content-around text-center pt-5">
-                <div class="card w-25 ">
-                    <div class="card-header">Grosse Opération</div>
-                    <div class="card-img mt-2 ms-4"></div>
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <h3>Fast and Clean</h3><br><br>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
+                <div class="d-flex justify-content-center align-items-center gap-5 text-center pt-3">
+                    <div class="operation_to_take">
+                        <div class="card-header p-1">
+                            <h3 class="text-light">Grosse Opération</h3>
+                        </div>
+                        <div class="card-img">
+                            
+                            <img src="/images/imgOpGrosse.svg" class="img-thumbnail rounded-0" alt="">
+                        </div>
+                        <div class="card-body d-flex flex-column align-items-center bg-d-green text-light">
+                            <h4>Big and neet</h4>
+                            <p>Pour vos besoins en nettoyage d'espace de grande envergure, Cleanthis possède l'équipement adapté afin de garantir un opération efficace à un prix compétitif. </p>
+                        </div>
+                        <div class="text-center bg-d-green">
+                    
                     </div>
-                </div>
-            </div><br>
-                <div class="text-center">
-                <a href="{{path('app_demande_operation')}}"><button class="btn-style">Demande d'opération</button></a>
-                </div>
+                    </div>
+                    <a href="{{path('app_demande_operation')}}"><button class="btn-style ">Demande d'opération</button></a>
+                    </div>
                 </div>
 
                 <div class="carousel-item">
 
-                    <div class="d-flex justify-content-around text-center pt-5">
-                    <div class="card w-25 ">
-                        <div class="card-header">Custom Opération</div>
-                        <div class="card-img mt-2 ms-4"></div>
-                        <div class="card-body d-flex flex-column align-items-center">
-                            <h3>Fast and Clean</h3><br><br>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia optio voluptas quasi dolorem quo nesciunt officiis quod, non veritatis itaque. Cupiditate accusamus velit ullam sapiente dolorem perferendis voluptas expedita necessitatibus!</p>
+                    <div class="d-flex justify-content-center align-items-center gap-5 text-center pt-3">
+                        <div class="operation_to_take">
+                            <div class="card-header p-1">
+                                <h3 class="text-light">Custom Opération</h3>
+
+                            </div>
+                            <div class="card-img">
+                                
+                                <img src="/images/imgOpCustom.svg" class="img-thumbnail rounded-0" alt="">
+                            </div>
+                            <div class="card-body d-flex flex-column align-items-center bg-d-green text-light">
+                                <h4>Your best bet !</h4>
+                                <p>Pour toutes demandes auxquelles nos opérations ne sauraient répondre, nos équipes proposent un service personnalisé et adapté à vos besoins.</p>
+                            </div>
+                            <div class="text-center bg-d-green">
+                        
                         </div>
-                    </div>
-                </div><br>
-                    <div class="text-center">
-                    <a href="{{path('app_demande_operation')}}"><button class="btn-style">Demande d'opération</button></a>
-                    </div>
+                        </div>
+                        <a href="{{path('app_demande_operation')}}"><button class="btn-style ">Demande d'opération</button></a>
+                        </div>
                     </div>
 
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>

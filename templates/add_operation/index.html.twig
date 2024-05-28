@@ -7,9 +7,8 @@
 		{% include "/layout/navbar.html.twig" %}
 		{% include "/layout/operations_nav.html.twig" %}
    		{% include "layout/_flash_message.html.twig" %}
-
-
 	</header>
+	<body class="op-terminer-body">
 	<div>
 	</div>
 	<div class="container  min-vh-100">
@@ -74,4 +73,8 @@
 				{% endfor %}
 			</tbody>
 		</table>
+		{% block javascripts %}
+		<script src="{{ asset('asset/js/script.js') }}"></script>
+		{% endblock %}
+		</body>
 	{% endblock %}

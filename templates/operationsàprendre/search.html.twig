@@ -1,93 +1,113 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des opérations{% endblock %}
+{% block title %}Liste des opérations
+{% endblock %}
 
 {% block body %}
 	<header>
 		{% include "/layout/navbar.html.twig" %}
 		{% include "/layout/operations_nav.html.twig" %}
-		{% include "/layout/search_results.html.twig" %}
 	</header>
-
-	<form method="GET" action="{{ path('app_operation_filter_query', {'status': getUrlStatus}) }}">
-		<input type="text" name="query" placeholder="Rechercher par nom de client" required>
-		<button type="submit">Rechercher</button>
-	</form>
-
-	<main id="to_take_main">
-		{{ dump(operationsSearch) }}
-		<h2>Résultats de la recherche pour "{{ query }}"</h2>
-		<section id="operations_list">
-			{% if operationsSearch is not empty %}
-				{% set operations_found = false %}
-				{% for operation in operationsSearch %}
-					{% if operation.status == getUrlStatus and operation.status != "Terminer" %}
-						{% set operations_found = true %}
-						<div class='operation_to_take'>
-							<h2>{{ operation.type }}</h2>
-							<div style='width: 100%; display: flex; justify-content: flex-end; align-items: center; flex-direction: column;'>
-								<img src='/images/broken_image.svg' alt='operation picture' name='operation_picture' id='operation_picture'/>
-								<br><br>
-								<h4 style='text-align: center; width: 100%; background-color: white;'>{{ operation.client.nom }}</h4>
-							</div>
-							<div class='operation_bottom_part'>
-								<div class='operation_localisation'>
-									<img src='/images/icons/distance.svg' alt='localisation icon' name='localisation_icon' id='localisation_icon'/>
-									<h3>Localisation</h3>
+	<body class="op-terminer-body">
+		<div class="d-flex align-items-center justify-content-end bg-d-green text-white">
+			{% include "/layout/search_results.html.twig" %}
+		</div>
+		<main class="container-fluid text-center min-vh-100">
+			<div class="d-flex justify-content-center pt-3">
+				<h1>Résultats de la recherche pour "{{ query }}"</h1>
+			</div>
+			<section class="d-flex flex-wrap m-5 justify-content-center">
+				{% if operationsSearch is not empty %}
+					{% set operations_found = false %}
+					{% for operation in operationsSearch %}
+						{% if operation.status == getUrlStatus and operation.status != "Terminer" %}
+							{% set operations_found = true %}
+							<div class='card rounded-3 box-shadow m-3 h-100 card-custom'>
+								<div class='rounded-top-5 bg-white text-center'>
+									<h2>{{ operation.type }}</h2>
+								</div>
+								<div class='d-flex flex-column bg-l-green rounded-bottom-5 card-content'>
+									<img class="img-fluid card-img-custom" src='/images/broken_image.svg' alt='operation picture'/>
+									<div class="d-flex justify-content-center bg-white">
+										<h4 class="pt-1">User :
+											{{ operation.user.nom }}
+											{{ operation.user.prenom }}</h4>
+									</div>
+									<div class='bg-d-green w-100 rounded-bottom-3'>
+										<div class='d-flex flex-column flex-wrap text-white pt-3'>
+											<div class="border-bottom d-flex justify-content-center align-items-center">
+												<h4 class="pt-1 ">{{ operation.getClient() }}</h4>
+											</div>
+											<h3>{{ operation.getAdresse() }}</h3>
+										</div>
+										{% if operation.status == "A faire" and getUrlStatus == "A faire" %}
+											<div class='d-flex justify-content-center w-auto'>
+												{% if operationsEnCours < 5 %}
+													<a href="{{ path('app_operation_ajout', {'id': operation.id}) }}" class="d-flex btn-style">Ajouter à ma liste</a>
+												{% else %}
+													<a href="{{ path('app_operation_ajout', {'id': operation.id}) }}" class="d-flex btn-style" disabled>Limite Atteinte</a>
+												{% endif %}
+											</div>
+										{% endif %}
+									</div>
 								</div>
 							</div>
-						</div>
+						{% endif %}
+					{% endfor %}
+					{% if not operations_found %}
+						{# <h2>Aucune opération trouvée pour "{{ query }}".</h2> #}
 					{% endif %}
-				{% endfor %}
-				{% if not operations_found %}
+				{% else %}
 					<p>Aucune opération trouvée pour "{{ query }}".</p>
 				{% endif %}
-			{% else %}
-				<p>Aucune opération trouvée pour "{{ query }}".</p>
-			{% endif %}
 
-			{% if operationsSearch is not empty and getUrlStatus == "Terminer"   %}
-				<div class="container min-vh-100">
-					<table class="table table-hover table-striped border-2 mt-5">
-						<thead class='bg-violet'>
-							<tr>
-								<th class="center-table" scope="col">#</th>
-								<th class="center-table" scope="col">NOM CLIENT</th>
-								<th class="center-table" scope="col">PRENOM CLIENT</th>
-								<th class="center-table" scope="col">ADRESSE</th>
-								<th class="center-table" scope="col">CP</th>
-								<th class="center-table" scope="col">VILLE</th>
-								<th class="center-table" scope="col">TARIF</th>
-								<th class="center-table" scope="col">DATE</th>
-								<th class="center-table" scope="col">INTERVENANT</th>
-								<th class="center-table" scope="col">FACTURE PDF</th>
-								<th class="center-table" scope="col">FACTURE PAR MAIL</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for operation in operationsSearch %}
-									<tr style="height: 3.125rem;">
-										<td class="center-table">{{ operation.id }}</td>
-										<td class="center-table">{{ operation.client.nom }}</td>
-										<td class="center-table">{{ operation.client.prenom }}</td>
-										<td class="center-table">{{ operation.adresse.nrue }} {{ operation.adresse.nomRue }}</td>
-										<td class="center-table">{{ operation.adresse.cp }}</td>
-										<td class="center-table">{{ operation.adresse.nomVille }}</td>
-										<td class="center-table">{{ operation.tarif }}</td>
-										<td class="center-table">{{ operation.dateCreation ? operation.dateCreation|date('Y-m-d') }}</td>
-										<td class="center-table">{{ operation.user.nom }} {{ operation.user.prenom }}</td>
-										<td class="center-table">
-											<a href="{{ path('app_generate_pdf', {'id': operation.id}) }}" class="btn-style">PDF</a>
-										</td>
-										<td class="center-table">
-											<a href="{{ path('app_generate_pdf_and_send_email', {'id': operation.id}) }}" class="btn-style">Par mail</a>
-										</td>
-									</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				</div>
-			{% endif %}
-		</section>
-	</main>
+				{% if getUrlStatus == "Terminer"%}
+					<div class="container-fluid">
+						<table class="table table-hover table-striped border-2 mt-5">
+							<thead>
+								<tr>
+									<th class="center-table" scope="col">#</th>
+									<th class="center-table" scope="col">NOM CLIENT</th>
+									<th class="center-table" scope="col">PRENOM CLIENT</th>
+									<th class="center-table" scope="col">ADRESSE</th>
+									<th class="center-table" scope="col">CP</th>
+									<th class="center-table" scope="col">VILLE</th>
+									<th class="center-table" scope="col">TARIF</th>
+									<th class="center-table" scope="col">DATE</th>
+									<th class="center-table" scope="col">INTERVENANT</th>
+									<th class="center-table" scope="col">FACTURE PDF</th>
+									<th class="center-table" scope="col">FACTURE PAR MAIL</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for operation in operationsSearch %}
+									{% if  operationsSearch is not empty and operation.status == "Terminer" %}
+										<tr style="height: 3.125rem;">
+											<td class="center-table">{{ operation.id }}</td>
+											<td class="center-table">{{ operation.client.nom }}</td>
+											<td class="center-table">{{ operation.client.prenom }}</td>
+											<td class="center-table">{{ operation.adresse.nrue }}
+												{{ operation.adresse.nomRue }}</td>
+											<td class="center-table">{{ operation.adresse.cp }}</td>
+											<td class="center-table">{{ operation.adresse.nomVille }}</td>
+											<td class="center-table">{{ operation.tarif }}</td>
+											<td class="center-table">{{ operation.dateCreation ? operation.dateCreation|date('Y-m-d') }}</td>
+											<td class="center-table">{{ operation.user.nom }}
+												{{ operation.user.prenom }}</td>
+											<td class="center-table">
+												<a href="{{ path('app_generate_pdf', {'id': operation.id}) }}" class="btn btn-style btn-block">PDF</a>
+											</td>
+											<td class="center-table">
+												<a href="{{ path('app_generate_pdf_and_send_email', {'id': operation.id}) }}" class="btn btn-style btn-block">Par mail</a>
+											</td>
+										</tr>
+									{% endif %}
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				{% endif %}
+			</section>
+		</main>
+	</body>
 {% endblock %}

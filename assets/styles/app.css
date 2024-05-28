@@ -20,21 +20,24 @@ background-color: #0C4B3B;
 .box-shadow{
 box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
+
+
+
 /* Navbar */
 
 #navbar {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    /* gap: 10%; */
 
     background-color: #0C4B3B;
-    padding: 0.6% 0%;
+    padding: 0.6% 1%;
     color: white;
 }
 #navbar img {
-    width: 15%;
-    position: relative;
-    bottom: 0.2rem;
+    /* width: 15%; */
+    width: 3em;
     border: 3px solid white;
     border-radius: 90px;
 }
@@ -66,7 +69,7 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-
+    z-index: 1200;
     
 }
 footer img {
@@ -90,14 +93,14 @@ footer p{
 
 /* PAGE HOME -------------------------------- */
 
-#home_main {
-    display: flex;
-    justify-content: center;
-    gap: 10%;
-    height: 61vh;
+    #home_main {
+        display: flex;
+        justify-content: center;
+        gap: 10%;
 
-    margin: 10% 12% 0% 12%;
-}
+        height: 61vh;
+        margin: 10% 0% 10% 0%;
+    }
 
 
 .choice_section {
@@ -105,12 +108,14 @@ footer p{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 10%;
 
     background-color: #43CAA9;
-    width: 32%;
+    width: 36%;
     border-radius: 30px;
     padding: 8% 0%;
     height: fit-content;
+    text-align: center;
 }
 .choice_section:hover{
     background-color: #007557;
@@ -124,7 +129,6 @@ footer p{
 }
 
 .choice_section h2 {
-    margin-top: 10%;
     color: white;
     font-weight: 700;
 }
@@ -483,7 +487,7 @@ footer p{
     background-image: url('/images/photofond.png');
     background-size: cover;
     background-repeat: no-repeat;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 
@@ -640,6 +644,53 @@ footer p{
     border-bottom: none;
 }
 
+/* Page Validation de formulare de demande d'opération */
+
+.logoValid{
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+#titleValid{
+    padding-top: 4rem;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding-left: 4rem;
+}
+
+.leftValid{
+    display: block;
+    
+}
+
+.paraValid{
+    padding-left: 6rem;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding-top: 4rem;
+    
+}
+
+.triValid{
+    width  : 0;
+    height : 0;
+    border-bottom : 58rem solid #43CAA9;
+    border-left   : 20rem solid transparent;
+}
+
+.recValid{
+    display: flex;
+    background-color: #43CAA9;
+    height: 58rem;
+    width: 60rem;
+    float: right;
+}
+
+.fullValid{
+    justify-content: space-between;
+}
+
+
 /* Page Gestion utilisateur------------------------------------- */
 
 #colAp{
@@ -695,7 +746,6 @@ footer p{
     justify-content: space-around;
     align-items: center;
     gap: 5%;
-    
     padding: 0.4% 0%;
     background-color: #43CAA9;
 }
@@ -755,7 +805,7 @@ footer p{
     align-items: center;
 
     width: 28%;
-    background-color: #43CAA9;
+    background-color: #007557;
     border-radius: 20px;
     box-shadow: 0px 0px 6px;
     margin-bottom: 4%;
@@ -781,11 +831,10 @@ footer p{
     display: flex;
     justify-content: space-around;
     align-items: center;
-
     background-color: #0C4B3B;
     width: 100%;
     border-radius: 0px 0px 20px 20px;
-    padding: 2% 0%;
+    padding: 2%;
 }
 .operation_bottom_part button{
     background-color: white;
@@ -804,21 +853,31 @@ footer p{
 }
 .operation_localisation h3{
     color: white;
-    font-size: 92%;
+    font-size: 90%;
     text-transform: uppercase;
     font-weight: 600;
+    width: 95%;
 }
 #localisation_icon{
     color: white;
 }
+
+.card-custom {
+    height: 25rem;
+    width: 25rem; 
+}
+
+.card-img-custom {
+    height: 10rem;
+    object-fit: cover;
+}
+
+.card-content {
+    flex-grow: 1;
+}
 /* ----Page Tarif---------------------------- */
 
-.card-img{
-    background-image: url('/images/broken_image.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 20rem;
-}
+
 
 .caroutaf{
     display: flex;
@@ -828,8 +887,16 @@ footer p{
 
     background-color: #43CAA9;
     height: 86vh;
-
 }
+
+#prixImg{
+    position: relative;
+    top: 38rem; left: 68rem;
+    z-index: 2;
+}
+
+
+
 /* Page message envoi mail -------------------------------------------*/
 
 .messageMailSend{
@@ -862,7 +929,7 @@ footer p{
 .btn-style {
 
     background-color: #43CAA9;
-    padding: 14px 40px;
+    padding: 1rem;
     color:#fff;
     cursor: pointer;
     border-radius: 10px;
@@ -887,5 +954,73 @@ footer p{
     background-color: #43CAA9;
    }
    
+   .form-control::-webkit-input-placeholder {
+    opacity: 50%;
+  }
+
+
    /* --------------------------------------------------------------------- */
-   
+   /* -------------------------- MEDIA QUERIES ---------------------------- */
+   /* --------------------------------------------------------------------- */
+
+    /* Sur tous types d'écrans orientés verticalement */
+    @media all and (orientation: portrait) {
+        /* HOME PAGE PORTRAIT */
+        #home_main {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 5%;
+
+            padding-top: 4%;
+        }
+        #home_main a{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        #home_middle_bar {
+            border: 2px solid black;
+            width: 80%;
+        }
+
+        .choice_section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12%;
+        
+            background-color: #43CAA9;
+            width: 80%;
+            border-radius: 30px;
+            height: 40em;
+            text-align: center;
+        }
+        .choice_section:hover{
+            background-color: #007557;
+        }
+        .choice_section h2 {
+            color: white;
+            font-weight: 700;
+        }
+
+
+        /* NAVIGATION BAR PORTRAIT */
+        #navbar {
+            padding: 3% 4%;
+        }
+        #navbar img {
+            width: 5em;
+        }
+        #navbar h3 {
+            font-size: 130%;
+            width: 54%;
+        }
+        #nav_logout{
+            padding: 1% 2%;
+            font-size: 125%;
+        }
+    }
