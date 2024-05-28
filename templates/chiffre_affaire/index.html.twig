@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'CHIFFRE D\'AFFAIRE'|trans }}{% endblock %}
+{% block title %}{{ 'Chiffre D\'affaire'|trans }}{% endblock %}
 
 {% block body %}
 
@@ -26,7 +26,9 @@
     </a> #}
 
 <body class="chiffre-affaire-body">
-    <h1 class='titreChiffreAffaire'>{{ 'CHIFFRE D\'AFFAIRE'|trans }}</h1>
+<div class="d-flex justify-content-center pt-3 ">
+    <h1 class=''>{{ 'Chiffre d\'affaires'|trans }}</h1>
+    </div>
 
     {{ render(controller('App\\Controller\\DonutsChartController::DonutsChart')) }}
     {{ render(controller('App\\Controller\\TableController::tableIndex')) }}

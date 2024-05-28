@@ -18,7 +18,7 @@
 			</a>
 		{% endif %}
 
-		<div class="d-flex justify-content-center pt-3">
+		<div class="d-flex justify-content-center pt-3 ">
 			{% if getUrlStatus == "A faire" %}
 				<h1>Opérations disponibles</h1>
 			{% elseif getUrlStatus == "En cours"%}
@@ -40,11 +40,15 @@
 							<div class='d-flex flex-column bg-l-green rounded-bottom-3 card-content'>
 								<img class="img-fluid card-img-custom" src='/images/broken_image.svg' alt='operation picture'/>
 								<div class="d-flex justify-content-center bg-white">
-									<h4 class="pt-1">User :
+									 {# <h4 class="pt-1">User :  
+									 {% if operation.user.nom %}
+									{{ operation.user.nom }}{{ operation.user.prenom }}
+									{% else %}
 										{{ operation.user}}
-								</div>
+									{% endif %} #}
+								 </div>
 								<div class='bg-d-green w-100 rounded-bottom-3'>
-									<div class='d-flex flex-column flex-wrap text-white pt-3'>
+									<div class='d-flex flex-column flex-wrap text-white'>
 										<div class="border-bottom d-flex justify-content-center align-items-center">
 											<h4 class="pt-1 ">{{ operation.getClient() }}</h4>
 										</div>
