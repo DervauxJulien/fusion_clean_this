@@ -1,4 +1,3 @@
-
 function dropHandler(event) {
   
   let files = [];

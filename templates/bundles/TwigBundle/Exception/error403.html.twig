@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Erreur 403
+{% endblock %}
+
+{% block body %}
+    <h1>Acces refusé</h1>
+
+    <p>Vous ne posseder pas les droit d'acces a cette page</p>
+
+    <a href="{{path('app_home')}}">Retour vers l'accueil</a>
+{% endblock %}
