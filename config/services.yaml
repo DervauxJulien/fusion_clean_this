@@ -28,10 +28,16 @@ services:
 
 
 # config/services.yaml
-# services:
-    App\EventSubscriber\LocaleSubscriber:
-        arguments:
-            $defaultLocale: 'fr'
-        tags:
-            - { name: kernel.event_subscriber }
+
+    # App\EventSubscriber\LocaleSubscriber:
+    #     arguments:
+    #         $defaultLocale: 'fr'
+    #     tags:
+    #         - { name: kernel.event_subscriber }
+
+# config/services.yaml
+
+    App\Service\MailerService:
+        arguments: []
+
 
