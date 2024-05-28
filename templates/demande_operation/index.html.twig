@@ -5,15 +5,17 @@
 {% endblock %}
 {% block body %}
 	<form method="POST">
-		<div class="d-flex globale">
-			<div class='margeGauche w-25 h-100'>
-				<img src="\images\icons\logo.svg" alt="logo" width="20%" height="20%" class"logodop"/>
-
+		<div class="globale">
+			<div class='margeGauche'>
+				<a href="{{path('app_home')}}">
+					<img src="\images\icons\logo.svg" alt="logo" width="36%" class"logodop"/>
+				</a>
 				<h1 class='text-white titreDOP'>
 					<b>Merci d'avoir choisi Clean This</b>
 				</h1>
-			</div>
-			<div class="formDOP ">
+		</div>
+		
+		<div class="formDOP ">
 				<h2>
 					<b>Formulaire de demande d'opération :</b><br><br>
 				</h2>
@@ -23,7 +25,7 @@
 					<b>Client :</b>
 				</h3>
 				<br>
-				<div class='d-flex flex-row justify-content-between w-75'>
+				<div class='d-flex flex-row justify-content-between w-100 pe-4'>
 					<div>
 						{{form_label(createForm.client.nom, 'Nom :')}}
 						{{form_widget(createForm.client.nom,{'attr':{'class': 'form form-control','placeholder': 'ex: Dupont'}})}}
@@ -41,7 +43,7 @@
 				<h3>
 					<b>Adresse du site à nettoyer :</b>
 				</h3><br>
-				<div class='d-flex flex-row justify-content-between' style='width: 70rem'>
+				<div class='d-flex flex-row justify-content-between w-100'>
 					<div style="width: 5rem">
 						{{form_label(createForm.adresse.N_rue, 'N° rue :')}}
 						{{form_widget(createForm.adresse.N_rue,{'attr':{'class': 'form form-control','placeholder': 'ex: 4'}})}}
@@ -94,7 +96,7 @@
 				<br>
 				{{form_label(createForm.operation.img)}}
 				{{form_widget(createForm.operation.img,{'attr':{'class': 'form form-control','placeholder': 'Glissez vos fichiers photos'}})}}
-				<input type="submit" value="Soumettre la demande">
+				<input class="my-5" type="submit" value="Soumettre la demande">
 				{{form_end(createForm)}}
 			</div>
 
