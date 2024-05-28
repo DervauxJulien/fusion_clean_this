@@ -4,7 +4,7 @@
 {% block title %}Demande d'opération
 {% endblock %}
 {% block body %}
-	<form method="GET">
+	<form method="POST">
 		<div class="d-flex globale">
 			<div class='margeGauche w-25 h-100'>
 				<img src="\images\icons\logo.svg" alt="logo" width="20%" height="20%" class"logodop"/>
@@ -94,9 +94,8 @@
 				<br>
 				{{form_label(createForm.operation.img)}}
 				{{form_widget(createForm.operation.img,{'attr':{'class': 'form form-control','placeholder': 'Glissez vos fichiers photos'}})}}
-
-					<input type="submit" value="Soumettre la demande">
-					{{form_end(createForm)}}
+				<input type="submit" value="Soumettre la demande">
+				{{form_end(createForm)}}
 				</div>
 
 			</div>
