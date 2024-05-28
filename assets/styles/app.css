@@ -99,7 +99,7 @@ footer p{
         gap: 10%;
 
         height: 61vh;
-        margin: 10% 0% 10% 0%;
+        margin: 10% 8% 10% 8%;
     }
 
 
@@ -108,12 +108,11 @@ footer p{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10%;
 
     background-color: #43CAA9;
-    width: 36%;
+    width: 40%;
     border-radius: 30px;
-    padding: 8% 0%;
+    padding: 8% 1%;
     height: fit-content;
     text-align: center;
 }
@@ -131,6 +130,7 @@ footer p{
 .choice_section h2 {
     color: white;
     font-weight: 700;
+    margin-top: 10%;
 }
 
 
@@ -587,27 +587,34 @@ footer p{
 
 
 /* Page formulaire de demande d'opération */
-
 .globale{
-    height: 1080px;
+    display: flex;
     gap: 2%;
+    height: 100%;
 }
 
 .margeGauche {
+    display: flex;
+    align-items: center;
     flex-direction: column;
+    gap: 5%;
+    
+    text-align: center;
     background-color: #43CAA9;
-    padding-left: 1%;
+    padding: 6% 0%;
+    min-width: 20%;
+    width: 25%;
+    height: auto;
 }
 
 .formDOP{
     padding-top: 2%;
-    width: 80rem;
 }
-
 .titreDOP{
     justify-content: center;
 
 }
+
 #drop_zone {
 	border: 2px solid black;
 	width: 100%;
@@ -887,7 +894,8 @@ footer p{
     align-items: center;
 
     background-color: #43CAA9;
-    height: 86vh;
+    /* height: 86vh; */
+    padding: 4% 0% 12% 0%;
 }
 
 #prixImg{
@@ -972,7 +980,6 @@ footer p{
             justify-content: center;
             flex-direction: column;
             align-items: center;
-            gap: 5%;
 
             padding-top: 4%;
         }
@@ -992,7 +999,6 @@ footer p{
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 12%;
         
             background-color: #43CAA9;
             width: 80%;
@@ -1006,6 +1012,7 @@ footer p{
         .choice_section h2 {
             color: white;
             font-weight: 700;
+            margin-top: 6%;
         }
 
 
@@ -1023,5 +1030,44 @@ footer p{
         #nav_logout{
             padding: 1% 2%;
             font-size: 125%;
+        }
+
+
+        /* OPERATION FORM PORTRAIT */
+        .globale{
+            display: flex;
+            flex-direction: column;
+            gap: 2%;
+        }
+
+        .margeGauche {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            text-align: center;
+            background-color: #43CAA9;
+            padding: 2% 0%;
+            min-width: 20%;
+            width: 100%;
+        }
+        .margeGauche img {
+            width: 30%;
+        }
+
+        .formDOP{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            padding: 10% 12%;
+        }
+        .formDOP h3 {
+            margin-top: 6%;
+        }
+        .titreDOP{
+            justify-content: center;
+            margin-top: 1%;
         }
     }
