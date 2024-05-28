@@ -46,7 +46,7 @@
 				<div class='d-flex flex-row justify-content-between w-100'>
 					<div style="width: 5rem">
 						{{form_label(createForm.adresse.N_rue, 'N° rue :')}}
-						{{form_widget(createForm.adresse.N_rue,{'attr':{'class': 'form form-control','placeholder': 'ex: 4'}})}}
+						{{form_widget(createForm.adresse.N_rue,{'attr':{'class': 'form form-control','placeholder': 'ex: 4', 'required' : true}})}}
 					</div>
 					<div>
 						{{form_label(createForm.adresse.Nom_Rue, 'Nom de la rue :')}}

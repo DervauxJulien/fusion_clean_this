@@ -1,99 +1,95 @@
-function dropHandler(event) {
-  
-  let files = [];
+document.addEventListener('DOMContentLoaded', () => {
 
-  console.log("Fichiers drop");
+  // Fonction pour gérer le drop des fichiers
+  function dropHandler(event) {
+    let files = [];
+    console.log("Fichiers drop");
+    event.preventDefault();
 
-  // Prevent default empèche le fichier de s'ouvrir
-
-  event.preventDefault();
-
-  if (event.dataTransfer.items) {
-    // Utilisation de l'interface DataTransferItemList pour accéder aux fichiers
-    [...event.dataTransfer.items].forEach((item, i) => {
-      // Si les objets drop ne sont pas des fichiers, ils seront rejetés
-      if (item.kind === "file") {
-        // vérification si l'objet est un fichier
-        const file = item.getAsFile(); // création de la variable file avec application de la method getAsFile qui va retourner un objet file si la donnée de l'objet drag est un fichier.
-        console.log(`… file[${i}].name = ${file.name}`); // on récupère dans la console le nom du fichier
-        files.push(file); // on ajoute au tableau un autre fichier sans écraser celui existant
-      }
-    });
-  } else {
-    [...event.dataTransfer.files].forEach((file, i) => {
-      console.log(`… file[${i}].name = ${file.name}`);
-      files.push(file);
-    });
+    if (event.dataTransfer.items) {
+      [...event.dataTransfer.items].forEach((item, i) => {
+        if (item.kind === "file") {
+          const file = item.getAsFile();
+          console.log(`… file[${i}].name = ${file.name}`);
+          files.push(file);
+        }
+      });
+    } else {
+      [...event.dataTransfer.files].forEach((file, i) => {
+        console.log(`… file[${i}].name = ${file.name}`);
+        files.push(file);
+      });
+    }
+    console.log(files);
   }
-  console.log(files);
-}
-function dragOverHandler(event) {
-  console.log("Fichiers dans la zone de drop");
 
-  event.preventDefault();
-}
+  // Fonction pour gérer le drag over des fichiers
+  function dragOverHandler(event) {
+    console.log("Fichiers dans la zone de drop");
+    event.preventDefault();
+  }
 
-document.addEventListener('DOMContentLoaded', (event) => {
-  // Stan
-  // Api gouv
-
-  let listeRue = document.getElementById("form_adresse_Nom_Rue");
-  let listeVille = document.getElementById("form_adresse_Nom_Ville");
-  let listeCP = document.getElementById("form_adresse_CP");
-  let adressList = document.querySelector(".rue-list");
-  let villeList = document.querySelector(".ville-list");
-  let cpList = document.querySelector(".cp-list");
+  // Gestion des champs d'adresse
+  const listeRue = document.getElementById("form_adresse_Nom_Rue");
+  const listeVille = document.getElementById("form_adresse_Nom_Ville");
+  const listeCP = document.getElementById("form_adresse_CP");
+  const adressList = document.querySelector(".rue-list");
+  const villeList = document.querySelector(".ville-list");
+  const cpList = document.querySelector(".cp-list");
 
   let adressDatas = [];
 
-  let fetchDatas = async (param, listElement) => {
-    param.addEventListener("input", async (e) => {
+  // Fonction pour récupérer les données d'adresse à partir de l'API
+  const fetchDatas = async (inputElement, listElement, renderFunction) => {
+    inputElement.addEventListener("input", async (e) => {
       if (e.target.value.length > 3) {
         const baseUrl = "https://api-adresse.data.gouv.fr/search/";
-        const queryParams = new URLSearchParams({
-          q: e.target.value
-        });
+        const queryParams = new URLSearchParams({ q: e.target.value });
         const URL = `${baseUrl}?${queryParams}`;
         console.log(URL);
         const response = await fetch(URL);
         const data = await response.json();
         adressDatas = data.features;
-        renderAdressList(listElement, param);
+        renderFunction(listElement);
       }
     });
   };
 
-  const renderAdressList = (listElement, inputElement) => {
+  // Fonction pour rendre la liste des suggestions d'adresses
+  const renderAdressList = (listElement) => {
     listElement.innerHTML = "";
-    adressDatas.forEach(({ properties }, index) => {
+    adressDatas.forEach(({ properties }) => {
       const li = document.createElement("li");
-      li.textContent = properties.label; // Utiliser properties.label pour afficher une adresse complète
+      li.textContent = properties.label;
       li.classList.add("content");
-      li.addEventListener("click", () => {
-        inputElement.value = li.textContent;
-        listElement.style.display = "none";
-      });
       listElement.appendChild(li);
+      li.addEventListener("click", () => {
+        listeRue.value = properties.name;
+        listeVille.value = properties.city;
+        listeCP.value = properties.postcode;
+        adressList.style.display = "none";
+        villeList.style.display = "none";
+        cpList.style.display = "none";
+      });
     });
     listElement.style.display = "block";
   };
 
-  fetchDatas(listeRue, adressList);
-  fetchDatas(listeCP, cpList);
-  fetchDatas(listeVille, villeList);
+  // Appel de la fonction fetchDatas pour les trois champs d'adresse
+  fetchDatas(listeRue, adressList, renderAdressList);
+  fetchDatas(listeVille, villeList, renderAdressList);
+  fetchDatas(listeCP, cpList, renderAdressList);
+
 
   // Julien
-  // Création de la fonction "descriptionClient()" pour la page "templates\add_operation\index.html.twig"
-  // afin de gérer l'affichage des description client
-
+// Création de la fonction "descriptionClient()" pour la page "templates\add_operation\index.html.twig"
+// afin de gérer l'affichage des description client
   function descriptionClient(cardId) {
-    let descriptionElement = document.getElementById(cardId); // Je vais chercher l'id
-    descriptionElement.classList.toggle("d-none"); // Je change le style via les class Bootstrap
+    const descriptionElement = document.getElementById(cardId);
+    descriptionElement.classList.toggle("d-none");
   }
 
-  // Franck
-  // Changement de langue au drapeau
-
+  // Fonction pour changer de langue
   function changeLanguage(locale) {
     window.location.href = '/change-language/' + locale;
   }
