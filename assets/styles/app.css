@@ -21,21 +21,23 @@ background-color: #0C4B3B;
 box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 
+
+
 /* Navbar */
 
 #navbar {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    /* gap: 10%; */
 
     background-color: #0C4B3B;
-    padding: 0.6% 0%;
+    padding: 0.6% 1%;
     color: white;
 }
 #navbar img {
-    width: 15%;
-    position: relative;
-    bottom: 0.2rem;
+    /* width: 15%; */
+    width: 3em;
     border: 3px solid white;
     border-radius: 90px;
 }
@@ -67,7 +69,7 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-
+    z-index: 1200;
     
 }
 footer img {
@@ -91,14 +93,14 @@ footer p{
 
 /* PAGE HOME -------------------------------- */
 
-#home_main {
-    display: flex;
-    justify-content: center;
-    gap: 10%;
-    height: 61vh;
+    #home_main {
+        display: flex;
+        justify-content: center;
+        gap: 10%;
 
-    margin: 10% 12% 0% 12%;
-}
+        height: 61vh;
+        margin: 10% 0% 10% 0%;
+    }
 
 
 .choice_section {
@@ -106,12 +108,14 @@ footer p{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 10%;
 
     background-color: #43CAA9;
-    width: 32%;
+    width: 36%;
     border-radius: 30px;
     padding: 8% 0%;
     height: fit-content;
+    text-align: center;
 }
 .choice_section:hover{
     background-color: #007557;
@@ -125,7 +129,6 @@ footer p{
 }
 
 .choice_section h2 {
-    margin-top: 10%;
     color: white;
     font-weight: 700;
 }
@@ -952,5 +955,73 @@ footer p{
     background-color: #43CAA9;
    }
    
+   .form-control::-webkit-input-placeholder {
+    opacity: 50%;
+  }
+
+
    /* --------------------------------------------------------------------- */
-   
+   /* -------------------------- MEDIA QUERIES ---------------------------- */
+   /* --------------------------------------------------------------------- */
+
+    /* Sur tous types d'écrans orientés verticalement */
+    @media all and (orientation: portrait) {
+        /* HOME PAGE PORTRAIT */
+        #home_main {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 5%;
+
+            padding-top: 4%;
+        }
+        #home_main a{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        #home_middle_bar {
+            border: 2px solid black;
+            width: 80%;
+        }
+
+        .choice_section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12%;
+        
+            background-color: #43CAA9;
+            width: 80%;
+            border-radius: 30px;
+            height: 40em;
+            text-align: center;
+        }
+        .choice_section:hover{
+            background-color: #007557;
+        }
+        .choice_section h2 {
+            color: white;
+            font-weight: 700;
+        }
+
+
+        /* NAVIGATION BAR PORTRAIT */
+        #navbar {
+            padding: 3% 4%;
+        }
+        #navbar img {
+            width: 5em;
+        }
+        #navbar h3 {
+            font-size: 130%;
+            width: 54%;
+        }
+        #nav_logout{
+            padding: 1% 2%;
+            font-size: 125%;
+        }
+    }
