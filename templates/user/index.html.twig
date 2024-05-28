@@ -39,13 +39,13 @@
             
         {% endif %}
     </td>
-        <td class="w-25">
+        <td class="w-25 px-4 py-2">
             <div class="d-flex align-items-center justify-content-around">
                 <div>
                     <a href="{{path('app_gestion_utilisateur_modifF' , {'id':user.id}) }}" class="btn btn-outline-warning">Modifier Utilisateur</a>
                 </div>
                     <div>
-                    <a onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')" href="{{path('app_gestion_utilisateur_remove' , {'id':user.id}) }}" class="btn"><img src="/images/icons/suppr.svg" alt="icone suppr" width="85%"></a>
+                    <a onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')" href="{{path('app_gestion_utilisateur_remove' , {'id':user.id}) }}" class="btn"><img src="/images/icons/suppr.svg" alt="icone suppr" width="85%" class="w-auto ms-4"></a>
                     </div>
         </div>
         </td>
