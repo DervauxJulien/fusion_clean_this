@@ -33,94 +33,68 @@ function dragOverHandler(event) {
   event.preventDefault();
 }
 
-// Stan
-// Api gouv
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Stan
+  // Api gouv
 
-let listeRue = document.getElementById("form_adresse_Nom_Rue");
-let listeVille = document.getElementById("form_adresse_Nom_Ville");
-let listeCP = document.getElementById("form_adresse_CP");
-let adressList = document.querySelector(".rue-list");
-let villeList = document.querySelector(".ville-list");
-let cpList = document.querySelector(".cp-list");
+  let listeRue = document.getElementById("form_adresse_Nom_Rue");
+  let listeVille = document.getElementById("form_adresse_Nom_Ville");
+  let listeCP = document.getElementById("form_adresse_CP");
+  let adressList = document.querySelector(".rue-list");
+  let villeList = document.querySelector(".ville-list");
+  let cpList = document.querySelector(".cp-list");
 
-let adressDatas = [];
+  let adressDatas = [];
 
-let fetchDatas = async (param) => {
-  param.addEventListener("input", async (e) => {
-    if (e.target.value.length > 3) {
-      const baseUrl = "https://api-adresse.data.gouv.fr/search/"
-      const queryParams = new URLSearchParams({
-        q: e.target.value
-      });
-      const URL = `${baseUrl}?${queryParams}`;
-      console.log(URL);
-      const response = await fetch(URL);
-      const data = await response.json();
-      adressDatas = data.features;
-      renderAdressList(villeList);
-      renderAdressList(adressList);
-      renderAdressList(cpList);
-      // renderAdressListRue();
-      // renderAdressListCp();
-      // renderAdressListVille();
-    }
-  });
-};
-const renderAdressList = (param) => {
-  param.innerHTML = "";
-  adressDatas.forEach(({properties}, index) =>{
-    const li = document.createElement("li");
-    const p1 = document.createElement("p");
-
-    p1.textContent = properties.city;
-
-
-    li.appendChild(p1);
-    li.classList.add("content");
-
-    param.appendChild(li);
-
-    li.addEventListener("click", (param) =>  {
-      param.value = li.textContent;
-      // listeRue.value = li.textContent;
-      // listeCP.value = properties.citycode;
-      param.style.display = "none";
-
+  let fetchDatas = async (param, listElement) => {
+    param.addEventListener("input", async (e) => {
+      if (e.target.value.length > 3) {
+        const baseUrl = "https://api-adresse.data.gouv.fr/search/";
+        const queryParams = new URLSearchParams({
+          q: e.target.value
+        });
+        const URL = `${baseUrl}?${queryParams}`;
+        console.log(URL);
+        const response = await fetch(URL);
+        const data = await response.json();
+        adressDatas = data.features;
+        renderAdressList(listElement, param);
+      }
     });
-  });
-  param.style.display = "block";
-};
+  };
 
+  const renderAdressList = (listElement, inputElement) => {
+    listElement.innerHTML = "";
+    adressDatas.forEach(({ properties }, index) => {
+      const li = document.createElement("li");
+      li.textContent = properties.label; // Utiliser properties.label pour afficher une adresse complète
+      li.classList.add("content");
+      li.addEventListener("click", () => {
+        inputElement.value = li.textContent;
+        listElement.style.display = "none";
+      });
+      listElement.appendChild(li);
+    });
+    listElement.style.display = "block";
+  };
 
-fetchDatas(listeRue);
-fetchDatas(listeCP);
-fetchDatas(listeVille);
+  fetchDatas(listeRue, adressList);
+  fetchDatas(listeCP, cpList);
+  fetchDatas(listeVille, villeList);
 
-// Julien
-// Création de la fonction "descriptionClient()" pour la page "templates\add_operation\index.html.twig"
-// afin de gérer l'affichage des description client
+  // Julien
+  // Création de la fonction "descriptionClient()" pour la page "templates\add_operation\index.html.twig"
+  // afin de gérer l'affichage des description client
 
-function descriptionClient(cardId) {
-  let descriptionElement = document.getElementById(cardId); // Je vais chercher l'id
-  descriptionElement.classList.toggle("d-none"); // Je change le style via les class Bootstrap
-}
+  function descriptionClient(cardId) {
+    let descriptionElement = document.getElementById(cardId); // Je vais chercher l'id
+    descriptionElement.classList.toggle("d-none"); // Je change le style via les class Bootstrap
+  }
 
+  // Franck
+  // Changement de langue au drapeau
 
-//************************************************** */
-//Franck-------------------------
-//Changement de langue au drapeau
-//************************************************** */
-
-// function changeLanguage(){
-//   let drapeau = document.getElementById('drapeauLang');
-//   drapeau.addEventListener('click', )
-//   if (condition) {
-    
-//   } else {
-    
-//   }
-// }
-
-function changeLanguage(locale){
-  window.location.href = '/change-language/' + locale;
-}
+  function changeLanguage(locale) {
+    window.location.href = '/change-language/' + locale;
+  }
+});
