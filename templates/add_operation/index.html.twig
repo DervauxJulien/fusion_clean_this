@@ -52,11 +52,11 @@
 							<div class="accordion">
 								<div class="accordion-item">
 									<h2 class="accordion-header">
-										<button class="accordion-button" type="button" onclick="descriptionClient('descriptionClient_{{ loop.index }}')">
+										<button class="accordion-button" type="button" onclick="descriptionClient('descriptionClient{{ loop.index }}')">
 											<p>Voir la description</p>
 										</button>
 									</h2>
-									<div class="text-white bg-d-green d-none accordion-body" id="descriptionClient_{{ loop.index }}">
+									<div class="text-white bg-d-green d-none accordion-body" id="descriptionClient{{ loop.index }}">
 										{{ operation.getDescriptionOp() }}
 									</div>
 								</div>
