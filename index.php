@@ -1,4 +1,4 @@
 <?php 
 
 
-header('Location: templates/home/index.html.twig');
+header('Location: templates/base.html.twig');
