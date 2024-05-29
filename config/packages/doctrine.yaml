@@ -8,7 +8,7 @@ doctrine:
 
         profiling_collect_backtrace: '%kernel.debug%'
         use_savepoints: true
-        charset: utf8mb4
+        charset: utf8
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
