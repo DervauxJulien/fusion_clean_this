@@ -25,3 +25,19 @@ services:
     App\Controller\PdfController:
         arguments:
             $operationRepository: '@App\Repository\OperationRepository'
+
+
+# config/services.yaml
+
+    # App\EventSubscriber\LocaleSubscriber:
+    #     arguments:
+    #         $defaultLocale: 'fr'
+    #     tags:
+    #         - { name: kernel.event_subscriber }
+
+# config/services.yaml
+
+    App\Service\MailerService:
+        arguments: []
+
+

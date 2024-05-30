@@ -1,4 +1,7 @@
 {
+    "description": "My wonderful application",
+	"name": "fusion/cleanthis",
+	"homepage": "https://www.cleanthis.com",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
@@ -43,6 +46,7 @@
         "symfony/string": "7.0.*",
         "symfony/translation": "7.0.*",
         "symfony/twig-bundle": "7.0.*",
+        "symfony/ux-chartjs": "^2.17",
         "symfony/ux-turbo": "^2.16",
         "symfony/validator": "7.0.*",
         "symfony/web-link": "7.0.*",

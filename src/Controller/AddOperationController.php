@@ -2,17 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\Adresse;
-use App\Entity\Client;
 use App\Entity\Operation;
-use App\Entity\User;
 use App\Form\AddOperationFormType;
 use App\Repository\AdresseRepository;
 use App\Repository\ClientRepository;
 use App\Repository\OperationRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -85,7 +81,6 @@ class AddOperationController extends AbstractController
 
             $operation->setStatus('A faire'); 
 
-
             $entityManager->flush();
 
             return $this->redirectToRoute('app_add_operation');
@@ -96,9 +91,9 @@ class AddOperationController extends AbstractController
     
         return $this->render('add_operation/edit.html.twig', [
             'form' => $form->createView(),
-            'stockOp' => $stockOp,
-            'adresse' => $adresse->__toString(),
-            'client' => $client->__toString()
+            'operations' => $stockOp,
+            'adresse' => $adresse,
+            'client' => $client
         ]);
     }
 

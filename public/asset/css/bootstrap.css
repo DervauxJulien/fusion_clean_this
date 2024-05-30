@@ -6102,7 +6102,7 @@ textarea.form-control-lg {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 5%;
+  width: 10%;
   padding: 0;
   color: #fff;
   text-align: center;
@@ -6137,11 +6137,12 @@ textarea.form-control-lg {
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   display: inline-block;
-  width: 2rem;
-  height: 1rem;
+  width: 10rem;
+  height: 5rem;
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: 50% 50%;
+
 }
 
 /* rtl:options: {

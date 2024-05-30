@@ -8,11 +8,6 @@ use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<Operation>
- *
- * @method Operation|null find($id, $lockMode = null, $lockVersion = null)
- * @method Operation|null findOneBy(array $criteria, array $orderBy = null)
- * @method Operation[]    findAll()
- * @method Operation[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class OperationRepository extends ServiceEntityRepository
 {
@@ -21,28 +16,40 @@ class OperationRepository extends ServiceEntityRepository
         parent::__construct($registry, Operation::class);
     }
 
-//    /**
-//     * @return Operation[] Returns an array of Operation objects
-//     */
-   public function findByStatus($value): array
+    public function findByStatus(string $value): array
+    {
+        return $this->createQueryBuilder('o')
+            ->join('o.client', 'c')
+            ->andWhere('o.status = :val')
+            ->setParameter('val', $value)
+            ->orderBy('c.nom', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
+
+   public function OperationEnCours(int $userId) : int
    {
-       return $this->createQueryBuilder('o')
-           ->andWhere('o.status = :val')
-           ->setParameter('val', $value)
-           ->orderBy('o.date_demande', 'ASC')
-           ->setMaxResults(10)
-           ->getQuery()
-           ->getResult()
-       ;
+    return $this->createQueryBuilder('o')
+        ->select('count(o.id)')
+        ->where('o.user = :user')
+        ->andWhere('o.status = :status')
+        ->setParameter('user', $userId)
+        ->setParameter('status', 'En cours')
+        ->getQuery()
+        ->getSingleScalarResult()
+        ;
    }
 
-//    public function findOneBySomeField($value): ?Operation
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->andWhere('o.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function findOneByClientName(string $clientName): array
+    {
+        return $this->createQueryBuilder('o')
+            ->join('o.client', 'c')
+            ->andWhere('o.status = :val')
+            ->where('c.nom LIKE :clientName')
+            ->setParameter('clientName', '%' . $clientName . '%')
+            ->getQuery()
+            ->getResult();
+    }
 }
+
