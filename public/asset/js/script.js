@@ -94,3 +94,4 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = '/change-language/' + locale;
   }
 });
+

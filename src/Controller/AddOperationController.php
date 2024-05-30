@@ -42,6 +42,7 @@ class AddOperationController extends AbstractController
             $entityManager->persist($stock);
             $entityManager->flush();
 
+
             // Redirection vers une route valide
             return $this->redirectToRoute('app_add_operation'); 
         }
@@ -82,6 +83,20 @@ class AddOperationController extends AbstractController
             $operation->setStatus('A faire'); 
 
             $entityManager->flush();
+
+            if ($operation->getType()=="Petite") {
+                $operation->setTarif("1000");
+                $entityManager->flush();
+
+            } else if ($operation->getType()=="Moyenne") {
+                $operation->setTarif("2500");
+                $entityManager->flush();
+            } else {
+                $operation->setTarif("5000");
+                $entityManager->flush();
+
+            }
+            
 
             return $this->redirectToRoute('app_add_operation');
         }
