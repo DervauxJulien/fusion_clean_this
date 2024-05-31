@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Security;
 
 use App\Entity\User;
@@ -58,8 +59,10 @@ class GoogleAuth extends OAuth2Authenticator
             throw new AuthenticationException('No verified email address found.');
         }
 
+        $user = $this->userRepository->findOrCreateFromGoogleOauth($googleUser, $this->entityManager);
+
         return new Passport(
-            new UserBadge($googleUser->getId()),
+            new UserBadge($user->getUserIdentifier()),
             new PasswordCredentials($credentials->getToken()),
             [
                 new CsrfTokenBadge('authenticate', $request->get('_csrf_token')),

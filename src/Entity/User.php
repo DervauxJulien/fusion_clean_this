@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_USERNAME', fields: ['username'])]
@@ -39,14 +40,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 30)]
     private ?string $prenom = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $googleId;
+
 
     /**
      * @var Collection<int, Operation>
      */
     #[ORM\OneToMany(targetEntity: Operation::class, mappedBy: 'user')]
     private Collection $operations;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $googleId = null;
 
     public function __construct()
     {
@@ -181,17 +184,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
     public function __toString()
     {
         return $this->roles;
     }
 
-    public function getGoogleId(): ?int
+    public function getGoogleId(): ?string
     {
         return $this->googleId;
     }
 
-    public function setGoogleId(string $googleId): static
+    public function setGoogleId(?string $googleId): static
     {
         $this->googleId = $googleId;
 
@@ -199,3 +203,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
 }
+

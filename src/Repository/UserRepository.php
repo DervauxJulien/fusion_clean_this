@@ -32,7 +32,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
         if (!$user instanceof User) {
-            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', $user::class));
+            throw new UnsupportedUserException(sprintf('Instances of "%s" sont pas supportées.', $user::class));
         }
 
         $user->setPassword($newHashedPassword);
@@ -42,31 +42,26 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     public function findOrCreateFromGoogleOauth(GoogleUser $googleUser, EntityManagerInterface $em): User
     {
-        // $userE = $em->getRepository(User::class)->findOneBy([
-        //     "email"=>$userEmail
-        // ]);
-        // Rechercher l'utilisateur par son ID Google
         $user = $this->createQueryBuilder('u')
-            ->where('u.googleId = :googleId')
-            ->setParameter('googleId', $googleUser->getId())
+            ->where('u.username = :username')
+            ->setParameter('google_id', $googleUser->getId())
             ->getQuery()
             ->getOneOrNullResult();
 
-        // Si l'utilisateur existe, le retourner
         if ($user) {
             return $user;
         }
 
-        // Sinon, créer un nouvel utilisateur
-        $user = (new User())
-            ->setRoles(['ROLE_USER'])
-            ->setGoogleId($googleUser->getId());
-            // ->setEmail($googleUser->getEmail());
+        $email = $googleUser->getEmail();
+        $user = $this->findOneBy(['email' => $email]);
 
-        $em = $this->getEntityManager();
-        $em->persist($user);
-        $em->flush();
+        if ($user) {
+            $user->setGoogleId($googleUser->getId());
+            $em->persist($user);
+            $em->flush();
+            return $user;
+        }
 
-        return $user;
+        throw new \Exception('Utilisateur non trouvé');
     }
 }

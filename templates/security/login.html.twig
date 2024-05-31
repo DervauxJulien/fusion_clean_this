@@ -1,63 +1,60 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!
-{% endblock %}
+{% block title %}Log in!{% endblock %}
 
 {% block body %}
-<div  id="bodyCoUtili">
+<div id="bodyCoUtili">
+    <div id="enteteCo">
+        <div id="logoText">
+            <a href="{{ path('app_home') }}"><img src="/images/icons/logo.svg" alt="logo" id="logoCo"></a>
+            <h3 id="titrePageCo">Connectez-vous à votre <br>compte employé</h3>
+        </div>
+        <img src="/images/DrapeauFr.png" alt="Drapeau" id="drapeau">
+    </div>
+    <img src="/images/Accueil_personnages.png" alt="persoCo" id="persoCo">
 
-	<div id="enteteCo">
-		<div id="logoText">
-			<a href="{{path('app_home')}}"><img src="\images\icons\logo.svg" alt="logo" id="logoCo"></a>
-			<h3 id="titrePageCo">Connectez-vous à votre <br>
-			compte employé</h3>
-		</div>
-			<img src="\images\DrapeauFr.png" alt="Drapeau" id="drapeau">
-	</div>
-	<img src="\images\Accueil_personnages.png" alt="persoCo" id="persoCo">
+    <main id='login_main'>
+        <form method="post" id='login_form'>
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
 
-	<main id='login_main'>
-		<form method="post" id='login_form'>
-			{% if error %}
-				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-			{% endif %}
+            {% if app.user %}
+                <div class="mb-3">
+                    Vous êtes connecté en tant que {{ app.user.userIdentifier }},
+                    <a href="{{ path('app_logout') }}">Déconnexion</a>
+                </div>
+            {% endif %}
 
-			{% if app.user %}
-				<div class="mb-3">
-					You are logged in as
-					{{ app.user.userIdentifier }},
-					<a href="{{ path('app_logout') }}">Logout</a>
-				</div>
-			{% endif %}
+            <img src='/images/icons/user.svg' alt='user_logo' name='login_user_logo' id='login_user_logo'/>
 
+            <h1>Connexion</h1>
 
-			<img src='images/icons/user.svg' alt='user_logo' name='login_user_logo' id='login_user_logo'/>
+            <label for="inputUsername">Nom d'utilisateur</label>
+            <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+            <label for="inputPassword">Mot de passe</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
-			<h1>Connexion</h1>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-			<label for="inputUsername">Nom d'utilisateur</label>
-			<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
-			<label for="inputPassword">Mot de passe</label>
-			<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me">
+                    Se souvenir de moi
+                </label>
+            </div>
 
-			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <button class="btn-style" type="submit">Valider</button>
+        </form>
 
-			<div class="checkbox mb-3">
-				<label>
-					<input type="checkbox" name="_remember_me">
-					Se souvenir de moi
-				</label>
-			</div>
-
-			<button class="btn-style" type="submit">
-				Valider
-			</button>
-			<a href="{{path('app_oauth')}}">
-			GOOGLE</a>
-		</form>
-	</main>
+        {% if app.user %}
+            <a href="{{ path('link_google') }}" class="btn-style">Lier mon compte Google</a>
+        {% else %}
+            <a href="{{ path('app_oauth') }}" class="btn-style">Connexion avec Google</a>
+        {% endif %}
+    </main>
 </div>
 <footer>
-{% include "layout/footer.html.twig" %}
+    {% include "layout/footer.html.twig" %}
 </footer>
 {% endblock %}
