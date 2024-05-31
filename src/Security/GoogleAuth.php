@@ -54,7 +54,7 @@ class GoogleAuth extends OAuth2Authenticator
         /** @var GoogleUser $googleUser */
         $googleUser = $client->fetchUserFromToken($credentials);
 
-        if ($googleUser->getEmail() === null) {
+        if ($googleUser->getId() === null) {
             throw new AuthenticationException('No verified email address found.');
         }
 

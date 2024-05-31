@@ -13,10 +13,10 @@ app_generate_pdf_and_send_email:
     controller: 'App\Controller\MailController::generatePdfAndSendEmail'
 
 connect_google_start:
-    path: /connect/google
-    controller: App\Controller\GoogleController::connect
+    path: /oauth/connect/google
+    controller: App\Controller\SocialOAuthController::authLogin
 
 connect_google_check:
-    path: /connect/google/check
-    controller: App\Controller\SecurityController::connectCheckAction
+    path: /oauth/check/google
+    controller: App\Controller\SocialOAuthController::check
 

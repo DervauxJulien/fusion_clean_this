@@ -5,13 +5,14 @@ namespace App\Controller;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route as AttributeRoute;
 
 class SocialOAuthController extends AbstractController
 {
     private const SCOPES = [
-        'google' => []
+        'google' => ['email']
     ];
     private ClientRegistry $clientRegistry;
 
@@ -19,7 +20,7 @@ class SocialOAuthController extends AbstractController
     {
         $this->clientRegistry = $clientRegistry;
     }
-    #[AttributeRoute('/oauth/service/google', name: 'app_oauth')]
+    #[AttributeRoute('/oauth/connect/google', name: 'app_oauth')]
     public function authLogin()
     {
         /**
@@ -27,13 +28,15 @@ class SocialOAuthController extends AbstractController
          */
 
         $client = $this->clientRegistry->getClient('google');
-        return $client->redirect(['read:user', 'user:email']);
+        return $client->redirect(self::SCOPES['google']);
+        // dd($this->clientRegistry->getClient("google"));
     }
 
     #[AttributeRoute('/oauth/check/google', name: 'oauth_check')]
-    public function check()
+    public function check(Request $request) : Response
     {
         return new Response();
-        
+        // $code = $request->query->get('code');
+        // dd($code);
     }
 }

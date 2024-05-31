@@ -39,6 +39,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 30)]
     private ?string $prenom = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $googleId;
+
     /**
      * @var Collection<int, Operation>
      */
@@ -182,4 +185,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->roles;
     }
+
+    public function getGoogleId(): ?int
+    {
+        return $this->googleId;
+    }
+
+    public function setGoogleId(string $googleId): static
+    {
+        $this->googleId = $googleId;
+
+        return $this;
+    }
+
 }

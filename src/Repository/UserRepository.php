@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -39,8 +40,11 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->getEntityManager()->flush();
     }
 
-    public function findOrCreateFromGoogleOauth(GoogleUser $googleUser): User
+    public function findOrCreateFromGoogleOauth(GoogleUser $googleUser, EntityManagerInterface $em): User
     {
+        // $userE = $em->getRepository(User::class)->findOneBy([
+        //     "email"=>$userEmail
+        // ]);
         // Rechercher l'utilisateur par son ID Google
         $user = $this->createQueryBuilder('u')
             ->where('u.googleId = :googleId')
@@ -56,8 +60,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         // Sinon, créer un nouvel utilisateur
         $user = (new User())
             ->setRoles(['ROLE_USER'])
-            ->setGoogleId($googleUser->getId())
-            ->setEmail($googleUser->getEmail());
+            ->setGoogleId($googleUser->getId());
+            // ->setEmail($googleUser->getEmail());
 
         $em = $this->getEntityManager();
         $em->persist($user);
