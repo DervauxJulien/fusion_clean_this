@@ -9,13 +9,13 @@
 		{% include "/layout/operations_nav.html.twig" %}
 	</header>
 	<body class="op-terminer-body">
-		<div class="d-flex align-items-center justify-content-end bg-d-green text-white p-1">
+		<div class="d-flex align-items-center justify-content-end bg-d-green text-white">
 			{% include "/layout/search_results.html.twig" %}
 		</div>
 		<main class="container-fluid text-center min-vh-100">
-		<div class="d-flex justify-content-center pt-3">
-			<h1>Résultats de la recherche pour "{{ query }}"</h1>
-		</div>
+			<div class="d-flex justify-content-center pt-3">
+				<h1>Résultats de la recherche pour "{{ query }}"</h1>
+			</div>
 			<section class="d-flex flex-wrap m-5 justify-content-center">
 				{% if operationsSearch is not empty %}
 					{% set operations_found = false %}
@@ -61,48 +61,53 @@
 					<p>Aucune opération trouvée pour "{{ query }}".</p>
 				{% endif %}
 
-			{% if operationsSearch is not empty and getUrlStatus == "Terminer"   %}
-				<div class="container min-vh-100">
-					<table class="table table-hover table-striped border-2 mt-5">
-						<thead class='bg-violet'>
-							<tr>
-								<th class="center-table" scope="col">#</th>
-								<th class="center-table" scope="col">NOM CLIENT</th>
-								<th class="center-table" scope="col">PRENOM CLIENT</th>
-								<th class="center-table" scope="col">ADRESSE</th>
-								<th class="center-table" scope="col">CP</th>
-								<th class="center-table" scope="col">VILLE</th>
-								<th class="center-table" scope="col">TARIF</th>
-								<th class="center-table" scope="col">DATE</th>
-								<th class="center-table" scope="col">INTERVENANT</th>
-								<th class="center-table" scope="col">FACTURE PDF</th>
-								<th class="center-table" scope="col">FACTURE PAR MAIL</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for operation in operationsSearch %}
-									<tr style="height: 3.125rem;">
-										<td class="center-table">{{ operation.id }}</td>
-										<td class="center-table">{{ operation.client.nom }}</td>
-										<td class="center-table">{{ operation.client.prenom }}</td>
-										<td class="center-table">{{ operation.adresse.nrue }} {{ operation.adresse.nomRue }}</td>
-										<td class="center-table">{{ operation.adresse.cp }}</td>
-										<td class="center-table">{{ operation.adresse.nomVille }}</td>
-										<td class="center-table">{{ operation.tarif }}</td>
-										<td class="center-table">{{ operation.dateCreation ? operation.dateCreation|date('Y-m-d') }}</td>
-										<td class="center-table">{{ operation.user.nom }} {{ operation.user.prenom }}</td>
-										<td class="center-table">
-											<a href="{{ path('app_generate_pdf', {'id': operation.id}) }}" class="btn-style">PDF</a>
-										</td>
-										<td class="center-table">
-											<a href="{{ path('app_generate_pdf_and_send_email', {'id': operation.id}) }}" class="btn-style">Par mail</a>
-										</td>
-									</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				</div>
-			{% endif %}
-		</section>
-	</main>
+				{% if getUrlStatus == "Terminer"%}
+					<div class="container-fluid">
+						<table class="table table-hover table-striped border-2 mt-5">
+							<thead>
+								<tr>
+									<th class="center-table" scope="col">#</th>
+									<th class="center-table" scope="col">NOM CLIENT</th>
+									<th class="center-table" scope="col">PRENOM CLIENT</th>
+									<th class="center-table" scope="col">ADRESSE</th>
+									<th class="center-table" scope="col">CP</th>
+									<th class="center-table" scope="col">VILLE</th>
+									<th class="center-table" scope="col">TARIF</th>
+									<th class="center-table" scope="col">DATE</th>
+									<th class="center-table" scope="col">INTERVENANT</th>
+									<th class="center-table" scope="col">FACTURE PDF</th>
+									<th class="center-table" scope="col">FACTURE PAR MAIL</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for operation in operationsSearch %}
+									{% if  operationsSearch is not empty and operation.status == "Terminer" %}
+										<tr style="height: 3.125rem;">
+											<td class="center-table">{{ operation.id }}</td>
+											<td class="center-table">{{ operation.client.nom }}</td>
+											<td class="center-table">{{ operation.client.prenom }}</td>
+											<td class="center-table">{{ operation.adresse.nrue }}
+												{{ operation.adresse.nomRue }}</td>
+											<td class="center-table">{{ operation.adresse.cp }}</td>
+											<td class="center-table">{{ operation.adresse.nomVille }}</td>
+											<td class="center-table">{{ operation.tarif }}</td>
+											<td class="center-table">{{ operation.dateCreation ? operation.dateCreation|date('Y-m-d') }}</td>
+											<td class="center-table">{{ operation.user.nom }}
+												{{ operation.user.prenom }}</td>
+											<td class="center-table">
+												<a href="{{ path('app_generate_pdf', {'id': operation.id}) }}" class="btn btn-style btn-block">PDF</a>
+											</td>
+											<td class="center-table">
+												<a href="{{ path('app_generate_pdf_and_send_email', {'id': operation.id}) }}" class="btn btn-style btn-block">Par mail</a>
+											</td>
+										</tr>
+									{% endif %}
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				{% endif %}
+			</section>
+		</main>
+	</body>
 {% endblock %}

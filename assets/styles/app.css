@@ -2,8 +2,7 @@ body {
     background-color: white;
     font-family: "Roboto", sans-serif;
     padding: 0;
-    margin: 0;
-    
+    margin: 0;    
 }
 
 /* Couleur de l'application */
@@ -21,21 +20,23 @@ background-color: #0C4B3B;
 box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 
+
+
 /* Navbar */
 
 #navbar {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    /* gap: 10%; */
 
     background-color: #0C4B3B;
-    padding: 0.6% 0%;
+    padding: 0.6% 1%;
     color: white;
 }
 #navbar img {
-    width: 15%;
-    position: relative;
-    bottom: 0.2rem;
+    /* width: 15%; */
+    width: 3em;
     border: 3px solid white;
     border-radius: 90px;
 }
@@ -61,13 +62,13 @@ footer {
     display: flex;
     justify-content: space-between; 
     align-items: center;
-    padding-left: 0.5%;
+    padding-left: 0.1%;
     background-color: #0C4B3B;
     color: white;
     position: fixed;
     bottom: 0;
     width: 100%;
-
+    z-index: 1200;
     
 }
 footer img {
@@ -91,14 +92,14 @@ footer p{
 
 /* PAGE HOME -------------------------------- */
 
-#home_main {
-    display: flex;
-    justify-content: center;
-    gap: 10%;
-    height: 61vh;
+    #home_main {
+        display: flex;
+        justify-content: center;
+        gap: 10%;
 
-    margin: 10% 12% 0% 12%;
-}
+        height: 61vh;
+        margin: 10% 8% 10% 8%;
+    }
 
 
 .choice_section {
@@ -108,10 +109,11 @@ footer p{
     justify-content: center;
 
     background-color: #43CAA9;
-    width: 32%;
+    width: 40%;
     border-radius: 30px;
-    padding: 8% 0%;
+    padding: 8% 1%;
     height: fit-content;
+    text-align: center;
 }
 .choice_section:hover{
     background-color: #007557;
@@ -125,9 +127,9 @@ footer p{
 }
 
 .choice_section h2 {
-    margin-top: 10%;
     color: white;
     font-weight: 700;
+    margin-top: 10%;
 }
 
 
@@ -188,6 +190,11 @@ footer p{
     margin-top: 8%;
 }
 
+#login_submit_button:hover{
+    background-color: white;
+    border-color: #0C4B3B;
+}
+
 /* ------------------------------------------------------*/
 /*    Page connexion utilisateur/*
 /* ------------------------------------------------------*/
@@ -202,6 +209,7 @@ footer p{
 
 #logoCo{
     width: 5rem;
+    margin-top: 2rem;
 }
 
 #enteteCo {
@@ -230,8 +238,6 @@ footer p{
 
 
 
-
-
 /* ------------------------------------------ */
 /* page chiffre d'affaire */
 /*--------------------------------------------*/
@@ -242,7 +248,7 @@ footer p{
 .wrapper{
     width: 30rem;
     background-color: white;
-    border: solid 5px #FAEBDA;
+    border: solid 5px #43CAA9;
     border-radius: 25px;
     padding: 2rem;
 
@@ -251,7 +257,7 @@ footer p{
 .chart2{
     width: 60rem;
     background-color: white;
-    border: solid 5px #FAEBDA;
+    border: solid 5px #43CAA9;
     border-radius: 25px;
     padding: 2rem;
 }
@@ -317,33 +323,6 @@ footer p{
         
 }
 
-.titreContainer{
-    font-size: 1.9rem;
-    text-align: center;
-    font-weight: bold;
-}
-
-.titreContainer3{
-    font-size: 1.9rem;
-    text-align: center;
-    font-weight: bold;
-    color: #FBF3F3;
-}
-
-.chiffreContainer{
-    font-size: 3.125rem;
-    font-weight: bold;
-    text-align: right;
-    padding-right: 10%;
-}
-
-.chiffreContainer3{
-    font-size: 3.125rem;
-    font-weight: bold;
-    text-align: right;
-    padding-right: 10%;
-    color: #FBF3F3;
-}
 
 .euroSymbol, .euroSymbol3{
     margin-right: 40%;
@@ -412,6 +391,8 @@ footer p{
 .user{
     font-size: 1.3rem;
 }
+
+
 
 
 /* Style pour la colonne "Statut" en fonction du statut */
@@ -584,27 +565,34 @@ footer p{
 
 
 /* Page formulaire de demande d'opération */
-
 .globale{
-    height: 1080px;
+    display: flex;
     gap: 2%;
+    height: 100%;
 }
 
 .margeGauche {
+    display: flex;
+    align-items: center;
     flex-direction: column;
+    gap: 5%;
+    
+    text-align: center;
     background-color: #43CAA9;
-    padding-left: 1%;
+    padding: 6% 0%;
+    min-width: 20%;
+    width: 25%;
+    height: auto;
 }
 
 .formDOP{
     padding-top: 2%;
-    width: 80rem;
 }
-
 .titreDOP{
     justify-content: center;
 
 }
+
 #drop_zone {
 	border: 2px solid black;
 	width: 100%;
@@ -702,17 +690,19 @@ footer p{
 }
 
 #createUser{
-    background-color: #43CAA9;
-    color: white;
-    margin-top: 2%;
-    margin-left: 35%;
-    padding-bottom: 5%;
-    width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 10%;
+
+    background-color: #43CAA9;
+    color: white;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 5% 4%;
+    width: 40%;
     border-radius: 25px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
     
@@ -732,6 +722,7 @@ footer p{
     margin: 1%;
     padding-bottom: 0.2%;
     border-radius: 100%;
+    position: fixed;
 }
 
 
@@ -884,7 +875,8 @@ footer p{
     align-items: center;
 
     background-color: #43CAA9;
-    height: 86vh;
+    /* height: 86vh; */
+    padding: 4% 0% 12% 0%;
 }
 
 #prixImg{
@@ -952,5 +944,191 @@ footer p{
     background-color: #43CAA9;
    }
    
+   .form-control::-webkit-input-placeholder {
+    opacity: 50%;
+  }
+
+
    /* --------------------------------------------------------------------- */
-   
+   /* -------------------------- MEDIA QUERIES ---------------------------- */
+   /* --------------------------------------------------------------------- */
+
+    /* Sur tous types d'écrans orientés verticalement */
+    @media all and (orientation: portrait) {
+        /* HOME PAGE PORTRAIT */
+        #home_main {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+
+            padding-top: 4%;
+        }
+        #home_main a{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        #home_middle_bar {
+            border: 2px solid black;
+            width: 80%;
+        }
+
+        .choice_section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        
+            background-color: #43CAA9;
+            width: 80%;
+            border-radius: 30px;
+            height: 40em;
+            text-align: center;
+        }
+        .choice_section:hover{
+            background-color: #007557;
+        }
+        .choice_section h2 {
+            color: white;
+            font-weight: 700;
+            margin-top: 6%;
+        }
+
+
+        /* NAVIGATION BAR PORTRAIT */
+        #navbar {
+            padding: 3% 4%;
+        }
+        #navbar img {
+            width: 5em;
+        }
+        #navbar h3 {
+            font-size: 130%;
+            width: 54%;
+        }
+        #nav_logout{
+            padding: 1% 2%;
+            font-size: 125%;
+        }
+
+
+/* Connexion */
+
+        #enteteCo {
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            margin-right: 10%;
+            font-size: 125%;
+
+        }
+        
+        #persoCo{
+            margin-top: 44%;
+            width: 95%;
+            margin-left: 5%;
+        } 
+        
+        #login_form {
+            margin-left: 7%;
+            margin-top: 20%;
+            width: 50%;
+            padding: 2% 1%;
+            border-radius: 10%;
+        }
+            
+        #logoText{
+            display: flex;
+            width: 95%;
+        }
+        
+        #bodyCoUtili{
+            margin-top: 10%;
+        }
+
+        #login_main{
+            font-size: 200%;
+        }
+
+        #login_form{
+            width: 50%;
+            padding: 5% 5%;
+        }
+
+        /* chiffre affaire */
+
+        .tableChiffre {
+            width:90%;
+            border-collapse: collapse;
+            margin-left: 6.5%;
+            border-left: 4px solid #FAEBDA;
+            border-right: 4px solid #FAEBDA;
+        }
+        
+        .tableChiffre th {
+            background-color: #f2f2f2;
+            font-size: 1.75rem;
+        }
+        
+        .chiffre-affaire-body, .operations-terminees-body{
+            background-image: url('/images/photofond.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh; 
+            width: 100vw;  
+            margin: 0; 
+            padding: 0;   
+        }
+        
+    
+    
+        /* OPERATION FORM PORTRAIT */
+        .globale{
+            display: flex;
+            flex-direction: column;
+            gap: 2%;
+        }
+
+        .margeGauche {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            text-align: center;
+            background-color: #43CAA9;
+            padding: 2% 0%;
+            min-width: 20%;
+            width: 100%;
+        }
+        .margeGauche img {
+            width: 30%;
+        }
+
+        .formDOP{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            padding: 10% 12%;
+        }
+        .formDOP h3 {
+            margin-top: 6%;
+        }
+        .titreDOP{
+            justify-content: center;
+            margin-top: 1%;
+        }
+
+
+        /* CREATE USER PORTRAIT */
+        #createUser{
+            margin: auto;
+            margin-top: 10%;
+            padding-bottom: 5%;
+            width: 60%;
+            font-size: 150%;
+        }
+    }

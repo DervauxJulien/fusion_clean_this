@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Erreur 500
+{% endblock %}
+
+{% block body %}
+    <h1>Erreur interne (500)</h1>
+
+    <p>Probleme BD</p>
+
+    <a href="{{path('app_home')}}">Retour vers l'accueil</a>
+{% endblock %}

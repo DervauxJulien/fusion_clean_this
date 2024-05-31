@@ -1,4 +1,7 @@
 {
+    "description": "My wonderful application",
+	"name": "fusion/cleanthis",
+	"homepage": "https://www.cleanthis.com",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",

@@ -52,6 +52,9 @@ class MesOperationController extends AbstractController
         // Changement du status de l'operation
         $operation->setStatus('Terminer');
 
+        //Ajout de la date lorsque le status change
+        $operation->setDateFin(new \DateTime());
+
         $entityManager->flush();
 
         //Redirection vers une route valide
@@ -66,7 +69,10 @@ class MesOperationController extends AbstractController
         $operation = $operationRepository->find($id);
 
         // Changement du status de l'operation
-        $operation->setStatus('Terminer');      
+        $operation->setStatus('Terminer');
+
+        //Ajout de la date lorsque le status change
+        $operation->setDateFin(new \DateTime());
 
         $entityManager->flush();
 
@@ -83,6 +89,9 @@ class MesOperationController extends AbstractController
         
         // Changement du status de l'operation
         $operation->setStatus('Terminer');
+
+        //Ajout de la date lorsque le status change
+        $operation->setDateFin(new \DateTime());
 
         $entityManager->flush();
 

@@ -93,7 +93,7 @@ class AddOperationController extends AbstractController
             'form' => $form->createView(),
             'operations' => $stockOp,
             'adresse' => $adresse,
-            'client' => $client->__toString()
+            'client' => $client
         ]);
     }
 
