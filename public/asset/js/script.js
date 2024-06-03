@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+
   // Fonction pour gérer le drop des fichiers
   function dropHandler(event) {
     let files = [];
@@ -82,12 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // Julien
-// Création de la fonction "descriptionClient()" pour la page "templates\add_operation\index.html.twig"
-// afin de gérer l'affichage des description client
+  // Création de la fonction "descriptionClient()" pour la page "templates\add_operation\index.html.twig"
+  // afin de gérer l'affichage des description client
   function descriptionClient(cardId) {
     let descriptionElement = document.getElementById("descriptionClient");
     descriptionElement.classList.toggle("d-none");
   }
+
 
 
   // Fonction pour changer de langue
