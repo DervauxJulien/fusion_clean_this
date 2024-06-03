@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class OperationsAPrendreController extends AbstractController
+class OperationAPrendreController extends AbstractController
 {
     #[Route('/operation/{status}', name: 'app_operation_filter', methods: ['GET'])]
     public function filterByStatus(OperationRepository $operationRepository, string $status): Response
