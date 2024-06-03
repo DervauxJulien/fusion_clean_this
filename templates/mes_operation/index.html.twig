@@ -21,10 +21,11 @@
     <div class="d-flex justify-content-center pt-3">
       <h1>Mes Operations ({{ max_op }}/5)</h1>
     </div>
+    {% include "layout/_flash_message.html.twig" %}
     {% if op_en_cours == 0 %}
       <h3>Aucune opération</h3>
       <br>
-      <h4>Va donc en prendre <a href="{{path('app_operation_filter', {'status': 'A faire'})}}">dans la liste</a></h4>
+      <h4>Va donc en prendre <a href="{{path('app_operation_filter', {'status': 'A faire'})}}"><span class="badge text-bg-success">dans la liste</span></a></h4>
     {% endif %}
     <section class="d-flex flex-wrap m-5 justify-content-center">
       {% for op in MyOps %} {% if ((app.user == op.user) and op.status == "En cours" ) %}
@@ -53,6 +54,7 @@
               <a
                 href="{{ path('app_operation_terminerE', { id: op.id }) }}"
                 class="d-flex btn-style"
+                onclick="return confirm('Confirmez-vous avoir terminer cette operation ?')"
                 >Terminer</a
               >
             </div>
@@ -70,10 +72,11 @@
     <div class="d-flex justify-content-center pt-3">
       <h1>Mes Operations ({{ max_op }}/3)</h1>
     </div>
+    {% include "layout/_flash_message.html.twig" %}
     {% if op_en_cours == 0 %}
     <h3>Aucune opération</h3>
     <br>
-    <h4>Va donc en prendre <a href="{{path('app_operation_filter', {'status': 'A faire'})}}">dans la liste</a></h4>
+    <h4>Va donc en prendre <a href="{{path('app_operation_filter', {'status': 'A faire'})}}"><span class="badge text-bg-success ">dans la liste</span></a></h4>
   {% endif %}
     <section class="d-flex flex-wrap m-5 justify-content-center">
       {% for op in MyOps %} 
@@ -103,6 +106,7 @@
               <a
                 href="{{ path('app_operation_terminerS', { id: op.id }) }}"
                 class="d-flex btn-style"
+                onclick="return confirm('Confirmez-vous avoir terminer cette operation ?')"
                 >Terminer</a
               >
             </div>
@@ -119,10 +123,11 @@
     <div class="d-flex justify-content-center pt-3">
       <h1>Mes Operations ({{ max_op }}/1)</h1>
     </div>
+    {% include "layout/_flash_message.html.twig" %}
     {% if op_en_cours == 0 %}
     <h3>Aucune opération</h3>
     <br>
-    <h4>Va donc en prendre <a href="{{path('app_operation_filter', {'status': 'A faire'})}}">dans la liste</a></h4>
+    <h4>Va donc en prendre <a href="{{path('app_operation_filter', {'status': 'A faire'})}}"><span class="badge text-bg-success">dans la liste</span></a></h4>
   {% endif %}
     <section class="d-flex flex-wrap m-5 justify-content-center">
       {% for op in MyOps %} {% if ((app.user == op.user) and op.status == "En cours" ) %}
@@ -151,6 +156,7 @@
               <a
                 href="{{ path('app_operation_terminerA', { id: op.id }) }}"
                 class="d-flex btn-style"
+                onclick="return confirm('Confirmez-vous avoir terminer cette operation ?')"
                 >Terminer</a
               >
             </div>

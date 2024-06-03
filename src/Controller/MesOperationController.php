@@ -57,6 +57,8 @@ class MesOperationController extends AbstractController
 
         $entityManager->flush();
 
+        $this->addFlash('info', "L'operation de {$operation->getClient()} a bien été terminer");
+
         //Redirection vers une route valide
         return $this->redirectToRoute('app_mes_operationE');
     }
@@ -76,6 +78,8 @@ class MesOperationController extends AbstractController
 
         $entityManager->flush();
 
+        $this->addFlash('info', "L'operation de {$operation->getClient()} a bien été terminer");
+
         //Redirection vers une route valide
         return $this->redirectToRoute('app_mes_operationS');        
     }
@@ -94,6 +98,8 @@ class MesOperationController extends AbstractController
         $operation->setDateFin(new \DateTime());
 
         $entityManager->flush();
+
+        $this->addFlash('info', "L'operation de {$operation->getClient()} a bien été terminer");
 
         //Redirection vers une route valide
         return $this->redirectToRoute('app_mes_operationA');
