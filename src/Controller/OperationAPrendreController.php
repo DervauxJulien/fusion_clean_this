@@ -2,47 +2,30 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Repository\OperationRepository;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class OperationsàPrendreController extends AbstractController
+class OperationsAPrendreController extends AbstractController
 {
-    // #[Route('/operations/prendre/filter/{status}', name: 'app_operations_prendre', methods: ['GET'])]
-    // public function index(OperationRepository $operationRepository,string $status): Response
-    // {
-    //     $stockOperation = $operationRepository->findAll();
-    //     $user = $this->getUser();
-    //     $operationEnCours = $operationRepository->OperationEnCours($user->getId());
-    //     $status = "A faire";
-
-    //     return $this->render('operationsàprendre/filter.html.twig', [
-    //         'operations' => $stockOperation,
-    //         'operationsEnCours' => $operationEnCours,
-    //         'getUrlStatus' => $status,
-    //     ]);
-    // }
-
-    #[Route('/operation/filter/{status}', name: 'app_operation_filter', methods: ['GET'])]
+    #[Route('/operation/{status}', name: 'app_operation_filter', methods: ['GET'])]
     public function filterByStatus(OperationRepository $operationRepository, string $status): Response
     {
         $user = $this->getUser();
         $operations = $operationRepository->findByStatus($status);
         $operationEnCours = $operationRepository->OperationEnCours($user->getId());
 
-        return $this->render('operationsàprendre/filter.html.twig', [
+        return $this->render('operations_a_prendre/filter.html.twig', [
             'operations' => $operations,
             'getUrlStatus' => $status,
             'operationsEnCours' => $operationEnCours
         ]);
     }
 
-    #[Route('/operation/filter/search/{status}', name: 'app_operation_filter_query', methods: ['GET'])]
+    #[Route('/operation/search/{status}', name: 'app_operation_filter_query', methods: ['GET'])]
     public function findOneByClientName(OperationRepository $operationRepository, string $status, Request $request): Response
     {
         $user = $this->getUser();
@@ -55,7 +38,7 @@ class OperationsàPrendreController extends AbstractController
             $operationsSearch = $operationRepository->findOneByClientName($query);
         }
 
-        return $this->render('operationsàprendre/search.html.twig', [
+        return $this->render('operations_a_prendre/search.html.twig', [
             'operations' => $operations,
             'getUrlStatus' => $status,
             'operationsSearch' => $operationsSearch,
@@ -67,9 +50,7 @@ class OperationsàPrendreController extends AbstractController
     #[Route('/operation/ajout/{id}', name: 'app_operation_ajout')]
     public function ajoutOperation(OperationRepository $operationRepository, EntityManagerInterface $entityManager, int $id): Response
     {
-        
-
-        //Verification du nombre d'operation que l'utilisateur a ajouter
+        //Verification du nombre d'operation que l'utilisateur a ajouté
         $user = $this->getUser();
         $operationEnCours = $operationRepository->OperationEnCours($user->getId());
 
