@@ -44,6 +44,7 @@ class UserController extends AbstractController
      * @param UserPasswordHasherInterface $userPasswordHasher
      * @return Response
      */
+    
     // Creation d'un nouvel utilisateur
     #[Route('/create', name: 'app_gestion_utilisateur_create')]
     public function create(User $user, EntityManagerInterface $entityManager, Request $request, UserPasswordHasherInterface $userPasswordHasher): Response

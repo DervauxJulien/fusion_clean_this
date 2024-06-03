@@ -18,6 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AddOperationController extends AbstractController
 
 {
+    // Création de la route pour ajouter une opération
     #[Route('/add', name: 'app_add_operation')]
     public function index(OperationRepository $operationRepository, Request $request, EntityManagerInterface $entityManager, ClientRepository $clientRepository, UserRepository $userRepository): Response
     {
@@ -58,10 +59,11 @@ class AddOperationController extends AbstractController
         ]);
     }
 
+    // Création de la route pour modifier l'opération
     #[Route('/edit/{id}', name: 'app_edit_operation')]
     public function editOperation(OperationRepository $operationRepository, Operation $operation, ClientRepository $clientRepository, Request $request, EntityManagerInterface $entityManager, AdresseRepository $adresseRepository, int $id ): Response
     {
-        // Créez un formulaire de modification pour l'opération spécifique
+        // Créer un formulaire de modification pour l'opération spécifique
         $stockOp = $operationRepository->find($id);
         $adresse = $adresseRepository->find($id);
         $client = $clientRepository->find($id);
@@ -69,7 +71,7 @@ class AddOperationController extends AbstractController
 
         $form = $this->createForm(AddOperationFormType::class, $operation);
     
-        // Gérez la soumission du formulaire
+        // Gestion de la soumission du formulaire
 
         $form->handleRequest($request);
     
@@ -77,9 +79,9 @@ class AddOperationController extends AbstractController
 
             // mise à jour de "opération" avec les nouvelles données
 
-            $operation->setDateCreation(new \DateTime());
+            $operation->setDateCreation(new \DateTime()); // Ajoute automatiquement la date de l'ajout
 
-            $operation->setStatus('A faire'); 
+            $operation->setStatus('A faire');  // Ajoute automatiquement le status "A faire"
 
             $entityManager->flush();
 
@@ -97,15 +99,17 @@ class AddOperationController extends AbstractController
         ]);
     }
 
+    // Création de la route pour la suppression d'une opération
     #[Route('/{id}/remove', name: 'app_remove_operation')]
     public function remove(Operation $operation, EntityManagerInterface $entityManager): Response
     {
+        // Ajoute un message flash pour préciser que l'opération à bien été supprimer
         $this->addFlash('danger', "La demande n° {$operation->getId()} a bien été supprimée.");
 
         $entityManager->remove($operation);
+
         $entityManager->flush();
 
-        
         return $this->redirectToRoute('app_add_operation');
     }
 
