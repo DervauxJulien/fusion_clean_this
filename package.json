@@ -7,7 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "author": "Dervaux Julien",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "mongodb": "^6.7.0",
-    "mongoose": "^8.4.1"
+    "mongoose": "^8.4.1",
+    "nodemon": "^3.1.2"
   }
 }

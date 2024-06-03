@@ -7,8 +7,12 @@
  */
 import './bootstrap.js';
 import './styles/app.css';
+import "../public/asset/js/log.js"
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+// console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+
+
+  
 
 // console.log("salut");
 

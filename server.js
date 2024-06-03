@@ -28,6 +28,12 @@ const logSchema = new mongoose.Schema({
     }
 });
 
-app.listen(8000, ()=>{
-    console.log("server started on port 8000");
+app.get("/", (req,res)=>{
+    res.json({
+        message: "Bienvenue eee"
+    })
+})
+
+app.listen(3000, ()=>{
+    console.log("server started on port 3000");
 });
