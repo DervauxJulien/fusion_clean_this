@@ -95,7 +95,8 @@
 				{{form_widget(createForm.operation.description_client,{'attr':{'class': 'form form-control','placeholder': 'Dans une limite de 255 caractères'}})}}
 				<br>
 				{{form_label(createForm.operation.img)}}
-				{{form_widget(createForm.operation.img,{'attr':{'class': 'form form-control','placeholder': 'Glissez vos fichiers photos'}})}}
+				{{form_widget(createForm.operation.img,{'attr':{'class': 'form form-control','placeholder': 'Ajoutez vos fichiers photos'}})}}
+					{{ dump(createForm.operation.img) }}
 				<input class="my-5" type="submit" value="Soumettre la demande">
 				{{form_end(createForm)}}
 			</div>
