@@ -83,6 +83,20 @@ class AddOperationController extends AbstractController
 
             $entityManager->flush();
 
+            if ($operation->getType()=="petit") {
+                $operation->setTarif("1000");
+                $entityManager->flush();
+
+            } else if ($operation->getType()=="Moyenne") {
+                $operation->setTarif("2500");
+                $entityManager->flush();
+            } else {
+                $operation->setTarif("5000");
+                $entityManager->flush();
+
+            }
+            
+
             return $this->redirectToRoute('app_add_operation');
         }
     
