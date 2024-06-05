@@ -84,7 +84,7 @@ class AddOperationController extends AbstractController
 
             $entityManager->flush();
 
-            if ($operation->getType()=="Petite") {
+            if ($operation->getType()=="petit") {
                 $operation->setTarif("1000");
                 $entityManager->flush();
 

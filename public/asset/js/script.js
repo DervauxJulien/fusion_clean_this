@@ -85,13 +85,14 @@ document.addEventListener('DOMContentLoaded', () => {
 // Création de la fonction "descriptionClient()" pour la page "templates\add_operation\index.html.twig"
 // afin de gérer l'affichage des description client
   function descriptionClient(cardId) {
-    const descriptionElement = document.getElementById(cardId);
+    let descriptionElement = document.getElementById("descriptionClient");
     descriptionElement.classList.toggle("d-none");
   }
 
+
   // Fonction pour changer de langue
-  function changeLanguage(locale) {
-    window.location.href = '/change-language/' + locale;
-  }
+  // function changeLanguage(locale) {
+  //   window.location.href = '/change-language/' + locale;
+  // }
 });
 
