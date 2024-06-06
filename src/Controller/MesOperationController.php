@@ -33,7 +33,7 @@ class MesOperationController extends AbstractController
 
     #[Route('admin/mes/operation', name: 'app_mes_operationE')]
     //Route spécifique pour le rôle Expert
-    public function index(OperationRepository $operationRepository): Response
+    public function indexE(OperationRepository $operationRepository): Response
     {
         return $this->render('mes_operation/index.html.twig', [
             'MyOps' => $operationRepository->findAll(),
